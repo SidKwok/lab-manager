@@ -1,0 +1,10 @@
+.content{
+    border-style: solid;
+    border-width: 1px;
+    width:80%;
+    height: 90%;
+    margin-left: 175px;
+    margin-right: 5px;
+    position: fixed;
+    top: 55px;
+}

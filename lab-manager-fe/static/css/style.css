@@ -1,0 +1,33 @@
+#menuLeft{
+    border-style: solid;
+    border-left-style: none;
+    border-width: 1px;
+    width: 170px;
+    height: auto;
+    position: fixed;
+    top: 55px;
+
+}
+
+#menuLeft ul{
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+}
+
+#menuLeft li {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #f5f5f5;
+    border-left: 3px solid #fff;
+    padding-left: 20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}

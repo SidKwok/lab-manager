@@ -22,11 +22,11 @@
               </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                      <li class="active"><a href="#">门户网站</a></li>
-                      <li><a href="#">综合管理</a></li>
-                      <li><a href="#">实验管理</a></li>
-                      <li><a href="#">资产管理</a></li>
-                      <li><a href="#">日常办公</a></li>
+                      <li><a href="../info/index.html">门户网站</a></li>
+                      <li class="active"><a href="#">综合管理</a></li>
+                      <li><a href="../labmanage/index.html">实验管理</a></li>
+                      <li><a href="../promanage/index.html">资产管理</a></li>
+                      <li><a href="../dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
                   </ul>
               </div>
@@ -36,18 +36,29 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li><a href="#">实验室管理</a></li>
-                <li><a href="#">实验队伍管理</a></li>
-                <li><a href="#">实验室评估</a></li>
+                <li class="active"><a href="#all-room"><span>实验室管理</span></a></li>
+                <li><a href="#all-team"><span>实验队伍管理</span></a></li>
+                <li><a href="#all-grade"><span>实验室评估</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
-            this is content
+            <div id="all-room">
+              这是实验室管理
+            </div>
+
+            <div id="all-team" style="display: none;">
+              这是实验队伍管理
+            </div>
+
+            <div id="all-grade" style="display: none;">
+              这是实验室评估
+            </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
+        <script src="../static/js/style.js"></script>
     </body>
 </html>

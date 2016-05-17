@@ -9,3 +9,42 @@
     background-color: white;
     border-radius: 8px;
 }
+
+/**
+* 实验室管理
+*/
+.flex-box {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#all-room .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+#all-room .all-roomId {
+    font-size: 36px;
+    padding-left: 10px;
+}
+
+#all-room .all-teacher {
+    font-size: 24px;
+    padding: 30px 0 30px 85px;
+}
+
+.all-buttonGroup {
+    display: block;
+}
+
+.all-buttonGroup button {
+    margin: 0 20px;
+}

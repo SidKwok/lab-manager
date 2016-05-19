@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
+<<<<<<< HEAD
+  <data-source name="MySQL - lab_manager@115.28.143.152" uuid="afb75749-a738-45eb-9276-7b24be871d73">
+    <database-info product="MySQL" version="5.5.47-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+=======
   <data-source name="MySQL - lab_manager@115.28.143.152" uuid="c180df0a-8e03-4506-aeab-359c05251879">
     <database-info product="MySQL" version="5.5.47-0ubuntu0.14.04.1" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.0.8 ( Revision: ${svn.Revision} )">
+>>>>>>> 6a89181a43f271bef7073d3ef13c734e647ef56b
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>

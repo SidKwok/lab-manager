@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.DeviceTypeInDtoMapper">
+  <resultMap id="BaseResultMap" type="org.lab_manager.model.DeviceTypeInDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+    <result column="Class_no" jdbcType="INTEGER" property="classNo" />
+    <result column="Class_name" jdbcType="VARCHAR" property="className" />
+    <result column="Origin_name" jdbcType="VARCHAR" property="originName" />
+    <result column="Purchase_unit" jdbcType="VARCHAR" property="purchaseUnit" />
+    <result column="Value_type" jdbcType="VARCHAR" property="valueType" />
+    <result column="Unit_price" jdbcType="REAL" property="unitPrice" />
+    <result column="Number" jdbcType="INTEGER" property="number" />
+    <result column="Invoice_num" jdbcType="VARCHAR" property="invoiceNum" />
+    <result column="Measurement_unit" jdbcType="VARCHAR" property="measurementUnit" />
+    <result column="Purchase_date" jdbcType="DATE" property="purchaseDate" />
+    <result column="Financial_res" jdbcType="VARCHAR" property="financialRes" />
+    <result column="Asset_res" jdbcType="VARCHAR" property="assetRes" />
+    <result column="Handle_person" jdbcType="VARCHAR" property="handlePerson" />
+    <result column="Charge_type" jdbcType="VARCHAR" property="chargeType" />
+    <result column="Check_date" jdbcType="DATE" property="checkDate" />
+    <result column="Recept_date" jdbcType="DATE" property="receptDate" />
+    <result column="Purchase_form" jdbcType="VARCHAR" property="purchaseForm" />
+    <result column="Manage_part" jdbcType="VARCHAR" property="managePart" />
+    <result column="Subject_type" jdbcType="VARCHAR" property="subjectType" />
+    <result column="Subject" jdbcType="VARCHAR" property="subject" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+    <result column="Finantial_opinion" jdbcType="VARCHAR" property="finantialOpinion" />
+    <result column="Purchasing_agent" jdbcType="VARCHAR" property="purchasingAgent" />
+    <result column="Model" jdbcType="VARCHAR" property="model" />
+    <result column="Standard" jdbcType="VARCHAR" property="standard" />
+    <result column="Production_date" jdbcType="DATE" property="productionDate" />
+    <result column="Country" jdbcType="VARCHAR" property="country" />
+    <result column="Manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <result column="Brand" jdbcType="VARCHAR" property="brand" />
+    <result column="Power" jdbcType="REAL" property="power" />
+    <result column="Estimated_expiration_date" jdbcType="DATE" property="estimatedExpirationDate" />
+    <result column="Durable_years" jdbcType="INTEGER" property="durableYears" />
+    <result column="Retailer" jdbcType="VARCHAR" property="retailer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, asset_name, Class_no, Class_name, Origin_name, Purchase_unit, Value_type, Unit_price, 
+    Number, Invoice_num, Measurement_unit, Purchase_date, Financial_res, Asset_res, Handle_person, 
+    Charge_type, Check_date, Recept_date, Purchase_form, Manage_part, Subject_type, Subject, 
+    Remark, Finantial_opinion, Purchasing_agent, Model, Standard, Production_date, Country, 
+    Manufacturer, Brand, Power, Estimated_expiration_date, Durable_years, Retailer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device_type_in
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from device_type_in
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lab_manager.model.DeviceTypeInDto">
+    insert into device_type_in (ID, asset_name, Class_no, 
+      Class_name, Origin_name, Purchase_unit, 
+      Value_type, Unit_price, Number, 
+      Invoice_num, Measurement_unit, Purchase_date, 
+      Financial_res, Asset_res, Handle_person, 
+      Charge_type, Check_date, Recept_date, 
+      Purchase_form, Manage_part, Subject_type, 
+      Subject, Remark, Finantial_opinion, 
+      Purchasing_agent, Model, Standard, 
+      Production_date, Country, Manufacturer, 
+      Brand, Power, Estimated_expiration_date, 
+      Durable_years, Retailer)
+    values (#{id,jdbcType=INTEGER}, #{assetName,jdbcType=VARCHAR}, #{classNo,jdbcType=INTEGER}, 
+      #{className,jdbcType=VARCHAR}, #{originName,jdbcType=VARCHAR}, #{purchaseUnit,jdbcType=VARCHAR}, 
+      #{valueType,jdbcType=VARCHAR}, #{unitPrice,jdbcType=REAL}, #{number,jdbcType=INTEGER}, 
+      #{invoiceNum,jdbcType=VARCHAR}, #{measurementUnit,jdbcType=VARCHAR}, #{purchaseDate,jdbcType=DATE}, 
+      #{financialRes,jdbcType=VARCHAR}, #{assetRes,jdbcType=VARCHAR}, #{handlePerson,jdbcType=VARCHAR}, 
+      #{chargeType,jdbcType=VARCHAR}, #{checkDate,jdbcType=DATE}, #{receptDate,jdbcType=DATE}, 
+      #{purchaseForm,jdbcType=VARCHAR}, #{managePart,jdbcType=VARCHAR}, #{subjectType,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{finantialOpinion,jdbcType=VARCHAR}, 
+      #{purchasingAgent,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{standard,jdbcType=VARCHAR}, 
+      #{productionDate,jdbcType=DATE}, #{country,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{power,jdbcType=REAL}, #{estimatedExpirationDate,jdbcType=DATE}, 
+      #{durableYears,jdbcType=INTEGER}, #{retailer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lab_manager.model.DeviceTypeInDto">
+    insert into device_type_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="assetName != null">
+        asset_name,
+      </if>
+      <if test="classNo != null">
+        Class_no,
+      </if>
+      <if test="className != null">
+        Class_name,
+      </if>
+      <if test="originName != null">
+        Origin_name,
+      </if>
+      <if test="purchaseUnit != null">
+        Purchase_unit,
+      </if>
+      <if test="valueType != null">
+        Value_type,
+      </if>
+      <if test="unitPrice != null">
+        Unit_price,
+      </if>
+      <if test="number != null">
+        Number,
+      </if>
+      <if test="invoiceNum != null">
+        Invoice_num,
+      </if>
+      <if test="measurementUnit != null">
+        Measurement_unit,
+      </if>
+      <if test="purchaseDate != null">
+        Purchase_date,
+      </if>
+      <if test="financialRes != null">
+        Financial_res,
+      </if>
+      <if test="assetRes != null">
+        Asset_res,
+      </if>
+      <if test="handlePerson != null">
+        Handle_person,
+      </if>
+      <if test="chargeType != null">
+        Charge_type,
+      </if>
+      <if test="checkDate != null">
+        Check_date,
+      </if>
+      <if test="receptDate != null">
+        Recept_date,
+      </if>
+      <if test="purchaseForm != null">
+        Purchase_form,
+      </if>
+      <if test="managePart != null">
+        Manage_part,
+      </if>
+      <if test="subjectType != null">
+        Subject_type,
+      </if>
+      <if test="subject != null">
+        Subject,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="finantialOpinion != null">
+        Finantial_opinion,
+      </if>
+      <if test="purchasingAgent != null">
+        Purchasing_agent,
+      </if>
+      <if test="model != null">
+        Model,
+      </if>
+      <if test="standard != null">
+        Standard,
+      </if>
+      <if test="productionDate != null">
+        Production_date,
+      </if>
+      <if test="country != null">
+        Country,
+      </if>
+      <if test="manufacturer != null">
+        Manufacturer,
+      </if>
+      <if test="brand != null">
+        Brand,
+      </if>
+      <if test="power != null">
+        Power,
+      </if>
+      <if test="estimatedExpirationDate != null">
+        Estimated_expiration_date,
+      </if>
+      <if test="durableYears != null">
+        Durable_years,
+      </if>
+      <if test="retailer != null">
+        Retailer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="classNo != null">
+        #{classNo,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="originName != null">
+        #{originName,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseUnit != null">
+        #{purchaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNum != null">
+        #{invoiceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="measurementUnit != null">
+        #{measurementUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null">
+        #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="financialRes != null">
+        #{financialRes,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRes != null">
+        #{assetRes,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null">
+        #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="receptDate != null">
+        #{receptDate,jdbcType=DATE},
+      </if>
+      <if test="purchaseForm != null">
+        #{purchaseForm,jdbcType=VARCHAR},
+      </if>
+      <if test="managePart != null">
+        #{managePart,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null">
+        #{subjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="finantialOpinion != null">
+        #{finantialOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingAgent != null">
+        #{purchasingAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="standard != null">
+        #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null">
+        #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=REAL},
+      </if>
+      <if test="estimatedExpirationDate != null">
+        #{estimatedExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="durableYears != null">
+        #{durableYears,jdbcType=INTEGER},
+      </if>
+      <if test="retailer != null">
+        #{retailer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lab_manager.model.DeviceTypeInDto">
+    update device_type_in
+    <set>
+      <if test="assetName != null">
+        asset_name = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="classNo != null">
+        Class_no = #{classNo,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        Class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="originName != null">
+        Origin_name = #{originName,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseUnit != null">
+        Purchase_unit = #{purchaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="valueType != null">
+        Value_type = #{valueType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        Unit_price = #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null">
+        Number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNum != null">
+        Invoice_num = #{invoiceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="measurementUnit != null">
+        Measurement_unit = #{measurementUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null">
+        Purchase_date = #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="financialRes != null">
+        Financial_res = #{financialRes,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRes != null">
+        Asset_res = #{assetRes,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null">
+        Handle_person = #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        Charge_type = #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        Check_date = #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="receptDate != null">
+        Recept_date = #{receptDate,jdbcType=DATE},
+      </if>
+      <if test="purchaseForm != null">
+        Purchase_form = #{purchaseForm,jdbcType=VARCHAR},
+      </if>
+      <if test="managePart != null">
+        Manage_part = #{managePart,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null">
+        Subject_type = #{subjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        Subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="finantialOpinion != null">
+        Finantial_opinion = #{finantialOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingAgent != null">
+        Purchasing_agent = #{purchasingAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        Model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="standard != null">
+        Standard = #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null">
+        Production_date = #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        Country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        Manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        Brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        Power = #{power,jdbcType=REAL},
+      </if>
+      <if test="estimatedExpirationDate != null">
+        Estimated_expiration_date = #{estimatedExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="durableYears != null">
+        Durable_years = #{durableYears,jdbcType=INTEGER},
+      </if>
+      <if test="retailer != null">
+        Retailer = #{retailer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lab_manager.model.DeviceTypeInDto">
+    update device_type_in
+    set asset_name = #{assetName,jdbcType=VARCHAR},
+      Class_no = #{classNo,jdbcType=INTEGER},
+      Class_name = #{className,jdbcType=VARCHAR},
+      Origin_name = #{originName,jdbcType=VARCHAR},
+      Purchase_unit = #{purchaseUnit,jdbcType=VARCHAR},
+      Value_type = #{valueType,jdbcType=VARCHAR},
+      Unit_price = #{unitPrice,jdbcType=REAL},
+      Number = #{number,jdbcType=INTEGER},
+      Invoice_num = #{invoiceNum,jdbcType=VARCHAR},
+      Measurement_unit = #{measurementUnit,jdbcType=VARCHAR},
+      Purchase_date = #{purchaseDate,jdbcType=DATE},
+      Financial_res = #{financialRes,jdbcType=VARCHAR},
+      Asset_res = #{assetRes,jdbcType=VARCHAR},
+      Handle_person = #{handlePerson,jdbcType=VARCHAR},
+      Charge_type = #{chargeType,jdbcType=VARCHAR},
+      Check_date = #{checkDate,jdbcType=DATE},
+      Recept_date = #{receptDate,jdbcType=DATE},
+      Purchase_form = #{purchaseForm,jdbcType=VARCHAR},
+      Manage_part = #{managePart,jdbcType=VARCHAR},
+      Subject_type = #{subjectType,jdbcType=VARCHAR},
+      Subject = #{subject,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      Finantial_opinion = #{finantialOpinion,jdbcType=VARCHAR},
+      Purchasing_agent = #{purchasingAgent,jdbcType=VARCHAR},
+      Model = #{model,jdbcType=VARCHAR},
+      Standard = #{standard,jdbcType=VARCHAR},
+      Production_date = #{productionDate,jdbcType=DATE},
+      Country = #{country,jdbcType=VARCHAR},
+      Manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      Brand = #{brand,jdbcType=VARCHAR},
+      Power = #{power,jdbcType=REAL},
+      Estimated_expiration_date = #{estimatedExpirationDate,jdbcType=DATE},
+      Durable_years = #{durableYears,jdbcType=INTEGER},
+      Retailer = #{retailer,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="model.DeviceTypeInDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="asset_name" jdbcType="VARCHAR" property="assetName" />
+    <result column="Class_no" jdbcType="INTEGER" property="classNo" />
+    <result column="Class_name" jdbcType="VARCHAR" property="className" />
+    <result column="Origin_name" jdbcType="VARCHAR" property="originName" />
+    <result column="Purchase_unit" jdbcType="VARCHAR" property="purchaseUnit" />
+    <result column="Value_type" jdbcType="VARCHAR" property="valueType" />
+    <result column="Unit_price" jdbcType="REAL" property="unitPrice" />
+    <result column="Number" jdbcType="INTEGER" property="number" />
+    <result column="Invoice_num" jdbcType="VARCHAR" property="invoiceNum" />
+    <result column="Measurement_unit" jdbcType="VARCHAR" property="measurementUnit" />
+    <result column="Purchase_date" jdbcType="DATE" property="purchaseDate" />
+    <result column="Financial_res" jdbcType="VARCHAR" property="financialRes" />
+    <result column="Asset_res" jdbcType="VARCHAR" property="assetRes" />
+    <result column="Handle_person" jdbcType="VARCHAR" property="handlePerson" />
+    <result column="Charge_type" jdbcType="VARCHAR" property="chargeType" />
+    <result column="Check_date" jdbcType="DATE" property="checkDate" />
+    <result column="Recept_date" jdbcType="DATE" property="receptDate" />
+    <result column="Purchase_form" jdbcType="VARCHAR" property="purchaseForm" />
+    <result column="Manage_part" jdbcType="VARCHAR" property="managePart" />
+    <result column="Subject_type" jdbcType="VARCHAR" property="subjectType" />
+    <result column="Subject" jdbcType="VARCHAR" property="subject" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+    <result column="Finantial_opinion" jdbcType="VARCHAR" property="finantialOpinion" />
+    <result column="Purchasing_agent" jdbcType="VARCHAR" property="purchasingAgent" />
+    <result column="Model" jdbcType="VARCHAR" property="model" />
+    <result column="Standard" jdbcType="VARCHAR" property="standard" />
+    <result column="Production_date" jdbcType="DATE" property="productionDate" />
+    <result column="Country" jdbcType="VARCHAR" property="country" />
+    <result column="Manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <result column="Brand" jdbcType="VARCHAR" property="brand" />
+    <result column="Power" jdbcType="REAL" property="power" />
+    <result column="Estimated_expiration_date" jdbcType="DATE" property="estimatedExpirationDate" />
+    <result column="Durable_years" jdbcType="INTEGER" property="durableYears" />
+    <result column="Retailer" jdbcType="VARCHAR" property="retailer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, asset_name, Class_no, Class_name, Origin_name, Purchase_unit, Value_type, Unit_price, 
+    Number, Invoice_num, Measurement_unit, Purchase_date, Financial_res, Asset_res, Handle_person, 
+    Charge_type, Check_date, Recept_date, Purchase_form, Manage_part, Subject_type, Subject, 
+    Remark, Finantial_opinion, Purchasing_agent, Model, Standard, Production_date, Country, 
+    Manufacturer, Brand, Power, Estimated_expiration_date, Durable_years, Retailer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device_type_in
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from device_type_in
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.DeviceTypeInDto">
+    insert into device_type_in (ID, asset_name, Class_no, 
+      Class_name, Origin_name, Purchase_unit, 
+      Value_type, Unit_price, Number, 
+      Invoice_num, Measurement_unit, Purchase_date, 
+      Financial_res, Asset_res, Handle_person, 
+      Charge_type, Check_date, Recept_date, 
+      Purchase_form, Manage_part, Subject_type, 
+      Subject, Remark, Finantial_opinion, 
+      Purchasing_agent, Model, Standard, 
+      Production_date, Country, Manufacturer, 
+      Brand, Power, Estimated_expiration_date, 
+      Durable_years, Retailer)
+    values (#{id,jdbcType=INTEGER}, #{assetName,jdbcType=VARCHAR}, #{classNo,jdbcType=INTEGER}, 
+      #{className,jdbcType=VARCHAR}, #{originName,jdbcType=VARCHAR}, #{purchaseUnit,jdbcType=VARCHAR}, 
+      #{valueType,jdbcType=VARCHAR}, #{unitPrice,jdbcType=REAL}, #{number,jdbcType=INTEGER}, 
+      #{invoiceNum,jdbcType=VARCHAR}, #{measurementUnit,jdbcType=VARCHAR}, #{purchaseDate,jdbcType=DATE}, 
+      #{financialRes,jdbcType=VARCHAR}, #{assetRes,jdbcType=VARCHAR}, #{handlePerson,jdbcType=VARCHAR}, 
+      #{chargeType,jdbcType=VARCHAR}, #{checkDate,jdbcType=DATE}, #{receptDate,jdbcType=DATE}, 
+      #{purchaseForm,jdbcType=VARCHAR}, #{managePart,jdbcType=VARCHAR}, #{subjectType,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{finantialOpinion,jdbcType=VARCHAR}, 
+      #{purchasingAgent,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, #{standard,jdbcType=VARCHAR}, 
+      #{productionDate,jdbcType=DATE}, #{country,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{power,jdbcType=REAL}, #{estimatedExpirationDate,jdbcType=DATE}, 
+      #{durableYears,jdbcType=INTEGER}, #{retailer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.DeviceTypeInDto">
+    insert into device_type_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="assetName != null">
+        asset_name,
+      </if>
+      <if test="classNo != null">
+        Class_no,
+      </if>
+      <if test="className != null">
+        Class_name,
+      </if>
+      <if test="originName != null">
+        Origin_name,
+      </if>
+      <if test="purchaseUnit != null">
+        Purchase_unit,
+      </if>
+      <if test="valueType != null">
+        Value_type,
+      </if>
+      <if test="unitPrice != null">
+        Unit_price,
+      </if>
+      <if test="number != null">
+        Number,
+      </if>
+      <if test="invoiceNum != null">
+        Invoice_num,
+      </if>
+      <if test="measurementUnit != null">
+        Measurement_unit,
+      </if>
+      <if test="purchaseDate != null">
+        Purchase_date,
+      </if>
+      <if test="financialRes != null">
+        Financial_res,
+      </if>
+      <if test="assetRes != null">
+        Asset_res,
+      </if>
+      <if test="handlePerson != null">
+        Handle_person,
+      </if>
+      <if test="chargeType != null">
+        Charge_type,
+      </if>
+      <if test="checkDate != null">
+        Check_date,
+      </if>
+      <if test="receptDate != null">
+        Recept_date,
+      </if>
+      <if test="purchaseForm != null">
+        Purchase_form,
+      </if>
+      <if test="managePart != null">
+        Manage_part,
+      </if>
+      <if test="subjectType != null">
+        Subject_type,
+      </if>
+      <if test="subject != null">
+        Subject,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+      <if test="finantialOpinion != null">
+        Finantial_opinion,
+      </if>
+      <if test="purchasingAgent != null">
+        Purchasing_agent,
+      </if>
+      <if test="model != null">
+        Model,
+      </if>
+      <if test="standard != null">
+        Standard,
+      </if>
+      <if test="productionDate != null">
+        Production_date,
+      </if>
+      <if test="country != null">
+        Country,
+      </if>
+      <if test="manufacturer != null">
+        Manufacturer,
+      </if>
+      <if test="brand != null">
+        Brand,
+      </if>
+      <if test="power != null">
+        Power,
+      </if>
+      <if test="estimatedExpirationDate != null">
+        Estimated_expiration_date,
+      </if>
+      <if test="durableYears != null">
+        Durable_years,
+      </if>
+      <if test="retailer != null">
+        Retailer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="classNo != null">
+        #{classNo,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="originName != null">
+        #{originName,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseUnit != null">
+        #{purchaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNum != null">
+        #{invoiceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="measurementUnit != null">
+        #{measurementUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null">
+        #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="financialRes != null">
+        #{financialRes,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRes != null">
+        #{assetRes,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null">
+        #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="receptDate != null">
+        #{receptDate,jdbcType=DATE},
+      </if>
+      <if test="purchaseForm != null">
+        #{purchaseForm,jdbcType=VARCHAR},
+      </if>
+      <if test="managePart != null">
+        #{managePart,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null">
+        #{subjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="finantialOpinion != null">
+        #{finantialOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingAgent != null">
+        #{purchasingAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="standard != null">
+        #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null">
+        #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=REAL},
+      </if>
+      <if test="estimatedExpirationDate != null">
+        #{estimatedExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="durableYears != null">
+        #{durableYears,jdbcType=INTEGER},
+      </if>
+      <if test="retailer != null">
+        #{retailer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.DeviceTypeInDto">
+    update device_type_in
+    <set>
+      <if test="assetName != null">
+        asset_name = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="classNo != null">
+        Class_no = #{classNo,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        Class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="originName != null">
+        Origin_name = #{originName,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseUnit != null">
+        Purchase_unit = #{purchaseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="valueType != null">
+        Value_type = #{valueType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        Unit_price = #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null">
+        Number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNum != null">
+        Invoice_num = #{invoiceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="measurementUnit != null">
+        Measurement_unit = #{measurementUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseDate != null">
+        Purchase_date = #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="financialRes != null">
+        Financial_res = #{financialRes,jdbcType=VARCHAR},
+      </if>
+      <if test="assetRes != null">
+        Asset_res = #{assetRes,jdbcType=VARCHAR},
+      </if>
+      <if test="handlePerson != null">
+        Handle_person = #{handlePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeType != null">
+        Charge_type = #{chargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        Check_date = #{checkDate,jdbcType=DATE},
+      </if>
+      <if test="receptDate != null">
+        Recept_date = #{receptDate,jdbcType=DATE},
+      </if>
+      <if test="purchaseForm != null">
+        Purchase_form = #{purchaseForm,jdbcType=VARCHAR},
+      </if>
+      <if test="managePart != null">
+        Manage_part = #{managePart,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null">
+        Subject_type = #{subjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        Subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="finantialOpinion != null">
+        Finantial_opinion = #{finantialOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasingAgent != null">
+        Purchasing_agent = #{purchasingAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        Model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="standard != null">
+        Standard = #{standard,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null">
+        Production_date = #{productionDate,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        Country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        Manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        Brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        Power = #{power,jdbcType=REAL},
+      </if>
+      <if test="estimatedExpirationDate != null">
+        Estimated_expiration_date = #{estimatedExpirationDate,jdbcType=DATE},
+      </if>
+      <if test="durableYears != null">
+        Durable_years = #{durableYears,jdbcType=INTEGER},
+      </if>
+      <if test="retailer != null">
+        Retailer = #{retailer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.DeviceTypeInDto">
+    update device_type_in
+    set asset_name = #{assetName,jdbcType=VARCHAR},
+      Class_no = #{classNo,jdbcType=INTEGER},
+      Class_name = #{className,jdbcType=VARCHAR},
+      Origin_name = #{originName,jdbcType=VARCHAR},
+      Purchase_unit = #{purchaseUnit,jdbcType=VARCHAR},
+      Value_type = #{valueType,jdbcType=VARCHAR},
+      Unit_price = #{unitPrice,jdbcType=REAL},
+      Number = #{number,jdbcType=INTEGER},
+      Invoice_num = #{invoiceNum,jdbcType=VARCHAR},
+      Measurement_unit = #{measurementUnit,jdbcType=VARCHAR},
+      Purchase_date = #{purchaseDate,jdbcType=DATE},
+      Financial_res = #{financialRes,jdbcType=VARCHAR},
+      Asset_res = #{assetRes,jdbcType=VARCHAR},
+      Handle_person = #{handlePerson,jdbcType=VARCHAR},
+      Charge_type = #{chargeType,jdbcType=VARCHAR},
+      Check_date = #{checkDate,jdbcType=DATE},
+      Recept_date = #{receptDate,jdbcType=DATE},
+      Purchase_form = #{purchaseForm,jdbcType=VARCHAR},
+      Manage_part = #{managePart,jdbcType=VARCHAR},
+      Subject_type = #{subjectType,jdbcType=VARCHAR},
+      Subject = #{subject,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      Finantial_opinion = #{finantialOpinion,jdbcType=VARCHAR},
+      Purchasing_agent = #{purchasingAgent,jdbcType=VARCHAR},
+      Model = #{model,jdbcType=VARCHAR},
+      Standard = #{standard,jdbcType=VARCHAR},
+      Production_date = #{productionDate,jdbcType=DATE},
+      Country = #{country,jdbcType=VARCHAR},
+      Manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      Brand = #{brand,jdbcType=VARCHAR},
+      Power = #{power,jdbcType=REAL},
+      Estimated_expiration_date = #{estimatedExpirationDate,jdbcType=DATE},
+      Durable_years = #{durableYears,jdbcType=INTEGER},
+      Retailer = #{retailer,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

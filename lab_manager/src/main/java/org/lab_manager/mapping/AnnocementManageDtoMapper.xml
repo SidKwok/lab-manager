@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.AnnocementManageDtoMapper">
+  <resultMap id="BaseResultMap" type="org.lab_manager.model.AnnocementManageDto">
+    <id column="Notice_id" jdbcType="INTEGER" property="noticeId" />
+    <result column="Date" jdbcType="DATE" property="date" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="Author" jdbcType="VARCHAR" property="author" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Notice_id, Date, Content, Author
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from announcement_manage
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from announcement_manage
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lab_manager.model.AnnocementManageDto">
+    insert into announcement_manage (Notice_id, Date, Content, 
+      Author)
+    values (#{noticeId,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lab_manager.model.AnnocementManageDto">
+    insert into announcement_manage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        Notice_id,
+      </if>
+      <if test="date != null">
+        Date,
+      </if>
+      <if test="content != null">
+        Content,
+      </if>
+      <if test="author != null">
+        Author,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        #{noticeId,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lab_manager.model.AnnocementManageDto">
+    update announcement_manage
+    <set>
+      <if test="date != null">
+        Date = #{date,jdbcType=DATE},
+      </if>
+      <if test="content != null">
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        Author = #{author,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lab_manager.model.AnnocementManageDto">
+    update announcement_manage
+    set Date = #{date,jdbcType=DATE},
+      Content = #{content,jdbcType=VARCHAR},
+      Author = #{author,jdbcType=VARCHAR}
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="model.AnnocementManageDto">
+    <id column="Notice_id" jdbcType="INTEGER" property="noticeId" />
+    <result column="Date" jdbcType="DATE" property="date" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="Author" jdbcType="VARCHAR" property="author" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Notice_id, Date, Content, Author
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from announcement_manage
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from announcement_manage
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.AnnocementManageDto">
+    insert into announcement_manage (Notice_id, Date, Content, 
+      Author)
+    values (#{noticeId,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.AnnocementManageDto">
+    insert into announcement_manage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        Notice_id,
+      </if>
+      <if test="date != null">
+        Date,
+      </if>
+      <if test="content != null">
+        Content,
+      </if>
+      <if test="author != null">
+        Author,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeId != null">
+        #{noticeId,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.AnnocementManageDto">
+    update announcement_manage
+    <set>
+      <if test="date != null">
+        Date = #{date,jdbcType=DATE},
+      </if>
+      <if test="content != null">
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        Author = #{author,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.AnnocementManageDto">
+    update announcement_manage
+    set Date = #{date,jdbcType=DATE},
+      Content = #{content,jdbcType=VARCHAR},
+      Author = #{author,jdbcType=VARCHAR}
+    where Notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+</mapper>

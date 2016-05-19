@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.ChkOnTblDtoMapper">
+  <resultMap id="BaseResultMap" type="org.lab_manager.model.ChkOnTblDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="Student_id" jdbcType="VARCHAR" property="studentId" />
+    <result column="Course_id" jdbcType="VARCHAR" property="courseId" />
+    <result column="Score_id" jdbcType="REAL" property="scoreId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, date, Student_id, Course_id, Score_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_on_table
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from check_on_table
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lab_manager.model.ChkOnTblDto">
+    insert into check_on_table (ID, date, Student_id, 
+      Course_id, Score_id)
+    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{studentId,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=VARCHAR}, #{scoreId,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lab_manager.model.ChkOnTblDto">
+    insert into check_on_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="studentId != null">
+        Student_id,
+      </if>
+      <if test="courseId != null">
+        Course_id,
+      </if>
+      <if test="scoreId != null">
+        Score_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreId != null">
+        #{scoreId,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lab_manager.model.ChkOnTblDto">
+    update check_on_table
+    <set>
+      <if test="date != null">
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="studentId != null">
+        Student_id = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        Course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreId != null">
+        Score_id = #{scoreId,jdbcType=REAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lab_manager.model.ChkOnTblDto">
+    update check_on_table
+    set date = #{date,jdbcType=DATE},
+      Student_id = #{studentId,jdbcType=VARCHAR},
+      Course_id = #{courseId,jdbcType=VARCHAR},
+      Score_id = #{scoreId,jdbcType=REAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="model.ChkOnTblDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="Student_id" jdbcType="VARCHAR" property="studentId" />
+    <result column="Course_id" jdbcType="VARCHAR" property="courseId" />
+    <result column="Score_id" jdbcType="REAL" property="scoreId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, date, Student_id, Course_id, Score_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_on_table
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from check_on_table
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.ChkOnTblDto">
+    insert into check_on_table (ID, date, Student_id, 
+      Course_id, Score_id)
+    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{studentId,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=VARCHAR}, #{scoreId,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="model.ChkOnTblDto">
+    insert into check_on_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="studentId != null">
+        Student_id,
+      </if>
+      <if test="courseId != null">
+        Course_id,
+      </if>
+      <if test="scoreId != null">
+        Score_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreId != null">
+        #{scoreId,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.ChkOnTblDto">
+    update check_on_table
+    <set>
+      <if test="date != null">
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="studentId != null">
+        Student_id = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        Course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreId != null">
+        Score_id = #{scoreId,jdbcType=REAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.ChkOnTblDto">
+    update check_on_table
+    set date = #{date,jdbcType=DATE},
+      Student_id = #{studentId,jdbcType=VARCHAR},
+      Course_id = #{courseId,jdbcType=VARCHAR},
+      Score_id = #{scoreId,jdbcType=REAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

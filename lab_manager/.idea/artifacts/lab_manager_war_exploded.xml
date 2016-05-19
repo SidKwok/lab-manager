@@ -24,6 +24,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.1.1.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">

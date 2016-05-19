@@ -20,8 +20,13 @@ public class StudentDaoTest {
 
     @Test
     public void queryById() throws Exception {
-        Student s=mStudentDao.queryById("111132");
-        System.out.println(s.getName());
+        Student s=mStudentDao.queryById("20131003261");
+        if(s!=null){
+            System.out.println(s.getSName());
+        }
+        else{
+            System.out.println("target not found");
+        }
     }
 
 }

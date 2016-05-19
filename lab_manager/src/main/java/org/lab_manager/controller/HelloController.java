@@ -1,5 +1,7 @@
 package org.lab_manager.controller;
 
+import org.lab_manager.dao.StudentDao;
+import org.lab_manager.entity.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

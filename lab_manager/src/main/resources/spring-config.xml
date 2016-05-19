@@ -25,4 +25,5 @@
         <property name="basePackage" value="org.lab_manager.dao"/>
     </bean>
 
+
 </beans>

@@ -1,0 +1,11 @@
+.content{
+    width:80%;
+    height: 90%;
+    margin-top: 15px;
+    margin-left: 145px;
+    margin-right: 5px;
+    position: fixed;
+    top: 55px;
+    background-color: white;
+    border-radius: 8px;
+}

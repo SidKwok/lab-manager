@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.OrderTableDtoMapper">
+  <resultMap id="BaseResultMap" type="org.lab_manager.model.OrderTableDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
+    <result column="Capacity" jdbcType="INTEGER" property="capacity" />
+    <result column="Applicant" jdbcType="VARCHAR" property="applicant" />
+    <result column="Start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="End_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="Room_id" jdbcType="VARCHAR" property="roomId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, purpose, Capacity, Applicant, Start_time, End_time, Room_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_table
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_table
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lab_manager.model.OrderTableDto">
+    insert into order_table (ID, purpose, Capacity, 
+      Applicant, Start_time, End_time, 
+      Room_id)
+    values (#{id,jdbcType=INTEGER}, #{purpose,jdbcType=VARCHAR}, #{capacity,jdbcType=INTEGER}, 
+      #{applicant,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{roomId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lab_manager.model.OrderTableDto">
+    insert into order_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="purpose != null">
+        purpose,
+      </if>
+      <if test="capacity != null">
+        Capacity,
+      </if>
+      <if test="applicant != null">
+        Applicant,
+      </if>
+      <if test="startTime != null">
+        Start_time,
+      </if>
+      <if test="endTime != null">
+        End_time,
+      </if>
+      <if test="roomId != null">
+        Room_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="capacity != null">
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lab_manager.model.OrderTableDto">
+    update order_table
+    <set>
+      <if test="purpose != null">
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="capacity != null">
+        Capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        Applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        Start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        End_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null">
+        Room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lab_manager.model.OrderTableDto">
+    update order_table
+    set purpose = #{purpose,jdbcType=VARCHAR},
+      Capacity = #{capacity,jdbcType=INTEGER},
+      Applicant = #{applicant,jdbcType=VARCHAR},
+      Start_time = #{startTime,jdbcType=VARCHAR},
+      End_time = #{endTime,jdbcType=VARCHAR},
+      Room_id = #{roomId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="model.OrderTableDto">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
+    <result column="Capacity" jdbcType="INTEGER" property="capacity" />
+    <result column="Applicant" jdbcType="VARCHAR" property="applicant" />
+    <result column="Start_time" jdbcType="VARCHAR" property="startTime" />
+    <result column="End_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="Room_id" jdbcType="VARCHAR" property="roomId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, purpose, Capacity, Applicant, Start_time, End_time, Room_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_table
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_table
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.OrderTableDto">
+    insert into order_table (ID, purpose, Capacity, 
+      Applicant, Start_time, End_time, 
+      Room_id)
+    values (#{id,jdbcType=INTEGER}, #{purpose,jdbcType=VARCHAR}, #{capacity,jdbcType=INTEGER}, 
+      #{applicant,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{roomId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.OrderTableDto">
+    insert into order_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="purpose != null">
+        purpose,
+      </if>
+      <if test="capacity != null">
+        Capacity,
+      </if>
+      <if test="applicant != null">
+        Applicant,
+      </if>
+      <if test="startTime != null">
+        Start_time,
+      </if>
+      <if test="endTime != null">
+        End_time,
+      </if>
+      <if test="roomId != null">
+        Room_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="capacity != null">
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.OrderTableDto">
+    update order_table
+    <set>
+      <if test="purpose != null">
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="capacity != null">
+        Capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        Applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        Start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        End_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null">
+        Room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.OrderTableDto">
+    update order_table
+    set purpose = #{purpose,jdbcType=VARCHAR},
+      Capacity = #{capacity,jdbcType=INTEGER},
+      Applicant = #{applicant,jdbcType=VARCHAR},
+      Start_time = #{startTime,jdbcType=VARCHAR},
+      End_time = #{endTime,jdbcType=VARCHAR},
+      Room_id = #{roomId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

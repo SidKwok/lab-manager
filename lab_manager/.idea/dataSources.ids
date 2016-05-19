@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - lab_manager@115.28.143.152" uuid="afb75749-a738-45eb-9276-7b24be871d73">
+    <database-info product="MySQL" version="5.5.47-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="lab_manager"/>
+      <table id="2" parent="1" name="announcement_manage"/>
+      <table id="3" parent="1" name="check_on_table"/>
+      <table id="4" parent="1" name="course_table"/>
+      <table id="5" parent="1" name="device_type_in"/>
+      <table id="6" parent="1" name="manage_lab"/>
+      <table id="7" parent="1" name="order_table"/>
+      <table id="8" parent="1" name="student"/>
+      <table id="9" parent="1" name="use_lab"/>
+      <table id="10" parent="1" name="user_table"/>
+      <column id="11" parent="2" name="Notice_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="12" parent="2" name="Date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="13" parent="2" name="Content">
+        <mandatory>1</mandatory>
+        <data-type>tinytext</data-type>
+      </column>
+      <column id="14" parent="2" name="Author">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="15" parent="2" name="PRIMARY">
+        <columns>Notice_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="16" parent="3" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="17" parent="3" name="date">
+        <data-type>date</data-type>
+      </column>
+      <column id="18" parent="3" name="Student_id">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="19" parent="3" name="Course_id">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="20" parent="3" name="Score_id">
+        <data-type>float</data-type>
+      </column>
+      <key id="21" parent="3" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="22" parent="4" name="Course_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="23" parent="4" name="Course_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="24" parent="4" name="Class">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="25" parent="4" name="Term">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="26" parent="4" name="Room_num">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="27" parent="4" name="Teacher">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="28" parent="4" name="Start_time">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="29" parent="4" name="End_time">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="30" parent="4" name="course_tablecol">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="31" parent="4" name="PRIMARY">
+        <columns>Course_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="32" parent="5" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="33" parent="5" name="asset_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="34" parent="5" name="Class_no">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="35" parent="5" name="Class_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="36" parent="5" name="Origin_name">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="37" parent="5" name="Purchase_unit">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="38" parent="5" name="Value_type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="39" parent="5" name="Unit_price">
+        <mandatory>1</mandatory>
+        <data-type>float</data-type>
+      </column>
+      <column id="40" parent="5" name="Number">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="41" parent="5" name="Invoice_num">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="42" parent="5" name="Measurement_unit">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="43" parent="5" name="Purchase_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="44" parent="5" name="Financial_res">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="45" parent="5" name="Asset_res">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="46" parent="5" name="Handle_person">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="47" parent="5" name="Charge_type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="48" parent="5" name="Check_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="49" parent="5" name="Recept_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="50" parent="5" name="Purchase_form">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="51" parent="5" name="Manage_part">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="52" parent="5" name="Subject_type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="53" parent="5" name="Subject">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="54" parent="5" name="Remark">
+        <data-type>tinytext</data-type>
+      </column>
+      <column id="55" parent="5" name="Finantial_opinion">
+        <mandatory>1</mandatory>
+        <data-type>tinytext</data-type>
+      </column>
+      <column id="56" parent="5" name="Purchasing_agent">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="57" parent="5" name="Model">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="58" parent="5" name="Standard">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="59" parent="5" name="Production_date">
+        <data-type>date</data-type>
+      </column>
+      <column id="60" parent="5" name="Country">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="61" parent="5" name="Manufacturer">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="62" parent="5" name="Brand">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="63" parent="5" name="Power">
+        <data-type>float</data-type>
+      </column>
+      <column id="64" parent="5" name="Estimated_expiration_date">
+        <data-type>date</data-type>
+      </column>
+      <column id="65" parent="5" name="Durable_years">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="66" parent="5" name="Retailer">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="67" parent="5" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="68" parent="6" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="69" parent="6" name="Room_num">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="70" parent="6" name="Comment">
+        <data-type>tinytext</data-type>
+      </column>
+      <column id="71" parent="6" name="Manage_teacher">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="72" parent="6" name="Intro">
+        <data-type>tinytext</data-type>
+      </column>
+      <key id="73" parent="6" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="74" parent="7" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="75" parent="7" name="purpose">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="76" parent="7" name="Capacity">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="77" parent="7" name="Applicant">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="78" parent="7" name="Start_time">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="79" parent="7" name="End_time">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="80" parent="7" name="Room_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="81" parent="7" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="82" parent="8" name="SID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="83" parent="8" name="SName">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="84" parent="8" name="SClassNo">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="85" parent="8" name="PRIMARY">
+        <columns>SID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="86" parent="9" name="room_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="87" parent="9" name="Applicant">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="88" parent="9" name="Start_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="89" parent="9" name="End_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="90" parent="9" name="Purpose">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="91" parent="9" name="PRIMARY">
+        <columns>room_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="92" parent="10" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="93" parent="10" name="Name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="94" parent="10" name="Role_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="95" parent="10" name="Class">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="96" parent="10" name="Score">
+        <mandatory>1</mandatory>
+        <data-type>float</data-type>
+      </column>
+      <key id="97" parent="10" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

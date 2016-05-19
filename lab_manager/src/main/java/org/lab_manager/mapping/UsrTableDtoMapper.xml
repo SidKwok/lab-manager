@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.UsrTableDtoMapper">
+  <resultMap id="BaseResultMap" type="org.lab_manager.model.UsrTableDto">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="Class" jdbcType="VARCHAR" property="class" />
+    <result column="Score" jdbcType="REAL" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, Role_id, Class, Score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.lab_manager.model.UsrTableDto">
+    insert into user_table (ID, Name, Role_id, 
+      Class, Score)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{score,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lab_manager.model.UsrTableDto">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="roleId != null">
+        Role_id,
+      </if>
+      <if test="class != null">
+        Class,
+      </if>
+      <if test="score != null">
+        Score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lab_manager.model.UsrTableDto">
+    update user_table
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        Role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        Class = #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        Score = #{score,jdbcType=REAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lab_manager.model.UsrTableDto">
+    update user_table
+    set Name = #{name,jdbcType=VARCHAR},
+      Role_id = #{roleId,jdbcType=VARCHAR},
+      Class = #{class,jdbcType=VARCHAR},
+      Score = #{score,jdbcType=REAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.UsrTableDto">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="Class" jdbcType="VARCHAR" property="class" />
+    <result column="Score" jdbcType="REAL" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, Role_id, Class, Score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.UsrTableDto">
+    insert into user_table (ID, Name, Role_id, 
+      Class, Score)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{score,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="model.UsrTableDto">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="roleId != null">
+        Role_id,
+      </if>
+      <if test="class != null">
+        Class,
+      </if>
+      <if test="score != null">
+        Score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.UsrTableDto">
+    update user_table
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        Role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        Class = #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        Score = #{score,jdbcType=REAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.UsrTableDto">
+    update user_table
+    set Name = #{name,jdbcType=VARCHAR},
+      Role_id = #{roleId,jdbcType=VARCHAR},
+      Class = #{class,jdbcType=VARCHAR},
+      Score = #{score,jdbcType=REAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

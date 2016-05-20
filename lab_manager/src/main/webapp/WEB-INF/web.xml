@@ -5,6 +5,10 @@
 
   <display-name>Spring MVC Application</display-name>
 
+  <welcome-file-list>
+    <welcome-file>allmanage/index.html</welcome-file>
+  </welcome-file-list>
+
   <servlet>
     <servlet-name>mvc-dispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

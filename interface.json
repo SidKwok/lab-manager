@@ -1,0 +1,13 @@
+room_ajax {
+  [{
+    'room_id': '001',
+    'manage_teacher': 'sid',
+    'intro': 'good'
+    },
+    'room_id': '002',
+    'manage_teacher': 'mingen',
+    'intro': 'bad'
+    },
+    ...
+  ]
+}

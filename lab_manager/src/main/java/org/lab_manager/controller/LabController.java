@@ -14,6 +14,6 @@ public class LabController {
     @RequestMapping(value="/addLab", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         model.addAttribute("message", "Hello world!");
-        return "hello";
+        return "allmanage/index";
     }
 }

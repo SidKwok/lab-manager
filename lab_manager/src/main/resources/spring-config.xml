@@ -28,13 +28,13 @@
 
     <!-- 处理静态资源 -->
     <mvc:default-servlet-handler/>
-    <!---->
-    <!--<mvc:resources location="/WEB-INF/pages/front/static/fonts/" mapping="/fonts/**" />-->
-    <!--<mvc:resources location="/WEB-INF/pages/front/static/css/" mapping="/css/**" />-->
-    <!--<mvc:resources location="/WEB-INF/pages/front/static/js/" mapping="/js/**" />-->
 
-    <!--不拦截静态资源文件-->
-    <!--<mvc:resources location="/WEB-INF/pages/" mapping="/pages/**" />-->
+    <mvc:resources location="/pages/front/static/fonts/" mapping="/fonts/**" />
+    <mvc:resources location="/pages/front/static/css/" mapping="/css/**" />
+    <mvc:resources location="/pages/front/static/js/" mapping="/js/**" />
+
+    不拦截静态资源文件
+    <mvc:resources location="/pages/" mapping="/pages/**" />
 
     <!--<mvc:default-servlet-handler/>-->
     <!--<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />-->

@@ -3,10 +3,10 @@
     <head>
       <meta charset="utf-8">
       <title>综合管理</title>
-      <link rel="stylesheet" href="/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/css/hover-min.css">
-      <link rel="stylesheet" href="/css/style.css">
-      <link rel="stylesheet" href="/css/content.css">
+      <link rel="stylesheet" href="<%=pageContext%>css/bootstrap.min.css">
+      <link rel="stylesheet" href="<%=pageContext%>css/hover-min.css">
+      <link rel="stylesheet" href="<%=pageContext%>css/style.css">
+      <link rel="stylesheet" href="<%=pageContext%>css/content.css">
     </head>
     <body>
         <!--导航栏-->

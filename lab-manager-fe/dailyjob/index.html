@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <title>日常办公</title>
       <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../static/css/hover-min.css">
       <link rel="stylesheet" href="../static/css/style.css">
       <link rel="stylesheet" href="../static/css/content.css">
     </head>
@@ -36,20 +37,55 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li class="active"><a href="#daily-post"><span>公告管理</span></a></li>
+                <li class="active"><a href="#daily-notice"><span>公告管理</span></a></li>
                 <li><a href="#daily-qa"><span>在线答疑</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
-            <div id="daily-post">
-                这是公告管理
+            <div id="daily-notice">
+                <h2>公告管理</h2>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#daily-noticeAdd-modal" id="noticeAdd-btn">添加公告</button>
+                <div id="noticeModal">
+                  <div class="notice hvr-sweep-to-right">
+                      <div class="noticeId">0001</div>
+                      <div class="noticeDate">2016-5-21</div>
+                      <div class="noticeContent">sid is the best!</div>
+                      <div class="noticeAuthor">from: sid</div>
+                  </div>
+                  <div class="notice hvr-sweep-to-right">
+                      <div class="noticeId">0002</div>
+                      <div class="noticeDate">2016-5-21</div>
+                      <div class="noticeContent">mingen is the best!</div>
+                      <div class="noticeAuthor">from: mingen</div>
+                  </div>
+                </div>
             </div>
 
             <div id="daily-qa" style="display: none;">
                 这是在线答疑
             </div>
+        </div>
+
+        <!-- 添加公告框 -->
+        <div class="modal fade" id="daily-noticeAdd-modal" tabindex="-1" role="dialog" aria-labelledby="daily-noticeAdd-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="daily-noticeAdd-modal-label">添加公告</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="input-noticeAuthor" placeholder="发表人">
+                  <textarea class="form-control" id="input-noticeContent" rows="3"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-notice">添加</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>

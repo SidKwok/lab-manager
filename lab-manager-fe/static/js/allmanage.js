@@ -33,6 +33,7 @@ function init () {
         },
         error: function(){
           console.log('room_ajax', 'fail');
+          alert('后台错误！');
       }
     });
 }
@@ -60,6 +61,7 @@ function basicEvent() {
             },
             error: function() {
                 console.log('room_comment fail');
+                alert('后台错误！');
             }
         });
     });
@@ -83,6 +85,7 @@ function basicEvent() {
             },
             error: function() {
                 console.log('room_post_comment fail');
+                alert('后台错误！');
             }
         });
     });
@@ -106,6 +109,7 @@ function basicEvent() {
           },
           error: function(){
               console.log('room_order_state fail');
+              alert('后台错误！');
           }
       });
     });
@@ -136,6 +140,7 @@ function basicEvent() {
             },
             error: function(){
                 console.log('room_post_order fail');
+                alert('后台错误！');
             }
         });
     });

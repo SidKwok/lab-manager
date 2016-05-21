@@ -1,3 +1,7 @@
+body {
+    font-family: '微软雅黑';
+}
+
 .content {
     width:80%;
     height: 90%;
@@ -117,4 +121,46 @@
 
 .lab-buttonGroup button {
     margin: 0 22px;
+}
+
+/**
+* 公告管理
+*/
+#noticeAdd-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+#daily-notice .notice {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#daily-notice .notice:hover {
+    color: white;
+}
+#daily-notice .noticeId {
+    position: absolute;
+      top: 7%;
+      left: 2%;
+      font-size: 18px;
+}
+#daily-notice .noticeDate {
+    position: absolute;
+    bottom: 15%;
+    right: 2%;
+}
+#daily-notice .noticeContent {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#daily-notice .noticeAuthor {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
 }

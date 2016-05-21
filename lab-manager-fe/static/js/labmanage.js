@@ -29,6 +29,7 @@ function init () {
         },
         error: function(){
           console.log('equit_ajax', 'fail');
+          alert('后台错误！');
       }
     });
 }
@@ -71,11 +72,12 @@ function basicEvent() {
                         );
                     });
                     domArr.push('</tboday></table>');
-                    $('.db-table').val(domArr.join(''));
+                    $('.db-table').append(domArr.join(''));
                 }
             },
             error: function(){
                 console.log('db_post_ajax fail');
+                alert('后台错误！');
             }
         });
     });
@@ -98,6 +100,7 @@ function basicEvent() {
             },
             error: function(){
                 console.log('equit_info fail');
+                alert('后台错误！');
             }
         });
     });
@@ -126,6 +129,7 @@ function basicEvent() {
             },
             error: function(){
                 console.log('lab_post_order fail');
+                alert('后台错误！');
             }
         });
     });

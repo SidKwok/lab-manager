@@ -100,3 +100,28 @@ params: assetName, number, days, applicant
 {
   "status": "0"
 }
+
+// 获取公告
+notice_ajax
+params: none
+[
+  {
+    "noticeId": "0001",
+    "noticeDate": "2016-5-21",
+    "noticeContent": "Sid is the best!",
+    "noticeAuthor": "sid"
+  },
+  {
+    "noticeId": "0002",
+    "noticeDate": "2016-5-21",
+    "noticeContent": "Mingen is the best!",
+    "noticeAuthor": "mingen"
+  }
+]
+
+// 发表公告
+daily_post_notice
+params: noticeAuthor, noticeContent
+{
+  "status": "0"
+}

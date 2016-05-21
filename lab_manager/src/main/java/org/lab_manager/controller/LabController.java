@@ -14,6 +14,25 @@ public class LabController {
     @RequestMapping(value="/addLab", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         model.addAttribute("message", "Hello world!");
-        return "allmanage/index";
+        return "forward:/webapp/WEB-INF/pages/front/allmanage/index.html";
     }
+
+    @RequestMapping(value="/updateLab", method = RequestMethod.POST)
+    public String updateLab(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+        return "forward:/webapp/WEB-INF/pages/front/allmanage/index.html";
+    }
+
+    @RequestMapping(value="/deleteLab", method = RequestMethod.POST)
+    public String deleteLab(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+        return "forward:/webapp/WEB-INF/pages/front/allmanage/index.html";
+    }
+
+    @RequestMapping(value="/queryLab", method = RequestMethod.POST)
+    public String queryLab(ModelMap model) {
+        model.addAttribute("message", "Hello world!");
+        return "forward:/webapp/WEB-INF/pages/front/allmanage/index.html";
+    }
+
 }

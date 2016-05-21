@@ -36,7 +36,6 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li class="active"><a href="#lab-mange"><span>开放实验管理</span></a></li>
                 <li><a href="#lab-db"><span>数据查询统计</span></a></li>
                 <li><a href="#lab-order"><span>设备仪器预约</span></a></li>
             </ul>
@@ -44,14 +43,40 @@
 
         <!--内容块-->
         <div class="content">
-            <div id="lab-mange">
-                开放实验管理
-            </div>
-
             <div id="lab-db" style="display: none;">
-                数据查询统计
+                <h2>数据查询统计</h2>
+                <div class="search-modal">
+                    <div class="input-search">
+                        <input class="form-control" id="input-search-form">
+                        <label class="radio-inline">
+                          <input type="radio" name="searchType" value="lab"> 实验
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="searchType" value="teacher"> 教师
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="search-btn">搜索</button>
+                </div>
+                <div class="db-table">
+                    <table class="table table-hover">
+                        <thead>
+                            <td>教师</td>
+                            <td>实验</td>
+                            <td>实验室</td>
+                        </thead>
+                        <tr>
+                            <td>sid</td>
+                            <td>fuck</td>
+                            <td>805</td>
+                        </tr>
+                        <tr>
+                          <td>mingen</td>
+                          <td>sex</td>
+                          <td>806</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-
             <div id="lab-order" style="display: none;">
                 设备仪器预约
             </div>

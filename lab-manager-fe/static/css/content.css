@@ -5,6 +5,7 @@
     margin-left: 145px;
     margin-right: 5px;
     position: fixed;
+    overflow: scroll;
     top: 55px;
     background-color: white;
     border-radius: 8px;
@@ -60,4 +61,26 @@
 
 .all-buttonGroup button {
     margin: 0 5px;
+}
+
+/**
+* 数据查询统计
+*/
+#lab-db .search-modal {
+    width: 260px;
+    margin: 0 auto;
+}
+
+#lab-db .input-search {
+    display: inline-block;
+    width: 200px;
+}
+
+#search-btn {
+    margin-bottom: 57px;
+}
+
+.db-table {
+    width: 90%;
+    margin: 0 auto;
 }

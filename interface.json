@@ -53,3 +53,21 @@ params: roomId, labName, applicant, week, weekday, course
 {
   "status": "0"
 }
+
+// 获取 教师 实验 实验室 有无结果 0代表无 1代表有
+params: item, type (item是内容 type是类型 有教室和实验名) 
+{
+  "status": "1",
+  "result":[
+    {
+      "teacher": "sid",
+      "labName": "fuck",
+      "roomId": "001"
+    },
+    {
+      "teacher": "mingen",
+      "labName": "sex",
+      "roomId": "002"
+    }
+  ]
+}

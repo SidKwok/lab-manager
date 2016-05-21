@@ -1,6 +1,6 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<a href="/Lab/addLab">test</a>
+<a href="/index.html">test</a>
 </body>
 </html>

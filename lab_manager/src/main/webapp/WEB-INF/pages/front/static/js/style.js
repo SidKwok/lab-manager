@@ -7,6 +7,6 @@ $('#menuLeft').on('click', 'li' ,function(event) {
     $('#menuLeft li').removeClass('active');
     $(this).addClass('active');
 
-    $('.content div').css('display', 'none');
+    $('.content').children().css('display', 'none');
     $(content).css('display', 'block');
 });

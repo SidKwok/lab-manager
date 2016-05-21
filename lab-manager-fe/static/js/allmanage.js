@@ -87,10 +87,27 @@ function basicEvent() {
         });
     });
 
-    // 加载预约框的房间号
+    // 加载预约框
     $('all-order-btn').on('click', function(){
       var roomId = $(this).parent('.all-roomId').val();
       $('#all-order-modal-label').val(roomId);
+
+      $.ajax({
+          type: 'POST',
+          url: 'room_order_state',
+          data: {roomId},
+          success: function(retData){
+              $('#order-state').children().detach();
+              var domArr = [];
+              $.each(retData, function(i, e){
+                  domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
+              });
+              $('#order-state').val(domArr.join(''));
+          },
+          error: function(){
+              console.log('room_order_state fail');
+          }
+      });
     });
 
     // 预约实验室

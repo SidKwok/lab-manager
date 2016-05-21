@@ -1,4 +1,4 @@
-.content{
+.content {
     width:80%;
     height: 90%;
     margin-top: 15px;
@@ -8,6 +8,19 @@
     top: 55px;
     background-color: white;
     border-radius: 8px;
+}
+.content h2 {
+    width: 500px;
+    margin: 72px auto;
+    text-align: center;
+}
+
+/**
+* 首页
+*/
+.info-content {
+    width: 600px;
+    margin: 0 auto;
 }
 
 /**

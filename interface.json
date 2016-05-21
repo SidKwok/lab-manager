@@ -23,11 +23,30 @@ params: roomId
 }
 
 // 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
-params: room_id, comment
+params: roomId, comment
 room_post_comment (post)
 {
   "status": "0"
 }
+
+// 房间使用情况
+params: roomId
+[
+  {
+    "labName": "fuck",
+    "applicant": "sid",
+    "week": "第十周",
+    "weekday": "周一",
+    "course": "1、2节"
+  },
+  {
+    "labName": "sex",
+    "applicant": "mingen",
+    "week": "第十一周",
+    "weekday": "周二",
+    "course": "3、4节"
+  }
+]
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
 params: roomId, labName, applicant, week, weekday, course

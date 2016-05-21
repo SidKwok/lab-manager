@@ -13,7 +13,7 @@
 /**
 * 实验室管理
 */
-.flex-box {
+#all-room {
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -46,5 +46,5 @@
 }
 
 .all-buttonGroup button {
-    margin: 0 20px;
+    margin: 0 5px;
 }

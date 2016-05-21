@@ -45,40 +45,126 @@
 
         <!--内容块-->
         <div class="content">
-            <div id="all-room">
-                <div class="flex-box">
-                    <div class="card hvr-bounce-in">
-                        <div class="all-roomId">0001</div>
-                        <div class="all-teacher">
-                            sid
-                        </div>
-                        <div class="all-buttonGroup">
-                            <button class="btn btn-info" id="all-comment">评论</button>
-                            <button class="btn btn-success" id="all-order">预约</button>
-                        </div>
-                    </div>
-                    <div class="card hvr-bounce-in">
-                    </div>
-                    <div class="card hvr-bounce-in">
-                    </div>
-                    <div class="card hvr-bounce-in">
-                    </div>
-                    <div class="card hvr-bounce-in">
-                    </div>
+          <div id="all-room">
+              <div class="card hvr-bounce-in">
+                  <div class="all-roomId">0001</div>
+                  <div class="all-teacher">
+                     sid
+                  </div>
+                  <div class="all-buttonGroup">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
+                      <button class="btn btn-info" data-toggle="popover" title="机器人实验室" data-placement="top" data-content="非常美" class="all-info-btn">简介</button>
+                      <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
+                  </div>
+              </div>
+              <div class="card hvr-bounce-in">
+                  <div class="all-roomId">0002</div>
+                  <div class="all-teacher">
+                     mingen
+                  </div>
+                  <div class="all-buttonGroup">
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
+                      <button class="btn btn-info" data-toggle="popover" title="东区实验室" data-placement="top" data-content="很差" class="all-info-btn">简介</button>
+                      <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
+                  </div>
+              </div>
+          </div>
+
+          <div id="all-team" style="display: none;">
+            这是实验队伍管理
+          </div>
+
+          <div id="all-grade" style="display: none;">
+            这是实验室评估
+          </div>
+        </div>
+
+        <!-- 评论框 -->
+        <div class="modal fade" id="all-comment-modal" tabindex="-1" role="dialog" aria-labelledby="all-comment-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="all-comment-modal-label">东区实验室</h4>
+              </div>
+              <div class="modal-body">
+                <div class="modal-showComment">
+                    <p>Good</p>
+                    <p>Not bad</p>
                 </div>
+              </div>
+              <div class="modal-footer">
+                <span>输入你的评论</span>
+                <textarea class="form-control" rows="3"></textarea>
+                <br>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-comment">发表</button>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div id="all-team" style="display: none;">
-              这是实验队伍管理
+        <!-- 预约框 -->
+        <div class="modal fade" id="all-order-modal" tabindex="-1" role="dialog" aria-labelledby="all-order-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="all-order-modal-label">001</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="input-labName" placeholder="实验名称">
+                  <input type="text" class="form-control" id="input-applicant" placeholder="申请人">
+                  <select class="form-control" id="input-week">
+                    <option>第一周</option>
+                    <option>第二周</option>
+                    <option>第三周</option>
+                    <option>第四周</option>
+                    <option>第五周</option>
+                    <option>第六周</option>
+                    <option>第七周</option>
+                    <option>第八周</option>
+                    <option>第九周</option>
+                    <option>第十周</option>
+                    <option>第十一周</option>
+                    <option>第十二周</option>
+                    <option>第十三周</option>
+                    <option>第十四周</option>
+                    <option>第十五周</option>
+                    <option>第十六周</option>
+                    <option>第十七周</option>
+                    <option>第十八周</option>
+                  </select>
+                  <select class="form-control" id="input-weekday">
+                    <option>周一</option>
+                    <option>周二</option>
+                    <option>周三</option>
+                    <option>周四</option>
+                    <option>周五</option>
+                    <option>周六</option>
+                    <option>周日</option>
+                  </select>
+                  <select class="form-control" id="input-course">
+                    <option>1、2节</option>
+                    <option>3、4节</option>
+                    <option>5、6节</option>
+                    <option>7、8节</option>
+                    <option>9、10节</option>
+                  </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-order">预约</button>
+              </div>
             </div>
-
-            <div id="all-grade" style="display: none;">
-              这是实验室评估
-            </div>
+          </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
         <script src="../static/js/style.js"></script>
+        <script>
+            $('[data-toggle="popover"]').popover();
+        </script>
     </body>
 </html>

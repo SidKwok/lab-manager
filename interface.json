@@ -1,4 +1,5 @@
-room_ajax
+room_ajax (get)
+params: none
 [
   {
     "room_id": "0001",
@@ -11,3 +12,25 @@ room_ajax
     "intro": "bad"
   }
 ]
+
+room_comment (post)
+params: roomId
+{
+  "comment": [
+    "good",
+    "not bad"
+  ]
+}
+
+// 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
+params: room_id, comment
+room_post_comment (post)
+{
+  "status": "0"
+}
+
+// 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
+params: roomId, labName, applicant, week, weekday, course
+{
+  "status": "0"
+}

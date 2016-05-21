@@ -37,7 +37,7 @@
         <div id="menuLeft">
             <ul>
                 <li><a href="#lab-db"><span>数据查询统计</span></a></li>
-                <li><a href="#lab-order"><span>设备仪器预约</span></a></li>
+                <li class="active"><a href="#lab-equit"><span>设备仪器预约</span></a></li>
             </ul>
         </div>
 
@@ -77,9 +77,64 @@
                     </table>
                 </div>
             </div>
-            <div id="lab-order" style="display: none;">
-                设备仪器预约
+            <div id="lab-equit">
+                <div class="card hvr-bounce-in" data-assetName="西瓜刀">
+                    <div class="lab-equitName">西瓜刀</div>
+                    <div class="lab-buttonGroup">
+                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                    </div>
+                </div>
+                <div class="card hvr-bounce-in" data-assetName="狼牙棒">
+                    <div class="lab-equitName">狼牙棒</div>
+                    <div class="lab-buttonGroup">
+                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- 简介框 -->
+        <div class="modal fade" id="lab-equitInfo-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitInfo-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lab-equitInfo-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="lab-equitInfo-classNo">分类代码： 0001</div>
+                  <div class="lab-equitInfo-className">分类名称：刀具</div>
+                  <div class="lab-equitInfo-valueType">价值类型：昂贵</div>
+                  <div class="lab-equitInfo-number">数量：10</div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 预约框 -->
+        <div class="modal fade" id="lab-equitOrder-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitOrder-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lab-equitOrder-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="input-equitNumber" placeholder="申请数量">
+                  <input type="text" class="form-control" id="input-equitDays" placeholder="申请多少天">
+                  <input type="text" class="form-control" id="input-equitApplicant" placeholder="申请人">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-equitOrder">预约</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>

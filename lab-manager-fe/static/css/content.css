@@ -84,3 +84,37 @@
     width: 90%;
     margin: 0 auto;
 }
+
+/**
+* 设备仪器预约
+*/
+#lab-equit {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#lab-equit .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+#lab-equit .lab-equitName {
+    font-size: 24px;
+    padding: 60px 0 30px 50px;
+}
+
+.lab-buttonGroup {
+    margin-top: 10px;
+}
+
+.lab-buttonGroup button {
+    margin: 0 22px;
+}

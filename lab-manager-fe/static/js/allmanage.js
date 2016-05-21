@@ -16,7 +16,7 @@ function init () {
           var domArr = [];
           $.each(retData, function(i, e) {
               domArr.push(
-                  '<div class="card hvr-bounce-in">',
+                  '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
                       '<div class="all-roomId">' + e.room_id + '</div>',
                       '<div class="all-teacher">' + e.manage_teacher + '</div>',
                       '<div class="all-buttonGroup">',
@@ -43,12 +43,12 @@ function init () {
 function basicEvent() {
     // 加载评论
     $('#all-comment-btn').on('click', function(){
-        var roomId = $(this).parent('.all-roomId').val();
+        var roomId = $(this).parent('.card').attr('data-roomId');
         $('#all-comment-modal-label').val(roomId);
         $.ajax({
             type: "POST",
             url: 'room_comment',
-            data: roomId,
+            data: {roomId},
             dataType: "json",
             success: function(retData){
                 $('#all-comment-modal .modal-showComment').children().detach();
@@ -89,7 +89,7 @@ function basicEvent() {
 
     // 加载预约框
     $('all-order-btn').on('click', function(){
-      var roomId = $(this).parent('.all-roomId').val();
+      var roomId = $(this).parent('.card').attr('data-roomId');
       $('#all-order-modal-label').val(roomId);
 
       $.ajax({
@@ -111,7 +111,7 @@ function basicEvent() {
     });
 
     // 预约实验室
-    $('#post-order').on('click', function(){
+    $('#post-labOrder').on('click', function(){
         var params = {
             roomId: $('#all-order-modal-label').val();
             labName: $('#input-labName').val(),

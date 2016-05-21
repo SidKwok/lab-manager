@@ -30,6 +30,7 @@ room_post_comment (post)
 }
 
 // 房间使用情况
+room_order_state
 params: roomId
 [
   {
@@ -49,13 +50,15 @@ params: roomId
 ]
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
+room_post_order
 params: roomId, labName, applicant, week, weekday, course
 {
   "status": "0"
 }
 
 // 获取 教师 实验 实验室 有无结果 0代表无 1代表有
-params: item, type (item是内容 type是类型 有教室和实验名) 
+db_post_ajax
+params: item, type (item是内容 type是类型 有教室和实验名)
 {
   "status": "1",
   "result":[
@@ -70,4 +73,30 @@ params: item, type (item是内容 type是类型 有教室和实验名)
       "roomId": "002"
     }
   ]
+}
+
+equit_ajax
+params: none
+[
+  {
+    "assetName": "西瓜刀"
+  },
+  {
+    "assetName": "狼牙棒"
+  }
+]
+
+equit_info
+params: assetName
+{
+  "classNo": "001",
+  "className": "刀具",
+  "valueType": "昂贵",
+  "number": "10"
+}
+
+lab-post-order
+params: assetName, number, days, applicant
+{
+  "status": "0"
 }

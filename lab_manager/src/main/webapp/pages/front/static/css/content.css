@@ -31,7 +31,7 @@ body {
 /**
 * 实验室管理
 */
-#all-room {
+#all-room .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -64,7 +64,7 @@ body {
 }
 
 .all-buttonGroup button {
-    margin: 0 5px;
+    margin: 0 2px;
 }
 
 /**
@@ -92,7 +92,7 @@ body {
 /**
 * 设备仪器预约
 */
-#lab-equit {
+#lab-equit .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -120,7 +120,7 @@ body {
 }
 
 .lab-buttonGroup button {
-    margin: 0 22px;
+    margin: 0 18px;
 }
 
 /**
@@ -160,6 +160,102 @@ body {
     font-size: 24px;
 }
 #daily-notice .noticeAuthor {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+/**
+* 设备仪器管理
+*/
+#pro-equit .flex-box{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#pro-equit .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+#pro-equit .pro-equitName {
+    font-size: 24px;
+    padding: 60px 0 30px 50px;
+}
+#pro-equit .pro-buttonGroup {
+    margin-top: 10px;
+}
+
+#pro-equit .pro-buttonGroup button {
+    margin: 0 18px;
+}
+#pro-equitAdd {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #ef4566;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+/**
+* 预约管理
+*/
+#pro-order .order {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#pro-order .order:hover {
+    color: white;
+}
+#pro-lab-order .hvr-sweep-to-right:before{
+    background: #3eaca8;
+}
+#pro-equit-order .hvr-sweep-to-right:before{
+    background: #ef4566;
+}
+
+#pro-lab-order .labOrderId,
+#pro-equit-order .equitOrderId
+ {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+    font-size: 18px;
+}
+#pro-lab-order .labOrderDate,
+#pro-equit-order .equitOrderDate {
+    position: absolute;
+    bottom: 15%;
+    left: 2%;
+}
+#pro-lab-order .labOrderContent,
+#pro-equit-order .equitOrderContent{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#pro-lab-order .labOrderApplicant,
+#pro-equit-order .equitOrderApplicant{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+.pro-order-btnGroup {
     position: absolute;
     bottom: 2%;
     right: 2%;

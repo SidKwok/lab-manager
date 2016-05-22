@@ -23,11 +23,11 @@
               </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                      <li><a href="../info/index.html">门户网站</a></li>
+                      <li><a href="/html/info/index.html">门户网站</a></li>
                       <li class="active"><a href="#">综合管理</a></li>
-                      <li><a href="../labmanage/index.html">实验管理</a></li>
-                      <li><a href="../promanage/index.html">资产管理</a></li>
-                      <li><a href="../dailyjob/index.html">日常办公</a></li>
+                      <li><a href="/html/labmanage/index.html">实验管理</a></li>
+                      <li><a href="/html/promanage/index.html">资产管理</a></li>
+                      <li><a href="/html/dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
                   </ul>
               </div>
@@ -168,6 +168,15 @@
         <script src="/js/style.js"></script>
         <script>
             $('[data-toggle="popover"]').popover();
+            alert("kaishi");
+            $.ajax({
+                type:"POST",
+                url:"/Comment/addComment",
+                dataType:"text",
+                success:function (msg) {
+                    alert(msg);
+                }
+            });
         </script>
     </body>
 </html>

@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <title>资产管理</title>
       <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../static/css/hover-min.css">
       <link rel="stylesheet" href="../static/css/style.css">
       <link rel="stylesheet" href="../static/css/content.css">
     </head>
@@ -36,20 +37,108 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li class="active"><a href="#pro-eq"><span>设备仪器管理</span></a></li>
+                <li class="active"><a href="#pro-equit"><span>设备仪器管理</span></a></li>
                 <li><a href="#pro-consume"><span>物资耗材管理</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
-            <div id="pro-eq">
-                设备仪器管理
+            <div id="pro-equit">
+              <div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">
+                  <div class="pro-equitName">添加</div>
+              </div>
+              <div class="card hvr-bounce-in" data-assetName="西瓜刀">
+                  <div class="pro-equitName">西瓜刀</div>
+                  <div class="pro-buttonGroup">
+                      <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
+                      <button class="btn btn-success" class="pro-update-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                  </div>
+              </div>
+              <div class="card hvr-bounce-in" data-assetName="狼牙棒">
+                  <div class="pro-equitName">狼牙棒</div>
+                  <div class="pro-buttonGroup">
+                      <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
+                      <button class="btn btn-success" class="pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                  </div>
+              </div>
             </div>
 
             <div id="pro-consume" style="display: none;">
                 物资耗材管理
             </div>
+        </div>
+
+        <!-- 删除提示框 -->
+        <div class="modal fade" id="pro-equitDelete-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitDelete-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-equitDelete-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <p>确定要删除吗？</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger" id="pro-equitDelete">删除</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 修改框 -->
+        <div class="modal fade" id="pro-equitUpdate-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitUpdate-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-equitUpdate-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="pro-equitInfo">
+                    <div class="pro-equitInfo-classNo">分类代码： 0001</div>
+                    <div class="pro-equitInfo-className">分类名称：刀具</div>
+                    <div class="pro-equitInfo-valueType">价值类型：昂贵</div>
+                    <div class="pro-equitInfo-number">数量：10</div>
+                  </div>
+                  <div class="pro-equitUpdateInput">
+                      <input type="text" class="form-control" id="pro-input-classNo" placeholder="分类代码">
+                      <input type="text" class="form-control" id="pro-input-className" placeholder="分类名称">
+                      <input type="text" class="form-control" id="pro-input-valueType" placeholder="价格类型">
+                      <input type="text" class="form-control" id="pro-input-number" placeholder="数量">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-equitUpdate">修改</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 添加框 -->
+        <div class="modal fade" id="pro-equitAdd-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitAdd-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-equitAdd-modal-label">添加设备</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="pro-input-add-assetName" placeholder="设备名称">
+                  <input type="text" class="form-control" id="pro-input-add-classNo" placeholder="分类代码">
+                  <input type="text" class="form-control" id="pro-input-add-className" placeholder="分类名称">
+                  <input type="text" class="form-control" id="pro-input-add-valueType" placeholder="价格类型">
+                  <input type="text" class="form-control" id="pro-input-add-number" placeholder="数量">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-equitAdd">添加</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>

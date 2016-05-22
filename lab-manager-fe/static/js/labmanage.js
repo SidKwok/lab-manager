@@ -16,7 +16,7 @@ function init () {
           var domArr = [];
           $.each(retData, function(i, e) {
               domArr.push(
-                  '<div class="card hvr-bounce-in">',
+                  '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
                       '<div class="lab-equitName">' + e.assetName + '</div>',
                       '<div class="lab-buttonGroup">',
                           '<button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>',
@@ -85,6 +85,7 @@ function basicEvent() {
     // 设备简介
     $('.lab-equitInfo-btn').on('click', function(){
         var assetName = $(this).parent('.card').attr('data-assetName');
+        $('#lab-equitOrder-modal-label').val(assetName);
         $.ajax({
             type: 'POST',
             url: 'equit_info',

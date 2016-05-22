@@ -125,3 +125,24 @@ params: noticeAuthor, noticeContent
 {
   "status": "0"
 }
+
+// 删除设备仪器
+del_equit
+params: assetName
+{
+  "status": "0"
+}
+
+// 更新设备仪器
+update_equit
+params: assetName, classNo, className, valueType, number
+{
+  "status": "0"
+}
+
+// 添加设备仪器
+add_equit
+params: assetName, classNo, className, valueType, number
+{
+  "status": "0"
+}

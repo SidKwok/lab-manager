@@ -26,7 +26,7 @@
                       <li><a href="../info/index.html">门户网站</a></li>
                       <li><a href="../allmanage/index.html">综合管理</a></li>
                       <li><a href="../labmanage/index.html">实验管理</a></li>
-                      <li class="active"><a href="#">资产管理</a></li>
+                      <li class="active"><a href="#">管理员专区</a></li>
                       <li><a href="../dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
                   </ul>
@@ -38,6 +38,7 @@
         <div id="menuLeft">
             <ul>
                 <li class="active"><a href="#pro-equit"><span>设备仪器管理</span></a></li>
+                <li><a href="#pro-order"><span>预约管理</span></a></li>
                 <li><a href="#pro-consume"><span>物资耗材管理</span></a></li>
             </ul>
         </div>
@@ -45,28 +46,65 @@
         <!--内容块-->
         <div class="content">
             <div id="pro-equit">
-              <div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">
-                  <div class="pro-equitName">添加</div>
-              </div>
-              <div class="card hvr-bounce-in" data-assetName="西瓜刀">
-                  <div class="pro-equitName">西瓜刀</div>
-                  <div class="pro-buttonGroup">
-                      <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
-                      <button class="btn btn-success" class="pro-update-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                <div class="flex-box">
+                  <div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">
+                      <div class="pro-equitName">添加</div>
                   </div>
-              </div>
-              <div class="card hvr-bounce-in" data-assetName="狼牙棒">
-                  <div class="pro-equitName">狼牙棒</div>
-                  <div class="pro-buttonGroup">
-                      <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
-                      <button class="btn btn-success" class="pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                  <div class="card hvr-bounce-in" data-assetName="西瓜刀">
+                      <div class="pro-equitName">西瓜刀</div>
+                      <div class="pro-buttonGroup">
+                          <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-update-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                      </div>
                   </div>
-              </div>
+                  <div class="card hvr-bounce-in" data-assetName="狼牙棒">
+                      <div class="pro-equitName">狼牙棒</div>
+                      <div class="pro-buttonGroup">
+                          <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+            <div id="pro-order" style="display: none;">
+                <h2>预约管理</h2>
+                <div id="pro-lab-order">
+                  <div class="lab-order order hvr-sweep-to-right">
+                    <div class="labOrderName">机器人实验</div>
+                    <div class="labOrderDate">2016-5-21</div>
+                    <div class="labOrderContent">第一周 周五 第1、2节</div>
+                    <div class="labOrderApplicant">from: sid</div>
+                    <div class="pro-order-btnGroup">
+                        <button class="btn btn-success" class="labOrder-confirm-btn">批准</button>
+                        <button class="btn btn-danger" class="labOrder-refuse-btn">拒绝</button>
+                    </div>
+                  </div>
+                  <div class="lab-order order hvr-sweep-to-right">
+                      <div class="labOrderName">足球实验</div>
+                      <div class="labOrderDate">2016-5-21</div>
+                      <div class="labOrderContent">第二周 周四 第5、6节</div>
+                      <div class="labOrderApplicant">from: mingen</div>
+                      <div class="pro-order-btnGroup">
+                          <button class="btn btn-success" class="labOrder-confirm-btn">批准</button>
+                          <button class="btn btn-danger" class="labOrder-refuse-btn">拒绝</button>
+                      </div>
+                  </div>
+                </div>
+                <div id="pro-equit-order">
+                  <div class="equit-order order hvr-sweep-to-right">
+
+                  </div>
+                  <div class="equit-order order hvr-sweep-to-right">
+
+                  </div>
+                </div>
             </div>
 
             <div id="pro-consume" style="display: none;">
                 物资耗材管理
             </div>
+
         </div>
 
         <!-- 删除提示框 -->

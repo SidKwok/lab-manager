@@ -68,3 +68,6 @@ function basicEvent(){
         });
     });
 }
+
+init();
+basicEvent();

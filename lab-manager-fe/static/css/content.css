@@ -31,7 +31,7 @@ body {
 /**
 * 实验室管理
 */
-#all-room {
+#all-room .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -92,7 +92,7 @@ body {
 /**
 * 设备仪器预约
 */
-#lab-equit {
+#lab-equit .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -168,7 +168,7 @@ body {
 /**
 * 设备仪器管理
 */
-#pro-equit {
+#pro-equit .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
@@ -205,4 +205,53 @@ body {
     background: #ef4566;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
+}
+
+/**
+* 预约管理
+*/
+#pro-order .order {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#pro-order .order:hover {
+    color: white;
+}
+#pro-lab-order .hvr-sweep-to-right:before{
+    background: #3eaca8;
+}
+#pro-equit-order .hvr-sweep-to-right:before{
+    background: #ef4566;
+}
+
+#pro-lab-order .labOrderName {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+    font-size: 18px;
+}
+#pro-lab-order .labOrderDate {
+    position: absolute;
+    bottom: 15%;
+    left: 2%;
+}
+#pro-lab-order .labOrderContent {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#pro-lab-order .labOrderApplicant {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+.pro-order-btnGroup {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
 }

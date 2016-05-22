@@ -23,14 +23,17 @@ params: roomId
 }
 
 // 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
-params: roomId, comment
 room_post_comment (post)
+params: roomId, comment
 {
   "status": "0"
 }
 
 // 房间使用情况
-room_order_state
+// week(第一周、第二周、第三周、第四周、第五周、第六周、第七周、第八周、第九周、第十周、第十一周、第十二周、第十三周、第十四周、第十五周、第十六周、第十七周、第十八周)
+// weekday(周一、周二、周三、周四、周五、周六、周日)
+// course(1、2节 3、4节 5、6节 7、8节 9、10节)
+room_order_state (post)
 params: roomId
 [
   {
@@ -50,14 +53,14 @@ params: roomId
 ]
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
-room_post_order
+room_post_order (post)
 params: roomId, labName, applicant, week, weekday, course
 {
   "status": "0"
 }
 
 // 获取 教师 实验 实验室 有无结果 0代表无 1代表有
-db_post_ajax
+db_post_ajax (post)
 params: item, type (item是内容 type是类型 有教室和实验名)
 {
   "status": "1",
@@ -75,7 +78,7 @@ params: item, type (item是内容 type是类型 有教室和实验名)
   ]
 }
 
-equit_ajax
+equit_ajax (get)
 params: none
 [
   {
@@ -86,7 +89,7 @@ params: none
   }
 ]
 
-equit_info
+equit_info (post)
 params: assetName
 {
   "classNo": "001",
@@ -95,14 +98,14 @@ params: assetName
   "number": "10"
 }
 
-lab-post-order
+lab-post-order (post)
 params: assetName, number, days, applicant
 {
   "status": "0"
 }
 
 // 获取公告
-notice_ajax
+notice_ajax (get)
 params: none
 [
   {
@@ -120,29 +123,51 @@ params: none
 ]
 
 // 发表公告
-daily_post_notice
+daily_post_notice (post)
 params: noticeAuthor, noticeContent
 {
   "status": "0"
 }
 
 // 删除设备仪器
-del_equit
+del_equit (post)
 params: assetName
 {
   "status": "0"
 }
 
 // 更新设备仪器
-update_equit
+update_equit (post)
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
 }
 
 // 添加设备仪器
-add_equit
+add_equit (post)
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
 }
+
+// 管理获取实验室预约情况
+labOrder_ajax (get)
+params: none
+[
+  {
+    "labOrderName": "机器人实验",
+    "labOrderDate": "2016-5-21",
+    "labOrderWeek": "第一周",
+    "labOrderWeekday": "周五",
+    "labOrderCourse": "第1、2节",
+    "labOrderApplicant": "sid"
+  },
+  {
+    "labOrderName": "足球实验",
+    "labOrderDate": "2016-5-21",
+    "labOrderWeek": "第二周",
+    "labOrderWeekday": "周四",
+    "labOrderCourse": "第5、6节",
+    "labOrderApplicant": "mingen"
+  }
+]

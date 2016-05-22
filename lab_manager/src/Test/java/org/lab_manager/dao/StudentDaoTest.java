@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by xiaofeige on 2016/5/17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:WEB-INF/spring-config.xml")
+@ContextConfiguration("classpath:spring-config.xml")
 public class StudentDaoTest {
     @Autowired
     private StudentDao mStudentDao;

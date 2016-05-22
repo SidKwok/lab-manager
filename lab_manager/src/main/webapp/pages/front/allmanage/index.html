@@ -171,10 +171,14 @@
             alert("kaishi");
             $.ajax({
                 type:"POST",
-                url:"/Comment/addComment",
+                url:"/comment/addComment",
                 dataType:"text",
                 success:function (msg) {
-                    alert(msg);
+                    alert("kaishi2");
+//                    alert(msg);
+                },
+                error:function () {
+                    alert("ajax失败");
                 }
             });
         </script>

@@ -10,9 +10,9 @@
     <param-value>classpath:spring-config.xml</param-value>
   </context-param>
 
-  <welcome-file-list>
-    <welcome-file>/pages/front/allmanage/index.html</welcome-file>
-  </welcome-file-list>
+  <!--<welcome-file-list>-->
+    <!--<welcome-file>/html/allmanage/index.html</welcome-file>-->
+  <!--</welcome-file-list>-->
 
   <servlet>
     <servlet-name>mvc-dispatcher</servlet-name>

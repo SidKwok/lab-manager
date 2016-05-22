@@ -15,6 +15,9 @@
         <property name="order" value="1"/>
     </bean>
 
+    <mvc:annotation-driven/>
+
+    <!--<mvc:default-servlet-handler/>-->
     <mvc:resources mapping="/fonts/**"  location="/pages/front/static/fonts/"  />
     <mvc:resources mapping="/css/**"    location="/pages/front/static/css/" />
     <mvc:resources mapping="/js/**"     location="/pages/front/static/js/"  />

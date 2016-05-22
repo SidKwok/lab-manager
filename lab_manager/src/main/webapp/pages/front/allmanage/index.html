@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html>
 <html>
     <head>
       <meta charset="utf-8">
@@ -39,14 +39,13 @@
             <ul>
                 <li class="active"><a href="#all-room"><span>实验室管理</span></a></li>
                 <li><a href="#all-team"><span>实验队伍管理</span></a></li>
-                <li><a href="#all-grade"><span>实验室评估</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
           <div id="all-room">
-              <div class="card hvr-bounce-in">
+              <div class="card hvr-bounce-in" data-roomId="0001">
                   <div class="all-roomId">0001</div>
                   <div class="all-teacher">
                      sid
@@ -57,7 +56,7 @@
                       <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
                   </div>
               </div>
-              <div class="card hvr-bounce-in">
+              <div class="card hvr-bounce-in" data-roomId="0002">
                   <div class="all-roomId">0002</div>
                   <div class="all-teacher">
                      mingen
@@ -72,10 +71,6 @@
 
           <div id="all-team" style="display: none;">
             这是实验队伍管理
-          </div>
-
-          <div id="all-grade" style="display: none;">
-            这是实验室评估
           </div>
         </div>
 
@@ -111,6 +106,14 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="all-order-modal-label">001</h4>
+              </div>
+              <div class="modal-header">
+                  实验室预约情况
+                  <div id="order-state" style="margin-top: 12px;">
+                    <p>实验名称 申请人 第几周 周几 第几节课</p>
+                    <p>实验名称 申请人 第几周 周几 第几节课</p>
+                    <p>实验名称 申请人 第几周 周几 第几节课</p>
+                  </div>
               </div>
               <div class="modal-body">
                   <input type="text" class="form-control" id="input-labName" placeholder="实验名称">
@@ -154,7 +157,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-order">预约</button>
+                <button type="button" class="btn btn-primary" id="post-labOrder">预约</button>
               </div>
             </div>
           </div>

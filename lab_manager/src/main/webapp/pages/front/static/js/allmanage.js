@@ -16,7 +16,7 @@ function init () {
           var domArr = [];
           $.each(retData, function(i, e) {
               domArr.push(
-                  '<div class="card hvr-bounce-in">',
+                  '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
                       '<div class="all-roomId">' + e.room_id + '</div>',
                       '<div class="all-teacher">' + e.manage_teacher + '</div>',
                       '<div class="all-buttonGroup">',
@@ -33,6 +33,7 @@ function init () {
         },
         error: function(){
           console.log('room_ajax', 'fail');
+          alert('后台错误！');
       }
     });
 }
@@ -43,12 +44,12 @@ function init () {
 function basicEvent() {
     // 加载评论
     $('#all-comment-btn').on('click', function(){
-        var roomId = $(this).parent('.all-roomId').val();
+        var roomId = $(this).parent('.card').attr('data-roomId');
         $('#all-comment-modal-label').val(roomId);
         $.ajax({
             type: "POST",
             url: 'room_comment',
-            data: roomId,
+            data: {roomId},
             dataType: "json",
             success: function(retData){
                 $('#all-comment-modal .modal-showComment').children().detach();
@@ -60,6 +61,7 @@ function basicEvent() {
             },
             error: function() {
                 console.log('room_comment fail');
+                alert('后台错误！');
             }
         });
     });
@@ -83,18 +85,37 @@ function basicEvent() {
             },
             error: function() {
                 console.log('room_post_comment fail');
+                alert('后台错误！');
             }
         });
     });
 
-    // 加载预约框的房间号
+    // 加载预约框
     $('all-order-btn').on('click', function(){
-      var roomId = $(this).parent('.all-roomId').val();
+      var roomId = $(this).parent('.card').attr('data-roomId');
       $('#all-order-modal-label').val(roomId);
+
+      $.ajax({
+          type: 'POST',
+          url: 'room_order_state',
+          data: {roomId},
+          success: function(retData){
+              $('#order-state').children().detach();
+              var domArr = [];
+              $.each(retData, function(i, e){
+                  domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
+              });
+              $('#order-state').val(domArr.join(''));
+          },
+          error: function(){
+              console.log('room_order_state fail');
+              alert('后台错误！');
+          }
+      });
     });
 
     // 预约实验室
-    $('#post-order').on('click', function(){
+    $('#post-labOrder').on('click', function(){
         var params = {
             roomId: $('#all-order-modal-label').val();
             labName: $('#input-labName').val(),
@@ -119,6 +140,7 @@ function basicEvent() {
             },
             error: function(){
                 console.log('room_post_order fail');
+                alert('后台错误！');
             }
         });
     });

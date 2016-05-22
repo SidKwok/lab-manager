@@ -1,13 +1,31 @@
-.content{
+body {
+    font-family: '微软雅黑';
+}
+
+.content {
     width:80%;
     height: 90%;
     margin-top: 15px;
     margin-left: 145px;
     margin-right: 5px;
     position: fixed;
+    overflow: scroll;
     top: 55px;
     background-color: white;
     border-radius: 8px;
+}
+.content h2 {
+    width: 500px;
+    margin: 72px auto;
+    text-align: center;
+}
+
+/**
+* 首页
+*/
+.info-content {
+    width: 600px;
+    margin: 0 auto;
 }
 
 /**
@@ -47,4 +65,102 @@
 
 .all-buttonGroup button {
     margin: 0 5px;
+}
+
+/**
+* 数据查询统计
+*/
+#lab-db .search-modal {
+    width: 260px;
+    margin: 0 auto;
+}
+
+#lab-db .input-search {
+    display: inline-block;
+    width: 200px;
+}
+
+#search-btn {
+    margin-bottom: 57px;
+}
+
+.db-table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/**
+* 设备仪器预约
+*/
+#lab-equit {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#lab-equit .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+#lab-equit .lab-equitName {
+    font-size: 24px;
+    padding: 60px 0 30px 50px;
+}
+
+.lab-buttonGroup {
+    margin-top: 10px;
+}
+
+.lab-buttonGroup button {
+    margin: 0 22px;
+}
+
+/**
+* 公告管理
+*/
+#noticeAdd-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+#daily-notice .notice {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#daily-notice .notice:hover {
+    color: white;
+}
+#daily-notice .noticeId {
+    position: absolute;
+      top: 7%;
+      left: 2%;
+      font-size: 18px;
+}
+#daily-notice .noticeDate {
+    position: absolute;
+    bottom: 15%;
+    right: 2%;
+}
+#daily-notice .noticeContent {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#daily-notice .noticeAuthor {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
 }

@@ -4,6 +4,7 @@
 function init () {
     loadEquitCard();
     loadLabOrder();
+    loadEquitOrder();
 }
 
 /**
@@ -15,7 +16,7 @@ function loadEquitCard () {
     */
     $.ajax({
         type: "GET",
-        url: 'equit_ajax',
+        url: '_equit_ajax',
         data: {},
         dataType: "json",
         success: function(retData){
@@ -40,7 +41,7 @@ function loadEquitCard () {
           $('#pro-equit').append(domArr.join(''));
         },
         error: function(){
-          console.log('equit_ajax', 'fail');
+          console.log('_equit_ajax', 'fail');
           alert('后台错误！');
       }
     });
@@ -52,7 +53,7 @@ function loadEquitCard () {
 function loadLabOrder() {
     $.ajax({
         type: 'GET',
-        url: 'labOrder_ajax',
+        url: '_labOrder_ajax',
         data: {},
         dataType: 'json',
         success: function(retData){
@@ -61,10 +62,10 @@ function loadLabOrder() {
             $.each(retData, function(i, e){
                 domArr.push(
                     '<div class="lab-order order hvr-sweep-to-right">',
-                        '<div class="labOrderName">' + e.labOrderName + '</div>',
+                        '<div class="labOrderId">' + e.labOrderId + '</div>',
                         '<div class="labOrderDate">' + e.labOrderDate + '</div>',
-                        '<div class="labOrderContent">' + e.labOrderWeed + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
-                        '<div class="labOrderApplicant">' + e.labOrderName + '</div>',
+                        '<div class="labOrderContent">' + e.labOrderName + ' ' + e.labOrderWeed + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
+                        '<div class="labOrderApplicant">' + e.labOrderApplicant + '</div>',
                         '<div class="pro-order-btnGroup">',
                             '<button class="btn btn-success" class="labOrder-confirm-btn">批准</button>',
                             '<button class="btn btn-danger" class="labOrder-refuse-btn">拒绝</button>',
@@ -76,9 +77,44 @@ function loadLabOrder() {
         },
         error: function() {
             alert('后台出错');
-            console.log('labOrder_ajax fail');
+            console.log('_labOrder_ajax fail');
         }
     });
+}
+
+/**
+* 加载设备预约
+*/
+function loadEquitOrder(){
+  $.ajax({
+      type: 'GET',
+      url: '_equitOrder_ajax',
+      data: {},
+      dataType: 'json',
+      success: function(retData){
+          $('#pro-equit-order').children().detach();
+          var domArr = [];
+          $.each(retData, function(i, e){
+              domArr.push(
+                  '<div class="lab-order order hvr-sweep-to-right">',
+                      '<div class="equitOrderId">' + e.equitOrderId + '</div>',
+                      '<div class="equitOrderDate">' + e.equitOrderDate + '</div>',
+                      '<div class="equitOrderContent">' + e.equitOrderName + ' ' + e.equitOrderNumber + '件 ' + e.labOrderDay + '天</div>',
+                      '<div class="equitOrderApplicant">' + e.equitOrderApplicant + '</div>',
+                      '<div class="pro-order-btnGroup">',
+                          '<button class="btn btn-success" class="equitOrder-confirm-btn">批准</button>',
+                          '<button class="btn btn-danger" class="equitOrder-refuse-btn">拒绝</button>',
+                      '</div>',
+                  '</div>'
+              );
+          });
+          $('#pro-lab-order').append(domArr.join(''));
+      },
+      error: function() {
+          alert('后台出错');
+          console.log('_labOrder_ajax fail');
+      }
+  });
 }
 
 /**
@@ -94,7 +130,7 @@ function basicEvent(){
         var assetName = $('#pro-equitDelete-modal-label').val();
         $.ajax({
             type: 'POST',
-            url: 'del_equit',
+            url: '_del_equit',
             data: {assetName},
             dataType: 'json',
             success: function(retData){
@@ -103,6 +139,7 @@ function basicEvent(){
                 }
                 if(retData === '1') {
                     alert('删除成功');
+                    loadLabOrder();
                 }
             },
             error: function(){
@@ -118,8 +155,8 @@ function basicEvent(){
         $('#pro-equitUpdate-modal-label').val(assetName);
         $.ajax({
             type: 'POST',
-            url: 'equit_info',
-            data: {assetName}
+            url: '_equit_info',
+            data: {assetName: assetName}
             dataType: 'json',
             success: function(retData){
                 $('#pro-equitUpdate-modal .pro-equitInfo').children().detach();
@@ -130,7 +167,7 @@ function basicEvent(){
                 $('#pro-equitUpdate-modal .pro-equitInfo').append(equitInfo);
             },
             error: function(){
-                console.log('equit_info fail');
+                console.log('_equit_info fail');
                 alert('后台错误！');
             }
         });
@@ -147,7 +184,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: 'update_equit'
+            url: '_update_equit'
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -156,11 +193,12 @@ function basicEvent(){
               }
               if(retData === '1') {
                   alert('修改成功');
+                  loadEquitCard();
               }
             },
             error: function(){
                 alert('后台错误');
-                console.log('update_equit fail');
+                console.log('_update_equit fail');
             }
         });
     });
@@ -177,7 +215,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: 'add_equit',
+            url: '_add_equit',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -191,6 +229,98 @@ function basicEvent(){
             error: function(){
                 alert('后台错误');
                 console.log('add_equit fail');
+            }
+        });
+    });
+
+    // 批准实验室预约
+    $('.labOrder-confirm-btn').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: '_confirm_labOrder',
+            data: {labOrderId: $(this).parent('.lab-order').children('.labOrderId')},
+            dataType: 'json',
+            success: function(retData){
+              if(retData === '0') {
+                  alert('批准实验室预约失败');
+              }
+              if(retData === '1') {
+                  alert('批准实验室预约成功');
+                  loadLabOrder();
+              }
+            },
+            error: function(){
+              alert('后台出错')；
+              console.log('_confirm_labOrder fail');
+            }
+        });
+    });
+
+    // 拒绝实验室预约
+    $('.labOrder-refuse-btn').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: '_refuse_labOrder',
+            data: {labOrderId: $(this).parent('.lab-order').children('.labOrderId')},
+            dataType: 'json',
+            success: function(retData){
+              if(retData === '0') {
+                  alert('拒绝实验室预约失败');
+              }
+              if(retData === '1') {
+                  alert('拒绝实验室预约成功');
+                  loadLabOrder();
+              }
+            },
+            error: function(){
+              alert('后台出错')；
+              console.log('_refuse_labOrder fail');
+            }
+        });
+    });
+
+    // 批准设备预约
+    $('.equitOrder-confirm-btn').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: '_confirm_equitOrder',
+            data: {equitOrderId: $(this).parent('.equit-order').children('.equitOrderId')},
+            dataType: 'json',
+            success: function(retData){
+              if(retData === '0') {
+                  alert('批准设备预约失败');
+              }
+              if(retData === '1') {
+                  alert('批准设备预约成功');
+                  loadEquitOrder();
+              }
+            },
+            error: function(){
+              alert('后台出错')；
+              console.log('_confirm_equitOrder fail');
+            }
+        });
+    });
+
+    // 拒绝设备预约
+    $('.equitOrder-refuse-btn').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: '_refuse_equitOrder',
+            data: {equitOrderId: $(this).parent('.equit-order').children('.equitOrderId')},
+            dataType: 'json',
+            success: function(retData){
+              if(retData === '0') {
+                  alert('拒绝设备预约失败');
+              }
+              if(retData === '1') {
+                  alert('拒绝设备预约成功');
+                  loadLabOrder();
+              }
+            },
+            error: function(){
+              alert('后台出错')；
+              console.log('_refuse_equitOrder fail');
             }
         });
     });

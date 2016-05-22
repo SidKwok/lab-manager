@@ -8,7 +8,7 @@ function init () {
     */
     $.ajax({
         type: "GET",
-        url: 'equit_ajax',
+        url: '_equit_ajax',
         data: {},
         dataType: "json",
         success: function(retData){
@@ -28,7 +28,7 @@ function init () {
           $('#all-room').append(domArr.join(''));
         },
         error: function(){
-          console.log('equit_ajax', 'fail');
+          console.log('_equit_ajax', 'fail');
           alert('后台错误！');
       }
     });
@@ -49,7 +49,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: 'db_post_ajax',
+            url: '_db_post_ajax',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -88,8 +88,8 @@ function basicEvent() {
         $('#lab-equitOrder-modal-label').val(assetName);
         $.ajax({
             type: 'POST',
-            url: 'equit_info',
-            data: {assetName}
+            url: '_equit_info',
+            data: {assetName: assetName}
             dataType: 'json',
             success: function(retData){
                 $('#lab-equitInfo-modal .modal-body').children().detach();
@@ -117,7 +117,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: 'lab_post_order',
+            url: '_lab_post_order',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -129,7 +129,7 @@ function basicEvent() {
                 }
             },
             error: function(){
-                console.log('lab_post_order fail');
+                console.log('_lab_post_order fail');
                 alert('后台错误！');
             }
         });

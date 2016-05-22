@@ -228,24 +228,29 @@ body {
     background: #ef4566;
 }
 
-#pro-lab-order .labOrderName {
+#pro-lab-order .labOrderId,
+#pro-equit-order .equitOrderId
+ {
     position: absolute;
     top: 7%;
     left: 2%;
     font-size: 18px;
 }
-#pro-lab-order .labOrderDate {
+#pro-lab-order .labOrderDate,
+#pro-equit-order .equitOrderDate {
     position: absolute;
     bottom: 15%;
     left: 2%;
 }
-#pro-lab-order .labOrderContent {
+#pro-lab-order .labOrderContent,
+#pro-equit-order .equitOrderContent{
     position: absolute;
     top: 30%;
     left: 15%;
     font-size: 24px;
 }
-#pro-lab-order .labOrderApplicant {
+#pro-lab-order .labOrderApplicant,
+#pro-equit-order .equitOrderApplicant{
     position: absolute;
     bottom: 2%;
     left: 2%;

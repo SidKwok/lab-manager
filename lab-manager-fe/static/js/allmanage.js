@@ -8,7 +8,7 @@ function init () {
     */
     $.ajax({
         type: "GET",
-        url: 'room_ajax',
+        url: '_room_ajax',
         data: {},
         dataType: "json",
         success: function(retData){
@@ -32,7 +32,7 @@ function init () {
           $('[data-toggle="popover"]').popover();
         },
         error: function(){
-          console.log('room_ajax', 'fail');
+          console.log('_room_ajax', 'fail');
           alert('后台错误！');
       }
     });
@@ -48,8 +48,8 @@ function basicEvent() {
         $('#all-comment-modal-label').val(roomId);
         $.ajax({
             type: "POST",
-            url: 'room_comment',
-            data: {roomId},
+            url: '_room_comment',
+            data: {roomId: roomId},
             dataType: "json",
             success: function(retData){
                 $('#all-comment-modal .modal-showComment').children().detach();
@@ -60,7 +60,7 @@ function basicEvent() {
                 $('#all-comment-modal .modal-showComment').append(domArr.join(''));
             },
             error: function() {
-                console.log('room_comment fail');
+                console.log('_room_comment fail');
                 alert('后台错误！');
             }
         });
@@ -72,8 +72,8 @@ function basicEvent() {
         var roomId = $('#all-comment-modal-label').val();
         $.ajax({
             type: "POST",
-            url: 'room_post_comment',
-            data: {comment, roomId},
+            url: '_room_post_comment',
+            data: {comment: comment, roomId: roomId},
             dataType: "json",
             success: function(retData){
                 if(retData === '0') {
@@ -84,7 +84,7 @@ function basicEvent() {
                 }
             },
             error: function() {
-                console.log('room_post_comment fail');
+                console.log('_room_post_comment fail');
                 alert('后台错误！');
             }
         });
@@ -97,8 +97,8 @@ function basicEvent() {
 
       $.ajax({
           type: 'POST',
-          url: 'room_order_state',
-          data: {roomId},
+          url: '_room_order_state',
+          data: {roomId: roomId},
           success: function(retData){
               $('#order-state').children().detach();
               var domArr = [];
@@ -108,7 +108,7 @@ function basicEvent() {
               $('#order-state').val(domArr.join(''));
           },
           error: function(){
-              console.log('room_order_state fail');
+              console.log('_room_order_state fail');
               alert('后台错误！');
           }
       });
@@ -127,7 +127,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: 'room_post_order',
+            url: '_room_post_order',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -139,7 +139,7 @@ function basicEvent() {
               }
             },
             error: function(){
-                console.log('room_post_order fail');
+                console.log('_room_post_order fail');
                 alert('后台错误！');
             }
         });

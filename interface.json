@@ -1,4 +1,4 @@
-room_ajax (get)
+_room_ajax (get)
 params: none
 [
   {
@@ -13,7 +13,7 @@ params: none
   }
 ]
 
-room_comment (post)
+_room_comment (post)
 params: roomId
 {
   "comment": [
@@ -23,7 +23,7 @@ params: roomId
 }
 
 // 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
-room_post_comment (post)
+_room_post_comment (post)
 params: roomId, comment
 {
   "status": "0"
@@ -33,7 +33,7 @@ params: roomId, comment
 // week(第一周、第二周、第三周、第四周、第五周、第六周、第七周、第八周、第九周、第十周、第十一周、第十二周、第十三周、第十四周、第十五周、第十六周、第十七周、第十八周)
 // weekday(周一、周二、周三、周四、周五、周六、周日)
 // course(1、2节 3、4节 5、6节 7、8节 9、10节)
-room_order_state (post)
+_room_order_state (post)
 params: roomId
 [
   {
@@ -53,14 +53,14 @@ params: roomId
 ]
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
-room_post_order (post)
+_room_post_order (post)
 params: roomId, labName, applicant, week, weekday, course
 {
   "status": "0"
 }
 
 // 获取 教师 实验 实验室 有无结果 0代表无 1代表有
-db_post_ajax (post)
+_db_post_ajax (post)
 params: item, type (item是内容 type是类型 有教室和实验名)
 {
   "status": "1",
@@ -78,7 +78,8 @@ params: item, type (item是内容 type是类型 有教室和实验名)
   ]
 }
 
-equit_ajax (get)
+// 设备名字
+_equit_ajax (get)
 params: none
 [
   {
@@ -89,8 +90,9 @@ params: none
   }
 ]
 
+// 设备信息
 equit_info (post)
-params: assetName
+_params: assetName
 {
   "classNo": "001",
   "className": "刀具",
@@ -98,14 +100,15 @@ params: assetName
   "number": "10"
 }
 
-lab-post-order (post)
+// 实验预约
+_lab-post-order (post)
 params: assetName, number, days, applicant
 {
   "status": "0"
 }
 
 // 获取公告
-notice_ajax (get)
+_notice_ajax (get)
 params: none
 [
   {
@@ -123,38 +126,39 @@ params: none
 ]
 
 // 发表公告
-daily_post_notice (post)
+_daily_post_notice (post)
 params: noticeAuthor, noticeContent
 {
   "status": "0"
 }
 
 // 删除设备仪器
-del_equit (post)
+_del_equit (post)
 params: assetName
 {
   "status": "0"
 }
 
 // 更新设备仪器
-update_equit (post)
+_update_equit (post)
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
 }
 
 // 添加设备仪器
-add_equit (post)
+_add_equit (post)
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
 }
 
-// 管理获取实验室预约情况
-labOrder_ajax (get)
+// 获取实验室预约情况
+_labOrder_ajax (get)
 params: none
 [
   {
+    "labOrderId": "0001",
     "labOrderName": "机器人实验",
     "labOrderDate": "2016-5-21",
     "labOrderWeek": "第一周",
@@ -163,6 +167,7 @@ params: none
     "labOrderApplicant": "sid"
   },
   {
+    "labOrderId": "0002",
     "labOrderName": "足球实验",
     "labOrderDate": "2016-5-21",
     "labOrderWeek": "第二周",
@@ -171,3 +176,51 @@ params: none
     "labOrderApplicant": "mingen"
   }
 ]
+
+// 批准实验室预约
+_confirm_labOrder (post)
+params: labOrderId
+{
+  "status": "0"
+}
+
+// 拒绝实验室预约
+_refuse_labOrder (post)
+params: labOrderId
+{
+  "status": "0"
+}
+
+// 获取设备预约情况
+_equitOrder_ajax (get)
+params: none
+[
+  {
+    "equitOrderId": "0003",
+    "equitOrderName": "西瓜刀",
+    "equitOrderNumber": "10",
+    "equitOrderDay": "5",
+    "equitOrderApplicant": "sid"
+  },
+  {
+    "equitOrderId": "0004",
+    "equitOrderName": "狼牙棒",
+    "equitOrderNumber": "5",
+    "equitOrderDay": "10",
+    "equitOrderApplicant": "mingen"
+  }
+]
+
+// 批准设备预约
+_confirm_equitOrder (post)
+params: equitOrderId
+{
+  "status": "0"
+}
+
+// 拒绝设备预约
+_refuse_equitOrder (post)
+params: equitOrderId
+{
+  "status": "0"
+}

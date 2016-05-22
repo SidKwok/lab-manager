@@ -3,8 +3,12 @@
 */
 function init () {
     loadEquitCard();
+    loadLabOrder();
 }
 
+/**
+* 加载设备卡片
+*/
 function loadEquitCard () {
     /**
     * 初始化设备卡片
@@ -39,6 +43,41 @@ function loadEquitCard () {
           console.log('equit_ajax', 'fail');
           alert('后台错误！');
       }
+    });
+}
+
+/**
+* 加载实验室预约
+*/
+function loadLabOrder() {
+    $.ajax({
+        type: 'GET',
+        url: 'labOrder_ajax',
+        data: {},
+        dataType: 'json',
+        success: function(retData){
+            $('#pro-lab-order').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e){
+                domArr.push(
+                    '<div class="lab-order order hvr-sweep-to-right">',
+                        '<div class="labOrderName">' + e.labOrderName + '</div>',
+                        '<div class="labOrderDate">' + e.labOrderDate + '</div>',
+                        '<div class="labOrderContent">' + e.labOrderWeed + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
+                        '<div class="labOrderApplicant">' + e.labOrderName + '</div>',
+                        '<div class="pro-order-btnGroup">',
+                            '<button class="btn btn-success" class="labOrder-confirm-btn">批准</button>',
+                            '<button class="btn btn-danger" class="labOrder-refuse-btn">拒绝</button>',
+                        '</div>',
+                    '</div>'
+                );
+            });
+            $('#pro-lab-order').append(domArr.join(''));
+        },
+        error: function() {
+            alert('后台出错');
+            console.log('labOrder_ajax fail');
+        }
     });
 }
 
@@ -156,3 +195,6 @@ function basicEvent(){
         });
     });
 }
+
+init();
+basicEvent();

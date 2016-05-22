@@ -26,7 +26,7 @@
                       <li><a href="../info/index.html">门户网站</a></li>
                       <li class="active"><a href="#">综合管理</a></li>
                       <li><a href="../labmanage/index.html">实验管理</a></li>
-                      <li><a href="../promanage/index.html">资产管理</a></li>
+                      <li><a href="../promanage/index.html">管理员专区</a></li>
                       <li><a href="../dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
                   </ul>
@@ -45,32 +45,35 @@
         <!--内容块-->
         <div class="content">
           <div id="all-room">
-              <div class="card hvr-bounce-in" data-roomId="0001">
-                  <div class="all-roomId">0001</div>
-                  <div class="all-teacher">
-                     sid
-                  </div>
-                  <div class="all-buttonGroup">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
-                      <button class="btn btn-info" data-toggle="popover" title="机器人实验室" data-placement="top" data-content="非常美" class="all-info-btn">简介</button>
-                      <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
-                  </div>
-              </div>
-              <div class="card hvr-bounce-in" data-roomId="0002">
-                  <div class="all-roomId">0002</div>
-                  <div class="all-teacher">
-                     mingen
-                  </div>
-                  <div class="all-buttonGroup">
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
-                      <button class="btn btn-info" data-toggle="popover" title="东区实验室" data-placement="top" data-content="很差" class="all-info-btn">简介</button>
-                      <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
-                  </div>
+              <div class="flex-box">
+                <div class="card hvr-bounce-in" data-roomId="0001">
+                    <div class="all-roomId">0001</div>
+                    <div class="all-teacher">
+                       sid
+                    </div>
+                    <div class="all-buttonGroup">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
+                        <button class="btn btn-info" data-toggle="popover" title="机器人实验室" data-placement="top" data-content="非常美" class="all-info-btn">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
+                    </div>
+                </div>
+                <div class="card hvr-bounce-in" data-roomId="0002">
+                    <div class="all-roomId">0002</div>
+                    <div class="all-teacher">
+                       mingen
+                    </div>
+                    <div class="all-buttonGroup">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#all-comment-modal" class="all-comment-btn">评论</button>
+                        <button class="btn btn-info" data-toggle="popover" title="东区实验室" data-placement="top" data-content="很差" class="all-info-btn">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#all-order-modal" class="all-order-btn">预约</button>
+                    </div>
+                </div>
               </div>
           </div>
 
           <div id="all-team" style="display: none;">
-            这是实验队伍管理
+            <button id="get-test" class="btn btn-primary">GET</button>
+            <button id="post-test" class="btn btn-success">POST</button>
           </div>
         </div>
 
@@ -168,6 +171,35 @@
         <script src="../static/js/style.js"></script>
         <script>
             $('[data-toggle="popover"]').popover();
+            $('#get-test').on('click', function(){
+                $.ajax({
+                    type: 'GET',
+                    url: 'getTest_ajax',
+                    data: {},
+                    dataType: 'json',
+                    success: function(retData){
+                        alert('GET 请求成功 接受到的数据：' + retData);
+                    },
+                    error: function(){
+                        alert('GET 请求失败');
+                    }
+                });
+            });
+
+            $('#post-test').on('click', function(){
+                $.ajax({
+                    type: 'POST',
+                    url: 'postTest_ajax',
+                    data: {test: 'test'},
+                    dataType: 'json',
+                    success: function(retData){
+                        alert('POST 请求成功 接受到的数据：' + retData);
+                    },
+                    error: function(){
+                        alert('POST 请求失败');
+                    }
+                });
+            });
         </script>
     </body>
 </html>

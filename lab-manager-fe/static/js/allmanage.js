@@ -145,3 +145,6 @@ function basicEvent() {
         });
     });
 }
+
+init();
+basicEvent();

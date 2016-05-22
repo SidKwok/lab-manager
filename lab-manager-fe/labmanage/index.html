@@ -26,7 +26,7 @@
                       <li><a href="../info/index.html">门户网站</a></li>
                       <li><a href="../allmanage/index.html">综合管理</a></li>
                       <li class="active"><a href="#">实验管理</a></li>
-                      <li><a href="../promanage/index.html">资产管理</a></li>
+                      <li><a href="../promanage/index.html">管理员专区</a></li>
                       <li><a href="../dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
                   </ul>
@@ -37,14 +37,14 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li><a href="#lab-db"><span>数据查询统计</span></a></li>
-                <li class="active"><a href="#lab-equit"><span>设备仪器预约</span></a></li>
+                <li class="active"><a href="#lab-db"><span>数据查询统计</span></a></li>
+                <li><a href="#lab-equit"><span>设备仪器预约</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
-            <div id="lab-db" style="display: none;">
+            <div id="lab-db">
                 <h2>数据查询统计</h2>
                 <div class="search-modal">
                     <div class="input-search">
@@ -78,20 +78,22 @@
                     </table>
                 </div>
             </div>
-            <div id="lab-equit">
-                <div class="card hvr-bounce-in" data-assetName="西瓜刀">
-                    <div class="lab-equitName">西瓜刀</div>
-                    <div class="lab-buttonGroup">
-                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
-                    </div>
-                </div>
-                <div class="card hvr-bounce-in" data-assetName="狼牙棒">
-                    <div class="lab-equitName">狼牙棒</div>
-                    <div class="lab-buttonGroup">
-                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
-                    </div>
+            <div id="lab-equit" style="display: none;">
+                <div class="flex-box">
+                  <div class="card hvr-bounce-in" data-assetName="西瓜刀">
+                      <div class="lab-equitName">西瓜刀</div>
+                      <div class="lab-buttonGroup">
+                          <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                          <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                      </div>
+                  </div>
+                  <div class="card hvr-bounce-in" data-assetName="狼牙棒">
+                      <div class="lab-equitName">狼牙棒</div>
+                      <div class="lab-buttonGroup">
+                          <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                          <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>

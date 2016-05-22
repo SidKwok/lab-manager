@@ -48,8 +48,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/front/allmanage/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="201" column="19" selection-start-line="201" selection-start-column="19" selection-end-line="201" selection-end-column="19" />
+            <state relative-caret-position="195">
+              <caret line="189" column="24" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1143,7 +1143,7 @@
       <workItem from="1463708522912" duration="1008000" />
       <workItem from="1463742087151" duration="2656000" />
       <workItem from="1463746403276" duration="18430000" />
-      <workItem from="1463877357184" duration="21769000" />
+      <workItem from="1463877357184" duration="21812000" />
     </task>
     <servers />
   </component>
@@ -1180,7 +1180,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66885000" />
+    <option name="totallyTimeSpent" value="66928000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1192,7 +1192,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1564,8 +1564,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/front/allmanage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="201" column="19" selection-start-line="201" selection-start-column="19" selection-end-line="201" selection-end-column="19" />
+        <state relative-caret-position="195">
+          <caret line="189" column="24" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />

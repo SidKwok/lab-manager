@@ -17,7 +17,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/studentDao..xml"/>
         <property name="typeAliasesPackage" value="org.lab_manager.entity"/>
     </bean>
 
@@ -26,31 +26,29 @@
         <property name="basePackage" value="org.lab_manager.dao"/>
     </bean>
 
-    <!-- 处理静态资源 -->
-    <mvc:default-servlet-handler/>
+    <!--&lt;!&ndash; 处理静态资源 &ndash;&gt;-->
+    <!--<mvc:default-servlet-handler/>-->
 
-    <mvc:resources location="/pages/front/static/fonts/" mapping="/fonts/**" />
-    <mvc:resources location="/pages/front/static/css/" mapping="/css/**" />
-    <mvc:resources location="/pages/front/static/js/" mapping="/js/**" />
 
-    不拦截静态资源文件
-    <mvc:resources location="/pages/" mapping="/pages/**" />
+
+    <!--不拦截静态资源文件-->
+    <!--<mvc:resources location="/pages/" mapping="/pages/**" />-->
 
     <!--<mvc:default-servlet-handler/>-->
-    <!--<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />-->
-    <!--<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">-->
-        <!--<property name="favorPathExtension" value="false" />-->
-        <!--<property name="favorParameter" value="false" />-->
-        <!--<property name="ignoreAcceptHeader" value="false" />-->
-        <!--<property name="mediaTypes" >-->
-            <!--<value>-->
-                <!--atom=application/atom+xml-->
-                <!--html=text/html-->
-                <!--json=application/json-->
-                <!--*=*/*-->
-            <!--</value>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <!--&lt;!&ndash;<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="favorPathExtension" value="false" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="favorParameter" value="false" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="ignoreAcceptHeader" value="false" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="mediaTypes" >&ndash;&gt;-->
+            <!--&lt;!&ndash;<value>&ndash;&gt;-->
+                <!--&lt;!&ndash;atom=application/atom+xml&ndash;&gt;-->
+                <!--&lt;!&ndash;html=text/html&ndash;&gt;-->
+                <!--&lt;!&ndash;json=application/json&ndash;&gt;-->
+                <!--&lt;!&ndash;*=*/*&ndash;&gt;-->
+            <!--&lt;!&ndash;</value>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
 
     <!--配置ajax响应之json-->
     <mvc:annotation-driven>

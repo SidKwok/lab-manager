@@ -195,6 +195,7 @@
                     data: {test: 'test'},
                     dataType: 'json',
                     success: function(retData){
+                        alert(retData);
                         alert('POST 请求成功 接受到的数据：' + retData.test);
                         alert('POST 请求成功 接受到的数据：' + retData.little.wangdasha);
                     },

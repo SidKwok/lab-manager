@@ -5,10 +5,6 @@ package org.lab_manager.entity;
  * Created by xiaofeige on 2016/5/23.
  */
 public class Experiment {
-=======
- * Created by Silence on 2016/5/23.
- */
-public class Experiment {
     private String Course_id;
     private String Course_name;
     private String Class_name;
@@ -81,5 +77,4 @@ public class Experiment {
     public void setEndTime(String endTime) {
         this.End_time = endTime;
     }
->>>>>>> origin/master
 }

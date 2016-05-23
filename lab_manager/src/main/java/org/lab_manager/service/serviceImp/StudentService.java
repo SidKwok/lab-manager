@@ -16,4 +16,12 @@ public class StudentService implements IStudentService{
 
         return list;
     }
+
+    public boolean deleteStudent(String Sid){
+        return true;
+    }
+
+    public boolean addStudent(Student student){
+        return true;
+    }
 }

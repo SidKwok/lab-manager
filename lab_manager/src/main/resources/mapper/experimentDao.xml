@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.ExperimentDao">
+    <select id="queryById" resultType="Experiment">
+        SELECT * FROM course_table WHERE Course_id=#{id};
+    </select>
+
+    <select id="queryByIdAndName" resultType="Experiment">
+        SELECT * FROM course_table WHERE Course_id=#{id} AND Course_name=#{name};
+    </select>
+
+    <insert id="addExperiment" parameterType="org.lab_manager.dao.ExperimentDao">
+        insert into course_table (Course_id, Course_name, Class,Term, Room_num, Teacher,Start_time, End_time)
+        values (#{courseId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR},
+        #{term,jdbcType=INTEGER}, #{roomNum,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR},
+        #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}}
+        )
+    </insert>
+</mapper>

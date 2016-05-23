@@ -24,8 +24,8 @@ import java.util.Map;
 public class TestController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public String printWelcome(@RequestBody Map<String,String> json) {
-        System.out.println(json.get("test"));
+    public String printWelcome(@RequestBody String json) {
+        System.out.println(json);
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("test","hahaha");
         Map<String,Object> map2=new HashMap<String,Object>();

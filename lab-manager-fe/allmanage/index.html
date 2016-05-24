@@ -25,7 +25,6 @@
                   <ul class="nav navbar-nav">
                       <li><a href="../info/index.html">门户网站</a></li>
                       <li class="active"><a href="#">综合管理</a></li>
-                      <li><a href="../labmanage/index.html">实验管理</a></li>
                       <li><a href="../promanage/index.html">管理员专区</a></li>
                       <li><a href="../dailyjob/index.html">日常办公</a></li>
                       <li><a href="#">关于我们</a></li>
@@ -38,6 +37,9 @@
         <div id="menuLeft">
             <ul>
                 <li class="active"><a href="#all-room"><span>实验室管理</span></a></li>
+                <li><a href="#lab-equit"><span>设备仪器预约</span></a></li>
+                <li><a href="#lab-db"><span>数据查询统计</span></a></li>
+                <li><a href="#all-orderState"><span>预约状态</span></a></li>
                 <li><a href="#all-team"><span>实验队伍管理</span></a></li>
             </ul>
         </div>
@@ -75,6 +77,89 @@
             <button id="get-test" class="btn btn-primary">GET</button>
             <button id="post-test" class="btn btn-success">POST</button>
           </div>
+          <div id="all-orderState" style="display: none;">
+              <h2>预约状态</h2>
+              <div id="all-lab-orderState">
+                <div class="all-lab-order order hvr-sweep-to-right">
+                    <div class="allLabOrderId">0001</div>
+                    <div class="allLabOrderDate">2016-5-21</div>
+                    <div class="allLabOrderContent">机器人实验 第一周 周五 第1、2节</div>
+                    <div class="allLabOrderState">状态：未决定</div>
+                </div>
+                <div class="all-lab-order order hvr-sweep-to-right">
+                    <div class="allLabOrderId">0002</div>
+                    <div class="allLabOrderDate">2016-5-21</div>
+                    <div class="allLabOrderContent">足球实验 第二周 周四 第5、6节</div>
+                    <div class="allLabOrderState">状态：拒绝</div>
+                </div>
+              </div>
+              <div id="all-equit-orderState">
+                <div class="all-equit-order order hvr-sweep-to-right">
+                  <div class="allEquitOrderId">0003</div>
+                  <div class="allEquitOrderDate">2016-5-21</div>
+                  <div class="allEquitOrderContent">西瓜刀 10件 5天</div>
+                  <div class="allEquitOrderState">状态：拒绝</div>
+                </div>
+                <div class="all-equit-order order hvr-sweep-to-right">
+                  <div class="allEquitOrderId">0004</div>
+                  <div class="allEquitOrderDate">2016-5-21</div>
+                  <div class="allEquitOrderContent">狼牙棒 5件 10天</div>
+                  <div class="allEquitOrderState">状态：允许</div>
+                </div>
+              </div>
+          </div>
+          <div id="lab-db" style="display: none">
+              <h2>数据查询统计</h2>
+              <div class="search-modal">
+                  <div class="input-search">
+                      <input class="form-control" id="input-search-form">
+                      <label class="radio-inline">
+                        <input type="radio" name="searchType" value="lab"> 实验
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="searchType" value="teacher"> 教师
+                      </label>
+                  </div>
+                  <button type="button" class="btn btn-primary" id="search-btn">搜索</button>
+              </div>
+              <div class="db-table">
+                  <table class="table table-hover">
+                      <thead>
+                          <td>教师</td>
+                          <td>实验</td>
+                          <td>实验室</td>
+                      </thead>
+                      <tr>
+                          <td>sid</td>
+                          <td>fuck</td>
+                          <td>805</td>
+                      </tr>
+                      <tr>
+                        <td>mingen</td>
+                        <td>sex</td>
+                        <td>806</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+          <div id="lab-equit" style="display: none;">
+              <div class="flex-box">
+                <div class="card hvr-bounce-in" data-assetName="西瓜刀">
+                    <div class="lab-equitName">西瓜刀</div>
+                    <div class="lab-buttonGroup">
+                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                    </div>
+                </div>
+                <div class="card hvr-bounce-in" data-assetName="狼牙棒">
+                    <div class="lab-equitName">狼牙棒</div>
+                    <div class="lab-buttonGroup">
+                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                    </div>
+                </div>
+              </div>
+          </div>
         </div>
 
         <!-- 评论框 -->
@@ -102,7 +187,7 @@
           </div>
         </div>
 
-        <!-- 预约框 -->
+        <!-- 实验室预约框 -->
         <div class="modal fade" id="all-order-modal" tabindex="-1" role="dialog" aria-labelledby="all-order-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -161,6 +246,48 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" id="post-labOrder">预约</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 简介框 -->
+        <div class="modal fade" id="lab-equitInfo-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitInfo-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lab-equitInfo-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="lab-equitInfo-classNo">分类代码： 0001</div>
+                  <div class="lab-equitInfo-className">分类名称：刀具</div>
+                  <div class="lab-equitInfo-valueType">价值类型：昂贵</div>
+                  <div class="lab-equitInfo-number">数量：10</div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 设备预约框 -->
+        <div class="modal fade" id="lab-equitOrder-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitOrder-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lab-equitOrder-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="form-control" id="input-equitNumber" placeholder="申请数量">
+                  <input type="text" class="form-control" id="input-equitDays" placeholder="申请多少天">
+                  <input type="text" class="form-control" id="input-equitApplicant" placeholder="申请人">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-equitOrder">预约</button>
               </div>
             </div>
           </div>

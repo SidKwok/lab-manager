@@ -68,6 +68,55 @@ body {
 }
 
 /**
+* 预约状态
+*/
+#all-orderState .order {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#all-orderState .order:hover {
+    color: white;
+}
+#all-lab-orderState .hvr-sweep-to-right:before{
+    background: #3eaca8;
+}
+#all-equit-orderState .hvr-sweep-to-right:before{
+    background: #ef4566;
+}
+
+#all-lab-orderState .allLabOrderId,
+#all-equit-orderState .allEquitOrderId
+ {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+    font-size: 18px;
+}
+#all-lab-orderState .allLabOrderDate,
+#all-equit-orderState .allEquitOrderDate {
+    position: absolute;
+    bottom: 15%;
+    right: 2%;
+}
+#all-lab-orderState .allLabOrderContent,
+#all-equit-orderState .allEquitOrderContent{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#all-lab-orderState .allLabOrderState,
+#all-equit-orderState .allEquitOrderState{
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+/**
 * 数据查询统计
 */
 #lab-db .search-modal {

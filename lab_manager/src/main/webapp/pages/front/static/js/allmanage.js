@@ -8,7 +8,7 @@ function init () {
     */
     $.ajax({
         type: "GET",
-        url: '_room_ajax',
+        url: '/lab/_room_ajax',
         data: {},
         dataType: "json",
         success: function(retData){

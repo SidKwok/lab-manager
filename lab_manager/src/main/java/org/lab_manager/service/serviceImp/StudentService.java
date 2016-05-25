@@ -2,6 +2,7 @@ package org.lab_manager.service.serviceImp;
 
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by xiaofeige on 2016/5/23.
  */
+@Service
 public class StudentService implements IStudentService{
 
     public List<Student> getAllStudent(){

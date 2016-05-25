@@ -1,5 +1,6 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface ILabService {
     /**
      * 获取所有实验室信息
      */
-    public List<LabRoom> getAllLabRoom();
+    public List<LabInfo> getAllLabRoom();
 
     /**
      * 新增实验室

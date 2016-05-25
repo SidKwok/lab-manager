@@ -39,7 +39,8 @@ public class TestController {
     @RequestMapping(method = RequestMethod.POST)
     public String printWelcome(@RequestBody String json) {
         ExperimentService es=new ExperimentService();
-
-        return JSON.toJSONString(es.getExperimentById("001"));
+        System.out.println("11112");
+//        return JSON.toJSONString(es.getExperimentById("001"));
+        return "hrllo";
     }
 }

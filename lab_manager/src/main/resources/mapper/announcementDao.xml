@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.AnnouncementDao">
+    <select id="queryById" resultType="Announcement">
+        SELECT * FROM announcement_table WHERE SID=#{id};
+    </select>
+
+    <insert id="insert">
+        INSERT INTO announcement_table(Notice_id,Date,Content,Author) VALUES(#{id},#{date},#{content},#{author});
+    </insert>
+</mapper>

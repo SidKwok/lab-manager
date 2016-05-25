@@ -12,10 +12,7 @@
     </select>
 
     <insert id="addExperiment" parameterType="org.lab_manager.dao.ExperimentDao">
-        insert into course_table (Course_id, Course_name, Class,Term, Room_num, Teacher,Start_time, End_time)
-        values (#{courseId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR},
-        #{term,jdbcType=INTEGER}, #{roomNum,jdbcType=VARCHAR}, #{teacher,jdbcType=VARCHAR},
-        #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}}
-        )
+        insert into course_table (Course_id, Course_name, Class_name,Term, Room_num, Teacher,Start_time, End_time)
+        values (#{courseId}, #{courseName}, #{class_name},#{term}, #{roomNum}, #{teacher},#{startTime}, #{endTime});
     </insert>
 </mapper>

@@ -2,20 +2,30 @@ package org.lab_manager.controller;
 /**
  * Created by xiaofeige on 2016/5/19.
  */
+import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
+import org.lab_manager.service.ILabService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
-@RequestMapping("/Lab")
+@RequestMapping("/lab")
 public class LabController {
+//    @Resource
+//    private ILabService labService;
 
-    /*
+    /**
     * 预约实验
     * */
     @ResponseBody
@@ -25,7 +35,7 @@ public class LabController {
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     * 获取实验室预约情况
     params: none
     [
@@ -57,7 +67,7 @@ public class LabController {
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     * 批准实验室预约
         _confirm_labOrder (post)
         params: labOrderId
@@ -74,7 +84,7 @@ public class LabController {
     }
 
 
-    /*
+    /**
     * 批准实验室预约
        _refuse_labOrder (post)
         params: labOrderId
@@ -90,18 +100,30 @@ public class LabController {
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     *获取所有房间信息
     */
     @ResponseBody
     @RequestMapping(value="/_room_ajax",method = RequestMethod.GET)
-    public ArrayList<LabRoom> getRooms(){
-        ArrayList<LabRoom> rooms=new ArrayList<LabRoom>();
-
-        return rooms;
+    public String getRooms(){
+//        List<LabInfo> list=labService.getAllLabRoom();
+//        Map<String,Object> roomSingle=new HashMap<String, Object>();
+//
+//        List<Map<String,Object>> resultList=new ArrayList<Map<String, Object>>();
+//        for(LabInfo lab:list){
+//            roomSingle.put("room_id",lab.getID());
+//            roomSingle.put("manage_teacher",lab.getManage_teacher());
+//            roomSingle.put("intro",lab.getIntro());
+//            resultList.add(roomSingle);
+//            roomSingle.clear();
+//        }
+//        List<LabRoom> rooms=new ArrayList<LabRoom>();
+//
+//        return JSON.toJSONString(resultList);
+        return "hello";
     }
 
-    /*
+    /**
     *获取所有房间信息
     */
     @ResponseBody
@@ -112,7 +134,7 @@ public class LabController {
         return "添加评论成功";
     }
 
-    /*
+    /**
     *给房间添加评论
     */
     @ResponseBody
@@ -123,7 +145,7 @@ public class LabController {
         return "添加评论成功";
     }
 
-    /*
+    /**
     *获取所有房间信息
     */
     @ResponseBody
@@ -134,7 +156,7 @@ public class LabController {
         return "添加评论成功";
     }
 
-    /*
+    /**
     *预定实验室房间
     */
     @ResponseBody
@@ -145,7 +167,7 @@ public class LabController {
         return "1";//这里返回 json "status": "0",其中0 表示预约成功
     }
 
-    /*
+    /**
     *实验室当前使用信息查询
     */
     @ResponseBody

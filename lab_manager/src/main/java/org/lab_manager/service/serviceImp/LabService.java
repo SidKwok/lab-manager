@@ -1,7 +1,11 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.LabInfoDao;
+import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
 import org.lab_manager.service.ILabService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +13,13 @@ import java.util.List;
 /**
  * Created by xiaofeige on 2016/5/24.
  */
+@Service
 public class LabService implements ILabService {
+    @Autowired
+    LabInfoDao  mLabInfoDao;
 
-    public List<LabRoom> getAllLabRoom(){
-        List<LabRoom> list=new ArrayList<LabRoom>();
-        return list;
+    public List<LabInfo> getAllLabRoom(){
+        return mLabInfoDao.queryAll();
     }
 
     /**

@@ -271,3 +271,11 @@ params: equitOrderId
 {
   "status": "0"
 }
+
+// 登录 status('密码错误', '用户名不存在', 'success') role 角色是什么(teacher manager student)
+_login (post)
+params: username password
+{
+  "status": "密码错误",
+  "role": "teacher"
+}

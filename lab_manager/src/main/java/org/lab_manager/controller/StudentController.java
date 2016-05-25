@@ -21,8 +21,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-    @Autowired
-    IStudentService     mStudentService;
+//    @Autowired
+//    IStudentService     mStudentService;
 
     @ResponseBody
     @RequestMapping(value="/addStudent", method = RequestMethod.POST)
@@ -44,13 +44,14 @@ public class StudentController {
     @RequestMapping(value="/queryAllStudent", method = RequestMethod.POST)
     public String queryStudent() {
         //搜索到学生然后放到pw里面去
-        List<Student> list=mStudentService.getAllStudent();
-        List<Map<String,String>> allStudent=new ArrayList<Map<String, String>>();
-        Map<String,String> map=new HashMap<String, String>();
-        for(Student s:list){
-
-        }
-        return JSON.toJSONString(allStudent);
+//        List<Student> list=mStudentService.getAllStudent();
+//        List<Map<String,String>> allStudent=new ArrayList<Map<String, String>>();
+//        Map<String,String> map=new HashMap<String, String>();
+//        for(Student s:list){
+//
+//        }
+//        return JSON.toJSONString(allStudent);
+        return "hello";
     }
 
     @ResponseBody

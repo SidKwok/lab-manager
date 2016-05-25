@@ -9,6 +9,5 @@ import org.lab_manager.entity.Experiment;
 public interface ExperimentDao {
     public Experiment queryById(String id);
     public Experiment queryByIdAndName(@Param("id") String id,@Param("name") String name);
-    public Experiment addExperiment(Experiment experiment);
-
+    public Experiment addExperiment(String courseId,String courseName,String class_name,Integer term,String roomNum,String teacher,String startTime,String endTime);
 }

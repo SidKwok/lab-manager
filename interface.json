@@ -279,3 +279,39 @@ params: username password
   "status": "密码错误",
   "role": "teacher"
 }
+
+// 学生出勤状态
+_stu_dutyState (post) ok
+params: username role
+[
+  {
+    "stuDutyLab": "机器人实验",
+    "stuDutyPos": "信工805",
+    "stuDutyWeek": "第一周",
+    "stuDutyWeekday": "周一",
+    "stuDutyCourse": "第1、2节",
+    "status": "未到"
+  },
+  {
+    "stuDutyLab": "足球实验",
+    "stuDutyPos": "信工806",
+    "stuDutyWeek": "第二周",
+    "stuDutyWeekday": "周二",
+    "stuDutyCourse": "第3、4节",
+    "status": "已到"
+  }
+]
+
+// 学生成绩
+_stu_grade (post) ok
+params: username, role
+[
+  {
+    "stuGradeLab": "足球实验",
+    "stuGrade": "成绩未出"
+  },
+  {
+    "stuGradeLab": "机器人实验",
+    "stuGrade": "98"
+  }
+]

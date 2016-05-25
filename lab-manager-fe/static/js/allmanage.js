@@ -11,9 +11,11 @@ function init () {
     * 初始化导航栏
     */
     $($('.nav-location')[0]).attr('href', '../info/index.html?' + userInfo + '?');
-    $($('.nav-location')[1]).attr('href', '../promanage/index.html?' + userInfo + '?');
-    $($('.nav-location')[2]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
-    $($('.nav-location')[3]).attr('href', '../aboutus/index.html?' + userInfo + '?');
+    $($('.nav-location')[1]).attr('href', '../stumanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[2]).attr('href', '../teamanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[3]).attr('href', '../promanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[4]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
+    $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
     /**
     * 初始化实验室卡片

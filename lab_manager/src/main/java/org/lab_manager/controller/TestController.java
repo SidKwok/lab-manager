@@ -6,6 +6,7 @@ package org.lab_manager.controller;
 import com.alibaba.fastjson.JSON;
 import com.sun.javafx.collections.MappingChange;
 import com.sun.javafx.collections.ObservableFloatArrayImpl;
+import org.lab_manager.service.serviceImp.ExperimentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,15 +23,23 @@ import java.util.Map;
 @Controller
 @RequestMapping("/postTest_ajax")
 public class TestController {
+//    @ResponseBody
+//    @RequestMapping(method = RequestMethod.POST)
+//    public String printWelcome(@RequestBody String json) {
+//        System.out.println(json);
+//        Map<String,Object> map=new HashMap<String,Object>();
+//        map.put("test","hahaha");
+//        Map<String,Object> map2=new HashMap<String,Object>();
+//        map2.put("wangdasha","zhenshisha");
+//        map.put("little",map2);
+//        return JSON.toJSONString(map);
+//    }
+
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public String printWelcome(@RequestBody Map<String,String> json) {
-        System.out.println(json.get("test"));
-        Map<String,Object> map=new HashMap<String,Object>();
-        map.put("test","hahaha");
-        Map<String,Object> map2=new HashMap<String,Object>();
-        map2.put("wangdasha","zhenshisha");
-        map.put("little",map2);
-        return JSON.toJSONString(map);
+    public String printWelcome(@RequestBody String json) {
+        ExperimentService es=new ExperimentService();
+
+        return JSON.toJSONString(es.getExperimentById("001"));
     }
 }

@@ -26,29 +26,6 @@
         <property name="basePackage" value="org.lab_manager.dao"/>
     </bean>
 
-    <!--&lt;!&ndash; 处理静态资源 &ndash;&gt;-->
-    <!--<mvc:default-servlet-handler/>-->
-
-
-
-    <!--不拦截静态资源文件-->
-    <!--<mvc:resources location="/pages/" mapping="/pages/**" />-->
-
-    <!--<mvc:default-servlet-handler/>-->
-    <!--&lt;!&ndash;<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />&ndash;&gt;-->
-    <!--&lt;!&ndash;<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="favorPathExtension" value="false" />&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="favorParameter" value="false" />&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="ignoreAcceptHeader" value="false" />&ndash;&gt;-->
-        <!--&lt;!&ndash;<property name="mediaTypes" >&ndash;&gt;-->
-            <!--&lt;!&ndash;<value>&ndash;&gt;-->
-                <!--&lt;!&ndash;atom=application/atom+xml&ndash;&gt;-->
-                <!--&lt;!&ndash;html=text/html&ndash;&gt;-->
-                <!--&lt;!&ndash;json=application/json&ndash;&gt;-->
-                <!--&lt;!&ndash;*=*/*&ndash;&gt;-->
-            <!--&lt;!&ndash;</value>&ndash;&gt;-->
-        <!--&lt;!&ndash;</property>&ndash;&gt;-->
-    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
 
     <!--配置ajax响应之json-->
     <mvc:annotation-driven>

@@ -1,6 +1,7 @@
 package org.lab_manager.entity;
 
 /**
+<<<<<<< HEAD
  * Created by Silence on 2016/5/24.
  */
 public class Teacher {
@@ -49,4 +50,9 @@ public class Teacher {
     public void setMajor_name(String major_name) {
         this.major_name = major_name;
     }
+=======
+ * Created by xiaofeige on 2016/5/23.
+ */
+public class Teacher {
+>>>>>>> c97dac1263ace13226d64a16917b087f155a8e43
 }

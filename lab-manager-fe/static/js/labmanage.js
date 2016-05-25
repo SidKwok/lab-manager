@@ -28,46 +28,46 @@ function init () {
           $('#lab-equit').append(domArr.join(''));
         },
         error: function(){
-          // console.log('_equit_ajax', 'fail');
-          // alert('后台错误！');
+          console.log('_equit_ajax', 'fail');
+          alert('后台错误！');
 
-          /***************************************
-          * 用于前端test 测试状态：ok
-          */
-          /*ajax返回的数据*/
-          var retData = [
-            {
-              "assetName": "西瓜刀"
-            },
-            {
-              "assetName": "狼牙棒"
-            },
-            {
-              "assetName": "屠龙刀"
-            },
-            {
-              "assetName": "倚天剑"
-            },
-            {
-              "assetName": "绝世好剑"
-            },
-          ];
-          /**************/
-          $('#lab-equit').children().detach();
-          var domArr = [];
-          $.each(retData, function(i, e) {
-              domArr.push(
-                  '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-                      '<div class="lab-equitName">' + e.assetName + '</div>',
-                      '<div class="lab-buttonGroup">',
-                          '<button class="btn btn-info lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>',
-                          '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equitOrder-modal">预约</button>',
-                      '</div>',
-                  '</div>'
-              );
-          });
-          $('#lab-equit').append(domArr.join(''));
-          /***************************************/
+          // /***************************************
+          // * 用于前端test 测试状态：ok
+          // */
+          // /*ajax返回的数据*/
+          // var retData = [
+          //   {
+          //     "assetName": "西瓜刀"
+          //   },
+          //   {
+          //     "assetName": "狼牙棒"
+          //   },
+          //   {
+          //     "assetName": "屠龙刀"
+          //   },
+          //   {
+          //     "assetName": "倚天剑"
+          //   },
+          //   {
+          //     "assetName": "绝世好剑"
+          //   },
+          // ];
+          // /**************/
+          // $('#lab-equit').children().detach();
+          // var domArr = [];
+          // $.each(retData, function(i, e) {
+          //     domArr.push(
+          //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
+          //             '<div class="lab-equitName">' + e.assetName + '</div>',
+          //             '<div class="lab-buttonGroup">',
+          //                 '<button class="btn btn-info lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>',
+          //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equitOrder-modal">预约</button>',
+          //             '</div>',
+          //         '</div>'
+          //     );
+          // });
+          // $('#lab-equit').append(domArr.join(''));
+          // /***************************************/
       }
     });
 }

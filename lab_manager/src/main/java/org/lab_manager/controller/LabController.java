@@ -22,8 +22,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/lab")
 public class LabController {
-//    @Resource
-//    private ILabService labService;
+    @Resource
+    private ILabService labService;
 
     /**
     * 预约实验
@@ -106,21 +106,21 @@ public class LabController {
     @ResponseBody
     @RequestMapping(value="/_room_ajax",method = RequestMethod.GET)
     public String getRooms(){
-//        List<LabInfo> list=labService.getAllLabRoom();
-//        Map<String,Object> roomSingle=new HashMap<String, Object>();
-//
-//        List<Map<String,Object>> resultList=new ArrayList<Map<String, Object>>();
-//        for(LabInfo lab:list){
-//            roomSingle.put("room_id",lab.getID());
-//            roomSingle.put("manage_teacher",lab.getManage_teacher());
-//            roomSingle.put("intro",lab.getIntro());
-//            resultList.add(roomSingle);
-//            roomSingle.clear();
-//        }
-//        List<LabRoom> rooms=new ArrayList<LabRoom>();
-//
-//        return JSON.toJSONString(resultList);
-        return "hello";
+        List<LabInfo> list=labService.getAllLabRoom();
+        Map<String,Object> roomSingle=new HashMap<String, Object>();
+
+        List<Map<String,Object>> resultList=new ArrayList<Map<String, Object>>();
+        for(LabInfo lab:list){
+            roomSingle.put("room_id",lab.getID());
+            roomSingle.put("manage_teacher",lab.getManage_teacher());
+            roomSingle.put("intro",lab.getIntro());
+            resultList.add(roomSingle);
+            roomSingle.clear();
+        }
+        List<LabRoom> rooms=new ArrayList<LabRoom>();
+
+        return JSON.toJSONString(resultList);
+//        return "hello";
     }
 
     /**

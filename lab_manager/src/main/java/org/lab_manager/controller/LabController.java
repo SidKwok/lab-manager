@@ -2,9 +2,8 @@ package org.lab_manager.controller;
 /**
  * Created by xiaofeige on 2016/5/19.
  */
-import org.lab_manager.entity.LibRoom;
+import org.lab_manager.entity.LabRoom;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,7 +66,7 @@ public class LabController {
             }
     * */
     @ResponseBody
-    @RequestMapping(value="/__confirm_labOrder",method = RequestMethod.POST)
+    @RequestMapping(value="/_confirm_labOrder",method = RequestMethod.POST)
     public String confirmOrder() {
         //根据上面的json格式要求返回数据，需查询数据库
         System.out.println("ajax响应");
@@ -96,8 +95,8 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/_room_ajax",method = RequestMethod.GET)
-    public ArrayList<LibRoom> getRooms(){
-        ArrayList<LibRoom> rooms=new ArrayList<LibRoom>();
+    public ArrayList<LabRoom> getRooms(){
+        ArrayList<LabRoom> rooms=new ArrayList<LabRoom>();
 
         return rooms;
     }

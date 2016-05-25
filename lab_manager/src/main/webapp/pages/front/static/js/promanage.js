@@ -12,8 +12,10 @@ function init () {
     */
     $($('.nav-location')[0]).attr('href', '../info/index.html?' + userInfo + '?');
     $($('.nav-location')[1]).attr('href', '../allmanage/index.html?' + userInfo + '?');
-    $($('.nav-location')[2]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
-    $($('.nav-location')[3]).attr('href', '../aboutus/index.html?' + userInfo + '?');
+    $($('.nav-location')[2]).attr('href', '../stumanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[3]).attr('href', '../teaomanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[4]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
+    $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
     loadEquitCard();
     loadLabOrder();

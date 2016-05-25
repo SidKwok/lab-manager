@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/equipment")
 public class EquipmentController {
-    /*
+    /**
     *获取所有设备的名称列表
     */
     @ResponseBody
@@ -24,7 +24,7 @@ public class EquipmentController {
         return "1";//
     }
 
-    /*
+    /**
     *获取单个设备信息
     */
     @ResponseBody
@@ -35,7 +35,7 @@ public class EquipmentController {
         return "1";//
     }
 
-    /*
+    /**
     *获取单个设备信息
     */
     @ResponseBody
@@ -46,7 +46,7 @@ public class EquipmentController {
         return "1";//
     }
 
-    /*
+    /**
     *增加设备
     */
     @ResponseBody

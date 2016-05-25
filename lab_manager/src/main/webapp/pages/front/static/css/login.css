@@ -1,0 +1,24 @@
+
+
+.login {
+    width: 900px;
+    text-align: center;
+    margin: 17% auto;
+}
+.login-input {
+    margin: 0px auto;
+    margin-top: 24px;
+    width: 200px;
+}
+.login-input input {
+    margin: 12px auto;
+}
+.btnGroup {
+    width: 200px;
+    margin: 0 auto;
+}
+.btnGroup button {
+    display: block;
+    width: 200px;
+    margin-bottom: 12px;
+}

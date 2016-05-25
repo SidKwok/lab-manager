@@ -23,11 +23,10 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li class="active"><a href="#">门户网站</a></li>
-                      <li><a href="../allmanage/index.html">综合管理</a></li>
-                      <li><a href="../labmanage/index.html">实验管理</a></li>
-                      <li><a href="../promanage/index.html">管理员专区</a></li>
-                      <li><a href="../dailyjob/index.html">日常办公</a></li>
-                      <li><a href="#">关于我们</a></li>
+                      <li><a class="nav-location" href="../allmanage/index.html">综合管理</a></li>
+                      <li><a class="nav-location" href="../promanage/index.html">管理员专区</a></li>
+                      <li><a class="nav-location" href="../dailyjob/index.html">日常办公</a></li>
+                      <li><a class="nav-location" href="#">关于我们</a></li>
                   </ul>
               </div>
             </div>
@@ -107,5 +106,19 @@
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
         <script src="../static/js/style.js"></script>
+        <script>
+            // 全局变量
+            var userInfo = window.location.href.split('?')[1];
+            var role = userInfo.split('&')[1].split('=')[1]; // role
+            var username = userInfo.split('&')[0].split('=')[1];; // username
+
+            /**
+            * 初始化导航栏
+            */
+            $($('.nav-location')[0]).attr('href', '../allmanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[1]).attr('href', '../promanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[2]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
+            $($('.nav-location')[3]).attr('href', '../aboutus/index.html?' + userInfo + '?');
+        </script>
     </body>
 </html>

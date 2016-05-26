@@ -16,7 +16,9 @@ public class ExperimentService implements IExperimentService {
     @Autowired
     ExperimentDao mExpDao;
 
-    public Experiment getExperimentById(String eId){
-        return mExpDao.queryById(eId);
+
+    @Override
+    public Experiment getExperimentById(String eId) {
+        return null;
     }
 }

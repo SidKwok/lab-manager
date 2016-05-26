@@ -1,7 +1,9 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.StudentDao;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,18 +14,21 @@ import java.util.List;
  */
 @Service
 public class StudentService implements IStudentService{
+    @Autowired
+    private StudentDao studentDao;
 
-    public List<Student> getAllStudent(){
-        List<Student> list=new ArrayList<Student>();
-
-        return list;
+    @Override
+    public List<Student> getAllStudent() {
+        return null;
     }
 
-    public boolean deleteStudent(String Sid){
-        return true;
+    @Override
+    public boolean deleteStudent(String Sid) {
+        return false;
     }
 
-    public boolean addStudent(Student student){
-        return true;
+    @Override
+    public boolean addStudent(Student student) {
+        return false;
     }
 }

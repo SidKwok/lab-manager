@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class LabService implements ILabService {
     @Autowired
-    LabInfoDao  mLabInfoDao;
+    private LabInfoDao  mLabInfoDao;
 
     public List<LabInfo> getAllLabRoom(){
         return mLabInfoDao.queryAll();

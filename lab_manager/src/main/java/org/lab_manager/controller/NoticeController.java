@@ -26,7 +26,7 @@ import java.util.Map;
 public class NoticeController {
 
     @Autowired
-    INoticeService noticeService;
+    private INoticeService noticeService;
 
     /**
     * 增加评论

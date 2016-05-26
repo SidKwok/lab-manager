@@ -21,8 +21,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-//    @Autowired
-//    IStudentService     mStudentService;
+    @Autowired
+    private IStudentService     mStudentService;
 
     @ResponseBody
     @RequestMapping(value="/addStudent", method = RequestMethod.POST)

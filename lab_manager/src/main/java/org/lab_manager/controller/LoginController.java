@@ -21,7 +21,7 @@ import java.util.Map;
 @RequestMapping("/log")
 public class LoginController {
     @Resource
-    ILoginService loginService;
+    private ILoginService loginService;
     /**
      *
      * params: username password

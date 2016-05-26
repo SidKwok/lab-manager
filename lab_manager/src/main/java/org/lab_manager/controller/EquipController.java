@@ -24,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/equipment")
 public class EquipController {
     @Resource
-    IEquipService equipService;
+    private IEquipService equipService;
 
     /**
     *获取所有设备的名称列表
@@ -98,7 +98,7 @@ public class EquipController {
         return "1";//
     }
 
-    /*
+    /**
     *获取设备预约情况
     * params: none
 [
@@ -127,7 +127,7 @@ public class EquipController {
     }
 
 
-    /*
+    /**
     *增加设备
     * 批准设备预约
 _confirm_equitOrder (post)
@@ -145,7 +145,7 @@ params: equitOrderId
     }
 
 
-    /*
+    /**
     *拒绝设备预约
 _refuse_equitOrder (post)
 params: equitOrderId

@@ -28,10 +28,10 @@ public interface IEquipService {
      * 添加设备入库
      */
 
-    public boolean addDevice(EquipInfo equipInfo);
+    public boolean addEquip(EquipInfo equipInfo);
 
     /**
      * 删除设备
      */
-    public boolean deleteDeviceById(String id);
+    public boolean deleteEquipById(String id);
 }

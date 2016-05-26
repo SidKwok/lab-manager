@@ -13,19 +13,23 @@ import java.io.PrintWriter;
 
 
 @Controller
-@RequestMapping("/comment")
-public class CommentController {
-    /*
+@RequestMapping("/notice")
+public class NoticeController {
+    /**
     * 增加评论
+     * params: noticeAuthor, noticeContent
+     {
+     "status": "0"
+     }
     * */
     @ResponseBody
-    @RequestMapping(value="/addComment",method = RequestMethod.POST)
+    @RequestMapping(value="/addNotice",method = RequestMethod.POST)
     public String addComment() {
         System.out.println("ajax响应");
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     * 删除评论--管理员特有权限
     * */
     @ResponseBody
@@ -35,33 +39,32 @@ public class CommentController {
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     * 查询评论---支持分页功能
-    * _notice_ajax (get)
-params: none
-[
-  {
-    "noticeId": "0001",
-    "noticeDate": "2016-5-21",
-    "noticeContent": "Sid is the best!",
-    "noticeAuthor": "sid"
-  },
-  {
-    "noticeId": "0002",
-    "noticeDate": "2016-5-21",
-    "noticeContent": "Mingen is the best!",
-    "noticeAuthor": "mingen"
-  }
-]
+     * params: none
+     [
+     {
+     "noticeId": "0001",
+     "noticeDate": "2016-5-21",
+     "noticeContent": "Sid is the best!",
+     "noticeAuthor": "sid"
+     },
+     {
+     "noticeId": "0002",
+     "noticeDate": "2016-5-21",
+     "noticeContent": "Mingen is the best!",
+     "noticeAuthor": "mingen"
+     }
+     ]
     * */
     @ResponseBody
-    @RequestMapping(value="/queryComment",method = RequestMethod.GET)
+    @RequestMapping(value="/queryAllNotice",method = RequestMethod.GET)
     public String queryComment() {
         System.out.println("ajax响应");
         return "ajax 调用成功";
     }
 
-    /*
+    /**
     * 修改评论，暂定能不能修改
     * */
     @ResponseBody

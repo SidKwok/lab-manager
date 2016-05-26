@@ -3,7 +3,7 @@ package org.lab_manager.entity;
 /**
  * Created by Silence on 2016/5/24.
  */
-public class Announcement {
+public class Notice {
     private Integer Notice_id;
     private String Date;
     private String Content;

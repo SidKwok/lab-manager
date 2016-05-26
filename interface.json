@@ -1,4 +1,4 @@
-_room_ajax (get) ok
+_room_ajax (get) ok		（lab/queryAllRoom）
 params: none
 [
   {
@@ -13,7 +13,7 @@ params: none
   }
 ]
 
-_room_comment (post) ok
+_room_comment (post) ok		(/lab/getRoomComment)
 params: roomId
 {
   "comment": [
@@ -23,7 +23,7 @@ params: roomId
 }
 
 // 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
-_room_post_comment (post) ok
+_room_post_comment (post) ok  (/lab/addRoomComment)
 params: roomId, comment
 {
   "status": "0"
@@ -33,7 +33,7 @@ params: roomId, comment
 // week(第一周、第二周、第三周、第四周、第五周、第六周、第七周、第八周、第九周、第十周、第十一周、第十二周、第十三周、第十四周、第十五周、第十六周、第十七周、第十八周)
 // weekday(周一、周二、周三、周四、周五、周六、周日)
 // course(1、2节 3、4节 5、6节 7、8节 9、10节)
-_room_order_state (post) ok
+_room_order_state (post) ok		(/lab/getRoomOrderInfo)
 params: roomId
 [
   {
@@ -53,14 +53,14 @@ params: roomId
 ]
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
-_room_post_order (post) ok
+_room_post_order (post) ok  (/lab/orderRoom)
 params: roomId, labName, applicant, week, weekday, course
 {
   "status": "0"
 }
 
 // 某人的预约状态, role是角色, username是用户名
-_lab_orderState (post) ok
+_lab_orderState (post) ok   	
 params: role, username
 {
   "lab":[
@@ -105,7 +105,7 @@ params: role, username
 
 
 // 获取 教师 实验 实验室 有无结果 0代表无 1代表有
-_db_post_ajax (post) ok
+_db_post_ajax (post) ok  (/lab/getRoomCurrInfo)
 params: item, type (item是内容 type是类型 有教室和实验名)
 {
   "status": "1",
@@ -124,7 +124,7 @@ params: item, type (item是内容 type是类型 有教室和实验名)
 }
 
 // 设备名字
-_equit_ajax (get) ok
+_equit_ajax (get) ok  (/equipment/queryAllEquipment)
 params: none
 [
   {
@@ -136,7 +136,7 @@ params: none
 ]
 
 // 设备信息
-_equit_info (post) ok
+_equit_info (post) ok   (/equipment/queryEquipmentInfo)
 params: assetName
 {
   "classNo": "001",
@@ -171,7 +171,7 @@ params: none
 ]
 
 // 发表公告
-_daily_post_notice (post) ok
+_daily_post_notice (post) ok   (/notice/addNotice)
 params: noticeAuthor, noticeContent
 {
   "status": "0"

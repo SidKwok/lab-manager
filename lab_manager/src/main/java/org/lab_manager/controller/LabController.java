@@ -102,9 +102,22 @@ public class LabController {
 
     /**
     *获取所有房间信息
+     * params: none
+     [
+     {
+     "room_id": "0001",
+     "manage_teacher": "sid",
+     "intro": "good"
+     },
+     {
+     "room_id": "0002",
+     "manage_teacher": "mingen",
+     "intro": "bad"
+     }
+     ]
     */
     @ResponseBody
-    @RequestMapping(value="/_room_ajax",method = RequestMethod.GET)
+    @RequestMapping(value="/queryAllRoom",method = RequestMethod.GET)
     public String getRooms(){
         List<LabInfo> list=labService.getAllLabRoom();
         Map<String,Object> roomSingle=new HashMap<String, Object>();
@@ -124,10 +137,17 @@ public class LabController {
     }
 
     /**
-    *获取所有房间信息
+    * 通过id获取房间评论
+     * params: roomId
+     {
+     "comment": [
+     "good",
+     "not bad"
+     ]
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_get_room_comment",method = RequestMethod.POST)
+    @RequestMapping(value="/getRoomComment",method = RequestMethod.POST)
     public String getRoomComment(int roomId){
         //从数据库中获取对应ID的实验室的评论信息
 
@@ -136,9 +156,13 @@ public class LabController {
 
     /**
     *给房间添加评论
+     * params: roomId, comment
+     {
+     "status": "0"
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_add_room_comment",method = RequestMethod.POST)
+    @RequestMapping(value="/addRoomComment",method = RequestMethod.POST)
     public String addRoomComment(String comment){
         //将获得的数据保存到数据库中
 
@@ -146,10 +170,27 @@ public class LabController {
     }
 
     /**
-    *获取所有房间信息
+    *获取所有房间使用情况
+     * params: roomId
+     [
+     {
+     "labName": "fuck",
+     "applicant": "sid",
+     "week": "第十周",
+     "weekday": "周一",
+     "course": "1、2节"
+     },
+     {
+     "labName": "sex",
+     "applicant": "mingen",
+     "week": "第十一周",
+     "weekday": "周二",
+     "course": "3、4节"
+     }
+     ]
     */
     @ResponseBody
-    @RequestMapping(value="/room_order_info",method = RequestMethod.POST)
+    @RequestMapping(value="/getRoomOrderInfo",method = RequestMethod.POST)
     public String getRoomStatus(int roomId){
         //将获得的数据保存到数据库中
 
@@ -158,9 +199,13 @@ public class LabController {
 
     /**
     *预定实验室房间
+     * params: roomId, labName, applicant, week, weekday, course
+     {
+     "status": "0"
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_room_post_order",method = RequestMethod.POST)
+    @RequestMapping(value="/orderRoom",method = RequestMethod.POST)
     public String orderRoom(String jsonFile){
         //从json文件中解析数据，预定房间
 
@@ -169,9 +214,25 @@ public class LabController {
 
     /**
     *实验室当前使用信息查询
+     * params: item, type (item是内容 type是类型 有教室和实验名)
+     {
+     "status": "1",
+     "result":[
+     {
+     "teacher": "sid",
+     "labName": "fuck",
+     "roomId": "001"
+     },
+     {
+     "teacher": "mingen",
+     "labName": "sex",
+     "roomId": "002"
+     }
+     ]
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_db_post_ajax",method = RequestMethod.POST)
+    @RequestMapping(value="/getRoomCurrInfo",method = RequestMethod.POST)
     public String getTeacherRoom(String jsonFile){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
 

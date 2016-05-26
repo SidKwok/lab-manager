@@ -12,12 +12,53 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/equipment")
-public class DeviceController {
+public class EquipmentController {
     /**
     *获取所有设备的名称列表
+     * params: role, username
+     {
+     "lab":[
+     {
+     "labName": "机器人实验",
+     "labWeek": "第一周",
+     "labWeekday": "周五",
+     "labCourse": "第1、2节",
+     "labOrderId": "0001",
+     "labOrderDate": "2016-5-21" ,
+     "state": "允许"
+     },
+     {
+     "labName": "足球实验",
+     "labWeek": "第二周",
+     "labWeekday": "周四",
+     "labCourse": "第3、4节",
+     "labOrderId": "0002",
+     "labOrderDate": "2016-5-24" ,
+     "state": "拒绝"
+     }
+     ],
+     "equit":[
+     {
+     "equitName": "西瓜刀",
+     "equitDate": "2015-9-10",
+     "equitOrderId": "001",
+     "equitDays": "10",
+     "equitNumber": "2",
+     "state": "未决定"
+     },
+     {
+     "equitName": "狼牙棒",
+     "equitDate": "2015-11-10",
+     "equitOrderId": "002",
+     "equitDays": "2",
+     "equitNumber": "10",
+     "state": "未决定"
+     }
+     ]
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_equit_ajax",method = RequestMethod.GET)
+    @RequestMapping(value="/queryAllEquipment",method = RequestMethod.GET)
     public String getEquimentList(){
         //返回所有设备的名称列表，放到json中
 
@@ -26,9 +67,16 @@ public class DeviceController {
 
     /**
     *获取单个设备信息
+     * params: assetName
+     {
+     "classNo": "001",
+     "className": "刀具",
+     "valueType": "昂贵",
+     "number": "10"
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_equit_info",method = RequestMethod.GET)
+    @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.GET)
     public String getEquimentInfo(){
         //返回所有设备的名称列表，放到json中
 

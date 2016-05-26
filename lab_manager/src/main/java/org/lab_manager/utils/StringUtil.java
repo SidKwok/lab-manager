@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @Message:  created by xiaofei on 2016年5月13日
+ * @Message:  created by xiaofeige on 2016/5/13/
  * 
  * @Description: string处理的工具类
  */

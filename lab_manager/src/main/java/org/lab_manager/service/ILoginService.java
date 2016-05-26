@@ -1,21 +1,22 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.Role;
 import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
+import org.lab_manager.entity.User;
 
 /**
  * Created by xiaofeige on 2016/5/24.
  */
 public interface ILoginService {
     /**
-     * 学生登录
+     * 用户登陆，返回用户的角色
      */
-    public boolean studentLogin(Student student);
+    public Role login(User user);
+
 
     /**
-     * 老师登录
+     * 用户登录退出
      */
-    public boolean teacherLogin(Teacher teacher);
-
-
+    public boolean logout(User user);
 }

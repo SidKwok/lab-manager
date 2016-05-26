@@ -22,11 +22,14 @@ function init () {
         loadLabRoomCard();
         loadLabOrder();
         loadEquipOrder();
+        basicEvent();
     } else {
         $('#pro-equip').children().detach();
         $('#pro-order').children().detach();
+        $('#pro-labRoom').children().detach();
         $('#pro-equip').append('<h2>本区域只对管理员开放</h2>');
         $('#pro-order').append('<h2>本区域只对管理员开放</h2>');
+        $('#pro-labRoom').append('<h2>本区域只对管理员开放</h2>');
     }
 }
 
@@ -43,7 +46,7 @@ function loadEquipCard () {
         data: {},
         dataType: "json",
         success: function(retData){
-          $('#pro-equip').children().detach();
+          $('#pro-equip .flex-box').children().detach();
           var domArr = [];
           domArr.push(
               '<div class="hvr-pulse" id="pro-equipAdd" data-toggle="modal" data-target="#pro-equipAdd-modal">',
@@ -61,7 +64,7 @@ function loadEquipCard () {
                   '</div>'
               );
           });
-          $('#pro-equip').append(domArr.join(''));
+          $('#pro-equip .flex-box').append(domArr.join(''));
         },
         error: function(){
           console.log('_equip_ajax', 'fail');
@@ -89,7 +92,7 @@ function loadEquipCard () {
           //   },
           // ];
           // /**************/
-          // $('#pro-equip').children().detach();
+          // $('#pro-equip .flex-box').children().detach();
           // var domArr = [];
           // domArr.push(
           //     '<div class="hvr-pulse" id="pro-equipAdd" data-toggle="modal" data-target="#pro-equipAdd-modal">',
@@ -107,7 +110,7 @@ function loadEquipCard () {
           //         '</div>'
           //     );
           // });
-          // $('#pro-equip').append(domArr.join(''));
+          // $('#pro-equip .flex-box').append(domArr.join(''));
           // /***************************************/
       }
     });
@@ -124,7 +127,7 @@ function loadLabRoomCard () {
         data: {},
         dataType: "json",
         success: function(retData){
-          $('#pro-labRoom').children().detach();
+          $('#pro-labRoom .flex-box').children().detach();
           var domArr = [];
           domArr.push(
               '<div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">',
@@ -142,48 +145,48 @@ function loadLabRoomCard () {
                   '</div>'
               );
           });
-          $('#pro-labRoom').append(domArr.join(''));
+          $('#pro-labRoom .flex-box').append(domArr.join(''));
         },
         error: function(){
-          // console.log('_labRoom_ajax', 'fail');
-          // alert('后台错误！');
+          console.log('_labRoom_ajax', 'fail');
+          alert('后台错误！');
 
-          /***************************************
-          * 用于前端test 测试状态：
-          */
-          /*ajax返回的数据*/
-          var retData = [
-            {
-              "labRoomName": "机器人实验室"
-            },
-            {
-              "labRoomName": "足球实验室"
-            },
-            {
-              "labRoomName": "操蛋实验室"
-            }
-          ];
-          /**************/
-          $('#pro-labRoom').children().detach();
-          var domArr = [];
-          domArr.push(
-              '<div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">',
-                  '<div class="pro-labRoomName">添加</div>',
-              '</div>'
-          );
-          $.each(retData, function(i, e) {
-              domArr.push(
-                  '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '">',
-                      '<div class="pro-labRoomName">' + e.labRoomName + '</div>',
-                      '<div class="pro-buttonGroup">',
-                          '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
-                          '<button class="btn btn-success pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>',
-                      '</div>',
-                  '</div>'
-              );
-          });
-          $('#pro-labRoom').append(domArr.join(''));
-          /***************************************/
+          // /***************************************
+          // * 用于前端test 测试状态：
+          // */
+          // /*ajax返回的数据*/
+          // var retData = [
+          //   {
+          //     "labRoomName": "机器人实验室"
+          //   },
+          //   {
+          //     "labRoomName": "足球实验室"
+          //   },
+          //   {
+          //     "labRoomName": "操蛋实验室"
+          //   }
+          // ];
+          // /**************/
+          // $('#pro-labRoom .flex-box').children().detach();
+          // var domArr = [];
+          // domArr.push(
+          //     '<div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">',
+          //         '<div class="pro-labRoomName">添加</div>',
+          //     '</div>'
+          // );
+          // $.each(retData, function(i, e) {
+          //     domArr.push(
+          //         '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '">',
+          //             '<div class="pro-labRoomName">' + e.labRoomName + '</div>',
+          //             '<div class="pro-buttonGroup">',
+          //                 '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
+          //                 '<button class="btn btn-success pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>',
+          //             '</div>',
+          //         '</div>'
+          //     );
+          // });
+          // $('#pro-labRoom .flex-box').append(domArr.join(''));
+          // /***************************************/
       }
     });
 }
@@ -749,7 +752,6 @@ function basicEvent(){
         });
     });
 
-
     // 批准实验室预约
     $('.labOrder-confirm-btn').on('click', function(){
         $.ajax({
@@ -912,4 +914,3 @@ function basicEvent(){
 }
 
 init();
-basicEvent();

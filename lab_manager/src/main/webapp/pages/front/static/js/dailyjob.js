@@ -22,6 +22,7 @@ function init () {
         $('#daily-notice').append('<h2>本区域只对管理员或教师开放</h2>');
     } else {
         loadNotice();
+        basicEvent();
     }
 }
 
@@ -156,4 +157,3 @@ function basicEvent(){
 }
 
 init();
-basicEvent();

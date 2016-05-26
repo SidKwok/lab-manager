@@ -2,7 +2,7 @@
 <html>
     <head>
       <meta charset="utf-8">
-      <title>资产管理</title>
+      <title>教师专区</title>
       <link rel="stylesheet" href="../static/css/bootstrap.min.css">
       <link rel="stylesheet" href="../static/css/hover-min.css">
       <link rel="stylesheet" href="../static/css/style.css">
@@ -47,13 +47,145 @@
         <!--内容块-->
         <div class="content">
             <div id="tea-checkDuty">
-                点到
+              <h2>您的实习课程</h2>
+              <div id="tea-course">
+                <div class="course hvr-sweep-to-right">
+                  <div class="tea-courseId">0001</div>
+                  <div class="tea-courseContent">机器人实验 第一周 周五 第1、2节</div>
+                  <button class="btn btn-success tea-course-check-btn" data-toggle="modal" data-target="#tea-checkDuty-modal">考勤</button>
+                </div>
+                <div class="course hvr-sweep-to-right">
+                    <div class="tea-courseId">0002</div>
+                    <div class="tea-courseContent">足球实验 第二周 周四 第5、6节</div>
+                    <button class="btn btn-success tea-course-check-btn" data-toggle="modal" data-target="#tea-checkDuty-modal">考勤</button>
+                </div>
+              </div>
             </div>
 
             <div id="tea-correctGrade" style="display: none;">
-                给成绩
+              <div class="flex-box">
+                <div class="card hvr-bounce-in" data-labName="机器人实验">
+                    <div class="tea-labId">0001</div>
+                    <div class="tea-correctGrade-labName">机器人实验</div>
+                    <button class="btn btn-success tea-correct-btn" data-toggle="modal" data-target="#tea-correctGrade-modal">给成绩</button>
+                </div>
+                <div class="card hvr-bounce-in" data-labName="足球实验">
+                    <div class="tea-labId">0001</div>
+                    <div class="tea-correctGrade-labName">足球实验</div>
+                    <button class="btn btn-success tea-correct-btn" data-toggle="modal" data-target="#tea-correctGrade-modal">给成绩</button>
+                </div>
+              </div>
             </div>
+        </div>
 
+        <!-- 考勤框 -->
+        <div class="modal fade" id="tea-checkDuty-modal" tabindex="-1" role="dialog" aria-labelledby="tea-checkDuty-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="tea-checkDuty-modal-label" data-courseId="0001">足球实验 第二周 周四 第5、6节</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr><td>姓名</td><td>平时成绩</td><td>状态</td></tr>
+                      </thead>
+                      <tbody id="tea-checkDuty-table">
+                          <tr>
+                            <td>Sid</td>
+                            <td><input class="form-control"></input></td>
+                            <td>
+                                <select class="form-control">
+                                    <option></option>
+                                    <option>已到</option>
+                                    <option>未到</option>
+                                </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Mingen</td>
+                            <td><input class="form-control"></input></td>
+                            <td>
+                                <select class="form-control">
+                                    <option></option>
+                                    <option>已到</option>
+                                    <option>未到</option>
+                                </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Natalie</td>
+                            <td><input class="form-control"></input></td>
+                            <td>
+                                <select class="form-control">
+                                    <option></option>
+                                    <option>已到</option>
+                                    <option>未到</option>
+                                </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Airdy</td>
+                            <td><input class="form-control"></input></td>
+                            <td>
+                                <select class="form-control">
+                                    <option></option>
+                                    <option>已到</option>
+                                    <option>未到</option>
+                                </select>
+                            </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-checkDutyConfirm">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 成绩框 -->
+        <div class="modal fade" id="tea-correctGrade-modal" tabindex="-1" role="dialog" aria-labelledby="tea-correctGrade-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="tea-correctGrade-modal-label">足球实验</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr><td>姓名</td><td>成绩</td></tr>
+                      </thead>
+                      <tbody id="tea-correctGrade-table">
+                          <tr>
+                            <td>Sid</td>
+                            <td><input class="form-control"></input></td>
+                          </tr>
+                          <tr>
+                            <td>Mingen</td>
+                            <td><input class="form-control"></input></td>
+                          </tr>
+                          <tr>
+                            <td>Natalie</td>
+                            <td><input class="form-control"></input></td>
+                          </tr>
+                          <tr>
+                            <td>Airdy</td>
+                            <td><input class="form-control"></input></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-correctGradeConfirm">确认</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <script src="../static/js/jquery.min.js"></script>

@@ -23,8 +23,342 @@ function init () {
         $('#tea-correctGrade').children().detach();
         $('#tea-correctGrade').append('<h2>本区域只对教师开放</h2>');
     } else {
-        // TODO
+        loadLabNotice();
+        loadLabCard();
+        basicEvent();
     }
+}
+
+/**
+* 加载实习课程
+*/
+function loadLabNotice() {
+    var params = {username: username, role: role};
+    $.ajax({
+        type: 'POST',
+        url: '_tea_allCourse',
+        data: params,
+        dataType: 'json',
+        success: function(retData){
+            $('#tea-course').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e){
+                domArr.push(
+                    '<div class="course hvr-sweep-to-right">',
+                        '<div class="tea-courseId">' + e.courseId + '</div>',
+                        '<div class="tea-courseContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
+                        '<button class="btn btn-success tea-course-check-btn" data-toggle="modal" data-target="#tea-checkDuty-modal">考勤</button>',
+                    '</div>'
+                );
+            });
+            $('#tea-course').append(domArr.join(''));
+        },
+        error: function(){
+            // console.log('_tea_allCourse');
+            // alert('后台错误');
+
+            /***************************************
+            * 用于前端test 测试状态：
+            */
+            /*ajax返回的数据*/
+            var retData = [
+              {
+                "courseId": "0001",
+                "labName": "机器人实验",
+                "labWeek": "第一周",
+                "labWeekday": "周一",
+                "labCourse": "第1、2节"
+              },
+              {
+                "courseId": "0002",
+                "labName": "足球实验",
+                "labWeek": "第二周",
+                "labWeekday": "周二",
+                "labCourse": "第3、4节"
+              },
+              {
+                "courseId": "0003",
+                "labName": "sex实验",
+                "labWeek": "第三周",
+                "labWeekday": "周三",
+                "labCourse": "第5、6节"
+              }
+            ];
+            /**************/
+            $('#tea-course').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e){
+                domArr.push(
+                    '<div class="course hvr-sweep-to-right">',
+                        '<div class="tea-courseId">' + e.courseId + '</div>',
+                        '<div class="tea-courseContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
+                        '<button class="btn btn-success tea-course-check-btn" data-toggle="modal" data-target="#tea-checkDuty-modal">考勤</button>',
+                    '</div>'
+                );
+            });
+            $('#tea-course').append(domArr.join(''));
+            /***************************************/
+
+        }
+    });
+}
+
+/**
+* 加载实验
+*/
+function loadLabCard () {
+    $.ajax({
+        type: 'POST',
+        url: '_tea_lab',
+        data: {username: username, role: role},
+        dataType: 'json',
+        success: function(retData){
+            $('#tea-correctGrade .flex-box').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e){
+                domArr.push(
+                    '<div class="card hvr-bounce-in" data-labName="' + e.labName + '">',
+                        '<div class="tea-labId">' + e.labId + '</div>',
+                        '<div class="tea-correctGrade-labName">' + e.labName + '</div>',
+                        '<button class="btn btn-success tea-correct-btn" data-toggle="modal" data-target="#tea-correctGrade-modal">给成绩</button>',
+                    '</div>'
+                );
+            });
+            $('#tea-correctGrade .flex-box').append(domArr.join(''));
+        },
+        error: function(){
+            // console.log('_tea_lab fail');
+            // alert('后台错误');
+
+            /***************************************
+            * 用于前端test 测试状态：
+            */
+            /*ajax返回的数据*/
+            var retData = [
+              {
+                "labName": "机器人实验",
+                "labId": "0001"
+              },
+              {
+                "labName": "足球实验",
+                "labId": "0002"
+              },
+              {
+                "labName": "sex实验",
+                "labId": "0003"
+              },
+              {
+                "labName": "禁忌实验",
+                "labId": "0004"
+              }
+            ];
+            /**************/
+            $('#tea-correctGrade .flex-box').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e){
+                domArr.push(
+                    '<div class="card hvr-bounce-in" data-labName="' + e.labName + '">',
+                        '<div class="tea-labId">' + e.labId + '</div>',
+                        '<div class="tea-correctGrade-labName">' + e.labName + '</div>',
+                        '<button class="btn btn-success tea-correct-btn" data-toggle="modal" data-target="#tea-correctGrade-modal">给成绩</button>',
+                    '</div>'
+                );
+            });
+            $('#tea-correctGrade .flex-box').append(domArr.join(''));
+            /***************************************/
+        }
+    });
+}
+
+/**
+* 页面事件
+*/
+function basicEvent () {
+    // 加载学生信息
+    $('.tea-course-check-btn').on('click', function(){
+        var courseId = $(this).parents('.course').children('.tea-courseId').text();
+        $('#tea-checkDuty-modal-label').text($(this).parents('.course').children('.tea-courseContent').text());
+        $('#tea-checkDuty-modal-label').attr('data-courseId', courseId);
+        $.ajax({
+            type: 'POST',
+            url: '_course_duty',
+            data: {username: username, role: role, courseId: courseId},
+            dataType: 'json',
+            success: function(retData){
+                $('#tea-checkDuty-table').children().detach();
+                var domArr = [];
+                $.each(retData, function(i, e){
+                    domArr.push(
+                        '<tr>',
+                            '<td>' + e + '</td>',
+                            '<td><input class="form-control"></input></td>',
+                            '<td>',
+                                '<select class="form-control">',
+                                '<option></option>',
+                                '<option>已到</option>',
+                                '<option>未到</option>',
+                            '</td>',
+                        '</tr>'
+                    );
+                });
+                $('#tea-checkDuty-table').append(domArr.join(''));
+            },
+            error: function(){
+                // console.log('_course_duty fail');
+                // alert('后台错误!');
+                /***************************************
+                * 用于前端test 测试状态：
+                */
+                /*ajax返回的数据*/
+                var retData = [
+                  "sid","mingen","natalie","Airdy"
+                ];
+                /**************/
+                $('#tea-checkDuty-table').children().detach();
+                var domArr = [];
+                $.each(retData, function(i, e){
+                    domArr.push(
+                        '<tr>',
+                            '<td>' + e + '</td>',
+                            '<td><input class="form-control"></input></td>',
+                            '<td>',
+                                '<select class="form-control">',
+                                '<option></option>',
+                                '<option>已到</option>',
+                                '<option>未到</option>',
+                            '</td>',
+                        '</tr>'
+                    );
+                });
+                $('#tea-checkDuty-table').append(domArr.join(''));
+                /***************************************/
+            }
+        });
+    });
+
+    // 考勤提交
+    $('#post-checkDutyConfirm').on('click', function(){
+        var params = {
+          stu:[],
+          courseId: $('#tea-checkDuty-modal-label').attr('data-courseId'),
+          username: username,
+          role: role
+        };
+        var trs = $('#tea-checkDuty-table').children();
+        $.each(trs, function(i, e){
+            params.stu.push({
+                stuName: $(e).children('td').eq(0).text(),
+                stuGrade: $(e).children('td').eq(1).children('input').val(),
+                stuState: $(e).children('td').eq(2).children('select').children('option:selected').text()
+            });
+        });
+        $.ajax({
+            type: 'POST',
+            url: '_tea_post_duty',
+            data: params,
+            dataType: 'json',
+            success: function(retData){
+              if(retData.status === "0") {
+                  alert('考勤失败');
+              }
+              if(retData.status === "1") {
+                  alert('考勤成功');
+              }
+            },
+            error: function(){
+                console.log('_tea_post_duty, fail');
+                alert('后台错误');
+            }
+        });
+    });
+
+    // 加载学生信息
+    $('.tea-correct-btn').on('click', function(){
+        var labName = $(this).parents('.card').attr('data-labName');
+        var labId = $(this).parents('.card').children('.tea-labId').text();
+        var params = {
+          labName: labName,
+          labId: labId,
+          username: username,
+          role: role
+        };
+        $('#tea-correctGrade-modal-label').text(labName);
+        $('#tea-correctGrade-modal-label').attr('data-labId', labId);
+        $.ajax({
+            type: 'POST',
+            url: '_tea_lab_info',
+            data: params,
+            dataType: 'json',
+            success: function(retData){
+                $('#tea-correctGrade-table').children().detach();
+                var domArr = [];
+                $.each(retData, function(i, e){
+                    domArr.push(
+                        '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
+                    );
+                });
+                $('#tea-correctGrade-table').append(domArr.join(''));
+            },
+            error: function(){
+                // console.log('_tea_lab_info fail');
+                // alert('后台错误');
+                /***************************************
+                * 用于前端test 测试状态：
+                */
+                /*ajax返回的数据*/
+                var retData = [
+                  "sid","mingen","natalie","Airdy", "Bob"
+                ];
+                /**************/
+                $('#tea-correctGrade-modal-label').text(labName);
+                $('#tea-correctGrade-table').children().detach();
+                var domArr = [];
+                $.each(retData, function(i, e){
+                    domArr.push(
+                        '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
+                    );
+                });
+                $('#tea-correctGrade-table').append(domArr.join(''));
+                /***************************************/
+            }
+        });
+    });
+
+    // 发送成绩
+    $('#post-correctGradeConfirm').on('click', function(){
+        var params = {
+            stu: [],
+            username: username,
+            role: role,
+            laId: $('#tea-correctGrade-modal-label').attr('data-labId')
+        };
+        var trs = $('#tea-correctGrade-table').children();
+        $.each(trs, function(i, e){
+            params.stu.push({
+                stuName: $(e).children('td').eq(0).text(),
+                stuGrade: $(e).children('td').eq(1).children('input').val()
+            });
+        });
+        console.log(params);
+        $.ajax({
+            type: 'POST',
+            url: '_tea_post_grade',
+            data: params,
+            dataType: 'json',
+            success: function(retData){
+              if(retData.status === "0") {
+                  alert('给成绩失败');
+              }
+              if(retData.status === "1") {
+                  alert('给成绩成功');
+              }
+            },
+            error: function(){
+                console.log('_tea_post_grade');
+                alert('后台出错');
+            }
+        });
+    });
 }
 
 init();

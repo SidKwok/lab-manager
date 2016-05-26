@@ -409,3 +409,65 @@ body {
       left: 2%;
       font-size: 18px;
 }
+
+/**
+* 教师专区
+*/
+#tea-course .course {
+    width: 80%;
+    height: 150px;
+    margin: 10px auto;
+    display: block;
+    background: #e1e1e1;
+    color: #666;
+}
+#tea-course .course:hover {
+    color: white;
+}
+#tea-course .tea-courseId {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+    font-size: 18px;
+}
+#tea-course .tea-courseContent {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 24px;
+}
+#tea-course .tea-course-check-btn {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}
+
+#tea-correctGrade .flex-box{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#tea-correctGrade .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+#tea-correctGrade .tea-correctGrade-labName {
+    font-size: 24px;
+    padding: 60px 0 30px 50px;
+}
+
+#tea-correctGrade .tea-labId {
+    position: absolute;
+    top: 7%;
+    left: 2%;
+    font-size: 18px;
+}

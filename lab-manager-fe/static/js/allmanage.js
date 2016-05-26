@@ -17,285 +17,297 @@ function init () {
     $($('.nav-location')[4]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
     $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
-    /**
-    * 初始化实验室卡片
-    */
-    $.ajax({
-        type: "GET",
-        url: '_room_ajax',
-        data: {},
-        dataType: "json",
-        success: function(retData){
-          $('#all-room').children().detach();
-          var domArr = [];
-          $.each(retData, function(i, e) {
-              domArr.push(
-                  '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
-                      '<div class="all-roomId">' + e.room_id + '</div>',
-                      '<div class="all-teacher">' + e.manage_teacher + '</div>',
-                      '<div class="all-buttonGroup">',
-                          '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
-                          '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',
-                          '<button class="btn btn-success all-order-btn" data-toggle="modal" data-target="#all-order-modal">预约</button>',
-                      '</div>',
-                  '</div>'
-              );
-          });
-          $('#all-room').append(domArr.join(''));
-          // 初始化弹出框
-          $('[data-toggle="popover"]').popover();
-        },
-        error: function(){
-          console.log('_room_ajax', 'fail');
-          alert('后台错误！');
-
-          // /***************************************
-          // * 用于前端test 测试状态：ok
-          // */
-          // /*ajax返回的数据*/
-          // var retData = [
-          //   {
-          //     "room_id": "0001",
-          //     "manage_teacher": "sid",
-          //     "intro": "good"
-          //   },
-          //   {
-          //     "room_id": "0002",
-          //     "manage_teacher": "mingen",
-          //     "intro": "bad"
-          //   },
-          //   {
-          //     "room_id": "0003",
-          //     "manage_teacher": "natalie",
-          //     "intro": "bad"
-          //   },
-          //   {
-          //     "room_id": "0004",
-          //     "manage_teacher": "airdy",
-          //     "intro": "so good"
-          //   },
-          //   {
-          //     "room_id": "0005",
-          //     "manage_teacher": "bob",
-          //     "intro": "YES!"
-          //   },
-          //   {
-          //     "room_id": "0006",
-          //     "manage_teacher": "taylor",
-          //     "intro": "badbad"
-          //   },
-          // ];
-          // /**************/
-          // $('#all-room').children().detach();
-          // var domArr = [];
-          // $.each(retData, function(i, e) {
-          //     domArr.push(
-          //         '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
-          //             '<div class="all-roomId">' + e.room_id + '</div>',
-          //             '<div class="all-teacher">' + e.manage_teacher + '</div>',
-          //             '<div class="all-buttonGroup">',
-          //             '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
-          //             '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',
-          //             '<button class="btn btn-success all-order-btn" data-toggle="modal" data-target="#all-order-modal">预约</button>',
-          //             '</div>',
-          //         '</div>'
-          //     );
-          // });
-          // $('#all-room').append(domArr.join(''));
-          // // 初始化弹出框
-          // $('[data-toggle="popover"]').popover();
-          // /***************************************/
-      }
-    });
-
-    /**
-    * 初始化预约状态
-    */
-    $.ajax({
-        type: 'POST',
-        url: '_orderSate',
-        data: {role: role, username: username},
-        dataType: 'json',
-        success: function(retData) {
-            var lab = retData.lab;
-            var equip = retData.equip;
-            var domLab = [];
-            var domEquip = [];
-            $('#all-lab-orderState').children().detach();
-            $.each(lab, function(i, e){
-                domLab.push(
-                    '<div class="all-lab-order order hvr-sweep-to-right">',
-                        '<div class="allLabOrderId">' + e.labOrderId + '</div>',
-                        '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
-                        '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
-                        '<div class="allLabOrderState">状态：' + e.state + '</div>',
+    if ( role === 'student' ) {
+      $('#all-room').children().detach();
+      $('#all-room').append('<h2>本区域只对教师或管理员开放</h2>');
+      $('#lab-equip').children().detach();
+      $('#lab-equip').append('<h2>本区域只对教师或管理员开放</h2>');
+      $('#lab-db').children().detach();
+      $('#lab-db').append('<h2>本区域只对教师或管理员开放</h2>');
+      $('#all-orderState').children().detach();
+      $('#all-orderState').append('<h2>本区域只对教师或管理员开放</h2>');
+    } else {
+      /**
+      * 初始化实验室卡片
+      */
+      $.ajax({
+          type: "GET",
+          url: '_room_ajax',
+          data: {},
+          dataType: "json",
+          success: function(retData){
+            $('#all-room .flex-box').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e) {
+                domArr.push(
+                    '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
+                        '<div class="all-roomId">' + e.room_id + '</div>',
+                        '<div class="all-teacher">' + e.manage_teacher + '</div>',
+                        '<div class="all-buttonGroup">',
+                            '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
+                            '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',
+                            '<button class="btn btn-success all-order-btn" data-toggle="modal" data-target="#all-order-modal">预约</button>',
+                        '</div>',
                     '</div>'
                 );
             });
-            $('#all-lab-orderState').append(domLab.join(''));
+            $('#all-room .flex-box').append(domArr.join(''));
+            // 初始化弹出框
+            $('[data-toggle="popover"]').popover();
+          },
+          error: function(){
+            console.log('_room_ajax', 'fail');
+            alert('后台错误！');
 
-            $('#all-equip-orderState').children().detach();
-            $.each(equip, function(i, e){
-                domEquip.push(
-                    '<div class="all-equip-order order hvr-sweep-to-right">',
-                        '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
-                        '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
-                        '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
-                        '<div class="allEquipOrderState">状态：' + e.state + '</div>',
-                    '</div>'
-                );
-            });
-            $('#all-equip-orderState').append(domEquip.join(''));
-        },
-        error: function() {
-            console.log('_orderState fail');
-            alert('后台错误');
             // /***************************************
-            // * 用于前端test 测试状态：
+            // * 用于前端test 测试状态：ok
             // */
             // /*ajax返回的数据*/
-            // var retData = {
-            //   "lab":[
-            //     {
-            //       "labName": "机器人实验",
-            //       "labWeek": "第一周",
-            //       "labWeekday": "周五",
-            //       "labCourse": "第1、2节",
-            //       "labOrderId": "0001",
-            //       "labOrderDate": "2016-5-21" ,
-            //       "state": "允许"
-            //     },
-            //     {
-            //       "labName": "足球实验",
-            //       "labWeek": "第二周",
-            //       "labWeekday": "周四",
-            //       "labCourse": "第3、4节",
-            //       "labOrderId": "0002",
-            //       "labOrderDate": "2016-5-24" ,
-            //       "state": "拒绝"
-            //     }
-            //   ],
-            //   "equip":[
-            //     {
-            //       "equipName": "西瓜刀",
-            //       "equipDate": "2015-9-10",
-            //       "equipOrderId": "001",
-            //       "equipDays": "10",
-            //       "equipNumber": "2",
-            //       "state": "未决定"
-            //     },
-            //     {
-            //       "equipName": "狼牙棒",
-            //       "equipDate": "2015-11-10",
-            //       "equipOrderId": "002",
-            //       "equipDays": "2",
-            //       "equipNumber": "10",
-            //       "state": "未决定"
-            //     }
-            //   ]
-            // };
+            // var retData = [
+            //   {
+            //     "room_id": "0001",
+            //     "manage_teacher": "sid",
+            //     "intro": "good"
+            //   },
+            //   {
+            //     "room_id": "0002",
+            //     "manage_teacher": "mingen",
+            //     "intro": "bad"
+            //   },
+            //   {
+            //     "room_id": "0003",
+            //     "manage_teacher": "natalie",
+            //     "intro": "bad"
+            //   },
+            //   {
+            //     "room_id": "0004",
+            //     "manage_teacher": "airdy",
+            //     "intro": "so good"
+            //   },
+            //   {
+            //     "room_id": "0005",
+            //     "manage_teacher": "bob",
+            //     "intro": "YES!"
+            //   },
+            //   {
+            //     "room_id": "0006",
+            //     "manage_teacher": "taylor",
+            //     "intro": "badbad"
+            //   },
+            // ];
             // /**************/
-            // var lab = retData.lab;
-            // var equip = retData.equip;
-            // var domLab = [];
-            // var domEquip = [];
-            // $('#all-lab-orderState').children().detach();
-            // $.each(lab, function(i, e){
-            //     domLab.push(
-            //         '<div class="all-lab-order order hvr-sweep-to-right">',
-            //             '<div class="allLabOrderId">' + e.labOrderId + '</div>',
-            //             '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
-            //             '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
-            //             '<div class="allLabOrderState">状态：' + e.state + '</div>',
+            // $('#all-room .flex-box').children().detach();
+            // var domArr = [];
+            // $.each(retData, function(i, e) {
+            //     domArr.push(
+            //         '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
+            //             '<div class="all-roomId">' + e.room_id + '</div>',
+            //             '<div class="all-teacher">' + e.manage_teacher + '</div>',
+            //             '<div class="all-buttonGroup">',
+            //             '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
+            //             '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',
+            //             '<button class="btn btn-success all-order-btn" data-toggle="modal" data-target="#all-order-modal">预约</button>',
+            //             '</div>',
             //         '</div>'
             //     );
             // });
-            // $('#all-lab-orderState').append(domLab.join(''));
-            //
-            // $('#all-equip-orderState').children().detach();
-            // $.each(equip, function(i, e){
-            //     domEquip.push(
-            //         '<div class="all-equip-order order hvr-sweep-to-right">',
-            //             '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
-            //             '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
-            //             '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
-            //             '<div class="allEquipOrderState">状态：' + e.state + '</div>',
-            //         '</div>'
-            //     );
-            // });
-            // $('#all-equip-orderState').append(domEquip.join(''));
+            // $('#all-room .flex-box').append(domArr.join(''));
+            // // 初始化弹出框
+            // $('[data-toggle="popover"]').popover();
             // /***************************************/
         }
-    });
+      });
 
-    /**
-    * 初始化设备卡片
-    */
-    $.ajax({
-        type: "GET",
-        url: '_equip_ajax',
-        data: {},
-        dataType: "json",
-        success: function(retData){
-          $('#lab-equip').children().detach();
-          var domArr = [];
-          $.each(retData, function(i, e) {
-              domArr.push(
-                  '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-                      '<div class="lab-equipName">' + e.assetName + '</div>',
-                      '<div class="lab-buttonGroup">',
-                          '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
-                          '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
-                      '</div>',
-                  '</div>'
-              );
-          });
-          $('#lab-equip').append(domArr.join(''));
-        },
-        error: function(){
-          console.log('_equip_ajax', 'fail');
-          alert('后台错误！');
+      /**
+      * 初始化预约状态
+      */
+      $.ajax({
+          type: 'POST',
+          url: '_orderSate',
+          data: {role: role, username: username},
+          dataType: 'json',
+          success: function(retData) {
+              var lab = retData.lab;
+              var equip = retData.equip;
+              var domLab = [];
+              var domEquip = [];
+              $('#all-lab-orderState').children().detach();
+              $.each(lab, function(i, e){
+                  domLab.push(
+                      '<div class="all-lab-order order hvr-sweep-to-right">',
+                          '<div class="allLabOrderId">' + e.labOrderId + '</div>',
+                          '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
+                          '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
+                          '<div class="allLabOrderState">状态：' + e.state + '</div>',
+                      '</div>'
+                  );
+              });
+              $('#all-lab-orderState').append(domLab.join(''));
 
-          // /***************************************
-          // * 用于前端test 测试状态：ok
-          // */
-          // /*ajax返回的数据*/
-          // var retData = [
-          //   {
-          //     "assetName": "西瓜刀"
-          //   },
-          //   {
-          //     "assetName": "狼牙棒"
-          //   },
-          //   {
-          //     "assetName": "屠龙刀"
-          //   },
-          //   {
-          //     "assetName": "倚天剑"
-          //   },
-          //   {
-          //     "assetName": "绝世好剑"
-          //   },
-          // ];
-          // /**************/
-          // $('#lab-equip').children().detach();
-          // var domArr = [];
-          // $.each(retData, function(i, e) {
-          //     domArr.push(
-          //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-          //             '<div class="lab-equipName">' + e.assetName + '</div>',
-          //             '<div class="lab-buttonGroup">',
-          //                 '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
-          //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
-          //             '</div>',
-          //         '</div>'
-          //     );
-          // });
-          // $('#lab-equip').append(domArr.join(''));
-          // /***************************************/
-      }
-    });
+              $('#all-equip-orderState').children().detach();
+              $.each(equip, function(i, e){
+                  domEquip.push(
+                      '<div class="all-equip-order order hvr-sweep-to-right">',
+                          '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
+                          '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
+                          '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
+                          '<div class="allEquipOrderState">状态：' + e.state + '</div>',
+                      '</div>'
+                  );
+              });
+              $('#all-equip-orderState').append(domEquip.join(''));
+          },
+          error: function() {
+              console.log('_orderState fail');
+              alert('后台错误');
+              // /***************************************
+              // * 用于前端test 测试状态：
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "lab":[
+              //     {
+              //       "labName": "机器人实验",
+              //       "labWeek": "第一周",
+              //       "labWeekday": "周五",
+              //       "labCourse": "第1、2节",
+              //       "labOrderId": "0001",
+              //       "labOrderDate": "2016-5-21" ,
+              //       "state": "允许"
+              //     },
+              //     {
+              //       "labName": "足球实验",
+              //       "labWeek": "第二周",
+              //       "labWeekday": "周四",
+              //       "labCourse": "第3、4节",
+              //       "labOrderId": "0002",
+              //       "labOrderDate": "2016-5-24" ,
+              //       "state": "拒绝"
+              //     }
+              //   ],
+              //   "equip":[
+              //     {
+              //       "equipName": "西瓜刀",
+              //       "equipDate": "2015-9-10",
+              //       "equipOrderId": "001",
+              //       "equipDays": "10",
+              //       "equipNumber": "2",
+              //       "state": "未决定"
+              //     },
+              //     {
+              //       "equipName": "狼牙棒",
+              //       "equipDate": "2015-11-10",
+              //       "equipOrderId": "002",
+              //       "equipDays": "2",
+              //       "equipNumber": "10",
+              //       "state": "未决定"
+              //     }
+              //   ]
+              // };
+              // /**************/
+              // var lab = retData.lab;
+              // var equip = retData.equip;
+              // var domLab = [];
+              // var domEquip = [];
+              // $('#all-lab-orderState').children().detach();
+              // $.each(lab, function(i, e){
+              //     domLab.push(
+              //         '<div class="all-lab-order order hvr-sweep-to-right">',
+              //             '<div class="allLabOrderId">' + e.labOrderId + '</div>',
+              //             '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
+              //             '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
+              //             '<div class="allLabOrderState">状态：' + e.state + '</div>',
+              //         '</div>'
+              //     );
+              // });
+              // $('#all-lab-orderState').append(domLab.join(''));
+              //
+              // $('#all-equip-orderState').children().detach();
+              // $.each(equip, function(i, e){
+              //     domEquip.push(
+              //         '<div class="all-equip-order order hvr-sweep-to-right">',
+              //             '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
+              //             '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
+              //             '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
+              //             '<div class="allEquipOrderState">状态：' + e.state + '</div>',
+              //         '</div>'
+              //     );
+              // });
+              // $('#all-equip-orderState').append(domEquip.join(''));
+              // /***************************************/
+          }
+      });
 
+      /**
+      * 初始化设备卡片
+      */
+      $.ajax({
+          type: "GET",
+          url: '_equip_ajax',
+          data: {},
+          dataType: "json",
+          success: function(retData){
+            $('#lab-equip .flex-box').children().detach();
+            var domArr = [];
+            $.each(retData, function(i, e) {
+                domArr.push(
+                    '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
+                        '<div class="lab-equipName">' + e.assetName + '</div>',
+                        '<div class="lab-buttonGroup">',
+                            '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
+                            '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
+                        '</div>',
+                    '</div>'
+                );
+            });
+            $('#lab-equip .flex-box').append(domArr.join(''));
+          },
+          error: function(){
+            console.log('_equip_ajax', 'fail');
+            alert('后台错误！');
+
+            // /***************************************
+            // * 用于前端test 测试状态：ok
+            // */
+            // /*ajax返回的数据*/
+            // var retData = [
+            //   {
+            //     "assetName": "西瓜刀"
+            //   },
+            //   {
+            //     "assetName": "狼牙棒"
+            //   },
+            //   {
+            //     "assetName": "屠龙刀"
+            //   },
+            //   {
+            //     "assetName": "倚天剑"
+            //   },
+            //   {
+            //     "assetName": "绝世好剑"
+            //   },
+            // ];
+            // /**************/
+            // $('#lab-equip .flex-box').children().detach();
+            // var domArr = [];
+            // $.each(retData, function(i, e) {
+            //     domArr.push(
+            //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
+            //             '<div class="lab-equipName">' + e.assetName + '</div>',
+            //             '<div class="lab-buttonGroup">',
+            //                 '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
+            //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
+            //             '</div>',
+            //         '</div>'
+            //     );
+            // });
+            // $('#lab-equip .flex-box').append(domArr.join(''));
+            // /***************************************/
+        }
+      });
+
+      basicEvent();
+    }
 }
 
 /**
@@ -450,6 +462,7 @@ function basicEvent() {
             roomId: $('#all-order-modal-label').text(),
             labName: $('#input-labName').val(),
             applicant: $('#input-applicant').val(),
+            class: $('#input-class').val(),
             week: $('#input-week  option:selected').text(),
             weekday: $('#input-weekday  option:selected').text(),
             course: $('#input-course  option:selected').text()
@@ -686,7 +699,6 @@ function basicEvent() {
 }
 
 init();
-basicEvent();
 
 /***************************************
 * 用于前端test 测试状态：

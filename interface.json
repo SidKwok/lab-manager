@@ -315,3 +315,48 @@ params: username, role
     "stuGrade": "98"
   }
 ]
+
+// 实验室信息
+_labRoom_ajax (get) ok
+params: none
+[
+  {
+    "labRoomName": "机器人实验室"
+  },
+  {
+    "labRoomName": "足球实验室"
+  },
+  {
+    "labRoomName": "操蛋实验室"
+  }
+]
+
+// 删除实验室
+_del_labRoom (post) ok
+params: labRoomName
+{
+  "status": "0"
+}
+
+// 实验室具体信息
+_labRoom_info (post) ok
+params: labRoomName
+{
+  "labRoomName":"机器人实验室",
+  "labRoomType":"机器人",
+  "labRoomIntro":"棒"
+}
+
+// 更新实验室信息
+_update_labRoom (post) ok
+params: labRoomName labRoomType labRoomIntro
+{
+  "status": "0"
+}
+
+// 添加实验室
+_add_labRoom (post) ok
+params: labRoomName labRoomType labRoomIntro
+{
+  "status": "0"
+}

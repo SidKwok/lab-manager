@@ -16,7 +16,13 @@ function init () {
     $($('.nav-location')[3]).attr('href', '../teamanage/index.html?' + userInfo + '?');
     $($('.nav-location')[4]).attr('href', '../promanage/index.html?' + userInfo + '?');
     $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
-    loadNotice();
+
+    if (role === 'student'){
+        $('#daily-notice').children().detach();
+        $('#daily-notice').append('<h2>本区域只对管理员或教师开放</h2>');
+    } else {
+        loadNotice();
+    }
 }
 
 /**

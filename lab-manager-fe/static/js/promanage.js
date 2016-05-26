@@ -13,50 +13,58 @@ function init () {
     $($('.nav-location')[0]).attr('href', '../info/index.html?' + userInfo + '?');
     $($('.nav-location')[1]).attr('href', '../allmanage/index.html?' + userInfo + '?');
     $($('.nav-location')[2]).attr('href', '../stumanage/index.html?' + userInfo + '?');
-    $($('.nav-location')[3]).attr('href', '../teaomanage/index.html?' + userInfo + '?');
+    $($('.nav-location')[3]).attr('href', '../teamanage/index.html?' + userInfo + '?');
     $($('.nav-location')[4]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
     $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
-    loadEquitCard();
-    loadLabOrder();
-    loadEquitOrder();
+    if (role === 'manager'){
+        loadEquipCard();
+        loadLabRoomCard();
+        loadLabOrder();
+        loadEquipOrder();
+    } else {
+        $('#pro-equip').children().detach();
+        $('#pro-order').children().detach();
+        $('#pro-equip').append('<h2>本区域只对管理员开放</h2>');
+        $('#pro-order').append('<h2>本区域只对管理员开放</h2>');
+    }
 }
 
 /**
 * 加载设备卡片
 */
-function loadEquitCard () {
+function loadEquipCard () {
     /**
     * 初始化设备卡片
     */
     $.ajax({
         type: "GET",
-        url: '_equit_ajax',
+        url: '_equip_ajax',
         data: {},
         dataType: "json",
         success: function(retData){
-          $('#pro-equit').children().detach();
+          $('#pro-equip').children().detach();
           var domArr = [];
           domArr.push(
-              '<div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">',
-                  '<div class="pro-equitName">添加</div>',
+              '<div class="hvr-pulse" id="pro-equipAdd" data-toggle="modal" data-target="#pro-equipAdd-modal">',
+                  '<div class="pro-equipName">添加</div>',
               '</div>'
           );
           $.each(retData, function(i, e) {
               domArr.push(
                   '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-                      '<div class="pro-equitName">' + e.assetName + '</div>',
+                      '<div class="pro-equipName">' + e.assetName + '</div>',
                       '<div class="pro-buttonGroup">',
-                          '<button class="btn btn-danger pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>',
-                          '<button class="btn btn-success pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>',
+                          '<button class="btn btn-danger pro-equipDelete-btn" data-toggle="modal" data-target="#pro-equipDelete-modal">删除</button>',
+                          '<button class="btn btn-success pro-equipUpdate-btn" data-toggle="modal" data-target="#pro-equipUpdate-modal">修改</button>',
                       '</div>',
                   '</div>'
               );
           });
-          $('#pro-equit').append(domArr.join(''));
+          $('#pro-equip').append(domArr.join(''));
         },
         error: function(){
-          console.log('_equit_ajax', 'fail');
+          console.log('_equip_ajax', 'fail');
           alert('后台错误！');
 
           // /***************************************
@@ -81,26 +89,101 @@ function loadEquitCard () {
           //   },
           // ];
           // /**************/
-          // $('#pro-equit').children().detach();
+          // $('#pro-equip').children().detach();
           // var domArr = [];
           // domArr.push(
-          //     '<div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">',
-          //         '<div class="pro-equitName">添加</div>',
+          //     '<div class="hvr-pulse" id="pro-equipAdd" data-toggle="modal" data-target="#pro-equipAdd-modal">',
+          //         '<div class="pro-equipName">添加</div>',
           //     '</div>'
           // );
           // $.each(retData, function(i, e) {
           //     domArr.push(
           //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-          //             '<div class="pro-equitName">' + e.assetName + '</div>',
+          //             '<div class="pro-equipName">' + e.assetName + '</div>',
           //             '<div class="pro-buttonGroup">',
-          //                 '<button class="btn btn-danger pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>',
-          //                 '<button class="btn btn-success pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>',
+          //                 '<button class="btn btn-danger pro-equipDelete-btn" data-toggle="modal" data-target="#pro-equipDelete-modal">删除</button>',
+          //                 '<button class="btn btn-success pro-equipUpdate-btn" data-toggle="modal" data-target="#pro-equipUpdate-modal">修改</button>',
           //             '</div>',
           //         '</div>'
           //     );
           // });
-          // $('#pro-equit').append(domArr.join(''));
+          // $('#pro-equip').append(domArr.join(''));
           // /***************************************/
+      }
+    });
+}
+
+/**
+* 加载实验室卡片
+*/
+function loadLabRoomCard () {
+    // 初始化设备卡片
+    $.ajax({
+        type: "GET",
+        url: '_labRoom_ajax',
+        data: {},
+        dataType: "json",
+        success: function(retData){
+          $('#pro-labRoom').children().detach();
+          var domArr = [];
+          domArr.push(
+              '<div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">',
+                  '<div class="pro-labRoomName">添加</div>',
+              '</div>'
+          );
+          $.each(retData, function(i, e) {
+              domArr.push(
+                  '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '">',
+                      '<div class="pro-labRoomName">' + e.labRoomName + '</div>',
+                      '<div class="pro-buttonGroup">',
+                          '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
+                          '<button class="btn btn-success pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>',
+                      '</div>',
+                  '</div>'
+              );
+          });
+          $('#pro-labRoom').append(domArr.join(''));
+        },
+        error: function(){
+          // console.log('_labRoom_ajax', 'fail');
+          // alert('后台错误！');
+
+          /***************************************
+          * 用于前端test 测试状态：
+          */
+          /*ajax返回的数据*/
+          var retData = [
+            {
+              "labRoomName": "机器人实验室"
+            },
+            {
+              "labRoomName": "足球实验室"
+            },
+            {
+              "labRoomName": "操蛋实验室"
+            }
+          ];
+          /**************/
+          $('#pro-labRoom').children().detach();
+          var domArr = [];
+          domArr.push(
+              '<div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">',
+                  '<div class="pro-labRoomName">添加</div>',
+              '</div>'
+          );
+          $.each(retData, function(i, e) {
+              domArr.push(
+                  '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '">',
+                      '<div class="pro-labRoomName">' + e.labRoomName + '</div>',
+                      '<div class="pro-buttonGroup">',
+                          '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
+                          '<button class="btn btn-success pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>',
+                      '</div>',
+                  '</div>'
+              );
+          });
+          $('#pro-labRoom').append(domArr.join(''));
+          /***************************************/
       }
     });
 }
@@ -204,30 +287,30 @@ function loadLabOrder() {
 /**
 * 加载设备预约
 */
-function loadEquitOrder(){
+function loadEquipOrder(){
   $.ajax({
       type: 'GET',
-      url: '_equitOrder_ajax',
+      url: '_equipOrder_ajax',
       data: {},
       dataType: 'json',
       success: function(retData){
-        $('#pro-equit-order').children().detach();
+        $('#pro-equip-order').children().detach();
         var domArr = [];
         $.each(retData, function(i, e){
             domArr.push(
-                '<div class="equit-order order hvr-sweep-to-right">',
-                    '<div class="equitOrderId">' + e.equitOrderId + '</div>',
-                    '<div class="equitOrderDate">' + e.equitOrderDate + '</div>',
-                    '<div class="equitOrderContent">' + e.equitOrderName + ' ' + e.equitOrderNumber + '件 ' + e.equitOrderDay + '天</div>',
-                    '<div class="equitOrderApplicant">' + e.equitOrderApplicant + '</div>',
+                '<div class="equip-order order hvr-sweep-to-right">',
+                    '<div class="equipOrderId">' + e.equipOrderId + '</div>',
+                    '<div class="equipOrderDate">' + e.equipOrderDate + '</div>',
+                    '<div class="equipOrderContent">' + e.equipOrderName + ' ' + e.equipOrderNumber + '件 ' + e.equipOrderDay + '天</div>',
+                    '<div class="equipOrderApplicant">' + e.equipOrderApplicant + '</div>',
                     '<div class="pro-order-btnGroup">',
-                        '<button class="btn btn-success equitOrder-confirm-btn">批准</button>',
-                        '<button class="btn btn-danger equitOrder-refuse-btn">拒绝</button>',
+                        '<button class="btn btn-success equipOrder-confirm-btn">批准</button>',
+                        '<button class="btn btn-danger equipOrder-refuse-btn">拒绝</button>',
                     '</div>',
                 '</div>'
             );
         });
-        $('#pro-equit-order').append(domArr.join(''));
+        $('#pro-equip-order').append(domArr.join(''));
       },
       error: function() {
           alert('后台出错');
@@ -239,64 +322,64 @@ function loadEquitOrder(){
           // /*ajax返回的数据*/
           // var retData = [
           //   {
-          //     "equitOrderId": "0003",
-          //     "equitOrderName": "西瓜刀",
-          //     "equitOrderNumber": "10",
-          //     "equitOrderDay": "5",
-          //     "equitOrderApplicant": "sid",
-          //     "equitOrderDate": "2016-5-7"
+          //     "equipOrderId": "0003",
+          //     "equipOrderName": "西瓜刀",
+          //     "equipOrderNumber": "10",
+          //     "equipOrderDay": "5",
+          //     "equipOrderApplicant": "sid",
+          //     "equipOrderDate": "2016-5-7"
           //   },
           //   {
-          //     "equitOrderId": "0004",
-          //     "equitOrderName": "狼牙棒",
-          //     "equitOrderNumber": "5",
-          //     "equitOrderDay": "10",
-          //     "equitOrderApplicant": "mingen",
-          //     "equitOrderDate": "2016-5-7"
+          //     "equipOrderId": "0004",
+          //     "equipOrderName": "狼牙棒",
+          //     "equipOrderNumber": "5",
+          //     "equipOrderDay": "10",
+          //     "equipOrderApplicant": "mingen",
+          //     "equipOrderDate": "2016-5-7"
           //   },
           //   {
-          //     "equitOrderId": "0005",
-          //     "equitOrderName": "倚天剑",
-          //     "equitOrderNumber": "10",
-          //     "equitOrderDay": "2",
-          //     "equitOrderApplicant": "nat",
-          //     "equitOrderDate": "2016-5-7"
+          //     "equipOrderId": "0005",
+          //     "equipOrderName": "倚天剑",
+          //     "equipOrderNumber": "10",
+          //     "equipOrderDay": "2",
+          //     "equipOrderApplicant": "nat",
+          //     "equipOrderDate": "2016-5-7"
           //   },
           //   {
-          //     "equitOrderId": "0006",
-          //     "equitOrderName": "绝世好剑",
-          //     "equitOrderNumber": "5",
-          //     "equitOrderDay": "6",
-          //     "equitOrderApplicant": "bob",
-          //     "equitOrderDate": "2016-5-7"
+          //     "equipOrderId": "0006",
+          //     "equipOrderName": "绝世好剑",
+          //     "equipOrderNumber": "5",
+          //     "equipOrderDay": "6",
+          //     "equipOrderApplicant": "bob",
+          //     "equipOrderDate": "2016-5-7"
           //   },
           //   {
-          //     "equitOrderId": "0007",
-          //     "equitOrderName": "屠龙刀",
-          //     "equitOrderNumber": "10",
-          //     "equitOrderDay": "1",
-          //     "equitOrderApplicant": "airdy",
-          //     "equitOrderDate": "2016-5-7"
+          //     "equipOrderId": "0007",
+          //     "equipOrderName": "屠龙刀",
+          //     "equipOrderNumber": "10",
+          //     "equipOrderDay": "1",
+          //     "equipOrderApplicant": "airdy",
+          //     "equipOrderDate": "2016-5-7"
           //   },
           // ];
           // /**************/
-          // $('#pro-equit-order').children().detach();
+          // $('#pro-equip-order').children().detach();
           // var domArr = [];
           // $.each(retData, function(i, e){
           //     domArr.push(
-          //         '<div class="equit-order order hvr-sweep-to-right">',
-          //             '<div class="equitOrderId">' + e.equitOrderId + '</div>',
-          //             '<div class="equitOrderDate">' + e.equitOrderDate + '</div>',
-          //             '<div class="equitOrderContent">' + e.equitOrderName + ' ' + e.equitOrderNumber + '件 ' + e.equitOrderDay + '天</div>',
-          //             '<div class="equitOrderApplicant">' + e.equitOrderApplicant + '</div>',
+          //         '<div class="equip-order order hvr-sweep-to-right">',
+          //             '<div class="equipOrderId">' + e.equipOrderId + '</div>',
+          //             '<div class="equipOrderDate">' + e.equipOrderDate + '</div>',
+          //             '<div class="equipOrderContent">' + e.equipOrderName + ' ' + e.equipOrderNumber + '件 ' + e.equipOrderDay + '天</div>',
+          //             '<div class="equipOrderApplicant">' + e.equipOrderApplicant + '</div>',
           //             '<div class="pro-order-btnGroup">',
-          //                 '<button class="btn btn-success equitOrder-confirm-btn">批准</button>',
-          //                 '<button class="btn btn-danger equitOrder-refuse-btn">拒绝</button>',
+          //                 '<button class="btn btn-success equipOrder-confirm-btn">批准</button>',
+          //                 '<button class="btn btn-danger equipOrder-refuse-btn">拒绝</button>',
           //             '</div>',
           //         '</div>'
           //     );
           // });
-          // $('#pro-equit-order').append(domArr.join(''));
+          // $('#pro-equip-order').append(domArr.join(''));
           // /***************************************/
       }
   });
@@ -307,15 +390,15 @@ function loadEquitOrder(){
 */
 function basicEvent(){
     // 删除仪器
-    $('.pro-equitDelete-btn').on('click', function(){
-        $('#pro-equitDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));
+    $('.pro-equipDelete-btn').on('click', function(){
+        $('#pro-equipDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));
     });
 
-    $('#pro-equitDelete').on('click', function(){
-        var assetName = $('#pro-equitDelete-modal-label').text();
+    $('#pro-equipDelete').on('click', function(){
+        var assetName = $('#pro-equipDelete-modal-label').text();
         $.ajax({
             type: 'POST',
-            url: '_del_equit',
+            url: '_del_equip',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
@@ -324,12 +407,12 @@ function basicEvent(){
                 }
                 if(retData.status === '1') {
                     alert('删除成功');
-                    loadEquitCard();
+                    loadEquipCard();
                 }
             },
             error: function(){
                 alert('后台错误');
-                console.log('del_equit fail');
+                console.log('del_equip fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：ok
@@ -344,7 +427,7 @@ function basicEvent(){
                 // }
                 // if(retData.status === '1') {
                 //     alert('删除成功');
-                //     loadEquitCard();
+                //     loadEquipCard();
                 // }
                 //
                 // /***************************************/
@@ -353,24 +436,24 @@ function basicEvent(){
     });
 
     // 修改仪器
-    $('.pro-equitUpdate-btn').on('click', function(){
+    $('.pro-equipUpdate-btn').on('click', function(){
         var assetName = $(this).parents('.card').attr('data-assetName')
-        $('#pro-equitUpdate-modal-label').text(assetName);
+        $('#pro-equipUpdate-modal-label').text(assetName);
         $.ajax({
             type: 'POST',
-            url: '_equit_info',
+            url: '_equip_info',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
-                $('#pro-equitUpdate-modal .pro-equitInfo').children().detach();
-                var equitInfo = '<div class="pro-equitInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                                '<div class="pro-equitInfo-className">分类名称： ' + retData.className + '</div>' +
-                                '<div class="pro-equitInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                                '<div class="pro-equitInfo-number">数量： ' + retData.number + '</div>';
-                $('#pro-equitUpdate-modal .pro-equitInfo').append(equitInfo);
+                $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
+                var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                                '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                                '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                                '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
+                $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
             },
             error: function(){
-                console.log('_equit_info fail');
+                console.log('_equip_info fail');
                 alert('后台错误！');
 
                 /***************************************
@@ -384,20 +467,20 @@ function basicEvent(){
                 //   "number": "1"
                 // };
                 // /**************/
-                // $('#pro-equitUpdate-modal .pro-equitInfo').children().detach();
-                // var equitInfo = '<div class="pro-equitInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                //                 '<div class="pro-equitInfo-className">分类名称： ' + retData.className + '</div>' +
-                //                 '<div class="pro-equitInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                //                 '<div class="pro-equitInfo-number">数量： ' + retData.number + '</div>';
-                // $('#pro-equitUpdate-modal .pro-equitInfo').append(equitInfo);
+                // $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
+                // var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                //                 '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                //                 '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                //                 '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
+                // $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
                 // /***************************************/
             }
         });
     });
 
-    $('#post-equitUpdate').on('click', function(){
+    $('#post-equipUpdate').on('click', function(){
         var params = {
-            assetName: $('#pro-equitUpdate-modal-label').text(),
+            assetName: $('#pro-equipUpdate-modal-label').text(),
             classNo: $('#pro-input-classNo').val(),
             className: $('#pro-input-className').val(),
             valueType: $('#pro-input-valueType').val(),
@@ -406,7 +489,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_update_equit',
+            url: '_update_equip',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -415,12 +498,12 @@ function basicEvent(){
               }
               if(retData.status === '1') {
                   alert('修改成功');
-                  loadEquitCard();
+                  loadEquipCard();
               }
             },
             error: function(){
                 alert('后台错误');
-                console.log('_update_equit fail');
+                console.log('_update_equip fail');
                 // /***************************************
                 // * 用于前端test 测试状态：
                 // */
@@ -434,7 +517,7 @@ function basicEvent(){
                 // }
                 // if(retData.status === '1') {
                 //     alert('修改成功');
-                //     loadEquitCard();
+                //     loadEquipCard();
                 // }
                 // /***************************************/
             }
@@ -442,7 +525,7 @@ function basicEvent(){
     });
 
     // 添加仪器
-    $('#post-equitAdd').on('click', function(){
+    $('#post-equipAdd').on('click', function(){
         var params = {
             assetName: $('#pro-input-add-assetName').val(),
             classNo: $('#pro-input-add-classNo').val(),
@@ -453,7 +536,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_add_equit',
+            url: '_add_equip',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -462,12 +545,12 @@ function basicEvent(){
               }
               if(retData.status === '1') {
                   alert('添加成功');
-                  loadEquitCard();
+                  loadEquipCard();
               }
             },
             error: function(){
                 alert('后台错误');
-                console.log('add_equit fail');
+                console.log('add_equip fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：
@@ -482,12 +565,190 @@ function basicEvent(){
                 // }
                 // if(retData.status === '1') {
                 //     alert('添加成功');
-                //     loadEquitCard();
+                //     loadEquipCard();
                 // }
                 // /***************************************/
             }
         });
     });
+
+    // 删除实验室
+    $('.pro-labRoomDelete-btn').on('click', function(){
+        $('#pro-labRoomDelete-modal-label').text($(this).parents('.card').attr('data-labRoomName'));
+    });
+
+    $('#pro-labRoomDelete').on('click', function(){
+        var labRoomName = $('#pro-labRoomDelete-modal-label').text();
+        $.ajax({
+            type: 'POST',
+            url: '_del_labRoom',
+            data: {labRoomName: labRoomName},
+            dataType: 'json',
+            success: function(retData){
+                if(retData.status === '0') {
+                    alert('删除失败');
+                }
+                if(retData.status === '1') {
+                    alert('删除成功');
+                    loadEquipCard();
+                }
+            },
+            error: function(){
+                alert('后台错误');
+                console.log('_del_labRoom fail');
+
+                // /***************************************
+                // * 用于前端test 测试状态：ok
+                // */
+                // /*ajax返回的数据*/
+                // var retData = {
+                //   "status": "1"
+                // };
+                // /**************/
+                // if(retData.status === '0') {
+                //     alert('删除失败');
+                // }
+                // if(retData.status === '1') {
+                //     alert('删除成功');
+                //     loadEquipCard();
+                // }
+                //
+                // /***************************************/
+            }
+        });
+    });
+
+    // 修改实验室
+    $('.pro-labRoomUpdate-btn').on('click', function(){
+        var labRoomName = $(this).parents('.card').attr('data-labRoomName')
+        $('#pro-labRoomUpdate-modal-label').text(labRoomName);
+        $.ajax({
+            type: 'POST',
+            url: '_labRoom_info',
+            data: {labRoomName: labRoomName},
+            dataType: 'json',
+            success: function(retData){
+                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
+                var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
+            },
+            error: function(){
+                // console.log('_labRoom_info fail');
+                // alert('后台错误！');
+
+                /***************************************
+                * 用于前端test 测试状态：ok
+                */
+                /*ajax返回的数据*/
+                var retData = {
+                  "labRoomName":"机器人实验室",
+                  "labRoomType":"机器人",
+                  "labRoomIntro":"棒"
+                };
+                /**************/
+                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
+                var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
+                /***************************************/
+            }
+        });
+    });
+
+    $('#post-labRoomUpdate').on('click', function(){
+        var params = {
+            labRoomName: $('#pro-input-labRoomName').val(),
+            labRoomType: $('#pro-input-labRoomType').val(),
+            labRoomIntro: $('#pro-input-labRoomIntro').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '_update_labRoom',
+            data: params,
+            dataType: 'json',
+            success: function(retData){
+              if(retData.status === '0') {
+                  alert('修改失败');
+              }
+              if(retData.status === '1') {
+                  alert('修改成功');
+                  loadEquipCard();
+              }
+            },
+            error: function(){
+                alert('后台错误');
+                console.log('_update_equip fail');
+                // /***************************************
+                // * 用于前端test 测试状态：
+                // */
+                // /*ajax返回的数据*/
+                // var retData = {
+                //   "status": "1"
+                // };
+                // /**************/
+                // if(retData.status === '0') {
+                //     alert('修改失败');
+                // }
+                // if(retData.status === '1') {
+                //     alert('修改成功');
+                //     loadEquipCard();
+                // }
+                // /***************************************/
+            }
+        });
+    });
+
+    // 添加实验室
+    $('#post-labRoomAdd').on('click', function(){
+        var params = {
+            labRoomName: $('#pro-input-add-labRoomName').val(),
+            labRoomType: $('#pro-input-add-labRoomType').val(),
+            labRoomIntro: $('#pro-input-add-labRoomIntro').val(),
+        };
+        console.log(params);
+
+        $.ajax({
+            type: 'POST',
+            url: '_add_labRoom',
+            data: params,
+            dataType: 'json',
+            success: function(retData){
+              if(retData.status === '0') {
+                  alert('添加失败');
+              }
+              if(retData.status === '1') {
+                  alert('添加成功');
+                  loadEquipCard();
+              }
+            },
+            error: function(){
+                alert('后台错误');
+                console.log('add_labRoom fail');
+
+                // /***************************************
+                // * 用于前端test 测试状态：
+                // */
+                // /*ajax返回的数据*/
+                // var retData = {
+                //   "status": "1"
+                // };
+                // /**************/
+                // if(retData.status === '0') {
+                //     alert('添加失败');
+                // }
+                // if(retData.status === '1') {
+                //     alert('添加成功');
+                //     loadEquipCard();
+                // }
+                // /***************************************/
+            }
+        });
+    });
+
 
     // 批准实验室预约
     $('.labOrder-confirm-btn').on('click', function(){
@@ -570,11 +831,11 @@ function basicEvent(){
     });
 
     // 批准设备预约
-    $('.equitOrder-confirm-btn').on('click', function(){
+    $('.equipOrder-confirm-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_confirm_equitOrder',
-            data: {equitOrderId: $(this).parents('.equit-order').children('.equitOrderId').text()},
+            url: '_confirm_equipOrder',
+            data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
             success: function(retData){
               if(retData.status === '0') {
@@ -582,12 +843,12 @@ function basicEvent(){
               }
               if(retData.status === '1') {
                   alert('批准设备预约成功');
-                  loadEquitOrder();
+                  loadEquipOrder();
               }
             },
             error: function(){
               alert('后台出错');
-              console.log('_confirm_equitOrder fail');
+              console.log('_confirm_equipOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：ok
@@ -602,7 +863,7 @@ function basicEvent(){
               // }
               // if(retData.status === '1') {
               //     alert('批准设备预约成功');
-              //     loadEquitOrder();
+              //     loadEquipOrder();
               // }
               // /***************************************/
             }
@@ -610,11 +871,11 @@ function basicEvent(){
     });
 
     // 拒绝设备预约
-    $('.equitOrder-refuse-btn').on('click', function(){
+    $('.equipOrder-refuse-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_refuse_equitOrder',
-            data: {equitOrderId: $(this).parents('.equit-order').children('.equitOrderId').text()},
+            url: '_refuse_equipOrder',
+            data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
             success: function(retData){
               if(retData === '0') {
@@ -622,12 +883,12 @@ function basicEvent(){
               }
               if(retData === '1') {
                   alert('拒绝设备预约成功');
-                  loadEquitOrder();
+                  loadEquipOrder();
               }
             },
             error: function(){
               alert('后台出错');
-              console.log('_refuse_equitOrder fail');
+              console.log('_refuse_equipOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：ok
@@ -642,7 +903,7 @@ function basicEvent(){
               // }
               // if(retData.status === '1') {
               //     alert('拒绝设备预约成功');
-              //     loadEquitOrder();
+              //     loadEquipOrder();
               // }
               // /***************************************/
             }

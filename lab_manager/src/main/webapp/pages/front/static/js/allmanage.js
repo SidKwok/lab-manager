@@ -118,9 +118,9 @@ function init () {
         dataType: 'json',
         success: function(retData) {
             var lab = retData.lab;
-            var equit = retData.equit;
+            var equip = retData.equip;
             var domLab = [];
-            var domEquit = [];
+            var domEquip = [];
             $('#all-lab-orderState').children().detach();
             $.each(lab, function(i, e){
                 domLab.push(
@@ -134,18 +134,18 @@ function init () {
             });
             $('#all-lab-orderState').append(domLab.join(''));
 
-            $('#all-equit-orderState').children().detach();
-            $.each(equit, function(i, e){
-                domEquit.push(
-                    '<div class="all-equit-order order hvr-sweep-to-right">',
-                        '<div class="allEquitOrderId">' + e.equitOrderId + '</div>',
-                        '<div class="allEquitOrderDate">' + e.equitDate + '</div>',
-                        '<div class="allEquitOrderContent">' + e.equitName + ' ' + e.equitNumber + '件 ' + e.equitDays + '天 ' + '</div>',
-                        '<div class="allEquitOrderState">状态：' + e.state + '</div>',
+            $('#all-equip-orderState').children().detach();
+            $.each(equip, function(i, e){
+                domEquip.push(
+                    '<div class="all-equip-order order hvr-sweep-to-right">',
+                        '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
+                        '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
+                        '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
+                        '<div class="allEquipOrderState">状态：' + e.state + '</div>',
                     '</div>'
                 );
             });
-            $('#all-equit-orderState').append(domEquit.join(''));
+            $('#all-equip-orderState').append(domEquip.join(''));
         },
         error: function() {
             console.log('_orderState fail');
@@ -175,30 +175,30 @@ function init () {
             //       "state": "拒绝"
             //     }
             //   ],
-            //   "equit":[
+            //   "equip":[
             //     {
-            //       "equitName": "西瓜刀",
-            //       "equitDate": "2015-9-10",
-            //       "equitOrderId": "001",
-            //       "equitDays": "10",
-            //       "equitNumber": "2",
+            //       "equipName": "西瓜刀",
+            //       "equipDate": "2015-9-10",
+            //       "equipOrderId": "001",
+            //       "equipDays": "10",
+            //       "equipNumber": "2",
             //       "state": "未决定"
             //     },
             //     {
-            //       "equitName": "狼牙棒",
-            //       "equitDate": "2015-11-10",
-            //       "equitOrderId": "002",
-            //       "equitDays": "2",
-            //       "equitNumber": "10",
+            //       "equipName": "狼牙棒",
+            //       "equipDate": "2015-11-10",
+            //       "equipOrderId": "002",
+            //       "equipDays": "2",
+            //       "equipNumber": "10",
             //       "state": "未决定"
             //     }
             //   ]
             // };
             // /**************/
             // var lab = retData.lab;
-            // var equit = retData.equit;
+            // var equip = retData.equip;
             // var domLab = [];
-            // var domEquit = [];
+            // var domEquip = [];
             // $('#all-lab-orderState').children().detach();
             // $.each(lab, function(i, e){
             //     domLab.push(
@@ -212,18 +212,18 @@ function init () {
             // });
             // $('#all-lab-orderState').append(domLab.join(''));
             //
-            // $('#all-equit-orderState').children().detach();
-            // $.each(equit, function(i, e){
-            //     domEquit.push(
-            //         '<div class="all-equit-order order hvr-sweep-to-right">',
-            //             '<div class="allEquitOrderId">' + e.equitOrderId + '</div>',
-            //             '<div class="allEquitOrderDate">' + e.equitDate + '</div>',
-            //             '<div class="allEquitOrderContent">' + e.equitName + ' ' + e.equitNumber + '件 ' + e.equitDays + '天 ' + '</div>',
-            //             '<div class="allEquitOrderState">状态：' + e.state + '</div>',
+            // $('#all-equip-orderState').children().detach();
+            // $.each(equip, function(i, e){
+            //     domEquip.push(
+            //         '<div class="all-equip-order order hvr-sweep-to-right">',
+            //             '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
+            //             '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
+            //             '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
+            //             '<div class="allEquipOrderState">状态：' + e.state + '</div>',
             //         '</div>'
             //     );
             // });
-            // $('#all-equit-orderState').append(domEquit.join(''));
+            // $('#all-equip-orderState').append(domEquip.join(''));
             // /***************************************/
         }
     });
@@ -233,27 +233,27 @@ function init () {
     */
     $.ajax({
         type: "GET",
-        url: '_equit_ajax',
+        url: '_equip_ajax',
         data: {},
         dataType: "json",
         success: function(retData){
-          $('#lab-equit').children().detach();
+          $('#lab-equip').children().detach();
           var domArr = [];
           $.each(retData, function(i, e) {
               domArr.push(
                   '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-                      '<div class="lab-equitName">' + e.assetName + '</div>',
+                      '<div class="lab-equipName">' + e.assetName + '</div>',
                       '<div class="lab-buttonGroup">',
-                          '<button class="btn btn-info lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>',
-                          '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equitOrder-modal">预约</button>',
+                          '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
+                          '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
                       '</div>',
                   '</div>'
               );
           });
-          $('#lab-equit').append(domArr.join(''));
+          $('#lab-equip').append(domArr.join(''));
         },
         error: function(){
-          console.log('_equit_ajax', 'fail');
+          console.log('_equip_ajax', 'fail');
           alert('后台错误！');
 
           // /***************************************
@@ -278,20 +278,20 @@ function init () {
           //   },
           // ];
           // /**************/
-          // $('#lab-equit').children().detach();
+          // $('#lab-equip').children().detach();
           // var domArr = [];
           // $.each(retData, function(i, e) {
           //     domArr.push(
           //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-          //             '<div class="lab-equitName">' + e.assetName + '</div>',
+          //             '<div class="lab-equipName">' + e.assetName + '</div>',
           //             '<div class="lab-buttonGroup">',
-          //                 '<button class="btn btn-info lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>',
-          //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equitOrder-modal">预约</button>',
+          //                 '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
+          //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
           //             '</div>',
           //         '</div>'
           //     );
           // });
-          // $('#lab-equit').append(domArr.join(''));
+          // $('#lab-equip').append(domArr.join(''));
           // /***************************************/
       }
     });
@@ -593,24 +593,24 @@ function basicEvent() {
     });
 
     // 设备简介
-    $('.lab-equitInfo-btn').on('click', function(){
+    $('.lab-equipInfo-btn').on('click', function(){
         var assetName = $(this).parents('.card').attr('data-assetName');
-        $('#lab-equitInfo-modal-label').text(assetName);
+        $('#lab-equipInfo-modal-label').text(assetName);
         $.ajax({
             type: 'POST',
-            url: '_equit_info',
+            url: '_equip_info',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
-                $('#lab-equitInfo-modal .modal-body').children().detach();
-                var equitInfo = '<div class="lab-equitInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                                '<div class="lab-equitInfo-className">分类名称： ' + retData.className + '</div>' +
-                                '<div class="lab-equitInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                                '<div class="lab-equitInfo-number">数量： ' + retData.number + '</div>';
-                $('#lab-equitInfo-modal .modal-body').append(equitInfo);
+                $('#lab-equipInfo-modal .modal-body').children().detach();
+                var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                                '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                                '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                                '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                $('#lab-equipInfo-modal .modal-body').append(equipInfo);
             },
             error: function(){
-                console.log('equit_info fail');
+                console.log('equip_info fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -624,12 +624,12 @@ function basicEvent() {
                 //   "number": "112"
                 // };
                 // /**************/
-                // $('#lab-equitInfo-modal .modal-body').children().detach();
-                // var equitInfo = '<div class="lab-equitInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                //                 '<div class="lab-equitInfo-className">分类名称： ' + retData.className + '</div>' +
-                //                 '<div class="lab-equitInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                //                 '<div class="lab-equitInfo-number">数量： ' + retData.number + '</div>';
-                // $('#lab-equitInfo-modal .modal-body').append(equitInfo);
+                // $('#lab-equipInfo-modal .modal-body').children().detach();
+                // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
                 // /***************************************/
             }
         });
@@ -638,15 +638,15 @@ function basicEvent() {
     // 预约设备
     $('.lab-order-btn').on('click', function(){
       var assetName = $(this).parents('.card').attr('data-assetName');
-      $('#lab-equitOrder-modal-label').text(assetName);
+      $('#lab-equipOrder-modal-label').text(assetName);
     });
 
-    $('#post-equitOrder').on('click', function(){
+    $('#post-equipOrder').on('click', function(){
         var params = {
-            assetName: $('#lab-equitOrder-modal-label').text(),
-            number: $('#input-equitNumber').val(),
-            days: $('#input-equitDays').val(),
-            applicant: $('#input-equitApplicant').val()
+            assetName: $('#lab-equipOrder-modal-label').text(),
+            number: $('#input-equipNumber').val(),
+            days: $('#input-equipDays').val(),
+            applicant: $('#input-equipApplicant').val()
         };
 
         $.ajax({

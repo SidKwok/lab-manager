@@ -17,8 +17,15 @@ function init () {
     $($('.nav-location')[4]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
     $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
-    loadDutyState();
-    loadGrade();
+    if (role !== 'student'){
+        $('#stu-duty').children().detach();
+        $('#stu-duty').append('<h2>本区域只对学生开放</h2>');
+        $('#stu-grade').children().detach();
+        $('#stu-grade').append('<h2>本区域只对学生开放</h2>');
+    } else {
+        loadDutyState();
+        loadGrade();
+    }
 }
 
 /**

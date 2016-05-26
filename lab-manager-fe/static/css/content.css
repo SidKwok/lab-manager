@@ -84,12 +84,12 @@ body {
 #all-lab-orderState .hvr-sweep-to-right:before{
     background: #3eaca8;
 }
-#all-equit-orderState .hvr-sweep-to-right:before{
+#all-equip-orderState .hvr-sweep-to-right:before{
     background: #ef4566;
 }
 
 #all-lab-orderState .allLabOrderId,
-#all-equit-orderState .allEquitOrderId
+#all-equip-orderState .allEquipOrderId
  {
     position: absolute;
     top: 7%;
@@ -97,20 +97,20 @@ body {
     font-size: 18px;
 }
 #all-lab-orderState .allLabOrderDate,
-#all-equit-orderState .allEquitOrderDate {
+#all-equip-orderState .allEquipOrderDate {
     position: absolute;
     bottom: 15%;
     right: 2%;
 }
 #all-lab-orderState .allLabOrderContent,
-#all-equit-orderState .allEquitOrderContent{
+#all-equip-orderState .allEquipOrderContent{
     position: absolute;
     top: 30%;
     left: 15%;
     font-size: 24px;
 }
 #all-lab-orderState .allLabOrderState,
-#all-equit-orderState .allEquitOrderState{
+#all-equip-orderState .allEquipOrderState{
     position: absolute;
     bottom: 2%;
     right: 2%;
@@ -141,14 +141,14 @@ body {
 /**
 * 设备仪器预约
 */
-#lab-equit .flex-box{
+#lab-equip .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-#lab-equit .card {
+#lab-equip .card {
     width: 200px;
     height: 200px;
     border-radius: 4px;
@@ -159,7 +159,7 @@ body {
             box-shadow: 2px 2px 12px;
 }
 
-#lab-equit .lab-equitName {
+#lab-equip .lab-equipName {
     font-size: 24px;
     padding: 60px 0 30px 50px;
 }
@@ -217,14 +217,14 @@ body {
 /**
 * 设备仪器管理
 */
-#pro-equit .flex-box{
+#pro-equip .flex-box{
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-#pro-equit .card {
+#pro-equip .card {
     width: 200px;
     height: 200px;
     border-radius: 4px;
@@ -234,18 +234,60 @@ body {
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
 }
-#pro-equit .pro-equitName {
+#pro-equip .pro-equipName {
     font-size: 24px;
     padding: 60px 0 30px 50px;
 }
-#pro-equit .pro-buttonGroup {
+#pro-equip .pro-buttonGroup {
     margin-top: 10px;
 }
 
-#pro-equit .pro-buttonGroup button {
+#pro-equip .pro-buttonGroup button {
     margin: 0 18px;
 }
-#pro-equitAdd {
+#pro-equipAdd {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #ef4566;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+
+/**
+* 实验室管理
+*/
+#pro-labRoom .flex-box{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#pro-labRoom .card {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+    flex-shrink: 0;
+    background: #3eaca8;
+    -webkit-box-shadow: 2px 2px 12px;
+            box-shadow: 2px 2px 12px;
+}
+#pro-labRoom .pro-labRoomName {
+    font-size: 24px;
+    padding: 60px 0 30px 50px;
+}
+#pro-labRoom .pro-buttonGroup {
+    margin-top: 10px;
+}
+
+#pro-labRoom .pro-buttonGroup button {
+    margin: 0 18px;
+}
+#pro-labRoomAdd {
     width: 200px;
     height: 200px;
     border-radius: 4px;
@@ -273,12 +315,12 @@ body {
 #pro-lab-order .hvr-sweep-to-right:before{
     background: #3eaca8;
 }
-#pro-equit-order .hvr-sweep-to-right:before{
+#pro-equip-order .hvr-sweep-to-right:before{
     background: #ef4566;
 }
 
 #pro-lab-order .labOrderId,
-#pro-equit-order .equitOrderId
+#pro-equip-order .equipOrderId
  {
     position: absolute;
     top: 7%;
@@ -286,20 +328,20 @@ body {
     font-size: 18px;
 }
 #pro-lab-order .labOrderDate,
-#pro-equit-order .equitOrderDate {
+#pro-equip-order .equipOrderDate {
     position: absolute;
     bottom: 15%;
     left: 2%;
 }
 #pro-lab-order .labOrderContent,
-#pro-equit-order .equitOrderContent{
+#pro-equip-order .equipOrderContent{
     position: absolute;
     top: 30%;
     left: 15%;
     font-size: 24px;
 }
 #pro-lab-order .labOrderApplicant,
-#pro-equit-order .equitOrderApplicant{
+#pro-equip-order .equipOrderApplicant{
     position: absolute;
     bottom: 2%;
     left: 2%;

@@ -10,3 +10,8 @@ $('#menuLeft').on('click', 'li' ,function(event) {
     $('.content').children().css('display', 'none');
     $(content).css('display', 'block');
 });
+
+/**
+* 初始化弹出框
+*/
+$('[data-toggle="popover"]').popover()

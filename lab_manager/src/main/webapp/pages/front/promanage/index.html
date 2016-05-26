@@ -38,31 +38,53 @@
         <!--左侧菜单栏-->
         <div id="menuLeft">
             <ul>
-                <li class="active"><a href="#pro-equit"><span>设备仪器管理</span></a></li>
+                <li class="active"><a href="#pro-equip"><span>设备仪器管理</span></a></li>
+                <li><a href="#pro-labRoom"><span>实验室管理</span></a></li>
                 <li><a href="#pro-order"><span>预约管理</span></a></li>
-                <li><a href="#pro-consume"><span>物资耗材管理</span></a></li>
             </ul>
         </div>
 
         <!--内容块-->
         <div class="content">
-            <div id="pro-equit">
+            <div id="pro-equip">
                 <div class="flex-box">
-                  <div class="hvr-pulse" id="pro-equitAdd" data-toggle="modal" data-target="#pro-equitAdd-modal">
-                      <div class="pro-equitName">添加</div>
+                  <div class="hvr-pulse" id="pro-equipAdd" data-toggle="modal" data-target="#pro-equipAdd-modal">
+                      <div class="pro-equipName">添加</div>
                   </div>
                   <div class="card hvr-bounce-in" data-assetName="西瓜刀">
-                      <div class="pro-equitName">西瓜刀</div>
+                      <div class="pro-equipName">西瓜刀</div>
                       <div class="pro-buttonGroup">
-                          <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
-                          <button class="btn btn-success" class="pro-update-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                          <button class="btn btn-danger" class="pro-equipDelete-btn" data-toggle="modal" data-target="#pro-equipDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-equipUpdate-btn" data-toggle="modal" data-target="#pro-equipUpdate-modal">修改</button>
                       </div>
                   </div>
                   <div class="card hvr-bounce-in" data-assetName="狼牙棒">
-                      <div class="pro-equitName">狼牙棒</div>
+                      <div class="pro-equipName">狼牙棒</div>
                       <div class="pro-buttonGroup">
-                          <button class="btn btn-danger" class="pro-equitDelete-btn" data-toggle="modal" data-target="#pro-equitDelete-modal">删除</button>
-                          <button class="btn btn-success" class="pro-equitUpdate-btn" data-toggle="modal" data-target="#pro-equitUpdate-modal">修改</button>
+                          <button class="btn btn-danger" class="pro-equipDelete-btn" data-toggle="modal" data-target="#pro-equipDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-equipUpdate-btn" data-toggle="modal" data-target="#pro-equipUpdate-modal">修改</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+            <div id="pro-labRoom" style="display: none;">
+                <div class="flex-box">
+                  <div class="hvr-pulse" id="pro-labRoomAdd" data-toggle="modal" data-target="#pro-labRoomAdd-modal">
+                      <div class="pro-labRoomName">添加</div>
+                  </div>
+                  <div class="card hvr-bounce-in" data-labRoomName="信工805">
+                      <div class="pro-labRoomName">信工805</div>
+                      <div class="pro-buttonGroup">
+                          <button class="btn btn-danger" class="pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>
+                      </div>
+                  </div>
+                  <div class="card hvr-bounce-in" data-labRoomName="信工806">
+                      <div class="pro-labRoomName">信工806</div>
+                      <div class="pro-buttonGroup">
+                          <button class="btn btn-danger" class="pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>
+                          <button class="btn btn-success" class="pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>
                       </div>
                   </div>
                 </div>
@@ -92,71 +114,87 @@
                       </div>
                   </div>
                 </div>
-                <div id="pro-equit-order">
-                  <div class="equit-order order hvr-sweep-to-right">
-                    <div class="equitOrderId">0003</div>
-                    <div class="equitOrderDate">2016-5-21</div>
-                    <div class="equitOrderContent">西瓜刀 10件 5天</div>
-                    <div class="equitOrderApplicant">from: sid</div>
+                <div id="pro-equip-order">
+                  <div class="equip-order order hvr-sweep-to-right">
+                    <div class="equipOrderId">0003</div>
+                    <div class="equipOrderDate">2016-5-21</div>
+                    <div class="equipOrderContent">西瓜刀 10件 5天</div>
+                    <div class="equipOrderApplicant">from: sid</div>
                     <div class="pro-order-btnGroup">
-                        <button class="btn btn-success" class="equitOrder-confirm-btn">批准</button>
-                        <button class="btn btn-danger" class="equitOrder-refuse-btn">拒绝</button>
+                        <button class="btn btn-success" class="equipOrder-confirm-btn">批准</button>
+                        <button class="btn btn-danger" class="equipOrder-refuse-btn">拒绝</button>
                     </div>
                   </div>
-                  <div class="equit-order order hvr-sweep-to-right">
-                    <div class="equitOrderId">0004</div>
-                    <div class="equitOrderDate">2016-5-21</div>
-                    <div class="equitOrderContent">狼牙棒 5件 10天</div>
-                    <div class="equitOrderApplicant">from: mingen</div>
+                  <div class="equip-order order hvr-sweep-to-right">
+                    <div class="equipOrderId">0004</div>
+                    <div class="equipOrderDate">2016-5-21</div>
+                    <div class="equipOrderContent">狼牙棒 5件 10天</div>
+                    <div class="equipOrderApplicant">from: mingen</div>
                     <div class="pro-order-btnGroup">
-                        <button class="btn btn-success" class="equitOrder-confirm-btn">批准</button>
-                        <button class="btn btn-danger" class="equitOrder-refuse-btn">拒绝</button>
+                        <button class="btn btn-success" class="equipOrder-confirm-btn">批准</button>
+                        <button class="btn btn-danger" class="equipOrder-refuse-btn">拒绝</button>
                     </div>
                   </div>
                 </div>
             </div>
 
-            <div id="pro-consume" style="display: none;">
-                物资耗材管理
-            </div>
 
         </div>
 
-        <!-- 删除提示框 -->
-        <div class="modal fade" id="pro-equitDelete-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitDelete-modal-label">
+        <!-- 删除设备提示框 -->
+        <div class="modal fade" id="pro-equipDelete-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equipDelete-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="pro-equitDelete-modal-label">西瓜刀</h4>
+                <h4 class="modal-title" id="pro-equipDelete-modal-label">西瓜刀</h4>
               </div>
               <div class="modal-body">
                   <p>确定要删除吗？</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-danger" id="pro-equitDelete">删除</button>
+                <button type="button" class="btn btn-danger" id="pro-equipDelete">删除</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 修改框 -->
-        <div class="modal fade" id="pro-equitUpdate-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitUpdate-modal-label">
+        <!-- 删除设备提示框 -->
+        <div class="modal fade" id="pro-labRoomDelete-modal" tabindex="-1" role="dialog" aria-labelledby="pro-labRoomDelete-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="pro-equitUpdate-modal-label">西瓜刀</h4>
+                <h4 class="modal-title" id="pro-labRoomDelete-modal-label">信工805</h4>
               </div>
               <div class="modal-body">
-                  <div class="pro-equitInfo">
-                    <div class="pro-equitInfo-classNo">分类代码： 0001</div>
-                    <div class="pro-equitInfo-className">分类名称：刀具</div>
-                    <div class="pro-equitInfo-valueType">价值类型：昂贵</div>
-                    <div class="pro-equitInfo-number">数量：10</div>
+                  <p>确定要删除吗？</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-danger" id="pro-labRoomDelete">删除</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 修改设备框 -->
+        <div class="modal fade" id="pro-equipUpdate-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equipUpdate-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-equipUpdate-modal-label">西瓜刀</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="pro-equipInfo">
+                    <div class="pro-equipInfo-classNo">分类代码： 0001</div>
+                    <div class="pro-equipInfo-className">分类名称：刀具</div>
+                    <div class="pro-equipInfo-valueType">价值类型：昂贵</div>
+                    <div class="pro-equipInfo-number">数量：10</div>
                   </div>
-                  <div class="pro-equitUpdateInput">
+                  <div class="pro-equipUpdateInput">
                       <input type="text" class="form-control" id="pro-input-classNo" placeholder="分类代码">
                       <input type="text" class="form-control" id="pro-input-className" placeholder="分类名称">
                       <input type="text" class="form-control" id="pro-input-valueType" placeholder="价格类型">
@@ -165,30 +203,79 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equitUpdate">修改</button>
+                <button type="button" class="btn btn-primary" id="post-equipUpdate">修改</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 添加框 -->
-        <div class="modal fade" id="pro-equitAdd-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equitAdd-modal-label">
+        <!-- 修改实验室框 -->
+        <div class="modal fade" id="pro-labRoomUpdate-modal" tabindex="-1" role="dialog" aria-labelledby="pro-labRoomUpdate-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="pro-equitAdd-modal-label">添加设备</h4>
+                <h4 class="modal-title" id="pro-labRoomUpdate-modal-label">信工805</h4>
               </div>
               <div class="modal-body">
-                  <input type="text" class="form-control" id="pro-input-add-assetName" placeholder="设备名称">
-                  <input type="text" class="form-control" id="pro-input-add-classNo" placeholder="分类代码">
-                  <input type="text" class="form-control" id="pro-input-add-className" placeholder="分类名称">
-                  <input type="text" class="form-control" id="pro-input-add-valueType" placeholder="价格类型">
-                  <input type="text" class="form-control" id="pro-input-add-number" placeholder="数量">
+                  <div class="pro-labRoomInfo">
+                    <div class="pro-labRoomInfo-labRoomName">实验室名称：信工805</div>
+                    <div class="pro-labRoomInfo-labRoomType">实验室类型：昂贵</div>
+                    <div class="pro-labRoomInfo-labRoomIntro">简介：卧槽</div>
+                  </div>
+                  <div class="pro-labRoomUpdateInput">
+                      <input type="text" class="form-control" id="pro-input-labRoomName" placeholder="实验室名称">
+                      <input type="text" class="form-control" id="pro-input-labRoomType" placeholder="实验室类型">
+                      <textarea type="text" class="form-control" id="pro-input-labRoomIntro" placeholder="简介..."></textarea>
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equitAdd">添加</button>
+                <button type="button" class="btn btn-primary" id="post-labRoomUpdate">修改</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 添加设备框 -->
+        <div class="modal fade" id="pro-equipAdd-modal" tabindex="-1" role="dialog" aria-labelledby="pro-equipAdd-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-equipAdd-modal-label">添加设备</h4>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" id="pro-input-add-assetName" placeholder="设备名称">
+                <input type="text" class="form-control" id="pro-input-add-classNo" placeholder="分类代码">
+                <input type="text" class="form-control" id="pro-input-add-className" placeholder="分类名称">
+                <input type="text" class="form-control" id="pro-input-add-valueType" placeholder="价格类型">
+                <input type="text" class="form-control" id="pro-input-add-number" placeholder="数量">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-equipAdd">添加</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 添加实验室框 -->
+        <div class="modal fade" id="pro-labRoomAdd-modal" tabindex="-1" role="dialog" aria-labelledby="pro-labRoomAdd-modal-label">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="pro-labRoomAdd-modal-label">添加设备</h4>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" id="pro-input-add-labRoomName" placeholder="实验室名称">
+                <input type="text" class="form-control" id="pro-input-add-labRoomType" placeholder="实验室类型">
+                <textarea type="text" class="form-control" id="pro-input-add-labRoomIntro" placeholder="简介..."></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="post-labRoomAdd">添加</button>
               </div>
             </div>
           </div>

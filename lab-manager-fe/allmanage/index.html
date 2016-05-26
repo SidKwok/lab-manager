@@ -39,7 +39,7 @@
         <div id="menuLeft">
             <ul>
                 <li class="active"><a href="#all-room"><span>实验室管理</span></a></li>
-                <li><a href="#lab-equit"><span>设备仪器预约</span></a></li>
+                <li><a href="#lab-equip"><span>设备仪器预约</span></a></li>
                 <li><a href="#lab-db"><span>数据查询统计</span></a></li>
                 <li><a href="#all-orderState"><span>预约状态</span></a></li>
                 <li><a href="#all-team"><span>实验队伍管理</span></a></li>
@@ -95,18 +95,18 @@
                     <div class="allLabOrderState">状态：拒绝</div>
                 </div>
               </div>
-              <div id="all-equit-orderState">
-                <div class="all-equit-order order hvr-sweep-to-right">
-                  <div class="allEquitOrderId">0003</div>
-                  <div class="allEquitOrderDate">2016-5-21</div>
-                  <div class="allEquitOrderContent">西瓜刀 10件 5天</div>
-                  <div class="allEquitOrderState">状态：拒绝</div>
+              <div id="all-equip-orderState">
+                <div class="all-equip-order order hvr-sweep-to-right">
+                  <div class="allEquipOrderId">0003</div>
+                  <div class="allEquipOrderDate">2016-5-21</div>
+                  <div class="allEquipOrderContent">西瓜刀 10件 5天</div>
+                  <div class="allEquipOrderState">状态：拒绝</div>
                 </div>
-                <div class="all-equit-order order hvr-sweep-to-right">
-                  <div class="allEquitOrderId">0004</div>
-                  <div class="allEquitOrderDate">2016-5-21</div>
-                  <div class="allEquitOrderContent">狼牙棒 5件 10天</div>
-                  <div class="allEquitOrderState">状态：允许</div>
+                <div class="all-equip-order order hvr-sweep-to-right">
+                  <div class="allEquipOrderId">0004</div>
+                  <div class="allEquipOrderDate">2016-5-21</div>
+                  <div class="allEquipOrderContent">狼牙棒 5件 10天</div>
+                  <div class="allEquipOrderState">状态：允许</div>
                 </div>
               </div>
           </div>
@@ -144,20 +144,20 @@
                   </table>
               </div>
           </div>
-          <div id="lab-equit" style="display: none;">
+          <div id="lab-equip" style="display: none;">
               <div class="flex-box">
                 <div class="card hvr-bounce-in" data-assetName="西瓜刀">
-                    <div class="lab-equitName">西瓜刀</div>
+                    <div class="lab-equipName">西瓜刀</div>
                     <div class="lab-buttonGroup">
-                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                        <button class="btn btn-info" class="lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equipOrder-modal" class="lab-order-btn">预约</button>
                     </div>
                 </div>
                 <div class="card hvr-bounce-in" data-assetName="狼牙棒">
-                    <div class="lab-equitName">狼牙棒</div>
+                    <div class="lab-equipName">狼牙棒</div>
                     <div class="lab-buttonGroup">
-                        <button class="btn btn-info" class="lab-equitInfo-btn" data-toggle="modal" data-target="#lab-equitInfo-modal">简介</button>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equitOrder-modal" class="lab-order-btn">预约</button>
+                        <button class="btn btn-info" class="lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#lab-equipOrder-modal" class="lab-order-btn">预约</button>
                     </div>
                 </div>
               </div>
@@ -254,18 +254,18 @@
         </div>
 
         <!-- 简介框 -->
-        <div class="modal fade" id="lab-equitInfo-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitInfo-modal-label">
+        <div class="modal fade" id="lab-equipInfo-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equipInfo-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="lab-equitInfo-modal-label">西瓜刀</h4>
+                <h4 class="modal-title" id="lab-equipInfo-modal-label">西瓜刀</h4>
               </div>
               <div class="modal-body">
-                  <div class="lab-equitInfo-classNo">分类代码： 0001</div>
-                  <div class="lab-equitInfo-className">分类名称：刀具</div>
-                  <div class="lab-equitInfo-valueType">价值类型：昂贵</div>
-                  <div class="lab-equitInfo-number">数量：10</div>
+                  <div class="lab-equipInfo-classNo">分类代码： 0001</div>
+                  <div class="lab-equipInfo-className">分类名称：刀具</div>
+                  <div class="lab-equipInfo-valueType">价值类型：昂贵</div>
+                  <div class="lab-equipInfo-number">数量：10</div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -275,21 +275,21 @@
         </div>
 
         <!-- 设备预约框 -->
-        <div class="modal fade" id="lab-equitOrder-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equitOrder-modal-label">
+        <div class="modal fade" id="lab-equipOrder-modal" tabindex="-1" role="dialog" aria-labelledby="lab-equipOrder-modal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="lab-equitOrder-modal-label">西瓜刀</h4>
+                <h4 class="modal-title" id="lab-equipOrder-modal-label">西瓜刀</h4>
               </div>
               <div class="modal-body">
-                  <input type="text" class="form-control" id="input-equitNumber" placeholder="申请数量">
-                  <input type="text" class="form-control" id="input-equitDays" placeholder="申请多少天">
-                  <input type="text" class="form-control" id="input-equitApplicant" placeholder="申请人">
+                  <input type="text" class="form-control" id="input-equipNumber" placeholder="申请数量">
+                  <input type="text" class="form-control" id="input-equipDays" placeholder="申请多少天">
+                  <input type="text" class="form-control" id="input-equipApplicant" placeholder="申请人">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equitOrder">预约</button>
+                <button type="button" class="btn btn-primary" id="post-equipOrder">预约</button>
               </div>
             </div>
           </div>

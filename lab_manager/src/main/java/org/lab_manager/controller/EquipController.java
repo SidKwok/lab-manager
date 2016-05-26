@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/equipment")
-public class EquipmentController {
+public class EquipController {
     /**
     *获取所有设备的名称列表
      * params: role, username

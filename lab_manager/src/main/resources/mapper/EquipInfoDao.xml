@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.lab_manager.dao.DeviceInfoDao">
-    <select id="queryById" resultType="EquipmentInfo">
+<mapper namespace="org.lab_manager.dao.EquipInfoDao">
+    <select id="queryById" resultType="EquipInfo">
         SELECT * FROM device_type_in WHERE ID=#{id};
     </select>
 

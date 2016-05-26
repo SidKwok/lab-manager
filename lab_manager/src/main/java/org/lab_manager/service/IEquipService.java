@@ -1,34 +1,34 @@
 package org.lab_manager.service;
 
-import org.lab_manager.entity.EquipmentInfo;
+import org.lab_manager.entity.EquipInfo;
 
 import java.util.List;
 
 /**
  * Created by xiaofeige on 2016/5/25.
  */
-public interface IEquipmentService {
+public interface IEquipService {
 
     /**
      * 获取所有设备
      */
-    public List<EquipmentInfo> getAllEquipInfo();
+    public List<EquipInfo> getAllEquipInfo();
 
     /**
      * 按ID获取设备信息
      */
-    public EquipmentInfo queryEquipById(String id);
+    public EquipInfo queryEquipById(String id);
 
     /**
      * 更新设备信息
      */
-    public boolean updateEquipInfo(EquipmentInfo equipmentInfo);
+    public boolean updateEquipInfo(EquipInfo equipInfo);
 
     /**
      * 添加设备入库
      */
 
-    public boolean addDevice(EquipmentInfo equipmentInfo);
+    public boolean addDevice(EquipInfo equipInfo);
 
     /**
      * 删除设备

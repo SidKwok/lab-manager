@@ -3,7 +3,7 @@ package org.lab_manager.entity;
 /**
  * Created by Silence on 2016/5/23.
  */
-public class EquipmentInfo {
+public class EquipInfo {
     private Integer ID;
     private String asset_name;
     private Integer Class_no;

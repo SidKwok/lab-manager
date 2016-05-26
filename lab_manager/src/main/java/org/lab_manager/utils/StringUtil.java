@@ -10,8 +10,6 @@ import java.util.List;
  * @Description: string处理的工具类
  */
 public class StringUtil {
-
-
 	
 	public static int toInt(String s) {
 		if (s != null && !"".equals(s.trim())) {

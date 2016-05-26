@@ -3,66 +3,56 @@ package org.lab_manager.controller;
  * Created by xiaofeige on 2016/5/22.
  */
 
+import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.EquipInfo;
+import org.lab_manager.service.IEquipService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
 @RequestMapping("/equipment")
 public class EquipController {
+    @Resource
+    IEquipService equipService;
+
     /**
     *获取所有设备的名称列表
-     * params: role, username
+     * params: none
+     [
      {
-     "lab":[
-     {
-     "labName": "机器人实验",
-     "labWeek": "第一周",
-     "labWeekday": "周五",
-     "labCourse": "第1、2节",
-     "labOrderId": "0001",
-     "labOrderDate": "2016-5-21" ,
-     "state": "允许"
+     "assetName": "西瓜刀"
      },
      {
-     "labName": "足球实验",
-     "labWeek": "第二周",
-     "labWeekday": "周四",
-     "labCourse": "第3、4节",
-     "labOrderId": "0002",
-     "labOrderDate": "2016-5-24" ,
-     "state": "拒绝"
-     }
-     ],
-     "equit":[
-     {
-     "equitName": "西瓜刀",
-     "equitDate": "2015-9-10",
-     "equitOrderId": "001",
-     "equitDays": "10",
-     "equitNumber": "2",
-     "state": "未决定"
-     },
-     {
-     "equitName": "狼牙棒",
-     "equitDate": "2015-11-10",
-     "equitOrderId": "002",
-     "equitDays": "2",
-     "equitNumber": "10",
-     "state": "未决定"
+     "assetName": "狼牙棒"
      }
      ]
-     }
     */
     @ResponseBody
     @RequestMapping(value="/queryAllEquipment",method = RequestMethod.GET)
-    public String getEquimentList(){
+    public String getEquimentList(String json){
         //返回所有设备的名称列表，放到json中
+        List<Map<String,String>> result= new ArrayList<Map<String, String>>();
+        Map<String,String> item=new HashMap<String, String>();
 
-        return "1";//
+        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
+        for(EquipInfo singleEquip:allEquipInfo){
+//            item.put("assetName",singleEquip.getName());
+            result.add(item);
+            item.clear();
+        }
+
+        return JSON.toJSONString(result);//
     }
 
     /**
@@ -76,15 +66,18 @@ public class EquipController {
      }
     */
     @ResponseBody
-    @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.GET)
-    public String getEquimentInfo(){
+    @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.POST)
+    public String getEquimentInfo(@RequestBody String json){
         //返回所有设备的名称列表，放到json中
-
-        return "1";//
+        Map<String,String> result=new HashMap<String, String>();
+        EquipInfo equipInfo = equipService.queryEquipById(json);
+//        result.put("classNo",equipInfo.);
+        return JSON.toJSONString(result);//
     }
 
     /**
-    *获取单个设备信息
+    *更新单个设备信息
+     *
     */
     @ResponseBody
     @RequestMapping(value="/update_equipment",method = RequestMethod.GET)

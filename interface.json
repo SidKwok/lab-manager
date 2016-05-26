@@ -14,7 +14,7 @@ params: none
 ]
 
 _room_comment (post) ok		(/lab/getRoomComment)
-params: roomId
+params: roomId(实验室id)
 {
   "comment": [
     "good",
@@ -24,7 +24,7 @@ params: roomId
 
 // 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功
 _room_post_comment (post) ok  (/lab/addRoomComment)
-params: roomId, comment
+params: roomId(实验室id), comment(该实验室的评论)
 {
   "status": "0"
 }
@@ -34,7 +34,7 @@ params: roomId, comment
 // weekday(周一、周二、周三、周四、周五、周六、周日)
 // course(1、2节 3、4节 5、6节 7、8节 9、10节)
 _room_order_state (post) ok		(/lab/getRoomOrderInfo)
-params: roomId
+params: roomId(实验室id)
 [
   {
     "labName": "fuck",
@@ -54,14 +54,14 @@ params: roomId
 
 // 发送到服务器的order,接受status 0代表预约失败 1代表预约成功
 _room_post_order (post) ok  (/lab/orderRoom)
-params: roomId, labName, applicant, week, weekday, course
+params: roomId(实验室id), class(什么班级), labName(实验名), applicant(申请人), week(第几周), weekday(周几), course(第几节课)
 {
   "status": "0"
 }
 
-// 某人的预约状态, role是角色, username是用户名
+// 某人的预约状态
 _lab_orderState (post) ok
-params: role, username
+params: role(角色), username(用户名)
 {
   "lab":[
     {
@@ -357,6 +357,125 @@ params: labRoomName labRoomType labRoomIntro
 // 添加实验室
 _add_labRoom (post) ok
 params: labRoomName labRoomType labRoomIntro
+{
+  "status": "0"
+}
+
+// 获取实验课程信息
+_tea_allCourse (post) ok
+params: username role
+[
+  {
+    "courseId": "0001",
+    "labName": "机器人实验",
+    "labWeek": "第一周",
+    "labWeekday": "周一",
+    "labCourse": "第1、2节"
+  },
+  {
+    "courseId": "0002",
+    "labName": "足球实验",
+    "labWeek": "第二周",
+    "labWeekday": "周二",
+    "labCourse": "第3、4节"
+  },
+  {
+    "courseId": "0003",
+    "labName": "sex实验",
+    "labWeek": "第三周",
+    "labWeekday": "周三",
+    "labCourse": "第5、6节"
+  }
+]
+
+// 获取实验课程的学生信息
+_course_duty (post) ok
+params: username, role, courseId
+[
+  "sid","mingen","natalie","Airdy"
+]
+
+// 发送学生考勤状况
+_tea_post_duty (post) ok
+params:
+{
+  "stu": [
+    {
+      "stuName": "sid",
+      "stuGrade": "98",
+      "stuState": "已到"
+    },
+    {
+      "stuName": "airdy",
+      "stuGrade": "98",
+      "stuState": "已到"
+    },
+    {
+      "stuName": "mingen",
+      "stuGrade": "48",
+      "stuState": "未到"
+    }
+  ],
+  "username": "sid",
+  "role": "teacher",
+  "courseId": "0001"
+}
+need:
+{
+  "status": "0"
+}
+
+// 获取老师所有实验
+_tea_lab (post) ok
+params: username, role
+[
+  {
+    "labName": "机器人实验",
+    "labId": "0001"
+  },
+  {
+    "labName": "足球实验",
+    "labId": "0002"
+  },
+  {
+    "labName": "sex实验",
+    "labId": "0003"
+  },
+  {
+    "labName": "禁忌实验",
+    "labId": "0004"
+  }
+]
+
+// 获取相应实验的学生信息
+_tea_labStuInfo (post) ok
+params: labName labId username role
+[
+  "sid","mingen","natalie","Airdy", "Bob"
+]
+
+// 发送学生成绩
+_tea_post_grade (post) ok
+params:
+{
+  "stu": [
+    {
+      "stuName": "sid",
+      "stuGrade": "98"
+    },
+    {
+      "stuName": "airdy",
+      "stuGrade": "98"
+    },
+    {
+      "stuName": "mingen",
+      "stuGrade": "48"
+    }
+  ],
+  "username": "sid",
+  "role": "teacher"
+}
+need:
 {
   "status": "0"
 }

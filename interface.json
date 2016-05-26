@@ -60,7 +60,7 @@ params: roomId, labName, applicant, week, weekday, course
 }
 
 // 某人的预约状态, role是角色, username是用户名
-_lab_orderState (post) ok   	
+_lab_orderState (post) ok
 params: role, username
 {
   "lab":[
@@ -83,21 +83,21 @@ params: role, username
       "state": "拒绝"
     }
   ],
-  "equit":[
+  "equip":[
     {
-      "equitName": "西瓜刀",
-      "equitDate": "2015-9-10",
-      "equitOrderId": "001",
-      "equitDays": "10",
-      "equitNumber": "2",
+      "equipName": "西瓜刀",
+      "equipDate": "2015-9-10",
+      "equipOrderId": "001",
+      "equipDays": "10",
+      "equipNumber": "2",
       "state": "未决定"
     },
     {
-      "equitName": "狼牙棒",
-      "equitDate": "2015-11-10",
-      "equitOrderId": "002",
-      "equitDays": "2",
-      "equitNumber": "10",
+      "equipName": "狼牙棒",
+      "equipDate": "2015-11-10",
+      "equipOrderId": "002",
+      "equipDays": "2",
+      "equipNumber": "10",
       "state": "未决定"
     }
   ]
@@ -124,7 +124,7 @@ params: item, type (item是内容 type是类型 有教室和实验名)
 }
 
 // 设备名字
-_equit_ajax (get) ok  (/equipment/queryAllEquipment)
+_equip_ajax (get) ok  (/equipment/queryAllEquipment)
 params: none
 [
   {
@@ -136,7 +136,7 @@ params: none
 ]
 
 // 设备信息
-_equit_info (post) ok   (/equipment/queryEquipmentInfo)
+_equip_info (post) ok   (/equipment/queryEquipmentInfo)
 params: assetName
 {
   "classNo": "001",
@@ -178,21 +178,21 @@ params: noticeAuthor, noticeContent
 }
 
 // 删除设备仪器
-_del_equit (post) ok
+_del_equip (post) ok
 params: assetName
 {
   "status": "0"
 }
 
 // 更新设备仪器
-_update_equit (post) ok
+_update_equip (post) ok
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
 }
 
 // 添加设备仪器
-_add_equit (post) ok
+_add_equip (post) ok
 params: assetName, classNo, className, valueType, number
 {
   "status": "0"
@@ -237,37 +237,37 @@ params: labOrderId
 }
 
 // 获取设备预约情况
-_equitOrder_ajax (get) ok
+_equipOrder_ajax (get) ok
 params: none
 [
   {
-    "equitOrderId": "0003",
-    "equitOrderName": "西瓜刀",
-    "equitOrderNumber": "10",
-    "equitOrderDay": "5",
-    "equitOrderApplicant": "sid",
-    "equitOrderDate": "2016-5-7"
+    "equipOrderId": "0003",
+    "equipOrderName": "西瓜刀",
+    "equipOrderNumber": "10",
+    "equipOrderDay": "5",
+    "equipOrderApplicant": "sid",
+    "equipOrderDate": "2016-5-7"
   },
   {
-    "equitOrderId": "0004",
-    "equitOrderName": "狼牙棒",
-    "equitOrderNumber": "5",
-    "equitOrderDay": "10",
-    "equitOrderApplicant": "mingen",
-    "equitOrderDate": "2016-5-7"
+    "equipOrderId": "0004",
+    "equipOrderName": "狼牙棒",
+    "equipOrderNumber": "5",
+    "equipOrderDay": "10",
+    "equipOrderApplicant": "mingen",
+    "equipOrderDate": "2016-5-7"
   }
 ]
 
 // 批准设备预约
-_confirm_equitOrder (post) ok
-params: equitOrderId
+_confirm_equipOrder (post) ok
+params: equipOrderId
 {
   "status": "0"
 }
 
 // 拒绝设备预约
-_refuse_equitOrder (post) ok
-params: equitOrderId
+_refuse_equipOrder (post) ok
+params: equipOrderId
 {
   "status": "0"
 }

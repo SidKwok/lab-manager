@@ -35,7 +35,8 @@ function loadNotice () {
         url: '/notice/queryAllNotice',
         data: {},
         dataType: 'json',
-        success: function(retData){
+        success: function(data){
+            var retData = eval('(' + data + ')');
             $('#noticeModal').children().detach();
             var domArr = [];
             $.each(retData, function(i, e){
@@ -124,7 +125,8 @@ function basicEvent(){
             url: '/notice/addNotice',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if(retData.status === '0'){
                     alert('发表失败');
                 }

@@ -171,19 +171,28 @@ public class LabController {
     public String getRooms(){
         System.out.println("查询所有房间信息ajax请求收到");
         List<LabInfo> list=labService.getAllLabRoom();
-        Map<String,Object> roomSingle=new HashMap<String, Object>();
+
 
         List<Map<String,Object>> resultList=new ArrayList<Map<String, Object>>();
-        for(LabInfo lab:list){
-            roomSingle.put("room_id",lab.getID());
-            roomSingle.put("manage_teacher",lab.getManage_teacher());
-            roomSingle.put("intro",lab.getIntro());
+//        for(LabInfo lab:list){
+//            roomSingle.put("room_id",lab.getID());
+//            roomSingle.put("manage_teacher",lab.getManage_teacher());
+//            roomSingle.put("intro",lab.getIntro());
+//            resultList.add(roomSingle);
+//            roomSingle.clear();
+//        }
+        for(int i=0;i<10;i++){
+            Map<String,Object> roomSingle=new HashMap<String, Object>();
+            roomSingle.put("room_id","123");
+            roomSingle.put("manage_teacher","renfei");
+            roomSingle.put("intro","3sdasdad");
             resultList.add(roomSingle);
-            roomSingle.clear();
         }
-        List<LabRoom> rooms=new ArrayList<LabRoom>();
 
-        return JSON.toJSONString(resultList);
+        List<LabRoom> rooms=new ArrayList<LabRoom>();
+        String te=JSON.toJSONString(resultList);
+        System.out.println(te);
+        return te;
     }
 
     /**
@@ -203,7 +212,7 @@ public class LabController {
         Map<String,Object> result=new HashMap<String, Object>();
         List<String> comments=new ArrayList<String>();
         //调用service获取数据然后加进去
-
+        comments.add("任飞真是帅呆了 ");
         result.put("comment",comments);
         return JSON.toJSONString(result);
     }

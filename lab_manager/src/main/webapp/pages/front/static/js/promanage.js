@@ -45,7 +45,8 @@ function loadEquipCard () {
         url: '/equipment/queryAllEquipment',
         data: {},
         dataType: "json",
-        success: function(retData){
+        success: function(data){
+          var retData = eval('(' + data + ')');
           $('#pro-equip .flex-box').children().detach();
           var domArr = [];
           domArr.push(
@@ -126,7 +127,8 @@ function loadLabRoomCard () {
         url: '/lab/getLabsInfo',
         data: {},
         dataType: "json",
-        success: function(retData){
+        success: function(data){
+          var retData = eval('(' + data + ')');
           $('#pro-labRoom .flex-box').children().detach();
           var domArr = [];
           domArr.push(
@@ -200,7 +202,8 @@ function loadLabOrder() {
         url: '/lab/labUseStatus',
         data: {},
         dataType: 'json',
-        success: function(retData){
+        success: function(data){
+            var retData = eval('(' + data + ')');
             $('#pro-lab-order').children().detach();
             var domArr = [];
             $.each(retData, function(i, e){
@@ -296,7 +299,8 @@ function loadEquipOrder(){
       url: '/equipment/equitOrderStatus',
       data: {},
       dataType: 'json',
-      success: function(retData){
+      success: function(data){
+        var retData = eval('(' + data + ')');
         $('#pro-equip-order').children().detach();
         var domArr = [];
         $.each(retData, function(i, e){
@@ -404,7 +408,8 @@ function basicEvent(){
             url: '/equipment/delEquipment',
             data: {assetName: assetName},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if(retData.status === '0') {
                     alert('删除失败');
                 }
@@ -447,7 +452,8 @@ function basicEvent(){
             url: '/equipment/queryEquipmentInfo',
             data: {assetName: assetName},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
                 var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
                                 '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
@@ -495,7 +501,8 @@ function basicEvent(){
             url: '/equipment/updateEquipment',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('修改失败');
               }
@@ -542,7 +549,8 @@ function basicEvent(){
             url: '/equipment/addEquipment',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('添加失败');
               }
@@ -587,7 +595,8 @@ function basicEvent(){
             url: '/lab/delLabRoom',
             data: {labRoomName: labRoomName},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if(retData.status === '0') {
                     alert('删除失败');
                 }
@@ -630,7 +639,8 @@ function basicEvent(){
             url: '/lab/roomConcreateInfo',
             data: {labRoomName: labRoomName},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
                 var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
                                 '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
@@ -673,7 +683,8 @@ function basicEvent(){
             url: '/lab/updateRoomInfo',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('修改失败');
               }
@@ -719,7 +730,8 @@ function basicEvent(){
             url: '/lab/addLabRoom',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('添加失败');
               }
@@ -759,7 +771,8 @@ function basicEvent(){
             url: '/lab/confirmLabOrder',
             data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('批准实验室预约失败');
               }
@@ -799,7 +812,8 @@ function basicEvent(){
             url: '/lab/refuseLabOrder',
             data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('拒绝实验室预约失败');
               }
@@ -839,7 +853,8 @@ function basicEvent(){
             url: '/equipment/confirmEquitOrder',
             data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                   alert('批准设备预约失败');
               }
@@ -879,7 +894,8 @@ function basicEvent(){
             url: '/equipment/refuseEquitOrder',
             data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData === '0') {
                   alert('拒绝设备预约失败');
               }

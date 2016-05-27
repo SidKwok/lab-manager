@@ -35,7 +35,8 @@ function init () {
           url: '/lab/queryAllRoom',
           data: {},
           dataType: "json",
-          success: function(retData){
+          success: function(data){
+            var retData = eval('(' + data + ')');
             $('#all-room .flex-box').children().detach();
             var domArr = [];
             $.each(retData, function(i, e) {
@@ -126,7 +127,8 @@ function init () {
           url: '/experiment/teacherOrderStatus',
           data: {role: role, username: username},
           dataType: 'json',
-          success: function(retData) {
+          success: function(data) {
+              var retData = eval('(' + data + ')');
               var lab = retData.lab;
               var equip = retData.equip;
               var domLab = [];
@@ -246,7 +248,8 @@ function init () {
           url: '/equipment/queryAllEquipment',
           data: {},
           dataType: "json",
-          success: function(retData){
+          success: function(data){
+            var retData = eval('(' + data + ')');
             $('#lab-equip .flex-box').children().detach();
             var domArr = [];
             $.each(retData, function(i, e) {
@@ -323,7 +326,8 @@ function basicEvent() {
             url: '/lab/getRoomComment',
             data: {roomId: roomId},
             dataType: "json",
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 $('#all-comment-modal .modal-showComment').children().detach();
                 var domArr = [];
                 $.each(retData.comment, function(i, e){
@@ -370,7 +374,8 @@ function basicEvent() {
             url: '/lab/addRoomComment',
             data: {comment: comment, roomId: roomId},
             dataType: "json",
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if(retData.status === '0') {
                    alert('发表评论失败');
                 }
@@ -410,7 +415,8 @@ function basicEvent() {
           type: 'POST',
           url: '/lab/getRoomOrderInfo',
           data: {roomId: roomId},
-          success: function(retData){
+          success: function(data){
+              var retData = eval('(' + data + ')');
               $('#order-state').children().detach();
               var domArr = [];
               $.each(retData, function(i, e){
@@ -473,7 +479,8 @@ function basicEvent() {
             url: '/lab/orderRoom',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+              var retData = eval('(' + data + ')');
               if(retData.status === '0') {
                  alert('预约失败');
               }
@@ -517,7 +524,8 @@ function basicEvent() {
             url: '/lab/getRoomCurrInfo',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 $('.db-table').children().detach();
                 var domArr = [];
                 if (retData.status === '0') {
@@ -614,7 +622,8 @@ function basicEvent() {
             url: '/equipment/queryEquipmentInfo',
             data: {assetName: assetName},
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 $('#lab-equipInfo-modal .modal-body').children().detach();
                 var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
                                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
@@ -667,7 +676,8 @@ function basicEvent() {
             url: '/equipment/orderEquip',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if(retData.status === "0") {
                     alert('预约失败');
                 }

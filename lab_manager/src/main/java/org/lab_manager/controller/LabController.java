@@ -169,6 +169,7 @@ public class LabController {
     @ResponseBody
     @RequestMapping(value="/queryAllRoom",method = RequestMethod.GET)
     public String getRooms(){
+        System.out.println("查询所有房间信息ajax请求收到");
         List<LabInfo> list=labService.getAllLabRoom();
         Map<String,Object> roomSingle=new HashMap<String, Object>();
 

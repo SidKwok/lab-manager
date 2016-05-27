@@ -41,6 +41,6 @@ public class TestController {
         ExperimentService es=new ExperimentService();
         System.out.println("11112");
 //        return JSON.toJSONString(es.getExperimentById("001"));
-        return "hrllo";
+        return JSON.toJSONString("hello");
     }
 }

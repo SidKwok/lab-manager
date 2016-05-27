@@ -34,10 +34,10 @@ public class LoginController {
     @RequestMapping(value="/in",method = RequestMethod.POST)
     public String login(@RequestBody String user) {
 //        loginService.login()
-
-        Map<String,String> result=new HashMap<String, String>();
+        System.out.println("收到用户登录请求");
+        Map<String,Object> result=new HashMap<String, Object>();
         if(1==1){
-            result.put("status","登陆成功");
+            result.put("status","success");
             result.put("role","teacher");
         }else{
             result.put("status","密码错误");

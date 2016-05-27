@@ -14,6 +14,6 @@
 
 </body>
 <script>
-    self.location='html/allmanage/index.html'
+    self.location='html/login.html'
 </script>
 </html>

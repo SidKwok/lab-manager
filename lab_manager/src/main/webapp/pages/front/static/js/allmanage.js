@@ -32,7 +32,7 @@ function init () {
       */
       $.ajax({
           type: "GET",
-          url: 'lab/queryAllRoom',
+          url: '/lab/queryAllRoom',
           data: {},
           dataType: "json",
           success: function(retData){
@@ -56,7 +56,7 @@ function init () {
             $('[data-toggle="popover"]').popover();
           },
           error: function(){
-            console.log('lab/queryAllRoom', 'fail');
+            console.log('/lab/queryAllRoom', 'fail');
             alert('后台错误！');
 
             // /***************************************

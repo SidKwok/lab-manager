@@ -60,4 +60,34 @@ public class StudentController {
 
         return "hello";
     }
+
+    /**
+     * 学生出勤状态
+     _stu_dutyState (post) ok
+     params: username(用户名) role(角色)
+     [
+     {
+     "stuDutyLab": "机器人实验",
+     "stuDutyPos": "信工805",
+     "stuDutyWeek": "第一周",
+     "stuDutyWeekday": "周一",
+     "stuDutyCourse": "第1、2节",
+     "status": "未到"
+     },
+     {
+     "stuDutyLab": "足球实验",
+     "stuDutyPos": "信工806",
+     "stuDutyWeek": "第二周",
+     "stuDutyWeekday": "周二",
+     "stuDutyCourse": "第3、4节",
+     "status": "已到"
+     }
+     ]
+     */
+    @ResponseBody
+    @RequestMapping(value="/getAttendence", method = RequestMethod.POST)
+    public String getAttendence(@RequestBody Student student) {
+
+        return "hello";
+    }
 }

@@ -40,10 +40,10 @@ public class EquipController {
     */
     @ResponseBody
     @RequestMapping(value="/queryAllEquipment",method = RequestMethod.GET)
-    public String getEquimentList(String json){
+    public String getEquimentList(){
         //返回所有设备的名称列表，放到json中
-        List<Map<String,String>> result= new ArrayList<Map<String, String>>();
-        Map<String,String> item=new HashMap<String, String>();
+        List<Map<String,Object>> result= new ArrayList<Map<String, Object>>();
+        Map<String,Object> item=new HashMap<String, Object>();
 
         List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
         for(EquipInfo singleEquip:allEquipInfo){
@@ -75,12 +75,34 @@ public class EquipController {
         return JSON.toJSONString(result);//
     }
 
+
+    /**
+     *预约设备
+     * params: assetName(设备名), number(数量), days(申请天数), applicant(申请人)
+     {
+     "status": "0"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/orderEquip",method = RequestMethod.POST)
+    public String orderEquipment(@RequestBody String json){
+        //返回所有设备的名称列表，放到json中
+        Map<String,String> result=new HashMap<String, String>();
+        EquipInfo equipInfo = equipService.queryEquipById(json);
+//        result.put("classNo",equipInfo.);
+        return JSON.toJSONString(result);//
+    }
+
     /**
     *更新单个设备信息
+     * params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
+     {
+     "status": "0"
+     }
      *
     */
     @ResponseBody
-    @RequestMapping(value="/update_equipment",method = RequestMethod.GET)
+    @RequestMapping(value="/updateEquipment",method = RequestMethod.POST)
     public String updateEquimentInfo(){
         //返回所有设备的名称列表，放到json中
 
@@ -89,10 +111,29 @@ public class EquipController {
 
     /**
     *增加设备
+     * params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
+     {
+     "status": "0"
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/add_equipment",method = RequestMethod.GET)
+    @RequestMapping(value="/addEquipment",method = RequestMethod.POST)
     public String addEquiment(){
+        //返回所有设备的名称列表，放到json中
+
+        return "1";//
+    }
+
+    /**
+     *删除仪器设备
+     * params: assetName(设备名)
+     {
+     "status": "0"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/delEquipment",method = RequestMethod.POST)
+    public String delEquiment(String json){
         //返回所有设备的名称列表，放到json中
 
         return "1";//
@@ -119,7 +160,7 @@ public class EquipController {
 ]
     */
     @ResponseBody
-    @RequestMapping(value="/_equitOrder_ajax",method = RequestMethod.GET)
+    @RequestMapping(value="/equitOrderStatus",method = RequestMethod.GET)
     public String getEquimentOrders(){
         //返回所有设备的预约信息，放到json中
 
@@ -128,16 +169,16 @@ public class EquipController {
 
 
     /**
-    *增加设备
-    * 批准设备预约
-_confirm_equitOrder (post)
-params: equitOrderId
-{
-  "status": "0"
-}
+    *批准设备预约
+     _confirm_equitOrder (post)
+     params: equitOrderId
+     {
+     "status": "0"
+     }
+    *
     */
     @ResponseBody
-    @RequestMapping(value="/_confirm_equitOrder",method = RequestMethod.POST)
+    @RequestMapping(value="/confirmEquitOrder",method = RequestMethod.POST)
     public String confirmEquiment(){
         //返回所有设备的名称列表，放到json中
 
@@ -147,14 +188,14 @@ params: equitOrderId
 
     /**
     *拒绝设备预约
-_refuse_equitOrder (post)
-params: equitOrderId
-{
-  "status": "0"
-}
+     _refuse_equitOrder (post)
+     params: equitOrderId
+     {
+     "status": "0"
+     }
     */
     @ResponseBody
-    @RequestMapping(value="/_refuse_equitOrder",method = RequestMethod.POST)
+    @RequestMapping(value="/refuseEquitOrder",method = RequestMethod.POST)
     public String refuseEquiment(){
         //返回所有设备的名称列表，放到json中
 

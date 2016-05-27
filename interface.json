@@ -62,7 +62,7 @@ params: roomId(实验室id), class(什么班级), labName(实验名), applicant(
 }
 
 // 某人的预约状态
-_lab_orderState (post) ok
+_lab_orderState (post) ok				（/experiment/teacherOrderStatus）
 params: role(角色), username(用户名)
 {
   "lab":[
@@ -148,14 +148,14 @@ params: assetName(设备名)
 }
 
 // 设备预约
-_lab_post_order (post) ok			(这个地方没明白，首先发过来的是一个 json文件吗？然后实验预约怎么会有assetName?资产？)
+_lab_post_order (post) ok			(/equipment/orderEquip)
 params: assetName(设备名), number(数量), days(申请天数), applicant(申请人)
 {
   "status": "0"
 }
 
 // 获取公告
-_notice_ajax (get) ok
+_notice_ajax (get) ok				(/notice/queryAllNotice)
 params: none
 [
   {
@@ -180,28 +180,28 @@ params: noticeAuthor(发表人), noticeContent(内容)
 }
 
 // 删除设备仪器
-_del_equip (post) ok
+_del_equip (post) ok		(/equipment/delEquipment)
 params: assetName(设备名)
 {
   "status": "0"
 }
 
 // 更新设备仪器
-_update_equip (post) ok
+_update_equip (post) ok		(/equipment/updateEquipment)
 params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
 {
   "status": "0"
 }
 
 // 添加设备仪器
-_add_equip (post) ok
+_add_equip (post) ok		(/equipment/addEquipment)
 params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
 {
   "status": "0"
 }
 
 // 获取实验室预约情况
-_labOrder_ajax (get) ok
+_labOrder_ajax (get) ok		(/lab/labUseStatus)
 params: none
 [
   {
@@ -225,21 +225,21 @@ params: none
 ]
 
 // 批准实验室预约
-_confirm_labOrder (post) ok
+_confirm_labOrder (post) ok		(/lab/confirmLabOrder)
 params: labOrderId(实验室id)
 {
   "status": "0"
 }
 
 // 拒绝实验室预约
-_refuse_labOrder (post) ok
+_refuse_labOrder (post) ok		(/lab/refuseLabOrder)
 params: labOrderId(实验室id)
 {
   "status": "0"
 }
 
 // 获取设备预约情况
-_equipOrder_ajax (get) ok
+_equipOrder_ajax (get) ok		(/equipment/equitOrderStatus)
 params: none
 [
   {
@@ -261,14 +261,14 @@ params: none
 ]
 
 // 批准设备预约
-_confirm_equipOrder (post) ok
+_confirm_equipOrder (post) ok	(/equipment/confirmEquitOrder)
 params: equipOrderId(设备id)
 {
   "status": "0"
 }
 
 // 拒绝设备预约
-_refuse_equipOrder (post) ok
+_refuse_equipOrder (post) ok	(/equipment/refuseEquitOrder)
 params: equipOrderId(设备id)
 {
   "status": "0"
@@ -284,7 +284,7 @@ params: username(用户名) password(密码)
 
 // 学生出勤状态
 _stu_dutyState (post) ok
-params: username(用户名) role(角色)
+params: username(用户名) role(角色)			
 [
   {
     "stuDutyLab": "机器人实验",
@@ -306,7 +306,7 @@ params: username(用户名) role(角色)
 
 // 学生成绩
 _stu_grade (post) ok
-params: username(用户名), role(角色)
+params: username(用户名), role(角色)	（/student/getAttendence）
 [
   {
     "stuGradeLab": "足球实验",
@@ -319,7 +319,7 @@ params: username(用户名), role(角色)
 ]
 
 // 实验室信息
-_labRoom_ajax (get) ok
+_labRoom_ajax (get) ok					(/lab/getLabsInfo)
 params: none
 [
   {
@@ -334,14 +334,14 @@ params: none
 ]
 
 // 删除实验室
-_del_labRoom (post) ok
+_del_labRoom (post) ok				(/lab/delLabRoom)
 params: labRoomName(实验室名字)
 {
   "status": "0"
 }
 
 // 实验室具体信息
-_labRoom_info (post) ok
+_labRoom_info (post) ok				(/lab/roomConcreateInfo)
 params: labRoomName(实验室名字)
 {
   "labRoomName":"机器人实验室",
@@ -350,21 +350,21 @@ params: labRoomName(实验室名字)
 }
 
 // 更新实验室信息
-_update_labRoom (post) ok
+_update_labRoom (post) ok		(/lab/updateRoomInfo)
 params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)
 {
   "status": "0"
 }
 
 // 添加实验室
-_add_labRoom (post) ok
+_add_labRoom (post) ok			(/lab/addLabRoom)
 params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)
 {
   "status": "0"
 }
 
 // 获取实验课程信息
-_tea_allCourse (post) ok
+_tea_allCourse (post) ok		(/experiment/teaAllCourse）
 params: username(用户名) role(角色)
 [
   {
@@ -391,13 +391,13 @@ params: username(用户名) role(角色)
 ]
 
 // 获取实验课程的学生信息
-_course_duty (post) ok
+_course_duty (post) ok			(/equipment/courseStuInfo)
 params: username(用户名), role(角色), courseId(实验课程id)
 [
   "sid","mingen","natalie","Airdy"
 ]
 
-// 发送学生考勤状况
+// 发送学生考勤状况		(/equipment/uploacAttendence)
 _tea_post_duty (post) ok
 params:
 {
@@ -428,7 +428,7 @@ need:
 }
 
 // 获取老师所有实验
-_tea_lab (post) ok
+_tea_lab (post) ok			(/teacher/teaAllLab)
 params: username(用户名), role(角色)
 [
   {
@@ -450,14 +450,14 @@ params: username(用户名), role(角色)
 ]
 
 // 获取相应实验的学生信息
-_tea_labStuInfo (post) ok
+_tea_labStuInfo (post) ok		(/teacher/getExpStuInfo)
 params: labName(实验名称) labId(实验id) username(用户名) role(角色)
 [
   "sid","mingen","natalie","Airdy", "Bob"
 ]
 
-// 发送学生成绩
-_tea_post_grade (post) ok
+// 发送学生成绩	
+_tea_post_grade (post) ok		(/teacher/uploadStuGrade)
 params:
 {
   "stu": [

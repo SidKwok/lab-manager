@@ -43,6 +43,32 @@ public class LabController {
     }
 
     /**
+     * 实验室信息
+     _labRoom_ajax (get) ok					()
+     params: none
+     [
+     {
+     "labRoomName": "机器人实验室"
+     },
+     {
+     "labRoomName": "足球实验室"
+     },
+     {
+     "labRoomName": "操蛋实验室"
+     }
+     ]
+     * */
+    @ResponseBody
+    @RequestMapping(value="/getLabsInfo",method = RequestMethod.GET)
+    public String getLabInfo() {
+        //根据上面的json格式要求返回数据，需查询数据库
+        Map<String,String> result=new HashMap<String, String>();
+        result.put("status","0");
+        return JSON.toJSONString(result);
+    }
+
+
+    /**
     * 获取实验室预约情况
     params: none
     [
@@ -67,7 +93,7 @@ public class LabController {
     ]
     **/
     @ResponseBody
-    @RequestMapping(value="/_labOrder_ajax",method = RequestMethod.GET)
+    @RequestMapping(value="/labUseStatus",method = RequestMethod.GET)
     public String getLabUseInfo() {
         //根据上面的json格式要求返回数据，需查询数据库
         List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
@@ -86,6 +112,8 @@ public class LabController {
         return JSON.toJSONString(result);
     }
 
+
+
     /**
     * 批准实验室预约
         _confirm_labOrder (post)
@@ -95,7 +123,7 @@ public class LabController {
             }
     * */
     @ResponseBody
-    @RequestMapping(value="/_confirm_labOrder",method = RequestMethod.POST)
+    @RequestMapping(value="/confirmLabOrder",method = RequestMethod.POST)
     public String confirmOrder(@RequestBody String id) {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
@@ -113,7 +141,7 @@ public class LabController {
         }
     * */
     @ResponseBody
-    @RequestMapping(value="/_refuse_labOrder",method = RequestMethod.POST)
+    @RequestMapping(value="/refuseLabOrder",method = RequestMethod.POST)
     public String refuseOrder(@RequestBody String id) {
         //根据上面的json格式要求返回数据，需查询数据库
 
@@ -264,6 +292,80 @@ public class LabController {
     @ResponseBody
     @RequestMapping(value="/getRoomCurrInfo",method = RequestMethod.POST)
     public String getTeacherRoom(String jsonFile){
+        //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status","0");
+
+        return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
+    }
+
+    /**
+     * 删除实验室
+     _del_labRoom (post) ok
+     params: labRoomName(实验室名字)
+     {
+     "status": "0"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/delLabRoom",method = RequestMethod.POST)
+    public String delLabRoom(String jsonFile){
+        //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status","0");
+
+        return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
+    }
+
+    /**
+     * 实验室具体信息
+     _labRoom_info (post) ok				()
+     params: labRoomName(实验室名字)
+     {
+     "labRoomName":"机器人实验室",
+     "labRoomType":"机器人",
+     "labRoomIntro":"棒"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/roomConcreateInfo",method = RequestMethod.POST)
+    public String getConcreatInfo(String jsonFile){
+        //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status","0");
+
+        return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
+    }
+
+    /**
+     * 更新实验室信息
+     _update_labRoom (post) ok
+     params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)
+     {
+     "status": "0"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/updateRoomInfo",method = RequestMethod.POST)
+    public String updateLabRoomInfo(String jsonFile){
+        //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status","0");
+
+        return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
+    }
+
+    /**
+     * 添加实验室
+     _add_labRoom (post) ok
+     params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)
+     {
+     "status": "0"
+     }
+     */
+    @ResponseBody
+    @RequestMapping(value="/addLabRoom",method = RequestMethod.POST)
+    public String addLabRoom(String jsonFile){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status","0");

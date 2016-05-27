@@ -42,7 +42,7 @@ function loadEquipCard () {
     */
     $.ajax({
         type: "GET",
-        url: '_equip_ajax',
+        url: '/equipment/queryAllEquipment',
         data: {},
         dataType: "json",
         success: function(retData){
@@ -67,7 +67,7 @@ function loadEquipCard () {
           $('#pro-equip .flex-box').append(domArr.join(''));
         },
         error: function(){
-          console.log('_equip_ajax', 'fail');
+          console.log('/equipment/queryAllEquipment', 'fail');
           alert('后台错误！');
 
           // /***************************************
@@ -123,7 +123,7 @@ function loadLabRoomCard () {
     // 初始化设备卡片
     $.ajax({
         type: "GET",
-        url: '_labRoom_ajax',
+        url: '/lab/getLabsInfo',
         data: {},
         dataType: "json",
         success: function(retData){
@@ -148,7 +148,7 @@ function loadLabRoomCard () {
           $('#pro-labRoom .flex-box').append(domArr.join(''));
         },
         error: function(){
-          console.log('_labRoom_ajax', 'fail');
+          console.log('/lab/getLabsInfo', 'fail');
           alert('后台错误！');
 
           // /***************************************
@@ -197,7 +197,7 @@ function loadLabRoomCard () {
 function loadLabOrder() {
     $.ajax({
         type: 'GET',
-        url: '_labOrder_ajax',
+        url: '/lab/labUseStatus',
         data: {},
         dataType: 'json',
         success: function(retData){
@@ -221,7 +221,7 @@ function loadLabOrder() {
         },
         error: function() {
             alert('后台出错');
-            console.log('_labOrder_ajax fail');
+            console.log('/lab/labUseStatus fail');
             // /***************************************
             // * 用于前端test 测试状态：ok
             // */
@@ -293,7 +293,7 @@ function loadLabOrder() {
 function loadEquipOrder(){
   $.ajax({
       type: 'GET',
-      url: '_equipOrder_ajax',
+      url: '/equipment/equitOrderStatus',
       data: {},
       dataType: 'json',
       success: function(retData){
@@ -317,7 +317,7 @@ function loadEquipOrder(){
       },
       error: function() {
           alert('后台出错');
-          console.log('_labOrder_ajax fail');
+          console.log('/equipment/equitOrderStatus fail');
 
           // /***************************************
           // * 用于前端test 测试状态：
@@ -401,7 +401,7 @@ function basicEvent(){
         var assetName = $('#pro-equipDelete-modal-label').text();
         $.ajax({
             type: 'POST',
-            url: '_del_equip',
+            url: '/equipment/delEquipment',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
@@ -415,7 +415,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('del_equip fail');
+                console.log('/equipment/delEquipment fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：ok
@@ -444,7 +444,7 @@ function basicEvent(){
         $('#pro-equipUpdate-modal-label').text(assetName);
         $.ajax({
             type: 'POST',
-            url: '_equip_info',
+            url: '/equipment/queryEquipmentInfo',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
@@ -456,7 +456,7 @@ function basicEvent(){
                 $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
             },
             error: function(){
-                console.log('_equip_info fail');
+                console.log('/equipment/queryEquipmentInfo fail');
                 alert('后台错误！');
 
                 /***************************************
@@ -492,7 +492,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_update_equip',
+            url: '/equipment/updateEquipment',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -506,7 +506,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('_update_equip fail');
+                console.log('/equipment/updateEquipment fail');
                 // /***************************************
                 // * 用于前端test 测试状态：
                 // */
@@ -539,7 +539,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_add_equip',
+            url: '/equipment/addEquipment',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -553,7 +553,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('add_equip fail');
+                console.log('/equipment/addEquipment fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：
@@ -584,7 +584,7 @@ function basicEvent(){
         var labRoomName = $('#pro-labRoomDelete-modal-label').text();
         $.ajax({
             type: 'POST',
-            url: '_del_labRoom',
+            url: '/lab/delLabRoom',
             data: {labRoomName: labRoomName},
             dataType: 'json',
             success: function(retData){
@@ -598,7 +598,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('_del_labRoom fail');
+                console.log('/lab/delLabRoom fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：ok
@@ -627,7 +627,7 @@ function basicEvent(){
         $('#pro-labRoomUpdate-modal-label').text(labRoomName);
         $.ajax({
             type: 'POST',
-            url: '_labRoom_info',
+            url: '/lab/roomConcreateInfo',
             data: {labRoomName: labRoomName},
             dataType: 'json',
             success: function(retData){
@@ -638,25 +638,25 @@ function basicEvent(){
                 $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
             },
             error: function(){
-                // console.log('_labRoom_info fail');
-                // alert('后台错误！');
+                console.log('/lab/roomConcreateInfo fail');
+                alert('后台错误！');
 
-                /***************************************
-                * 用于前端test 测试状态：ok
-                */
-                /*ajax返回的数据*/
-                var retData = {
-                  "labRoomName":"机器人实验室",
-                  "labRoomType":"机器人",
-                  "labRoomIntro":"棒"
-                };
-                /**************/
-                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
-                var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
-                                '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
-                                '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
-                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
-                /***************************************/
+                // /***************************************
+                // * 用于前端test 测试状态：ok
+                // */
+                // /*ajax返回的数据*/
+                // var retData = {
+                //   "labRoomName":"机器人实验室",
+                //   "labRoomType":"机器人",
+                //   "labRoomIntro":"棒"
+                // };
+                // /**************/
+                // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
+                // var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+                //                 '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+                //                 '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+                // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
+                // /***************************************/
             }
         });
     });
@@ -670,7 +670,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_update_labRoom',
+            url: '/lab/updateRoomInfo',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -684,7 +684,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('_update_equip fail');
+                console.log('/lab/updateRoomInfo fail');
                 // /***************************************
                 // * 用于前端test 测试状态：
                 // */
@@ -716,7 +716,7 @@ function basicEvent(){
 
         $.ajax({
             type: 'POST',
-            url: '_add_labRoom',
+            url: '/lab/addLabRoom',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -730,7 +730,7 @@ function basicEvent(){
             },
             error: function(){
                 alert('后台错误');
-                console.log('add_labRoom fail');
+                console.log('/lab/addLabRoom fail');
 
                 // /***************************************
                 // * 用于前端test 测试状态：
@@ -756,7 +756,7 @@ function basicEvent(){
     $('.labOrder-confirm-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_confirm_labOrder',
+            url: '/lab/confirmLabOrder',
             data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
             dataType: 'json',
             success: function(retData){
@@ -770,7 +770,7 @@ function basicEvent(){
             },
             error: function(){
               alert('后台出错');
-              console.log('_confirm_labOrder fail');
+              console.log('/lab/confirmLabOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：
@@ -796,7 +796,7 @@ function basicEvent(){
     $('.labOrder-refuse-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_refuse_labOrder',
+            url: '/lab/refuseLabOrder',
             data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
             dataType: 'json',
             success: function(retData){
@@ -810,7 +810,7 @@ function basicEvent(){
             },
             error: function(){
               alert('后台出错');
-              console.log('_refuse_labOrder fail');
+              console.log('/lab/refuseLabOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：
@@ -836,7 +836,7 @@ function basicEvent(){
     $('.equipOrder-confirm-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_confirm_equipOrder',
+            url: '/equipment/confirmEquitOrder',
             data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
             success: function(retData){
@@ -850,7 +850,7 @@ function basicEvent(){
             },
             error: function(){
               alert('后台出错');
-              console.log('_confirm_equipOrder fail');
+              console.log('/equipment/confirmEquitOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：ok
@@ -876,7 +876,7 @@ function basicEvent(){
     $('.equipOrder-refuse-btn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '_refuse_equipOrder',
+            url: '/equipment/refuseEquitOrder',
             data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
             dataType: 'json',
             success: function(retData){
@@ -890,7 +890,7 @@ function basicEvent(){
             },
             error: function(){
               alert('后台出错');
-              console.log('_refuse_equipOrder fail');
+              console.log('/equipment/refuseEquitOrder fail');
 
               // /***************************************
               // * 用于前端test 测试状态：ok

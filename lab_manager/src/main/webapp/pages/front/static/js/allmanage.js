@@ -32,7 +32,7 @@ function init () {
       */
       $.ajax({
           type: "GET",
-          url: '_room_ajax',
+          url: 'lab/queryAllRoom',
           data: {},
           dataType: "json",
           success: function(retData){
@@ -56,7 +56,7 @@ function init () {
             $('[data-toggle="popover"]').popover();
           },
           error: function(){
-            console.log('_room_ajax', 'fail');
+            console.log('lab/queryAllRoom', 'fail');
             alert('后台错误！');
 
             // /***************************************
@@ -123,7 +123,7 @@ function init () {
       */
       $.ajax({
           type: 'POST',
-          url: '_orderSate',
+          url: '/experiment/teacherOrderStatus',
           data: {role: role, username: username},
           dataType: 'json',
           success: function(retData) {
@@ -158,7 +158,7 @@ function init () {
               $('#all-equip-orderState').append(domEquip.join(''));
           },
           error: function() {
-              console.log('_orderState fail');
+              console.log('/experiment/teacherOrderStatus fail');
               alert('后台错误');
               // /***************************************
               // * 用于前端test 测试状态：
@@ -243,7 +243,7 @@ function init () {
       */
       $.ajax({
           type: "GET",
-          url: '_equip_ajax',
+          url: '/equipment/queryAllEquipment',
           data: {},
           dataType: "json",
           success: function(retData){
@@ -263,7 +263,7 @@ function init () {
             $('#lab-equip .flex-box').append(domArr.join(''));
           },
           error: function(){
-            console.log('_equip_ajax', 'fail');
+            console.log('/equipment/queryAllEquipment', 'fail');
             alert('后台错误！');
 
             // /***************************************
@@ -320,7 +320,7 @@ function basicEvent() {
         $('#all-comment-modal-label').text(roomId);
         $.ajax({
             type: "POST",
-            url: '_room_comment',
+            url: '/lab/getRoomComment',
             data: {roomId: roomId},
             dataType: "json",
             success: function(retData){
@@ -332,7 +332,7 @@ function basicEvent() {
                 $('#all-comment-modal .modal-showComment').append(domArr.join(''));
             },
             error: function() {
-                console.log('_room_comment fail');
+                console.log('/lab/getRoomComment fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -367,7 +367,7 @@ function basicEvent() {
         var roomId = $('#all-comment-modal-label').val();
         $.ajax({
             type: "POST",
-            url: '_room_post_comment',
+            url: '/lab/addRoomComment',
             data: {comment: comment, roomId: roomId},
             dataType: "json",
             success: function(retData){
@@ -379,7 +379,7 @@ function basicEvent() {
                 }
             },
             error: function() {
-                console.log('_room_post_comment fail');
+                console.log('/lab/addRoomComment fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -408,7 +408,7 @@ function basicEvent() {
 
       $.ajax({
           type: 'POST',
-          url: '_room_order_state',
+          url: '/lab/getRoomOrderInfo',
           data: {roomId: roomId},
           success: function(retData){
               $('#order-state').children().detach();
@@ -419,7 +419,7 @@ function basicEvent() {
               $('#order-state').append(domArr.join(''));
           },
           error: function(){
-              console.log('_room_order_state fail');
+              console.log('/lab/getRoomOrderInfo fail');
               alert('后台错误！');
 
               // /***************************************
@@ -470,7 +470,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: '_room_post_order',
+            url: '/lab/orderRoom',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -482,7 +482,7 @@ function basicEvent() {
               }
             },
             error: function(){
-                console.log('_room_post_order fail');
+                console.log('/lab/orderRoom fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -514,7 +514,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: '_db_post_ajax',
+            url: '/lab/getRoomCurrInfo',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -541,7 +541,7 @@ function basicEvent() {
                 }
             },
             error: function(){
-                console.log('db_post_ajax fail');
+                console.log('/lab/getRoomCurrInfo fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -611,7 +611,7 @@ function basicEvent() {
         $('#lab-equipInfo-modal-label').text(assetName);
         $.ajax({
             type: 'POST',
-            url: '_equip_info',
+            url: '/equipment/queryEquipmentInfo',
             data: {assetName: assetName},
             dataType: 'json',
             success: function(retData){
@@ -623,7 +623,7 @@ function basicEvent() {
                 $('#lab-equipInfo-modal .modal-body').append(equipInfo);
             },
             error: function(){
-                console.log('equip_info fail');
+                console.log('/equipment/queryEquipmentInfo fail');
                 alert('后台错误！');
 
                 // /***************************************
@@ -664,7 +664,7 @@ function basicEvent() {
 
         $.ajax({
             type: 'POST',
-            url: '_lab_post_order',
+            url: '/equipment/orderEquip',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -676,7 +676,7 @@ function basicEvent() {
                 }
             },
             error: function(){
-                console.log('_lab_post_order fail');
+                console.log('/equipment/orderEquip fail');
                 alert('后台错误！');
                 // /***************************************
                 // * 用于前端test 测试状态：ok

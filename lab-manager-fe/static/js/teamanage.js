@@ -36,7 +36,7 @@ function loadLabNotice() {
     var params = {username: username, role: role};
     $.ajax({
         type: 'POST',
-        url: '_tea_allCourse',
+        url: '/experiment/teaAllCourse',
         data: params,
         dataType: 'json',
         success: function(retData){
@@ -54,7 +54,7 @@ function loadLabNotice() {
             $('#tea-course').append(domArr.join(''));
         },
         error: function(){
-            // console.log('_tea_allCourse');
+            // console.log('/experiment/teaAllCourse');
             // alert('后台错误');
 
             /***************************************
@@ -109,7 +109,7 @@ function loadLabNotice() {
 function loadLabCard () {
     $.ajax({
         type: 'POST',
-        url: '_tea_lab',
+        url: '/teacher/teaAllLab',
         data: {username: username, role: role},
         dataType: 'json',
         success: function(retData){
@@ -127,7 +127,7 @@ function loadLabCard () {
             $('#tea-correctGrade .flex-box').append(domArr.join(''));
         },
         error: function(){
-            // console.log('_tea_lab fail');
+            // console.log('/teacher/teaAllLab fail');
             // alert('后台错误');
 
             /***************************************
@@ -286,7 +286,7 @@ function basicEvent () {
         $('#tea-correctGrade-modal-label').attr('data-labId', labId);
         $.ajax({
             type: 'POST',
-            url: '_tea_lab_info',
+            url: '/teacher/getExpStuInfo',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -300,26 +300,26 @@ function basicEvent () {
                 $('#tea-correctGrade-table').append(domArr.join(''));
             },
             error: function(){
-                // console.log('_tea_lab_info fail');
-                // alert('后台错误');
-                /***************************************
-                * 用于前端test 测试状态：
-                */
-                /*ajax返回的数据*/
-                var retData = [
-                  "sid","mingen","natalie","Airdy", "Bob"
-                ];
-                /**************/
-                $('#tea-correctGrade-modal-label').text(labName);
-                $('#tea-correctGrade-table').children().detach();
-                var domArr = [];
-                $.each(retData, function(i, e){
-                    domArr.push(
-                        '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
-                    );
-                });
-                $('#tea-correctGrade-table').append(domArr.join(''));
-                /***************************************/
+                console.log('/teacher/getExpStuInfo fail');
+                alert('后台错误');
+                // /***************************************
+                // * 用于前端test 测试状态：
+                // */
+                // /*ajax返回的数据*/
+                // var retData = [
+                //   "sid","mingen","natalie","Airdy", "Bob"
+                // ];
+                // /**************/
+                // $('#tea-correctGrade-modal-label').text(labName);
+                // $('#tea-correctGrade-table').children().detach();
+                // var domArr = [];
+                // $.each(retData, function(i, e){
+                //     domArr.push(
+                //         '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
+                //     );
+                // });
+                // $('#tea-correctGrade-table').append(domArr.join(''));
+                // /***************************************/
             }
         });
     });
@@ -342,7 +342,7 @@ function basicEvent () {
         console.log(params);
         $.ajax({
             type: 'POST',
-            url: '_tea_post_grade',
+            url: '/teacher/uploadStuGrade',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -354,7 +354,7 @@ function basicEvent () {
               }
             },
             error: function(){
-                console.log('_tea_post_grade');
+                console.log('/teacher/uploadStuGrade');
                 alert('后台出错');
             }
         });

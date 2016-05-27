@@ -1,24 +1,44 @@
 
-
 .login {
     width: 900px;
     text-align: center;
-    margin: 17% auto;
+    margin: 13% auto;
 }
 .login-input {
     margin: 0px auto;
-    margin-top: 24px;
-    width: 200px;
+    width: 250px;
 }
 .login-input input {
     margin: 12px auto;
 }
-.btnGroup {
-    width: 200px;
-    margin: 0 auto;
+.input-lg,
+.form-control {
+    border-radius: 0px;
 }
-.btnGroup button {
-    display: block;
-    width: 200px;
-    margin-bottom: 12px;
+#signIn {
+    font-size: 18px;
+    font-family: Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
+    display: inline-block;
+    color: #0e83cd;
+    text-decoration: none;
+    border: 3px solid;
+    border-color: #25a1f0;
+    padding: 12px 94px;
+    position: relative;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+#signIn:hover {
+    background: #25a1f0;
+    color: #fff;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }

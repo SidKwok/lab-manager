@@ -32,7 +32,7 @@ function init () {
 function loadNotice () {
     $.ajax({
         type: 'GET',
-        url: '_notice_ajax',
+        url: '/notice/queryAllNotice',
         data: {},
         dataType: 'json',
         success: function(retData){
@@ -51,7 +51,7 @@ function loadNotice () {
             $('#noticeModal').append(domArr.join(''));
         },
         error: function(){
-            console.log('_notice_ajax error');
+            console.log('/notice/queryAllNotice error');
             alert('后台错误！');
 
             // /***************************************
@@ -121,7 +121,7 @@ function basicEvent(){
         };
         $.ajax({
             type: 'POST',
-            url: '_daily_post_notice',
+            url: '/notice/addNotice',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -134,7 +134,7 @@ function basicEvent(){
                 }
             },
             error: function(retData){
-                console.log('_daily_post_notice fail');
+                console.log('/notice/addNotice fail');
                 alert('后台错误！');
 
                 // /***************************************

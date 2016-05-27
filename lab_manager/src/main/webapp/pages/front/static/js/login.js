@@ -13,7 +13,7 @@ function basicEvent () {
         // window.location.href = './info/index.html?username=' + username + '&role=teacher?';
         $.ajax({
             type: 'POST',
-            url: '_login',
+            url: '/log/in',
             data: params,
             dataType: 'json',
             success: function(retData){
@@ -24,7 +24,7 @@ function basicEvent () {
                 }
             },
             error: function() {
-                console.log('_login fail');
+                console.log('/log/in fail');
                 alert('后台错误');
 
                 // /***************************************

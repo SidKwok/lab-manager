@@ -102,7 +102,7 @@ function loadGrade () {
     var params = {username: username, role: role};
     $.ajax({
         type: 'POST',
-        url: '_stu_grade',
+        url: '/student/getAttendence',
         data: params,
         dataType: 'json',
         success: function(retData){
@@ -119,7 +119,7 @@ function loadGrade () {
             $('#stu-checkGrade').append(domArr.join(''));
         },
         error: function(){
-            console.log('stu_grade fail');
+            console.log('/student/getAttendence fail');
             alert('后台错误');
 
             // /***************************************

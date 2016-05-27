@@ -16,7 +16,8 @@ function basicEvent () {
             url: '/log/in',
             data: params,
             dataType: 'json',
-            success: function(retData){
+            success: function(data){
+                var retData = eval('(' + data + ')');
                 if (retData.status === 'success') {
                     window.location.href = './info/index.html?username=' + username + '&role=' + retData.role;
                 } else {

@@ -38,7 +38,8 @@ function loadDutyState () {
         url: '_stu_dutyState',
         data: params,
         dataType: 'json',
-        success: function(retData){
+        success: function(data){
+            var retData = eval('(' + data + ')');
             $('#stu-dutyState').children().detach();
             var domArr = [];
             $.each(retData, function(i, e){
@@ -105,7 +106,8 @@ function loadGrade () {
         url: '/student/getAttendence',
         data: params,
         dataType: 'json',
-        success: function(retData){
+        success: function(data){
+            var retData = eval('(' + data + ')');
             $('#stu-checkGrade').children().detach();
             var domArr = [];
             $.each(retData, function(i, e){

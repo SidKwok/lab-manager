@@ -1,7 +1,10 @@
 package org.lab_manager.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.Notice;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by Silence on 2016/5/24.
@@ -9,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NoticeDao {
     public Notice queryById(Integer id);
-
-    public Notice insert(Integer id, String date, String content, String author);
+    public List<Notice> getAllNotice();
+    public Notice insert(@Param("content") String content,@Param("author") String author);
 }

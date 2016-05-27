@@ -10,5 +10,8 @@
     <select id="queryByIdAndName" resultType="Student">
         SELECT * FROM student WHERE SID=#{id} AND SName=#{name};
     </select>
+    <select id="queryAllStudent" resultType="Student">
+        SELECT *FROM student;
+    </select>
 
 </mapper>

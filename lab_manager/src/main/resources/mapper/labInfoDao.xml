@@ -7,7 +7,7 @@
         SELECT * FROM manage_lab WHERE ID=#{id};
     </select>
 
-    <select id="queryAll" resultType="LabInfo">
+    <select id="getAllLabInfo" resultType="LabInfo">
         SELECT *FROM manage_lab;
     </select>
 </mapper>

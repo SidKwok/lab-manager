@@ -4,10 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.NoticeDao">
     <select id="queryById" resultType="Notice">
-        SELECT * FROM announcement_table WHERE SID=#{id};
+        SELECT * FROM announcement_manage WHERE SID=#{id};
     </select>
-
+    <select id="getAllNotice" resultType="Notice">
+        SELECT *FROM announcement_manage;
+    </select>
     <insert id="insert">
-        INSERT INTO announcement_table(Notice_id,Date,Content,Author) VALUES(#{id},#{date},#{content},#{author});
+        INSERT INTO announcement_table(Content,Author) VALUES(#{content},#{author});
     </insert>
 </mapper>

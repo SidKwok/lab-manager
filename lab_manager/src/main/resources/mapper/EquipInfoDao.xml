@@ -7,4 +7,11 @@
         SELECT * FROM device_type_in WHERE ID=#{id};
     </select>
 
+    <select id="getAllAssets" resultType="EquipInfo">
+        SELECT *FROM device_type_in;
+    </select>
+
+    <select id="getAssetInfo" resultType="EquipInfo">
+        SELECT *FROM device_type_in WHERE asset_name=#{asset_name};
+    </select>
 </mapper>

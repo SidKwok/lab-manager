@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.DeviceOrderDao">
+    <select id="getAllDeviceOrder" resultType="DeviceOrder">
+        SELECT * FROM device_order;
+    </select>
+
+</mapper>

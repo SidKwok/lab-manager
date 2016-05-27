@@ -19,7 +19,7 @@ public class LabService implements ILabService {
     private LabInfoDao  mLabInfoDao;
 
     public List<LabInfo> getAllLabRoom(){
-        return mLabInfoDao.queryAll();
+        return mLabInfoDao.getAllLabInfo();
     }
 
     /**

@@ -4,11 +4,9 @@ package org.lab_manager.entity;
  * Created by Silence on 2016/5/24.
  */
 public class LabComment {
-    Integer ID;
-    Integer Room_num;
-    String Comment;
-    String Manage_teacher;
-    String Intro;
+    private Integer ID;
+    private Integer lab_id;
+    private String comment;
 
     public Integer getID() {
         return ID;
@@ -18,35 +16,19 @@ public class LabComment {
         this.ID = ID;
     }
 
-    public Integer getRoom_num() {
-        return Room_num;
+    public Integer getLab_id() {
+        return lab_id;
     }
 
-    public void setRoom_num(Integer room_num) {
-        Room_num = room_num;
+    public void setLab_id(Integer lab_id) {
+        this.lab_id = lab_id;
     }
 
     public String getComment() {
-        return Comment;
+        return comment;
     }
 
     public void setComment(String comment) {
-        Comment = comment;
-    }
-
-    public String getManage_teacher() {
-        return Manage_teacher;
-    }
-
-    public void setManage_teacher(String manage_teacher) {
-        Manage_teacher = manage_teacher;
-    }
-
-    public String getIntro() {
-        return Intro;
-    }
-
-    public void setIntro(String intro) {
-        Intro = intro;
+        this.comment = comment;
     }
 }

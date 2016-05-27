@@ -4,7 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.LabCommentDao">
     <select id="getLabComment" resultType="LabComment">
-        SELECT * FROM manage_lab WHERE SID=#{id};
+        SELECT * FROM lab_comments WHERE ID=#{id};
     </select>
-
+    <select id="getAllComment" resultType="LabComment">
+        SELECT *FROM lab_comments WHERE lab_id=#{id};
+    </select>
 </mapper>

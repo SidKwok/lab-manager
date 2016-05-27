@@ -10,7 +10,9 @@
     <select id="queryByIdAndName" resultType="Experiment">
         SELECT * FROM course_table WHERE Course_id=#{id} AND Course_name=#{name};
     </select>
-
+    <select id="queryAllExperiment" resultType="Experiment">
+        SELECT *FROM course_table;
+    </select>
     <insert id="addExperiment" parameterType="org.lab_manager.dao.ExperimentDao">
         insert into course_table (Course_id, Course_name, Class_name,Term, Room_num, Teacher,Start_time, End_time)
         values (#{courseId}, #{courseName}, #{class_name},#{term}, #{roomNum}, #{teacher},#{startTime}, #{endTime});

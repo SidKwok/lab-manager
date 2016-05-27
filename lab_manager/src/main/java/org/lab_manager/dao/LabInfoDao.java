@@ -8,7 +8,6 @@ import java.util.ArrayList;
 /**
  * Created by Silence on 2016/5/23.
  */
-@Repository
 public interface LabInfoDao {
     public LabInfo queryById(Integer id);
     public ArrayList<LabInfo> queryAll();

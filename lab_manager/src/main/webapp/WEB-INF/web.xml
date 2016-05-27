@@ -7,7 +7,7 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-config.xml,classpath:mybatis-config.xml</param-value>
+    <param-value>classpath:spring-config.xml</param-value>
   </context-param>
 
   <!-- Log4j配置 -->
@@ -20,10 +20,10 @@
     <!--<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>-->
   <!--</listener>-->
 
-  <!--<listener>-->
-    <!--<description>spring-monitor</description>-->
-    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-  <!--</listener>-->
+  <listener>
+    <description>spring-monitor</description>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 
   <servlet>
     <servlet-name>mvc-dispatcher</servlet-name>

@@ -15,7 +15,7 @@
         <property name="order" value="1"/>
     </bean>
 
-    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven/>-->
 
     <!--<mvc:default-servlet-handler/>-->
     <mvc:resources mapping="/fonts/**"  location="/pages/front/static/fonts/"  />

@@ -2,10 +2,12 @@ package org.lab_manager.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.Experiment;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by Silence on 2016/5/23.
  */
+@Repository
 public interface ExperimentDao {
     public Experiment queryById(String id);
     public Experiment queryByIdAndName(@Param("id") String id,@Param("name") String name);

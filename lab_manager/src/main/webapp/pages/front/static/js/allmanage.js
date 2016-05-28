@@ -320,6 +320,7 @@ function basicEvent() {
     // 加载评论
     $('.all-comment-btn').on('click', function(){
         var roomId = $(this).parents('.card').attr('data-roomId');
+        console.log('asdsad');
         $('#all-comment-modal-label').text(roomId);
         $.ajax({
             type: "POST",

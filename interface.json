@@ -394,7 +394,22 @@ params: username(用户名) role(角色)
 _course_duty (post) ok			(/equipment/courseStuInfo)
 params: username(用户名), role(角色), courseId(实验课程id)
 [
-  "sid","mingen","natalie","Airdy"
+  {
+    "stuId": "0001",
+    "stuName": "sid"
+  },
+  {
+    "stuId": "0002",
+    "stuName": "mingen"
+  },
+  {
+    "stuId": "0003",
+    "stuName": "natalie"
+  },
+  {
+    "stuId": "0004",
+    "stuName": "Airdy"
+  }
 ]
 
 // 发送学生考勤状况		(/equipment/uploacAttendence)
@@ -453,7 +468,26 @@ params: username(用户名), role(角色)
 _tea_labStuInfo (post) ok		(/teacher/getExpStuInfo)
 params: labName(实验名称) labId(实验id) username(用户名) role(角色)
 [
-  "sid","mingen","natalie","Airdy", "Bob"
+  {
+    "stuId": "0001",
+    "stuName": "sid"
+  },
+  {
+    "stuId": "0002",
+    "stuName": "mingen"
+  },
+  {
+    "stuId": "0003",
+    "stuName": "natalie"
+  },
+  {
+    "stuId": "0004",
+    "stuName": "Airdy"
+  },
+  {
+    "stuId": "0005",
+    "stuName": "Bob"
+  }
 ]
 
 // 发送学生成绩

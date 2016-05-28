@@ -118,7 +118,7 @@ function labNoticeEvent() {
       $('#tea-checkDuty-modal-label').attr('data-courseId', courseId);
       $.ajax({
           type: 'POST',
-          url: '_course_duty',
+          url: '/equipment/courseStuInfo',
           data: {username: username, role: role, courseId: courseId},
           dataType: 'json',
           success: function(data){
@@ -128,7 +128,8 @@ function labNoticeEvent() {
               $.each(retData, function(i, e){
                   domArr.push(
                       '<tr>',
-                          '<td>' + e + '</td>',
+                          '<td>' + e.stuId + '</td>',
+                          '<td>' + e.stuName + '</td>',
                           '<td><input class="form-control"></input></td>',
                           '<td>',
                               '<select class="form-control">',
@@ -142,7 +143,7 @@ function labNoticeEvent() {
               $('#tea-checkDuty-table').append(domArr.join(''));
           },
           error: function(){
-              console.log('_course_duty fail');
+              console.log('/equipment/courseStuInfo fail');
               alert('后台错误!');
               // /***************************************
               // * 用于前端test 测试状态：
@@ -157,7 +158,8 @@ function labNoticeEvent() {
               // $.each(retData, function(i, e){
               //     domArr.push(
               //         '<tr>',
-              //             '<td>' + e + '</td>',
+              //             '<td>' + e.stuId + '</td>',
+              //             '<td>' + e.stuName + '</td>',
               //             '<td><input class="form-control"></input></td>',
               //             '<td>',
               //                 '<select class="form-control">',
@@ -185,14 +187,15 @@ function labNoticeEvent() {
       var trs = $('#tea-checkDuty-table').children();
       $.each(trs, function(i, e){
           params.stu.push({
-              stuName: $(e).children('td').eq(0).text(),
-              stuGrade: $(e).children('td').eq(1).children('input').val(),
-              stuState: $(e).children('td').eq(2).children('select').children('option:selected').text()
+              stuId: $(e).children('td').eq(1).text(),
+              stuName: $(e).children('td').eq(2).text(),
+              stuGrade: $(e).children('td').eq(3).children('input').val(),
+              stuState: $(e).children('td').eq(4).children('select').children('option:selected').text()
           });
       });
       $.ajax({
           type: 'POST',
-          url: '_tea_post_duty',
+          url: '/equipment/uploacAttendence',
           data: params,
           dataType: 'json',
           success: function(data){
@@ -205,7 +208,7 @@ function labNoticeEvent() {
             }
           },
           error: function(){
-              console.log('_tea_post_duty, fail');
+              console.log('/equipment/uploacAttendence, fail');
               alert('后台错误');
           }
       });
@@ -310,7 +313,7 @@ function labCardEvent() {
               var domArr = [];
               $.each(retData, function(i, e){
                   domArr.push(
-                      '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
+                      '<tr><td>' + e.stuId + '</td><td>' + e.stuName + '</td><td><input class="form-control"></input></td></tr>'
                   );
               });
               $('#tea-correctGrade-table').append(domArr.join(''));

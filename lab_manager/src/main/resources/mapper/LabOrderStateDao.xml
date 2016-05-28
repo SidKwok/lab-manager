@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.LabOrderStateDao">
+    <select id="getLabOrderState" resultType="LabOrderState">
+        SELECT Course_name,Start_time,Week_day,Day_time,State FROM order_experiment WHERE Teacher=#{user_name};
+    </select>
+    <select id="getEquipOrderState" resultType="LabOrderState">
+        SELECT Device_name,Order_date,Order_id,Days,Equip_number,Device_state FROM device_order WHERE Applicant=#{user_name};
+    </select>
+</mapper>

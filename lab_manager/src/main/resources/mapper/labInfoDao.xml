@@ -3,11 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.LabInfoDao">
-    <select id="queryById" resultType="LabInfo">
-        SELECT * FROM manage_lab WHERE ID=#{id};
+    <select id="getLabInfo" resultType="LabInfo">
+        SELECT * FROM manage_lab WHERE Room_name=#{labName};
     </select>
 
     <select id="getAllLabInfo" resultType="LabInfo">
         SELECT *FROM manage_lab;
     </select>
+
+    <delete id="deleteLab" parameterType="LabInfo">
+        DELETE FROM manage_lab WHERE Room_name=#{labName};
+    </delete>
+
+    <update id="updateLab" parameterType="LabInfo">
+        UPDATE manage_lab SET Manage_teacher=#{teacher},Intro=#{intro} where Room_name=#{labName};
+    </update>
+
+    <insert id="addLab" parameterType="LabInfo">
+        INSERT INTO manage_lab(Room_id,Room_name,Manage_teacher,Intro) VALUES (#{labId},#{labName},#{teacher},#{intro});
+    </insert>
 </mapper>

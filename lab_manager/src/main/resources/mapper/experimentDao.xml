@@ -10,11 +10,23 @@
     <select id="queryByIdAndName" resultType="Experiment">
         SELECT * FROM course_table WHERE Course_id=#{id} AND Course_name=#{name};
     </select>
-    <select id="queryAllExperiment" resultType="Experiment">
-        SELECT *FROM course_table;
+    <select id="queryAllExperimentOrderState" resultType="Experiment">
+        SELECT ID,Course_name,Order_date,Start_time,Week_day,Day_time,Teacher FROM order_experiment;
     </select>
-    <insert id="addExperiment" parameterType="org.lab_manager.dao.ExperimentDao">
+    <insert id="addExperiment" parameterType="Experiment">
         insert into course_table (Course_id, Course_name, Class_name,Term, Room_num, Teacher,Start_time, End_time)
         values (#{courseId}, #{courseName}, #{class_name},#{term}, #{roomNum}, #{teacher},#{startTime}, #{endTime});
     </insert>
+
+    <insert id="applyExperiment" parameterType="Experiment">
+        INSERT INTO order_experiment(Course_name,Teacher,Start_time,End_time,Room_id,Week_day,Day_time) VALUES (#{courseName},#{applicant},#{startTime},#{endTime},#{roomId},#{weekDay},#{dayTime});
+    </insert>
+
+    <update id="approveApply" parameterType="Experiment">
+        UPDATE order_experiment SET State='批准' WHERE ID=#{id};
+    </update>
+
+    <update id="refuseApply" parameterType="Experiment">
+        UPDATE order_experiment SET State='拒绝' WHERE ID=#{id};
+    </update>
 </mapper>

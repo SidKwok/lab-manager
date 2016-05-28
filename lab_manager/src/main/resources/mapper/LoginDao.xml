@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.LoginDao">
+    <select id="login" resultType="Login">
+        SELECT role_table.priviledge from role_table JOIN user_table ON user_table.User_id=role_table.User_id WHERE user_table.User_name=#{user_name} and user_table.Password=#{pass_word};
+    </select>
+</mapper>

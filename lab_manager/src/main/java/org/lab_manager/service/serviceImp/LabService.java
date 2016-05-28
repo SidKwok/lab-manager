@@ -1,8 +1,10 @@
 package org.lab_manager.service.serviceImp;
 
 import org.lab_manager.dao.LabInfoDao;
+import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
+import org.lab_manager.entity.LabUse;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,29 +20,44 @@ public class LabService implements ILabService {
     @Autowired
     private LabInfoDao  mLabInfoDao;
 
+    @Override
     public List<LabInfo> getAllLabRoom(){
         return mLabInfoDao.getAllLabInfo();
     }
 
-    /**
-     * 新增实验室
-     */
-    public boolean addLabRoom(LabRoom labRoom){
-        return true;
+    @Override
+    public boolean addLabRoom(LabRoom labRoom) {
+        return false;
+    }
+
+    @Override
+    public boolean updateLabRoom(LabRoom labRoom) {
+        return false;
+    }
+
+    @Override
+    public boolean addComment(LabComment comment) {
+        return false;
+    }
+
+    @Override
+    public List<LabComment> getLabComment(String roomId) {
+        return null;
+    }
+
+    @Override
+    public List<LabUse> getLabUseByRoomId(String roomId) {
+        return null;
+    }
+
+    @Override
+    public List<LabUse> getLabUseByUserId(String userId) {
+        return null;
     }
 
 
-    /**
-     * 修改实验室
-     */
-    public boolean updateLabRoom(LabRoom labRoom){
-        return true;
-    }
-
-    /**
-     * 为实验室增加评论
-     */
-    public boolean addComment(String roomId,String comment){
-        return true;
+    @Override
+    public boolean orderRoom(LabUse labUse) {
+        return false;
     }
 }

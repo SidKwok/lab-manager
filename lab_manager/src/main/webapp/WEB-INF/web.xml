@@ -40,5 +40,8 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-
+  <!-- 配置session超时时间，单位分钟 -->
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
 </web-app>

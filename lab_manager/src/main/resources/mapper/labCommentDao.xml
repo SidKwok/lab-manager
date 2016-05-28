@@ -9,4 +9,7 @@
     <select id="getAllComment" resultType="LabComment">
         SELECT *FROM lab_comments WHERE lab_id=#{id};
     </select>
+    <insert id="addComment" parameterType="LabComment">
+        INSERT INTO lab_comments(lab_id,comment) VALUES (#{roomId},#{comment});
+    </insert>
 </mapper>

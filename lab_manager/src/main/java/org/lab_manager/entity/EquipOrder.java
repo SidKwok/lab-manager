@@ -1,23 +1,13 @@
 package org.lab_manager.entity;
 
 /**
- * Created by Silence on 2016/5/26.
+ * Created by Silence on 2016/5/28.
  */
-public class DeviceOrder {
-    private Integer Order_id;
+public class EquipOrder {
     private String Device_name;
-    private Integer Device_Number;
+    private Integer Equip_number;
     private Integer Days;
     private String Applicant;
-    private String Date;
-
-    public Integer getOrder_id() {
-        return Order_id;
-    }
-
-    public void setOrder_id(Integer order_id) {
-        Order_id = order_id;
-    }
 
     public String getDevice_name() {
         return Device_name;
@@ -27,12 +17,12 @@ public class DeviceOrder {
         Device_name = device_name;
     }
 
-    public Integer getNumber() {
-        return Device_Number;
+    public Integer getEquip_number() {
+        return Equip_number;
     }
 
-    public void setNumber(Integer number) {
-        Device_Number = number;
+    public void setEquip_number(Integer equip_number) {
+        Equip_number = equip_number;
     }
 
     public Integer getDays() {
@@ -49,13 +39,5 @@ public class DeviceOrder {
 
     public void setApplicant(String applicant) {
         Applicant = applicant;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
     }
 }

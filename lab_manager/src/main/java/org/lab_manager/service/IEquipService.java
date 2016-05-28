@@ -27,7 +27,6 @@ public interface IEquipService {
     /**
      * 添加设备入库
      */
-
     public boolean addEquip(EquipInfo equipInfo);
 
     /**

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.LabUseDao">
     <select id="getLabUseInfo" resultType="LabUse">
-        SELECT * FROM lab_use WHERE Room_id=#{room_id};
+        SELECT manage_lab.Room_name, Teacher,Start_time,Week,Day_time FROM course_table
+JOIN manage_lab ON manage_lab.Room_id=course_table.Room_id WHERE course_table.Room_id=#{room_id};
     </select>
-
 </mapper>

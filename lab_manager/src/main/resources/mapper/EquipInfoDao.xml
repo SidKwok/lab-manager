@@ -14,4 +14,14 @@
     <select id="getAssetInfo" resultType="EquipInfo">
         SELECT *FROM device_type_in WHERE asset_name=#{asset_name};
     </select>
+    <delete id="deleteAsset" parameterType="EquipInfo">
+        DELETE *FROM device_type_in WHERE asset_name=#{asset_name};
+    </delete>
+
+    <update id="updateAsset" parameterType="EquipInfo">
+        UPDATE device_type_in SET Class_no=#{class_no},Class_name=#{class_name},Value_type=#{value_type},Device_Number=#{number} where asset_name=#{asset_name};
+    </update>
+    <insert id="addAsset" parameterType="EquipInfo">
+        INSERT INTO device_type_in VALUES (#{asset_name},#{class_no},#{class_name},#{value_type},#{number});
+    </insert>
 </mapper>

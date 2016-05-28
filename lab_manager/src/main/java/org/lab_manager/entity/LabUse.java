@@ -4,44 +4,26 @@ package org.lab_manager.entity;
  * Created by Silence on 2016/5/26.
  */
 public class LabUse {
-    private Integer ID;
-    private Integer Room_id;
-    private String Lab_name;
-    private String Applicant;
+    private String Room_name;
+    private String Teacher;
     private String Week;
     private String Weekday;
-    private String Course;
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
-
-    public Integer getRoom_id() {
-        return Room_id;
-    }
-
-    public void setRoom_id(Integer room_id) {
-        Room_id = room_id;
-    }
+    private String Day_time;
 
     public String getLab_name() {
-        return Lab_name;
+        return Room_name;
     }
 
     public void setLab_name(String lab_name) {
-        Lab_name = lab_name;
+        Room_name = lab_name;
     }
 
     public String getApplicant() {
-        return Applicant;
+        return Teacher;
     }
 
     public void setApplicant(String applicant) {
-        Applicant = applicant;
+        Teacher = applicant;
     }
 
     public String getWeek() {
@@ -61,10 +43,10 @@ public class LabUse {
     }
 
     public String getCourse() {
-        return Course;
+        return Day_time;
     }
 
     public void setCourse(String course) {
-        Course = course;
+        Day_time = course;
     }
 }

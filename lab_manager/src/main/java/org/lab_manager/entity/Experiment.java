@@ -9,10 +9,53 @@ public class Experiment {
     private String Course_name;
     private String Class_name;
     private Integer Term;
-    private String Room_num;
+    private String Room_id;
     private String Teacher;
     private String Start_time;
     private String End_time;
+
+    private String Week;
+    private String Day_time;
+
+    public String getRoom_id() {
+        return Room_id;
+    }
+
+    public void setRoom_id(String room_id) {
+        Room_id = room_id;
+    }
+
+    public String getStart_time() {
+        return Start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        Start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return End_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        End_time = end_time;
+    }
+
+    public String getWeek() {
+        return Week;
+    }
+
+    public void setWeek(String week) {
+        Week = week;
+    }
+
+    public String getDay_time() {
+        return Day_time;
+    }
+
+    public void setDay_time(String day_time) {
+        Day_time = day_time;
+    }
 
     public String getCourse_id() {
         return Course_id;
@@ -47,11 +90,11 @@ public class Experiment {
     }
 
     public String getRoomNum() {
-        return Room_num;
+        return Room_id;
     }
 
     public void setRoomNum(String roomNum) {
-        this.Room_num = roomNum;
+        this.Room_id = roomNum;
     }
 
     public String getTeacher() {

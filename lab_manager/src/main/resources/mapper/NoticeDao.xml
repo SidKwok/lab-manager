@@ -9,7 +9,7 @@
     <select id="getAllNotice" resultType="Notice">
         SELECT *FROM announcement_manage;
     </select>
-    <insert id="insert">
-        INSERT INTO announcement_table(Content,Author) VALUES(#{content},#{author});
+    <insert id="addNotice" parameterType="Notice">
+        INSERT INTO announcement_manage(Content,Author) VALUES(#{content},#{author});
     </insert>
 </mapper>

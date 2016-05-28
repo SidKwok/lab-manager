@@ -7,7 +7,6 @@ public class Student {
     private String SID;
     private String SName;
     private String SClassNO;
-    private String Role_id;
     private Float score;
     private String password;
 
@@ -21,14 +20,6 @@ public class Student {
 
     public void setSClassNO(String SClassNO) {
         this.SClassNO = SClassNO;
-    }
-
-    public String getRole_id() {
-        return Role_id;
-    }
-
-    public void setRole_id(String role_id) {
-        Role_id = role_id;
     }
 
     public Float getScore() {

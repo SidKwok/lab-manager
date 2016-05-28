@@ -1,7 +1,9 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
+import org.lab_manager.entity.LabUse;
 
 import java.util.List;
 
@@ -28,9 +30,24 @@ public interface ILabService {
     /**
      * 为实验室增加评论
      */
-    public boolean addComment(String roomId,String comment);
+    public boolean addComment(LabComment comment);
 
     /**
-     *
+     * 获取指定实验室评论
      */
+    public List<LabComment> getLabComment(String roomId);
+
+    /**
+     * 通过房间号获取房间预约情况
+     */
+    public List<LabUse> getLabUseByRoomId(String roomId);
+
+    /**
+     * 通过用户id获取房间预约情况
+     */
+    public List<LabUse> getLabUseByUserId(String userId);
+    /**
+     * 预约实验室
+     */
+    public boolean orderRoom(LabUse labUse);
 }

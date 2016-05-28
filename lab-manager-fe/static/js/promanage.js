@@ -66,6 +66,9 @@ function loadEquipCard () {
               );
           });
           $('#pro-equip .flex-box').append(domArr.join(''));
+
+          // 加载设备卡片事件
+          equipCardEvent();
         },
         error: function(){
           console.log('/equipment/queryAllEquipment', 'fail');
@@ -118,6 +121,198 @@ function loadEquipCard () {
 }
 
 /**
+* 设备卡片事件
+*/
+function equipCardEvent {
+  // 删除仪器
+  $('.pro-equipDelete-btn').on('click', function(){
+      $('#pro-equipDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));
+  });
+
+  $('#pro-equipDelete').on('click', function(){
+      var assetName = $('#pro-equipDelete-modal-label').text();
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/delEquipment',
+          data: {assetName: assetName},
+          dataType: 'json',
+          success: function(data){
+              var retData = eval('(' + data + ')');
+              if(retData.status === '0') {
+                  alert('删除失败');
+              }
+              if(retData.status === '1') {
+                  alert('删除成功');
+                  loadEquipCard();
+              }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/equipment/delEquipment fail');
+
+              // /***************************************
+              // * 用于前端test 测试状态：ok
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('删除失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('删除成功');
+              //     loadEquipCard();
+              // }
+              //
+              // /***************************************/
+          }
+      });
+  });
+
+  // 修改仪器
+  $('.pro-equipUpdate-btn').on('click', function(){
+      var assetName = $(this).parents('.card').attr('data-assetName')
+      $('#pro-equipUpdate-modal-label').text(assetName);
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/queryEquipmentInfo',
+          data: {assetName: assetName},
+          dataType: 'json',
+          success: function(data){
+              var retData = eval('(' + data + ')');
+              $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
+              var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                              '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                              '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                              '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
+              $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
+          },
+          error: function(){
+              console.log('/equipment/queryEquipmentInfo fail');
+              alert('后台错误！');
+
+              /***************************************
+              * 用于前端test 测试状态：ok
+              */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "classNo": "002",
+              //   "className": "具",
+              //   "valueType": "贵",
+              //   "number": "1"
+              // };
+              // /**************/
+              // $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
+              // var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+              //                 '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+              //                 '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+              //                 '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
+              // $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
+              // /***************************************/
+          }
+      });
+  });
+
+  $('#post-equipUpdate').on('click', function(){
+      var params = {
+          assetName: $('#pro-equipUpdate-modal-label').text(),
+          classNo: $('#pro-input-classNo').val(),
+          className: $('#pro-input-className').val(),
+          valueType: $('#pro-input-valueType').val(),
+          number: $('#pro-input-number').val()
+      };
+
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/updateEquipment',
+          data: params,
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('修改失败');
+            }
+            if(retData.status === '1') {
+                alert('修改成功');
+                loadEquipCard();
+            }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/equipment/updateEquipment fail');
+              // /***************************************
+              // * 用于前端test 测试状态：
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('修改失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('修改成功');
+              //     loadEquipCard();
+              // }
+              // /***************************************/
+          }
+      });
+  });
+
+  // 添加仪器
+  $('#post-equipAdd').on('click', function(){
+      var params = {
+          assetName: $('#pro-input-add-assetName').val(),
+          classNo: $('#pro-input-add-classNo').val(),
+          className: $('#pro-input-add-className').val(),
+          valueType: $('#pro-input-add-valueType').val(),
+          number: $('#pro-input-add-number').val(),
+      };
+
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/addEquipment',
+          data: params,
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('添加失败');
+            }
+            if(retData.status === '1') {
+                alert('添加成功');
+                loadEquipCard();
+            }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/equipment/addEquipment fail');
+
+              // /***************************************
+              // * 用于前端test 测试状态：
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('添加失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('添加成功');
+              //     loadEquipCard();
+              // }
+              // /***************************************/
+          }
+      });
+  });
+}
+
+/**
 * 加载实验室卡片
 */
 function loadLabRoomCard () {
@@ -148,6 +343,9 @@ function loadLabRoomCard () {
               );
           });
           $('#pro-labRoom .flex-box').append(domArr.join(''));
+
+          // 加载实验室卡片事件
+          labRoomCardEvent();
         },
         error: function(){
           console.log('/lab/getLabsInfo', 'fail');
@@ -194,6 +392,192 @@ function loadLabRoomCard () {
 }
 
 /**
+* 实验室卡片事件
+*/
+function labRoomCardEvent(){
+  // 删除实验室
+  $('.pro-labRoomDelete-btn').on('click', function(){
+      $('#pro-labRoomDelete-modal-label').text($(this).parents('.card').attr('data-labRoomName'));
+  });
+
+  $('#pro-labRoomDelete').on('click', function(){
+      var labRoomName = $('#pro-labRoomDelete-modal-label').text();
+      $.ajax({
+          type: 'POST',
+          url: '/lab/delLabRoom',
+          data: {labRoomName: labRoomName},
+          dataType: 'json',
+          success: function(data){
+              var retData = eval('(' + data + ')');
+              if(retData.status === '0') {
+                  alert('删除失败');
+              }
+              if(retData.status === '1') {
+                  alert('删除成功');
+                  loadEquipCard();
+              }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/lab/delLabRoom fail');
+
+              // /***************************************
+              // * 用于前端test 测试状态：ok
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('删除失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('删除成功');
+              //     loadEquipCard();
+              // }
+              //
+              // /***************************************/
+          }
+      });
+  });
+
+  // 修改实验室
+  $('.pro-labRoomUpdate-btn').on('click', function(){
+      var labRoomName = $(this).parents('.card').attr('data-labRoomName')
+      $('#pro-labRoomUpdate-modal-label').text(labRoomName);
+      $.ajax({
+          type: 'POST',
+          url: '/lab/roomConcreateInfo',
+          data: {labRoomName: labRoomName},
+          dataType: 'json',
+          success: function(data){
+              var retData = eval('(' + data + ')');
+              $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
+              var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+                              '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+                              '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+              $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
+          },
+          error: function(){
+              console.log('/lab/roomConcreateInfo fail');
+              alert('后台错误！');
+
+              // /***************************************
+              // * 用于前端test 测试状态：ok
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "labRoomName":"机器人实验室",
+              //   "labRoomType":"机器人",
+              //   "labRoomIntro":"棒"
+              // };
+              // /**************/
+              // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
+              // var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+              //                 '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+              //                 '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+              // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
+              // /***************************************/
+          }
+      });
+  });
+
+  $('#post-labRoomUpdate').on('click', function(){
+      var params = {
+          labRoomName: $('#pro-input-labRoomName').val(),
+          labRoomType: $('#pro-input-labRoomType').val(),
+          labRoomIntro: $('#pro-input-labRoomIntro').val()
+      };
+
+      $.ajax({
+          type: 'POST',
+          url: '/lab/updateRoomInfo',
+          data: params,
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('修改失败');
+            }
+            if(retData.status === '1') {
+                alert('修改成功');
+                loadEquipCard();
+            }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/lab/updateRoomInfo fail');
+              // /***************************************
+              // * 用于前端test 测试状态：
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('修改失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('修改成功');
+              //     loadEquipCard();
+              // }
+              // /***************************************/
+          }
+      });
+  });
+
+  // 添加实验室
+  $('#post-labRoomAdd').on('click', function(){
+      var params = {
+          labRoomName: $('#pro-input-add-labRoomName').val(),
+          labRoomType: $('#pro-input-add-labRoomType').val(),
+          labRoomIntro: $('#pro-input-add-labRoomIntro').val(),
+      };
+      console.log(params);
+
+      $.ajax({
+          type: 'POST',
+          url: '/lab/addLabRoom',
+          data: params,
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('添加失败');
+            }
+            if(retData.status === '1') {
+                alert('添加成功');
+                loadEquipCard();
+            }
+          },
+          error: function(){
+              alert('后台错误');
+              console.log('/lab/addLabRoom fail');
+
+              // /***************************************
+              // * 用于前端test 测试状态：
+              // */
+              // /*ajax返回的数据*/
+              // var retData = {
+              //   "status": "1"
+              // };
+              // /**************/
+              // if(retData.status === '0') {
+              //     alert('添加失败');
+              // }
+              // if(retData.status === '1') {
+              //     alert('添加成功');
+              //     loadEquipCard();
+              // }
+              // /***************************************/
+          }
+      });
+  });
+}
+
+/**
 * 加载实验室预约
 */
 function loadLabOrder() {
@@ -221,6 +605,9 @@ function loadLabOrder() {
                 );
             });
             $('#pro-lab-order').append(domArr.join(''));
+
+            // 加载实验室预约事件
+            labOrderEvent();
         },
         error: function() {
             alert('后台出错');
@@ -291,6 +678,93 @@ function loadLabOrder() {
 }
 
 /**
+* 实验室预约事件
+*/
+function labOrderEvent(){
+  // 批准实验室预约
+  $('.labOrder-confirm-btn').on('click', function(){
+      $.ajax({
+          type: 'POST',
+          url: '/lab/confirmLabOrder',
+          data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('批准实验室预约失败');
+            }
+            if(retData.status === '1') {
+                alert('批准实验室预约成功');
+                loadLabOrder();
+            }
+          },
+          error: function(){
+            alert('后台出错');
+            console.log('/lab/confirmLabOrder fail');
+
+            // /***************************************
+            // * 用于前端test 测试状态：
+            // */
+            // /*ajax返回的数据*/
+            // var retData = {
+            //   "status": "1"
+            // };
+            // /**************/
+            // if(retData.status === '0') {
+            //     alert('批准实验室预约失败');
+            // }
+            // if(retData.status === '1') {
+            //     alert('批准实验室预约成功');
+            //     loadLabOrder();
+            // }
+            // /***************************************/
+          }
+      });
+  });
+
+  // 拒绝实验室预约
+  $('.labOrder-refuse-btn').on('click', function(){
+      $.ajax({
+          type: 'POST',
+          url: '/lab/refuseLabOrder',
+          data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('拒绝实验室预约失败');
+            }
+            if(retData.status === '1') {
+                alert('拒绝实验室预约成功');
+                loadLabOrder();
+            }
+          },
+          error: function(){
+            alert('后台出错');
+            console.log('/lab/refuseLabOrder fail');
+
+            // /***************************************
+            // * 用于前端test 测试状态：
+            // */
+            // /*ajax返回的数据*/
+            // var retData = {
+            //   "status": "1"
+            // };
+            // /**************/
+            // if(retData.status === '0') {
+            //     alert('拒绝实验室预约失败');
+            // }
+            // if(retData.status === '1') {
+            //     alert('拒绝实验室预约成功');
+            //     loadLabOrder();
+            // }
+            // /***************************************/
+          }
+      });
+  });
+}
+
+/**
 * 加载设备预约
 */
 function loadEquipOrder(){
@@ -318,6 +792,9 @@ function loadEquipOrder(){
             );
         });
         $('#pro-equip-order').append(domArr.join(''));
+
+        //加载设备预约事件
+        equipOrderEvent();
       },
       error: function() {
           alert('后台出错');
@@ -393,540 +870,97 @@ function loadEquipOrder(){
 }
 
 /**
+* 设备预约事件
+*/
+function equipOrderEvent(){
+  // 批准设备预约
+  $('.equipOrder-confirm-btn').on('click', function(){
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/confirmEquitOrder',
+          data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData.status === '0') {
+                alert('批准设备预约失败');
+            }
+            if(retData.status === '1') {
+                alert('批准设备预约成功');
+                loadEquipOrder();
+            }
+          },
+          error: function(){
+            alert('后台出错');
+            console.log('/equipment/confirmEquitOrder fail');
+
+            // /***************************************
+            // * 用于前端test 测试状态：ok
+            // */
+            // /*ajax返回的数据*/
+            // var retData = {
+            //   "status": "1"
+            // };
+            // /**************/
+            // if(retData.status === '0') {
+            //     alert('批准设备预约失败');
+            // }
+            // if(retData.status === '1') {
+            //     alert('批准设备预约成功');
+            //     loadEquipOrder();
+            // }
+            // /***************************************/
+          }
+      });
+  });
+
+  // 拒绝设备预约
+  $('.equipOrder-refuse-btn').on('click', function(){
+      $.ajax({
+          type: 'POST',
+          url: '/equipment/refuseEquitOrder',
+          data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
+          dataType: 'json',
+          success: function(data){
+            var retData = eval('(' + data + ')');
+            if(retData === '0') {
+                alert('拒绝设备预约失败');
+            }
+            if(retData === '1') {
+                alert('拒绝设备预约成功');
+                loadEquipOrder();
+            }
+          },
+          error: function(){
+            alert('后台出错');
+            console.log('/equipment/refuseEquitOrder fail');
+
+            // /***************************************
+            // * 用于前端test 测试状态：ok
+            // */
+            // /*ajax返回的数据*/
+            // var retData = {
+            //   "status": "1"
+            // };
+            // /**************/
+            // if(retData.status === '0') {
+            //     alert('拒绝设备预约失败');
+            // }
+            // if(retData.status === '1') {
+            //     alert('拒绝设备预约成功');
+            //     loadEquipOrder();
+            // }
+            // /***************************************/
+          }
+      });
+  });
+}
+
+/**
 * 加载页面事件
 */
 function basicEvent(){
-    // 删除仪器
-    $('.pro-equipDelete-btn').on('click', function(){
-        $('#pro-equipDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));
-    });
 
-    $('#pro-equipDelete').on('click', function(){
-        var assetName = $('#pro-equipDelete-modal-label').text();
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/delEquipment',
-            data: {assetName: assetName},
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                if(retData.status === '0') {
-                    alert('删除失败');
-                }
-                if(retData.status === '1') {
-                    alert('删除成功');
-                    loadEquipCard();
-                }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/equipment/delEquipment fail');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('删除失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('删除成功');
-                //     loadEquipCard();
-                // }
-                //
-                // /***************************************/
-            }
-        });
-    });
-
-    // 修改仪器
-    $('.pro-equipUpdate-btn').on('click', function(){
-        var assetName = $(this).parents('.card').attr('data-assetName')
-        $('#pro-equipUpdate-modal-label').text(assetName);
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/queryEquipmentInfo',
-            data: {assetName: assetName},
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
-                var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                                '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                                '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                                '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
-                $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
-            },
-            error: function(){
-                console.log('/equipment/queryEquipmentInfo fail');
-                alert('后台错误！');
-
-                /***************************************
-                * 用于前端test 测试状态：ok
-                */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "classNo": "002",
-                //   "className": "具",
-                //   "valueType": "贵",
-                //   "number": "1"
-                // };
-                // /**************/
-                // $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
-                // var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                //                 '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                //                 '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                //                 '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
-                // $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
-                // /***************************************/
-            }
-        });
-    });
-
-    $('#post-equipUpdate').on('click', function(){
-        var params = {
-            assetName: $('#pro-equipUpdate-modal-label').text(),
-            classNo: $('#pro-input-classNo').val(),
-            className: $('#pro-input-className').val(),
-            valueType: $('#pro-input-valueType').val(),
-            number: $('#pro-input-number').val()
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/updateEquipment',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('修改失败');
-              }
-              if(retData.status === '1') {
-                  alert('修改成功');
-                  loadEquipCard();
-              }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/equipment/updateEquipment fail');
-                // /***************************************
-                // * 用于前端test 测试状态：
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('修改失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('修改成功');
-                //     loadEquipCard();
-                // }
-                // /***************************************/
-            }
-        });
-    });
-
-    // 添加仪器
-    $('#post-equipAdd').on('click', function(){
-        var params = {
-            assetName: $('#pro-input-add-assetName').val(),
-            classNo: $('#pro-input-add-classNo').val(),
-            className: $('#pro-input-add-className').val(),
-            valueType: $('#pro-input-add-valueType').val(),
-            number: $('#pro-input-add-number').val(),
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/addEquipment',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('添加失败');
-              }
-              if(retData.status === '1') {
-                  alert('添加成功');
-                  loadEquipCard();
-              }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/equipment/addEquipment fail');
-
-                // /***************************************
-                // * 用于前端test 测试状态：
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('添加失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('添加成功');
-                //     loadEquipCard();
-                // }
-                // /***************************************/
-            }
-        });
-    });
-
-    // 删除实验室
-    $('.pro-labRoomDelete-btn').on('click', function(){
-        $('#pro-labRoomDelete-modal-label').text($(this).parents('.card').attr('data-labRoomName'));
-    });
-
-    $('#pro-labRoomDelete').on('click', function(){
-        var labRoomName = $('#pro-labRoomDelete-modal-label').text();
-        $.ajax({
-            type: 'POST',
-            url: '/lab/delLabRoom',
-            data: {labRoomName: labRoomName},
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                if(retData.status === '0') {
-                    alert('删除失败');
-                }
-                if(retData.status === '1') {
-                    alert('删除成功');
-                    loadEquipCard();
-                }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/lab/delLabRoom fail');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('删除失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('删除成功');
-                //     loadEquipCard();
-                // }
-                //
-                // /***************************************/
-            }
-        });
-    });
-
-    // 修改实验室
-    $('.pro-labRoomUpdate-btn').on('click', function(){
-        var labRoomName = $(this).parents('.card').attr('data-labRoomName')
-        $('#pro-labRoomUpdate-modal-label').text(labRoomName);
-        $.ajax({
-            type: 'POST',
-            url: '/lab/roomConcreateInfo',
-            data: {labRoomName: labRoomName},
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
-                var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
-                                '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
-                                '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
-                $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
-            },
-            error: function(){
-                console.log('/lab/roomConcreateInfo fail');
-                alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "labRoomName":"机器人实验室",
-                //   "labRoomType":"机器人",
-                //   "labRoomIntro":"棒"
-                // };
-                // /**************/
-                // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
-                // var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
-                //                 '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
-                //                 '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
-                // $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
-                // /***************************************/
-            }
-        });
-    });
-
-    $('#post-labRoomUpdate').on('click', function(){
-        var params = {
-            labRoomName: $('#pro-input-labRoomName').val(),
-            labRoomType: $('#pro-input-labRoomType').val(),
-            labRoomIntro: $('#pro-input-labRoomIntro').val()
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/lab/updateRoomInfo',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('修改失败');
-              }
-              if(retData.status === '1') {
-                  alert('修改成功');
-                  loadEquipCard();
-              }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/lab/updateRoomInfo fail');
-                // /***************************************
-                // * 用于前端test 测试状态：
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('修改失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('修改成功');
-                //     loadEquipCard();
-                // }
-                // /***************************************/
-            }
-        });
-    });
-
-    // 添加实验室
-    $('#post-labRoomAdd').on('click', function(){
-        var params = {
-            labRoomName: $('#pro-input-add-labRoomName').val(),
-            labRoomType: $('#pro-input-add-labRoomType').val(),
-            labRoomIntro: $('#pro-input-add-labRoomIntro').val(),
-        };
-        console.log(params);
-
-        $.ajax({
-            type: 'POST',
-            url: '/lab/addLabRoom',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('添加失败');
-              }
-              if(retData.status === '1') {
-                  alert('添加成功');
-                  loadEquipCard();
-              }
-            },
-            error: function(){
-                alert('后台错误');
-                console.log('/lab/addLabRoom fail');
-
-                // /***************************************
-                // * 用于前端test 测试状态：
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //     alert('添加失败');
-                // }
-                // if(retData.status === '1') {
-                //     alert('添加成功');
-                //     loadEquipCard();
-                // }
-                // /***************************************/
-            }
-        });
-    });
-
-    // 批准实验室预约
-    $('.labOrder-confirm-btn').on('click', function(){
-        $.ajax({
-            type: 'POST',
-            url: '/lab/confirmLabOrder',
-            data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('批准实验室预约失败');
-              }
-              if(retData.status === '1') {
-                  alert('批准实验室预约成功');
-                  loadLabOrder();
-              }
-            },
-            error: function(){
-              alert('后台出错');
-              console.log('/lab/confirmLabOrder fail');
-
-              // /***************************************
-              // * 用于前端test 测试状态：
-              // */
-              // /*ajax返回的数据*/
-              // var retData = {
-              //   "status": "1"
-              // };
-              // /**************/
-              // if(retData.status === '0') {
-              //     alert('批准实验室预约失败');
-              // }
-              // if(retData.status === '1') {
-              //     alert('批准实验室预约成功');
-              //     loadLabOrder();
-              // }
-              // /***************************************/
-            }
-        });
-    });
-
-    // 拒绝实验室预约
-    $('.labOrder-refuse-btn').on('click', function(){
-        $.ajax({
-            type: 'POST',
-            url: '/lab/refuseLabOrder',
-            data: {labOrderId: $(this).parents('.lab-order').children('.labOrderId').text()},
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('拒绝实验室预约失败');
-              }
-              if(retData.status === '1') {
-                  alert('拒绝实验室预约成功');
-                  loadLabOrder();
-              }
-            },
-            error: function(){
-              alert('后台出错');
-              console.log('/lab/refuseLabOrder fail');
-
-              // /***************************************
-              // * 用于前端test 测试状态：
-              // */
-              // /*ajax返回的数据*/
-              // var retData = {
-              //   "status": "1"
-              // };
-              // /**************/
-              // if(retData.status === '0') {
-              //     alert('拒绝实验室预约失败');
-              // }
-              // if(retData.status === '1') {
-              //     alert('拒绝实验室预约成功');
-              //     loadLabOrder();
-              // }
-              // /***************************************/
-            }
-        });
-    });
-
-    // 批准设备预约
-    $('.equipOrder-confirm-btn').on('click', function(){
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/confirmEquitOrder',
-            data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                  alert('批准设备预约失败');
-              }
-              if(retData.status === '1') {
-                  alert('批准设备预约成功');
-                  loadEquipOrder();
-              }
-            },
-            error: function(){
-              alert('后台出错');
-              console.log('/equipment/confirmEquitOrder fail');
-
-              // /***************************************
-              // * 用于前端test 测试状态：ok
-              // */
-              // /*ajax返回的数据*/
-              // var retData = {
-              //   "status": "1"
-              // };
-              // /**************/
-              // if(retData.status === '0') {
-              //     alert('批准设备预约失败');
-              // }
-              // if(retData.status === '1') {
-              //     alert('批准设备预约成功');
-              //     loadEquipOrder();
-              // }
-              // /***************************************/
-            }
-        });
-    });
-
-    // 拒绝设备预约
-    $('.equipOrder-refuse-btn').on('click', function(){
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/refuseEquitOrder',
-            data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData === '0') {
-                  alert('拒绝设备预约失败');
-              }
-              if(retData === '1') {
-                  alert('拒绝设备预约成功');
-                  loadEquipOrder();
-              }
-            },
-            error: function(){
-              alert('后台出错');
-              console.log('/equipment/refuseEquitOrder fail');
-
-              // /***************************************
-              // * 用于前端test 测试状态：ok
-              // */
-              // /*ajax返回的数据*/
-              // var retData = {
-              //   "status": "1"
-              // };
-              // /**************/
-              // if(retData.status === '0') {
-              //     alert('拒绝设备预约失败');
-              // }
-              // if(retData.status === '1') {
-              //     alert('拒绝设备预约成功');
-              //     loadEquipOrder();
-              // }
-              // /***************************************/
-            }
-        });
-    });
 }
 
 init();

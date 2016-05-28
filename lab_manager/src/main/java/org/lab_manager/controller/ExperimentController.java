@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,8 +67,9 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/teacherOrderStatus",method = RequestMethod.POST)
-    public String getOrdersOfTeacher(String json){
-        List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
+    public String getOrdersOfTeacher(@RequestParam("role")String role,@RequestParam("username")String username){
+        Map<String,Object> result=new HashMap<String, Object>();
+
 
         return JSON.toJSONString(result);
     }
@@ -101,8 +104,18 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/teaAllCourse",method = RequestMethod.POST)
-    public String getTeaAllCourse(String json){
-        List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
+    public String getTeaAllCourse(@RequestParam("role")String role,@RequestParam("username")String username){
+        List<Object> result=new ArrayList<Object>();
+
+        for(int i=0;i<2;i++){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("courseId","0003");
+            item.put("labName","LOL");
+            item.put("labWeek","第一周");
+            item.put("labWeekday","周四");
+            item.put("labCourse","第5,6节");
+            result.add(item);
+        }
 
         return JSON.toJSONString(result);
     }
@@ -117,9 +130,12 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/courseStuInfo",method = RequestMethod.POST)
-    public String gcourseStuInfo(String json){
-        List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
+    public String gcourseStuInfo(@RequestParam("role")String role,@RequestParam("username")String username,@RequestParam("courseId")String courseId){
+        List<Object> result=new ArrayList<Object>();
 
+        result.add("王大傻");
+        result.add("王大傻1");
+        result.add("王大傻2");
         return JSON.toJSONString(result);
     }
 
@@ -155,9 +171,9 @@ public class ExperimentController {
      }
      */
     @ResponseBody
-    @RequestMapping(value="/uploacAttendence",method = RequestMethod.POST)
+    @RequestMapping(value="/uploadAttendence",method = RequestMethod.POST)
     public String uploadAttendence(String json){
-        List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
+        List<Object> result=new ArrayList<Object>();
 
         return JSON.toJSONString(result);
     }

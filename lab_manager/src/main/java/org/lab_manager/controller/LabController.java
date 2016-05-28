@@ -8,10 +8,7 @@ import org.lab_manager.entity.LabRoom;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class LabController {
     * */
     @ResponseBody
     @RequestMapping(value="/orderLab",method = RequestMethod.POST)
-    public String addLabOrder(@RequestBody String order) {
+    public String addLabOrder(@RequestParam("assetName")String assetName,@RequestParam("number")int number,@RequestParam("days")int days,@RequestParam("applicant")String applyer) {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
         result.put("status","0");
@@ -61,9 +58,16 @@ public class LabController {
     @ResponseBody
     @RequestMapping(value="/getLabsInfo",method = RequestMethod.GET)
     public String getLabInfo() {
-        //根据上面的json格式要求返回数据，需查询数据库
-        Map<String,String> result=new HashMap<String, String>();
-        result.put("status","0");
+        //
+        List<Object> result=new ArrayList<Object>();
+        List<LabInfo> allLabRoom = labService.getAllLabRoom();
+        for(LabInfo singleRoom:allLabRoom){
+            Map<String,Object> item=new HashMap<String,Object>();
+            item.put("labRoomName",singleRoom.getIntro());
+            result.add(item);
+        }
+
+
         return JSON.toJSONString(result);
     }
 
@@ -124,7 +128,7 @@ public class LabController {
     * */
     @ResponseBody
     @RequestMapping(value="/confirmLabOrder",method = RequestMethod.POST)
-    public String confirmOrder(@RequestBody String id) {
+    public String confirmOrder(@RequestParam("labOrderId")String id) {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
         result.put("status","0");
@@ -142,7 +146,7 @@ public class LabController {
     * */
     @ResponseBody
     @RequestMapping(value="/refuseLabOrder",method = RequestMethod.POST)
-    public String refuseOrder(@RequestBody String id) {
+    public String refuseOrder(@RequestParam("labOrderId")String id) {
         //根据上面的json格式要求返回数据，需查询数据库
 
         Map<String,String> result=new HashMap<String, String>();
@@ -170,29 +174,18 @@ public class LabController {
     @RequestMapping(value="/queryAllRoom",method = RequestMethod.GET)
     public String getRooms(){
         System.out.println("查询所有房间信息ajax请求收到");
-        List<LabInfo> list=labService.getAllLabRoom();
-
+        List<LabInfo> allLabRoom = labService.getAllLabRoom();
 
         List<Map<String,Object>> resultList=new ArrayList<Map<String, Object>>();
-//        for(LabInfo lab:list){
-//            roomSingle.put("room_id",lab.getID());
-//            roomSingle.put("manage_teacher",lab.getManage_teacher());
-//            roomSingle.put("intro",lab.getIntro());
-//            resultList.add(roomSingle);
-//            roomSingle.clear();
-//        }
-        for(int i=0;i<10;i++){
-            Map<String,Object> roomSingle=new HashMap<String, Object>();
-            roomSingle.put("room_id","123");
-            roomSingle.put("manage_teacher","renfei");
-            roomSingle.put("intro","3sdasdad");
-            resultList.add(roomSingle);
-        }
 
-        List<LabRoom> rooms=new ArrayList<LabRoom>();
-        String te=JSON.toJSONString(resultList);
-        System.out.println(te);
-        return te;
+        for(LabInfo roomSingle:allLabRoom){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("room_id",roomSingle.getID());
+            item.put("manage_teacher",roomSingle.getManage_teacher());
+            item.put("intro",roomSingle.getIntro());
+            resultList.add(item);
+        }
+        return JSON.toJSONString(resultList);
     }
 
     /**
@@ -207,7 +200,7 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/getRoomComment",method = RequestMethod.POST)
-    public String getRoomComment(String roomId){
+    public String getRoomComment(@RequestParam("roomId")String id){
         //从数据库中获取对应ID的实验室的评论信息
         Map<String,Object> result=new HashMap<String, Object>();
         List<String> comments=new ArrayList<String>();
@@ -226,7 +219,7 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/addRoomComment",method = RequestMethod.POST)
-    public String addRoomComment(String json){
+    public String addRoomComment(@RequestParam("roomId")String id,@RequestParam("comment")String comment){
         //将获得的数据保存到数据库中
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status","0");
@@ -255,10 +248,10 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/getRoomOrderInfo",method = RequestMethod.POST)
-    public String getRoomStatus(int roomId){
-        //将获得的数据保存到数据库中
-        Map<String,Object> item=new HashMap<String, Object>();
-        List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
+    public String getRoomStatus(@RequestParam("roomId")String id){
+        List<Object> result=new ArrayList<Object>();
+
+
 
         return JSON.toJSONString(result);
     }

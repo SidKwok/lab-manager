@@ -307,7 +307,7 @@
             $('#get-test').on('click', function(){
                 $.ajax({
                     type: 'GET',
-                    url: 'getTest_ajax',
+                    url: '/getTest_ajax',
                     data: {},
                     dataType: 'json',
                     success: function(retData){
@@ -322,8 +322,8 @@
             $('#post-test').on('click', function(){
                 $.ajax({
                     type: 'POST',
-                    url: 'postTest_ajax',
-                    data: {test: 'test'},
+                    url: '/postTest_ajax',
+                    data: {test: '任飞真的长得帅'},
                     dataType: 'json',
                     success: function(retData){
                         alert('POST 请求成功 接受到的数据：' + retData);

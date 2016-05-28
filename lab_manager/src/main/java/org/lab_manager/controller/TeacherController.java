@@ -3,11 +3,18 @@ package org.lab_manager.controller;
  * Created by xiaofeige on 2016/5/27.
  */
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -38,9 +45,16 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value="/teaAllLab",method = RequestMethod.POST)
-    public String teaAllLab(String json) {
+    public String teaAllLab(@RequestParam("username")String username,@RequestParam("role")String role) {
+        List<Object> result=new ArrayList<Object>();
 
-        return "hello";
+        for(int i=0;i<3;i++){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("labName","LOL塔下补兵技巧");
+            item.put("labId","004");
+            result.add(item);
+        }
+        return JSON.toJSONString(result);
     }
 
     /**
@@ -53,9 +67,14 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value="/getExpStuInfo",method = RequestMethod.POST)
-    public String getExpStuInfo(String json) {
-
-        return "hello";
+    public String getExpStuInfo(@RequestParam("username")String username,@RequestParam("role")String role,@RequestParam("labName")String labName,@RequestParam("labId")String labId) {
+        System.out.println("收到学生实验信息相关请求");
+        List<Object> result=new ArrayList<Object>();
+        for(int i=0;i<2;i++){
+            String name="王汝鹏";
+            result.add(name);
+        }
+        return JSON.toJSONString(result);
     }
 
     /**

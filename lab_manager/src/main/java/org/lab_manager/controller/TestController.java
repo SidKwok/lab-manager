@@ -9,10 +9,7 @@ import com.sun.javafx.collections.ObservableFloatArrayImpl;
 import org.lab_manager.service.serviceImp.ExperimentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +34,8 @@ public class TestController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public String printWelcome(@RequestBody String json) {
+    public String printWelcome(@RequestParam("test")String str) {
+        System.out.println(str);
         ExperimentService es=new ExperimentService();
         System.out.println("11112");
 //        return JSON.toJSONString(es.getExperimentById("001"));

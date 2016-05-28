@@ -123,7 +123,7 @@ function loadEquipCard () {
 /**
 * 设备卡片事件
 */
-function equipCardEvent {
+function equipCardEvent() {
   // 删除仪器
   $('.pro-equipDelete-btn').on('click', function(){
       $('#pro-equipDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));

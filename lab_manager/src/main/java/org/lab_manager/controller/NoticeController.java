@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Notice;
 import org.lab_manager.service.INoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,11 +78,21 @@ public class NoticeController {
     @ResponseBody
     @RequestMapping(value="/queryAllNotice",method = RequestMethod.GET)
     public String queryAllNotice() {
-        List<Map<String,String>> result=new ArrayList<Map<String, String>>();
-        Map<String,String> item=new HashMap<String, String>();
+        System.out.println("收到公告查询请求");
+        List<Object> result=new ArrayList<Object>();
 
         //灌数据进去了
+        List<Notice> notices = noticeService.queryAllNotice();
+        for(Notice noticeSingle:notices){
 
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("noticeId",noticeSingle.getNotice_id());
+            item.put("noticeDate",noticeSingle.getDate());
+            item.put("noticeContent",noticeSingle.getContent());
+            item.put("noticeAuthor",noticeSingle.getAuthor());
+
+            result.add(item);
+        }
 
         return JSON.toJSONString(result);
     }

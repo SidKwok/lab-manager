@@ -1,9 +1,11 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.NoticeDao;
 import org.lab_manager.entity.Notice;
 import org.lab_manager.service.INoticeService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -11,11 +13,13 @@ import java.util.List;
  */
 @Service
 public class NoticeService implements INoticeService{
-
+    @Resource
+    private NoticeDao noticeDao;
 
     @Override
     public List<Notice> queryAllNotice() {
-        return null;
+
+        return noticeDao.getAllNotice();
     }
 
     @Override

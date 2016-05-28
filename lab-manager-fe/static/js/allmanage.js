@@ -55,6 +55,199 @@ function init () {
             $('#all-room .flex-box').append(domArr.join(''));
             // 初始化弹出框
             $('[data-toggle="popover"]').popover();
+
+            // 加载评论
+            $('.all-comment-btn').on('click', function(){
+                var roomId = $(this).parents('.card').attr('data-roomId');
+                console.log('asdsad');
+                $('#all-comment-modal-label').text(roomId);
+                $.ajax({
+                    type: "POST",
+                    url: '/lab/getRoomComment',
+                    data: {roomId: roomId},
+                    dataType: "json",
+                    success: function(data){
+                        var retData = eval('(' + data + ')');
+                        $('#all-comment-modal .modal-showComment').children().detach();
+                        var domArr = [];
+                        $.each(retData.comment, function(i, e){
+                            domArr.push('<p>' + e + '</>');
+                        });
+                        $('#all-comment-modal .modal-showComment').append(domArr.join(''));
+                    },
+                    error: function() {
+                        console.log('/lab/getRoomComment fail');
+                        alert('后台错误！');
+
+                        // /***************************************
+                        // * 用于前端test 测试状态： ok
+                        // */
+                        // /*ajax返回的数据*/
+                        // var retData = {
+                        //   "comment": [
+                        //     "good",
+                        //     "not bad",
+                        //     "good",
+                        //     "good",
+                        //     "sadasd",
+                        //     "sadasd"
+                        //   ]
+                        // };
+                        // /**************/
+                        // $('#all-comment-modal .modal-showComment').children().detach();
+                        // var domArr = [];
+                        // $.each(retData.comment, function(i, e){
+                        //     domArr.push('<p>' + e + '</>');
+                        // });
+                        // $('#all-comment-modal .modal-showComment').append(domArr.join(''));
+                        // /***************************************/
+                    }
+                });
+            });
+            // 发表评论
+            $('#post-comment').on('click', function(){
+                var comment = $('#all-comment-modal textarea').val();
+                var roomId = $('#all-comment-modal-label').val();
+                $.ajax({
+                    type: "POST",
+                    url: '/lab/addRoomComment',
+                    data: {comment: comment, roomId: roomId},
+                    dataType: "json",
+                    success: function(data){
+                        var retData = eval('(' + data + ')');
+                        if(retData.status === '0') {
+                           alert('发表评论失败');
+                        }
+                        if(retData.status === '1') {
+                           alert('发表评论成功');
+                        }
+                    },
+                    error: function() {
+                        console.log('/lab/addRoomComment fail');
+                        alert('后台错误！');
+
+                        // /***************************************
+                        // * 用于前端test 测试状态：ok
+                        // */
+                        // /*ajax返回的数据*/
+                        // var retData = {
+                        //   "status": "0"
+                        // };
+                        // /**************/
+                        // if(retData.status === '0') {
+                        //    alert('发表评论失败');
+                        // }
+                        // if(retData.status === '1') {
+                        //    alert('发表评论成功');
+                        // }
+                        // /***************************************/
+                    }
+                });
+            });
+            // 加载实验室预约框
+            $('.all-order-btn').on('click', function(){
+              var roomId = $(this).parents('.card').attr('data-roomId');
+              $('#all-order-modal-label').text(roomId);
+
+              $.ajax({
+                  type: 'POST',
+                  url: '/lab/getRoomOrderInfo',
+                  data: {roomId: roomId},
+                  success: function(data){
+                      var retData = eval('(' + data + ')');
+                      $('#order-state').children().detach();
+                      var domArr = [];
+                      $.each(retData, function(i, e){
+                          domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
+                      });
+                      $('#order-state').append(domArr.join(''));
+                  },
+                  error: function(){
+                      console.log('/lab/getRoomOrderInfo fail');
+                      alert('后台错误！');
+
+                      // /***************************************
+                      // * 用于前端test 测试状态：ok
+                      // */
+                      // /*ajax返回的数据*/
+                      // var retData = [
+                      //   {
+                      //     "labName": "fuck",
+                      //     "applicant": "sid",
+                      //     "week": "第十周",
+                      //     "weekday": "周一",
+                      //     "course": "1、2节"
+                      //   },
+                      //   {
+                      //     "labName": "sex",
+                      //     "applicant": "mingen",
+                      //     "week": "第十一周",
+                      //     "weekday": "周二",
+                      //     "course": "3、4节"
+                      //   }
+                      // ];
+                      // /**************/
+                      //
+                      // $('#order-state').children().detach();
+                      // var domArr = [];
+                      // $.each(retData, function(i, e){
+                      //     domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
+                      // });
+                      // $('#order-state').html(domArr.join(''));
+                      //
+                      // /***************************************/
+                  }
+              });
+            });
+            // 预约实验室
+            $('#post-labOrder').on('click', function(){
+                var params = {
+                    roomId: $('#all-order-modal-label').text(),
+                    labName: $('#input-labName').val(),
+                    applicant: $('#input-applicant').val(),
+                    class: $('#input-class').val(),
+                    week: $('#input-week  option:selected').text(),
+                    weekday: $('#input-weekday  option:selected').text(),
+                    course: $('#input-course  option:selected').text()
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/lab/orderRoom',
+                    data: params,
+                    dataType: 'json',
+                    success: function(data){
+                      var retData = eval('(' + data + ')');
+                      if(retData.status === '0') {
+                         alert('预约失败');
+                      }
+                      if(retData.status === '1') {
+                         alert('预约成功');
+                      }
+                    },
+                    error: function(){
+                        console.log('/lab/orderRoom fail');
+                        alert('后台错误！');
+
+                        // /***************************************
+                        // * 用于前端test 测试状态：
+                        // */
+                        // /*ajax返回的数据*/
+                        // var retData = {
+                        //   "status": "0"
+                        // };
+                        // /**************/
+                        // if(retData.status === '0') {
+                        //    alert('预约失败');
+                        // }
+                        // if(retData.status === '1') {
+                        //    alert('预约成功');
+                        // }
+                        //
+                        // /***************************************/
+                    }
+                });
+            });
           },
           error: function(){
             console.log('/lab/queryAllRoom', 'fail');
@@ -158,6 +351,99 @@ function init () {
                   );
               });
               $('#all-equip-orderState').append(domEquip.join(''));
+              // 设备简介
+              $('.lab-equipInfo-btn').on('click', function(){
+                  var assetName = $(this).parents('.card').attr('data-assetName');
+                  $('#lab-equipInfo-modal-label').text(assetName);
+                  $.ajax({
+                      type: 'POST',
+                      url: '/equipment/queryEquipmentInfo',
+                      data: {assetName: assetName},
+                      dataType: 'json',
+                      success: function(data){
+                          var retData = eval('(' + data + ')');
+                          $('#lab-equipInfo-modal .modal-body').children().detach();
+                          var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                                          '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                                          '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                                          '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                          $('#lab-equipInfo-modal .modal-body').append(equipInfo);
+                      },
+                      error: function(){
+                          console.log('/equipment/queryEquipmentInfo fail');
+                          alert('后台错误！');
+
+                          // /***************************************
+                          // * 用于前端test 测试状态：ok
+                          // */
+                          // /*ajax返回的数据*/
+                          // var retData = {
+                          //   "classNo": "006",
+                          //   "className": "具",
+                          //   "valueType": "便宜",
+                          //   "number": "112"
+                          // };
+                          // /**************/
+                          // $('#lab-equipInfo-modal .modal-body').children().detach();
+                          // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                          //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                          //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                          //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                          // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
+                          // /***************************************/
+                      }
+                  });
+              });
+
+              // 预约设备
+              $('.lab-order-btn').on('click', function(){
+                var assetName = $(this).parents('.card').attr('data-assetName');
+                $('#lab-equipOrder-modal-label').text(assetName);
+              });
+
+              $('#post-equipOrder').on('click', function(){
+                  var params = {
+                      assetName: $('#lab-equipOrder-modal-label').text(),
+                      number: $('#input-equipNumber').val(),
+                      days: $('#input-equipDays').val(),
+                      applicant: $('#input-equipApplicant').val()
+                  };
+
+                  $.ajax({
+                      type: 'POST',
+                      url: '/equipment/orderEquip',
+                      data: params,
+                      dataType: 'json',
+                      success: function(data){
+                          var retData = eval('(' + data + ')');
+                          if(retData.status === "0") {
+                              alert('预约失败');
+                          }
+                          if(retData.status === "1") {
+                              alert('预约成功');
+                          }
+                      },
+                      error: function(){
+                          console.log('/equipment/orderEquip fail');
+                          alert('后台错误！');
+                          // /***************************************
+                          // * 用于前端test 测试状态：ok
+                          // */
+                          // /*ajax返回的数据*/
+                          // var retData = {
+                          //   "status": "1"
+                          // };
+                          // /**************/
+                          // if(retData.status === "0") {
+                          //     alert('预约失败');
+                          // }
+                          // if(retData.status === "1") {
+                          //     alert('预约成功');
+                          // }
+                          // /***************************************/
+                      }
+                  });
+              });
           },
           error: function() {
               console.log('/experiment/teacherOrderStatus fail');
@@ -317,201 +603,6 @@ function init () {
 * 加载页面事件
 */
 function basicEvent() {
-    // 加载评论
-    $('.all-comment-btn').on('click', function(){
-        var roomId = $(this).parents('.card').attr('data-roomId');
-        console.log('asdsad');
-        $('#all-comment-modal-label').text(roomId);
-        $.ajax({
-            type: "POST",
-            url: '/lab/getRoomComment',
-            data: {roomId: roomId},
-            dataType: "json",
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                $('#all-comment-modal .modal-showComment').children().detach();
-                var domArr = [];
-                $.each(retData.comment, function(i, e){
-                    domArr.push('<p>' + e + '</>');
-                });
-                $('#all-comment-modal .modal-showComment').append(domArr.join(''));
-            },
-            error: function() {
-                console.log('/lab/getRoomComment fail');
-                alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态： ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "comment": [
-                //     "good",
-                //     "not bad",
-                //     "good",
-                //     "good",
-                //     "sadasd",
-                //     "sadasd"
-                //   ]
-                // };
-                // /**************/
-                // $('#all-comment-modal .modal-showComment').children().detach();
-                // var domArr = [];
-                // $.each(retData.comment, function(i, e){
-                //     domArr.push('<p>' + e + '</>');
-                // });
-                // $('#all-comment-modal .modal-showComment').append(domArr.join(''));
-                // /***************************************/
-            }
-        });
-    });
-
-    // 发表评论
-    $('#post-comment').on('click', function(){
-        var comment = $('#all-comment-modal textarea').val();
-        var roomId = $('#all-comment-modal-label').val();
-        $.ajax({
-            type: "POST",
-            url: '/lab/addRoomComment',
-            data: {comment: comment, roomId: roomId},
-            dataType: "json",
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                if(retData.status === '0') {
-                   alert('发表评论失败');
-                }
-                if(retData.status === '1') {
-                   alert('发表评论成功');
-                }
-            },
-            error: function() {
-                console.log('/lab/addRoomComment fail');
-                alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "0"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //    alert('发表评论失败');
-                // }
-                // if(retData.status === '1') {
-                //    alert('发表评论成功');
-                // }
-                // /***************************************/
-            }
-        });
-    });
-
-    // 加载实验室预约框
-    $('.all-order-btn').on('click', function(){
-      var roomId = $(this).parents('.card').attr('data-roomId');
-      $('#all-order-modal-label').text(roomId);
-
-      $.ajax({
-          type: 'POST',
-          url: '/lab/getRoomOrderInfo',
-          data: {roomId: roomId},
-          success: function(data){
-              var retData = eval('(' + data + ')');
-              $('#order-state').children().detach();
-              var domArr = [];
-              $.each(retData, function(i, e){
-                  domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
-              });
-              $('#order-state').append(domArr.join(''));
-          },
-          error: function(){
-              console.log('/lab/getRoomOrderInfo fail');
-              alert('后台错误！');
-
-              // /***************************************
-              // * 用于前端test 测试状态：ok
-              // */
-              // /*ajax返回的数据*/
-              // var retData = [
-              //   {
-              //     "labName": "fuck",
-              //     "applicant": "sid",
-              //     "week": "第十周",
-              //     "weekday": "周一",
-              //     "course": "1、2节"
-              //   },
-              //   {
-              //     "labName": "sex",
-              //     "applicant": "mingen",
-              //     "week": "第十一周",
-              //     "weekday": "周二",
-              //     "course": "3、4节"
-              //   }
-              // ];
-              // /**************/
-              //
-              // $('#order-state').children().detach();
-              // var domArr = [];
-              // $.each(retData, function(i, e){
-              //     domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
-              // });
-              // $('#order-state').html(domArr.join(''));
-              //
-              // /***************************************/
-          }
-      });
-    });
-
-    // 预约实验室
-    $('#post-labOrder').on('click', function(){
-        var params = {
-            roomId: $('#all-order-modal-label').text(),
-            labName: $('#input-labName').val(),
-            applicant: $('#input-applicant').val(),
-            class: $('#input-class').val(),
-            week: $('#input-week  option:selected').text(),
-            weekday: $('#input-weekday  option:selected').text(),
-            course: $('#input-course  option:selected').text()
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: '/lab/orderRoom',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-              var retData = eval('(' + data + ')');
-              if(retData.status === '0') {
-                 alert('预约失败');
-              }
-              if(retData.status === '1') {
-                 alert('预约成功');
-              }
-            },
-            error: function(){
-                console.log('/lab/orderRoom fail');
-                alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "0"
-                // };
-                // /**************/
-                // if(retData.status === '0') {
-                //    alert('预约失败');
-                // }
-                // if(retData.status === '1') {
-                //    alert('预约成功');
-                // }
-                //
-                // /***************************************/
-            }
-        });
-    });
 
     // 搜索
     $('#search-btn').on('click', function(){
@@ -614,99 +705,6 @@ function basicEvent() {
         });
     });
 
-    // 设备简介
-    $('.lab-equipInfo-btn').on('click', function(){
-        var assetName = $(this).parents('.card').attr('data-assetName');
-        $('#lab-equipInfo-modal-label').text(assetName);
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/queryEquipmentInfo',
-            data: {assetName: assetName},
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                $('#lab-equipInfo-modal .modal-body').children().detach();
-                var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                                '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                                '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                                '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
-                $('#lab-equipInfo-modal .modal-body').append(equipInfo);
-            },
-            error: function(){
-                console.log('/equipment/queryEquipmentInfo fail');
-                alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "classNo": "006",
-                //   "className": "具",
-                //   "valueType": "便宜",
-                //   "number": "112"
-                // };
-                // /**************/
-                // $('#lab-equipInfo-modal .modal-body').children().detach();
-                // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
-                // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
-                // /***************************************/
-            }
-        });
-    });
-
-    // 预约设备
-    $('.lab-order-btn').on('click', function(){
-      var assetName = $(this).parents('.card').attr('data-assetName');
-      $('#lab-equipOrder-modal-label').text(assetName);
-    });
-
-    $('#post-equipOrder').on('click', function(){
-        var params = {
-            assetName: $('#lab-equipOrder-modal-label').text(),
-            number: $('#input-equipNumber').val(),
-            days: $('#input-equipDays').val(),
-            applicant: $('#input-equipApplicant').val()
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/equipment/orderEquip',
-            data: params,
-            dataType: 'json',
-            success: function(data){
-                var retData = eval('(' + data + ')');
-                if(retData.status === "0") {
-                    alert('预约失败');
-                }
-                if(retData.status === "1") {
-                    alert('预约成功');
-                }
-            },
-            error: function(){
-                console.log('/equipment/orderEquip fail');
-                alert('后台错误！');
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1"
-                // };
-                // /**************/
-                // if(retData.status === "0") {
-                //     alert('预约失败');
-                // }
-                // if(retData.status === "1") {
-                //     alert('预约成功');
-                // }
-                // /***************************************/
-            }
-        });
-    });
 }
 
 init();

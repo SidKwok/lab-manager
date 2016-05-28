@@ -1,0 +1,370 @@
+_room_ajax (get) ok		（lab/queryAllRoom）								//LabInfoDao:getAllLabInfo()
+params: none
+[
+  {
+    "room_id": "0001",
+    "manage_teacher": "sid",
+    "intro": "good"
+  },
+  {
+    "room_id": "0002",
+    "manage_teacher": "mingen",
+    "intro": "bad"
+  }
+]
+
+_room_comment (post) ok		(/lab/getRoomComment)							//LabCommentDao:getAllComment()
+params: roomId
+{
+  "comment": [
+    "good",
+    "not bad"
+  ]
+}
+
+// 发送到服务器的comment 接受status 0代表发送失败 1代表发送成功				//LabCommentDao:addComment(int roomId,String comment)
+_room_post_comment (post) ok  (/lab/addRoomComment)
+params: roomId, comment
+{
+  "status": "0"
+}
+
+// 房间使用情况
+// week(第一周、第二周、第三周、第四周、第五周、第六周、第七周、第八周、第九周、第十周、第十一周、第十二周、第十三周、第十四周、第十五周、第十六周、第十七周、第十八周)
+// weekday(周一、周二、周三、周四、周五、周六、周日)
+// course(1、2节 3、4节 5、6节 7、8节 9、10节)
+_room_order_state (post) ok		(/lab/getRoomOrderInfo)							//LabUseDao:getLabUseInfo(int roomId)
+params: roomId
+[
+  {
+    "labName": "fuck",
+    "applicant": "sid",
+    "week": "第十周",
+    "weekday": "周一",
+    "course": "1、2节"
+  },
+  {
+    "labName": "sex",
+    "applicant": "mingen",
+    "week": "第十一周",
+    "weekday": "周二",
+    "course": "3、4节"
+  }
+]
+
+// 发送到服务器的order,接受status 0代表预约失败 1代表预约成功					//申请信息不足 roomId,labName,appplicant,startTime,endTime(第几周结束),weekDay,course
+_room_post_order (post) ok  (/lab/orderRoom)									
+params: roomId, labName, applicant, week, weekday, course						//ExperimentDao:applyExperiment(String courseName,Integer roomId,String applicant,String week,String endTIme,String weekDay,String  dayTime);
+{
+  "status": "0"
+}
+
+
+???
+
+// 某人的预约状态, role是角色, username是用户名									//?????????????????????????????需要role吗
+_lab_orderState (post) ok														//姓名容易重复，id更好一些吧？
+params: role, username
+{
+  "lab":[																		//labOrderId ,labORderDate日期需要吗
+    {	
+      "labName": "机器人实验",													//LabOrderStateDao:getLabOrderState(String user_name)
+      "labWeek": "第一周",
+      "labWeekday": "周五",
+      "labCourse": "第1、2节",
+      "labOrderId": "0001",
+      "labOrderDate": "2016-5-21" ,
+      "state": "允许"
+    },
+    {
+      "labName": "足球实验",
+      "labWeek": "第二周",
+      "labWeekday": "周四",
+      "labCourse": "第3、4节",
+      "labOrderId": "0002",
+      "labOrderDate": "2016-5-24" ,
+      "state": "拒绝"
+    }
+  ],																
+  "equip":[															//LabOrderStateDao:getEquipOrderState(String user_name))
+    {
+      "equipName": "西瓜刀",
+      "equipDate": "2015-9-10",
+      "equipOrderId": "001",
+      "equipDays": "10",
+      "equipNumber": "2",
+      "state": "未决定"
+    },
+    {
+      "equipName": "狼牙棒",
+      "equipDate": "2015-11-10",
+      "equipOrderId": "002",
+      "equipDays": "2",
+      "equipNumber": "10",
+      "state": "未决定"
+    }
+  ]
+}
+
+//???参数是什么意思													//还有点问题
+						
+// 获取 教师 实验 实验室 有无结果 0代表无 1代表有					//SearchDao:searchByTeacherOrExperiment(String item,String type);
+_db_post_ajax (post) ok  (/lab/getRoomCurrInfo)
+params: item, type (item是内容 type是类型 有教室和实验名)
+{
+  "status": "1",
+  "result":[
+    {
+      "teacher": "sid",
+      "labName": "fuck",
+      "roomId": "001"
+    },
+    {
+      "teacher": "mingen",
+      "labName": "sex",
+      "roomId": "002"
+    }
+  ]
+}
+
+// 设备名字
+_equip_ajax (get) ok  (/equipment/queryAllEquipment)					//EquipInfoDao:getAllAssets()
+params: none
+[
+  {
+    "assetName": "西瓜刀"
+  },
+  {
+    "assetName": "狼牙棒"
+  }
+]
+
+// 设备信息																//EquipInfoDao:getAssetInfo(String assetName)
+_equip_info (post) ok   (/equipment/queryEquipmentInfo)
+params: assetName
+{
+  "classNo": "001",
+  "className": "刀具",
+  "valueType": "昂贵",
+  "number": "10"
+}
+
+
+????参数有问题
+
+// 实验预约			//应该是实验设备预约吧？
+_lab_post_order (post) ok												//EquipOrderDao:orderEquip(String assetName,int number,int days,String applicant)
+params: assetName, number, days, applicant								
+{
+  "status": "0"
+}
+
+// 获取公告
+_notice_ajax (get) ok
+params: none
+[
+  {
+    "noticeId": "0001",
+    "noticeDate": "2016-5-21",
+    "noticeContent": "Sid is the best!",
+    "noticeAuthor": "sid"
+  },
+  {
+    "noticeId": "0002",
+    "noticeDate": "2016-5-21",
+    "noticeContent": "Mingen is the best!",
+    "noticeAuthor": "mingen"
+  }
+]
+
+// 发表公告
+_daily_post_notice (post) ok   (/notice/addNotice)				//NoticeDao:addNotice(String content,String author)
+params: noticeAuthor, noticeContent
+{
+  "status": "0"
+}
+
+// 删除设备仪器													//EquipInfoDao:deleteAsset(String assetName)
+_del_equip (post) ok
+params: assetName
+{
+  "status": "0"
+}
+
+// 更新设备仪器													//EquipInfoDao:updateAsset(String assetName,int classNo,String className,String valueType,Integer number)
+_update_equip (post) ok
+params: assetName, classNo, className, valueType, number
+{
+  "status": "0"
+}
+
+// 添加设备仪器													//数据库中的设备表信息远不止这些哦
+_add_equip (post) ok
+params: assetName, classNo, className, valueType, number
+{
+  "status": "0"
+}
+
+// 获取实验室预约情况											//ExperimentDao:queryAllExperimentOrderState()
+_labOrder_ajax (get) ok
+params: none
+[
+  {
+    "labOrderId": "0001",
+    "labOrderName": "机器人实验",
+    "labOrderDate": "2016-5-21",
+    "labOrderWeek": "第一周",
+    "labOrderWeekday": "周五",
+    "labOrderCourse": "第1、2节",
+    "labOrderApplicant": "sid"
+  },
+  {
+    "labOrderId": "0002",
+    "labOrderName": "足球实验",
+    "labOrderDate": "2016-5-21",
+    "labOrderWeek": "第二周",
+    "labOrderWeekday": "周四",
+    "labOrderCourse": "第5、6节",
+    "labOrderApplicant": "mingen"
+  }
+]
+
+// 批准实验室预约												//ExperimentDao:approveApply(int id)
+_confirm_labOrder (post) ok
+params: labOrderId
+{
+  "status": "0"
+}
+
+// 拒绝实验室预约												//ExperimentDao:refuseApply(int id)
+_refuse_labOrder (post) ok
+params: labOrderId
+{
+  "status": "0"
+}
+
+// 获取设备预约情况												//EquipOrderDao:getAllEquipOrderStatus()
+_equipOrder_ajax (get) ok
+params: none
+[
+  {
+    "equipOrderId": "0003",
+    "equipOrderName": "西瓜刀",
+    "equipOrderNumber": "10",
+    "equipOrderDay": "5",
+    "equipOrderApplicant": "sid",
+    "equipOrderDate": "2016-5-7"
+  },
+  {
+    "equipOrderId": "0004",
+    "equipOrderName": "狼牙棒",
+    "equipOrderNumber": "5",
+    "equipOrderDay": "10",
+    "equipOrderApplicant": "mingen",
+    "equipOrderDate": "2016-5-7"
+  }
+]
+
+// 批准设备预约													//EquipOrderDao:approveEquipOrder(int id)
+_confirm_equipOrder (post) ok
+params: equipOrderId
+{
+  "status": "0"
+}
+
+// 拒绝设备预约													//EquipOrderDao:refuseEquipOrder(int id)
+_refuse_equipOrder (post) ok
+params: equipOrderId
+{
+  "status": "0"
+}
+
+// 登录 status('密码错误', '用户名不存在', 'success') role 角色是什么(teacher manager student)
+_login (post) ok
+params: username password												//LoginDao:login(String user_name,String password)
+{
+  "status": "密码错误",
+  "role": "teacher"
+}
+
+// 学生出勤状态															//出勤还是以学生id查询比较好，名字可能重复
+_stu_dutyState (post) ok
+//params: username role
+params: userid role
+[
+  {
+    "stuDutyLab": "机器人实验",
+    "stuDutyPos": "信工805",
+    "stuDutyWeek": "第一周",
+    "stuDutyWeekday": "周一",
+    "stuDutyCourse": "第1、2节",
+    "status": "未到"
+  },
+  {
+    "stuDutyLab": "足球实验",
+    "stuDutyPos": "信工806",
+    "stuDutyWeek": "第二周",
+    "stuDutyWeekday": "周二",
+    "stuDutyCourse": "第3、4节",
+    "status": "已到"
+  }
+]
+
+// 学生成绩																??????????????????????????????查询成绩，前提是已知学生这个身份，没必要再加role属性了吧
+_stu_grade (post) ok
+params: username, role													//StudentDao:queryById(String id)
+[
+  {
+    "stuGradeLab": "足球实验",
+    "stuGrade": "成绩未出"
+  },
+  {
+    "stuGradeLab": "机器人实验",
+    "stuGrade": "98"
+  }
+]
+
+// 实验室信息															//LabInfoDao:getAllLabInfo()
+_labRoom_ajax (get) ok
+params: none
+[
+  {
+    "labRoomName": "机器人实验室"
+  },
+  {
+    "labRoomName": "足球实验室"
+  },
+  {
+    "labRoomName": "操蛋实验室"
+  }
+]
+
+// 删除实验室															//LabInfoDao:deleteLab(String labName)
+_del_labRoom (post) ok
+params: labRoomName
+{
+  "status": "0"
+}
+
+// 实验室具体信息														//LabInfoDao:getLabInfo(String labName)
+_labRoom_info (post) ok
+params: labRoomName
+{
+  "labRoomName":"机器人实验室",
+  "labRoomType":"机器人",
+  "labRoomIntro":"棒"
+}
+
+// 更新实验室信息														//LabInfoDao:updateLab(String labName,String teacher,String LabInfo)
+_update_labRoom (post) ok
+params: labRoomName labRoomType labRoomIntro
+{
+  "status": "0"
+}
+
+// 添加实验室															//labInfoDao:addLab(int roomId,String roomName,String teacher,String Intro)
+_add_labRoom (post) ok
+params: labRoomName labRoomType labRoomIntro
+{
+  "status": "0"
+}

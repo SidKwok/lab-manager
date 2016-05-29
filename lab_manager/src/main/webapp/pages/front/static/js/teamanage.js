@@ -118,7 +118,7 @@ function labNoticeEvent() {
       $('#tea-checkDuty-modal-label').attr('data-courseId', courseId);
       $.ajax({
           type: 'POST',
-          url: '/equipment/courseStuInfo',
+          url: '/experiment/courseStuInfo',
           data: {username: username, role: role, courseId: courseId},
           dataType: 'json',
           success: function(data){
@@ -143,7 +143,7 @@ function labNoticeEvent() {
               $('#tea-checkDuty-table').append(domArr.join(''));
           },
           error: function(){
-              console.log('/equipment/courseStuInfo fail');
+              console.log('/experiment/courseStuInfo fail');
               alert('后台错误!');
               // /***************************************
               // * 用于前端test 测试状态：

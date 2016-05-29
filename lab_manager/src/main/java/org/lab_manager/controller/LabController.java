@@ -103,16 +103,17 @@ public class LabController {
     public String getLabUseInfo() {
         //根据上面的json格式要求返回数据，需查询数据库
         List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
-        Map<String,Object> item=new HashMap<String, Object>();
+
         for(int i=0;i<10;i++){
-            item.put("labOrderId","");
-            item.put("labOrderName","");
-            item.put("labOrderDate","");
-            item.put("labOrderWeek","");
-            item.put("labOrderWeekday","");
-            item.put("labOrderCourse","");
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("labOrderId","001");
+            item.put("labOrderName","LOL守塔与补兵");
+            item.put("labOrderDate","2016-5-21");
+            item.put("labOrderWeek","第4周");
+            item.put("labOrderWeekday","周四");
+            item.put("labOrderCourse","第5,6节");
+            item.put("labOrderApplicant","五杀小王子");
             result.add(item);
-            item.clear();
         }
 
         return JSON.toJSONString(result);

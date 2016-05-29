@@ -595,7 +595,7 @@ function loadLabOrder() {
                     '<div class="lab-order order hvr-sweep-to-right">',
                         '<div class="labOrderId">' + e.labOrderId + '</div>',
                         '<div class="labOrderDate">' + e.labOrderDate + '</div>',
-                        '<div class="labOrderContent">' + e.labOrderName + ' ' + e.labOrderWeed + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
+                        '<div class="labOrderContent">' + e.labOrderName + ' ' + e.labOrderWeek + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
                         '<div class="labOrderApplicant">' + e.labOrderApplicant + '</div>',
                         '<div class="pro-order-btnGroup">',
                             '<button class="btn btn-success labOrder-confirm-btn">批准</button>',
@@ -770,7 +770,7 @@ function labOrderEvent(){
 function loadEquipOrder(){
   $.ajax({
       type: 'GET',
-      url: '/equipment/equitOrderStatus',
+      url: '/equipment/equipOrderStatus',
       data: {},
       dataType: 'json',
       success: function(data){
@@ -798,7 +798,7 @@ function loadEquipOrder(){
       },
       error: function() {
           alert('后台出错');
-          console.log('/equipment/equitOrderStatus fail');
+          console.log('/equipment/equipOrderStatus fail');
 
           // /***************************************
           // * 用于前端test 测试状态：
@@ -877,7 +877,7 @@ function equipOrderEvent(){
   $('.equipOrder-confirm-btn').on('click', function(){
       $.ajax({
           type: 'POST',
-          url: '/equipment/confirmEquitOrder',
+          url: '/equipment/confirmEquipOrder',
           data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
           dataType: 'json',
           success: function(data){
@@ -892,7 +892,7 @@ function equipOrderEvent(){
           },
           error: function(){
             alert('后台出错');
-            console.log('/equipment/confirmEquitOrder fail');
+            console.log('/equipment/confirmEquipOrder fail');
 
             // /***************************************
             // * 用于前端test 测试状态：ok
@@ -918,7 +918,7 @@ function equipOrderEvent(){
   $('.equipOrder-refuse-btn').on('click', function(){
       $.ajax({
           type: 'POST',
-          url: '/equipment/refuseEquitOrder',
+          url: '/equipment/refuseEquipOrder',
           data: {equipOrderId: $(this).parents('.equip-order').children('.equipOrderId').text()},
           dataType: 'json',
           success: function(data){
@@ -933,7 +933,7 @@ function equipOrderEvent(){
           },
           error: function(){
             alert('后台出错');
-            console.log('/equipment/refuseEquitOrder fail');
+            console.log('/equipment/refuseEquipOrder fail');
 
             // /***************************************
             // * 用于前端test 测试状态：ok

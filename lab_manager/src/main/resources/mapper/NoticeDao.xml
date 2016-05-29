@@ -7,7 +7,7 @@
         SELECT * FROM announcement_manage WHERE SID=#{id};
     </select>
     <select id="getAllNotice" resultType="Notice">
-        SELECT *FROM announcement_manage;
+        SELECT * FROM announcement_manage;
     </select>
     <insert id="addNotice" parameterType="Notice">
         INSERT INTO announcement_manage(Content,Author) VALUES(#{content},#{author});

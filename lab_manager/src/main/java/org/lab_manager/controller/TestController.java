@@ -37,7 +37,7 @@ public class TestController {
     public String printWelcome(@RequestParam("test")String str) {
         System.out.println(str);
         ExperimentService es=new ExperimentService();
-        System.out.println("11112");
+        System.out.println("测试ajax收到请求");
 //        return JSON.toJSONString(es.getExperimentById("001"));
         return JSON.toJSONString("hello");
     }

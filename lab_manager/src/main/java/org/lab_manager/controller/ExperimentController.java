@@ -220,5 +220,21 @@ public class ExperimentController {
         return JSON.toJSONString(result);
     }
 
+    /**
+     * 预约实验
+     * params: assetName, number, days, applicant
+     {
+     "status": "0"
+     }
+     * */
+    @ResponseBody
+    @RequestMapping(value="/orderExp",method = RequestMethod.POST)
+    public String addLabOrder(@RequestParam("assetName")String assetName,@RequestParam("number")int number,@RequestParam("days")int days,@RequestParam("applicant")String applyer) {
+        //根据上面的json格式要求返回数据，需查询数据库
+        Map<String,String> result=new HashMap<String, String>();
 
+//        labService.orderRoom()
+        result.put("status","0");
+        return JSON.toJSONString(result);
+    }
 }

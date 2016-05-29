@@ -43,15 +43,10 @@ public class EquipController {
         List<Object> result=new ArrayList<Object>();
 
 
-//        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
-//        for(EquipInfo singleEquip:allEquipInfo){
-//            Map<String,Object> item=new HashMap<String, Object>();
-//            item.put("assetName",singleEquip.getAsset_name());
-//            result.add(item);
-//        }
-        for(int i=0;i<2;i++){
+        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
+        for(EquipInfo singleEquip:allEquipInfo){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("assetName","杀猪刀");
+            item.put("assetName",singleEquip.getAsset_name());
             result.add(item);
         }
 
@@ -96,7 +91,11 @@ public class EquipController {
         //返回所有设备的名称列表，放到json中
         Map<String,Object> result=new HashMap<String, Object>();
 
-        result.put("status",0);
+        int flag=0;
+        if(equipService.addEquipOrder(assetName,num,days,apllyer))
+            flag=1;
+
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//
     }
@@ -195,7 +194,7 @@ public class EquipController {
     /**
     *批准设备预约
      _confirm_equitOrder (post)
-     params: equipOrderId   (句菊花有可能打错字了)
+     params: equipOrderId   (菊花有可能打错字了)
      {
      "status": "0"
      }
@@ -205,8 +204,10 @@ public class EquipController {
     @RequestMapping(value="/confirmEquipOrder",method = RequestMethod.POST)
     public String confirmEquiment(@RequestParam("equipOrderId")String id){
         Map<String,Object> result=new HashMap<String, Object>();
-
-        result.put("status",1);
+        int flag=0;
+        if(equipService.approveOrderEquip(Integer.parseInt(id)));
+            flag=1;
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//
     }
@@ -224,9 +225,10 @@ public class EquipController {
     @RequestMapping(value="/refuseEquipOrder",method = RequestMethod.POST)
     public String refuseEquiment(@RequestParam("equipOrderId")String id){
         Map<String,Object> result=new HashMap<String, Object>();
-
-        result.put("status",1);
-
+        int flag=0;
+        if(equipService.refuseOrderEquip(Integer.parseInt(id)))
+            flag=1;
+        result.put("status",flag);
         return JSON.toJSONString(result);//
     }
 

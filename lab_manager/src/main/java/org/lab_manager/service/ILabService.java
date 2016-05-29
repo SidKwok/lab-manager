@@ -46,8 +46,11 @@ public interface ILabService {
      * 通过用户id获取房间预约情况
      */
     public List<LabUse> getLabUseByUserId(String userId);
+
     /**
      * 预约实验室
      */
     public boolean orderRoom(LabUse labUse);
+
+
 }

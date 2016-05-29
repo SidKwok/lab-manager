@@ -40,4 +40,20 @@ public interface IEquipService {
      */
     public List<EquipOrder> getAllEquipOrder();
 
+    /**
+     * 添加设备预约
+     */
+    public boolean addEquipOrder(String assetName,Integer number,Integer days,String applicant);
+
+    /**
+     * 同意设备预定
+     */
+    public boolean approveOrderEquip(Integer id);
+
+
+    /**
+     * 拒绝设备预定
+     */
+    public boolean refuseOrderEquip(Integer id);
+
 }

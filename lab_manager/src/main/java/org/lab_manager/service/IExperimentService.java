@@ -13,4 +13,29 @@ public interface IExperimentService {
      *
      */
     public Experiment getExperimentById(String eId);
+
+    /**
+     * 查询所有实验的状态
+     */
+    public List<Experiment> getAllExp();
+
+    /**
+     * 增加实验
+     */
+    public boolean addExp(String courseId,String courseName, String class_name,Integer term,String roomNum, String teacher,String startTime, String endTime);
+
+    /**
+     * 同意实验申请
+     */
+    public boolean approveExp(Integer id);
+
+    /**
+     * 拒绝实验申请
+     */
+    public boolean refuseExp(Integer id);
+
+    /**
+     * 申请实验
+     */
+    public boolean applyExp(String courseName,Integer roomId,String applier,String week,String endtime,String weekday,String dayTime);
 }

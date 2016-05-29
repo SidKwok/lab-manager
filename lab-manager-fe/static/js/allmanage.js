@@ -351,99 +351,6 @@ function init () {
                   );
               });
               $('#all-equip-orderState').append(domEquip.join(''));
-              // 设备简介
-              $('.lab-equipInfo-btn').on('click', function(){
-                  var assetName = $(this).parents('.card').attr('data-assetName');
-                  $('#lab-equipInfo-modal-label').text(assetName);
-                  $.ajax({
-                      type: 'POST',
-                      url: '/equipment/queryEquipmentInfo',
-                      data: {assetName: assetName},
-                      dataType: 'json',
-                      success: function(data){
-                          var retData = eval('(' + data + ')');
-                          $('#lab-equipInfo-modal .modal-body').children().detach();
-                          var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                                          '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                                          '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                                          '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
-                          $('#lab-equipInfo-modal .modal-body').append(equipInfo);
-                      },
-                      error: function(){
-                          console.log('/equipment/queryEquipmentInfo fail');
-                          alert('后台错误！');
-
-                          // /***************************************
-                          // * 用于前端test 测试状态：ok
-                          // */
-                          // /*ajax返回的数据*/
-                          // var retData = {
-                          //   "classNo": "006",
-                          //   "className": "具",
-                          //   "valueType": "便宜",
-                          //   "number": "112"
-                          // };
-                          // /**************/
-                          // $('#lab-equipInfo-modal .modal-body').children().detach();
-                          // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                          //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                          //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                          //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
-                          // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
-                          // /***************************************/
-                      }
-                  });
-              });
-
-              // 预约设备
-              $('.lab-order-btn').on('click', function(){
-                var assetName = $(this).parents('.card').attr('data-assetName');
-                $('#lab-equipOrder-modal-label').text(assetName);
-              });
-
-              $('#post-equipOrder').on('click', function(){
-                  var params = {
-                      assetName: $('#lab-equipOrder-modal-label').text(),
-                      number: $('#input-equipNumber').val(),
-                      days: $('#input-equipDays').val(),
-                      applicant: $('#input-equipApplicant').val()
-                  };
-
-                  $.ajax({
-                      type: 'POST',
-                      url: '/equipment/orderEquip',
-                      data: params,
-                      dataType: 'json',
-                      success: function(data){
-                          var retData = eval('(' + data + ')');
-                          if(retData.status === "0") {
-                              alert('预约失败');
-                          }
-                          if(retData.status === "1") {
-                              alert('预约成功');
-                          }
-                      },
-                      error: function(){
-                          console.log('/equipment/orderEquip fail');
-                          alert('后台错误！');
-                          // /***************************************
-                          // * 用于前端test 测试状态：ok
-                          // */
-                          // /*ajax返回的数据*/
-                          // var retData = {
-                          //   "status": "1"
-                          // };
-                          // /**************/
-                          // if(retData.status === "0") {
-                          //     alert('预约失败');
-                          // }
-                          // if(retData.status === "1") {
-                          //     alert('预约成功');
-                          // }
-                          // /***************************************/
-                      }
-                  });
-              });
           },
           error: function() {
               console.log('/experiment/teacherOrderStatus fail');
@@ -550,6 +457,100 @@ function init () {
                 );
             });
             $('#lab-equip .flex-box').append(domArr.join(''));
+
+            // 设备简介
+            $('.lab-equipInfo-btn').on('click', function(){
+                var assetName = $(this).parents('.card').attr('data-assetName');
+                $('#lab-equipInfo-modal-label').text(assetName);
+                $.ajax({
+                    type: 'POST',
+                    url: '/equipment/queryEquipmentInfo',
+                    data: {assetName: assetName},
+                    dataType: 'json',
+                    success: function(data){
+                        var retData = eval('(' + data + ')');
+                        $('#lab-equipInfo-modal .modal-body').children().detach();
+                        var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                                        '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                                        '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                                        '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                        $('#lab-equipInfo-modal .modal-body').append(equipInfo);
+                    },
+                    error: function(){
+                        console.log('/equipment/queryEquipmentInfo fail');
+                        alert('后台错误！');
+
+                        // /***************************************
+                        // * 用于前端test 测试状态：ok
+                        // */
+                        // /*ajax返回的数据*/
+                        // var retData = {
+                        //   "classNo": "006",
+                        //   "className": "具",
+                        //   "valueType": "便宜",
+                        //   "number": "112"
+                        // };
+                        // /**************/
+                        // $('#lab-equipInfo-modal .modal-body').children().detach();
+                        // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
+                        //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                        //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                        //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
+                        // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
+                        // /***************************************/
+                    }
+                });
+            });
+
+            // 预约设备
+            $('.lab-order-btn').on('click', function(){
+              var assetName = $(this).parents('.card').attr('data-assetName');
+              $('#lab-equipOrder-modal-label').text(assetName);
+            });
+
+            $('#post-equipOrder').on('click', function(){
+                var params = {
+                    assetName: $('#lab-equipOrder-modal-label').text(),
+                    number: $('#input-equipNumber').val(),
+                    days: $('#input-equipDays').val(),
+                    applicant: $('#input-equipApplicant').val()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/equipment/orderEquip',
+                    data: params,
+                    dataType: 'json',
+                    success: function(data){
+                        var retData = eval('(' + data + ')');
+                        if(retData.status === "0") {
+                            alert('预约失败');
+                        }
+                        if(retData.status === "1") {
+                            alert('预约成功');
+                        }
+                    },
+                    error: function(){
+                        console.log('/equipment/orderEquip fail');
+                        alert('后台错误！');
+                        // /***************************************
+                        // * 用于前端test 测试状态：ok
+                        // */
+                        // /*ajax返回的数据*/
+                        // var retData = {
+                        //   "status": "1"
+                        // };
+                        // /**************/
+                        // if(retData.status === "0") {
+                        //     alert('预约失败');
+                        // }
+                        // if(retData.status === "1") {
+                        //     alert('预约成功');
+                        // }
+                        // /***************************************/
+                    }
+                });
+            });
           },
           error: function(){
             console.log('/equipment/queryAllEquipment', 'fail');

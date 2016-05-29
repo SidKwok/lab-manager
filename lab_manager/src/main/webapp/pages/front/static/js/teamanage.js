@@ -195,7 +195,7 @@ function labNoticeEvent() {
       });
       $.ajax({
           type: 'POST',
-          url: '/equipment/uploacAttendence',
+          url: '/experiment/uploacAttendence',
           data: params,
           dataType: 'json',
           success: function(data){
@@ -208,7 +208,7 @@ function labNoticeEvent() {
             }
           },
           error: function(){
-              console.log('/equipment/uploacAttendence, fail');
+              console.log('/experiment/uploacAttendence, fail');
               alert('后台错误');
           }
       });

@@ -195,7 +195,7 @@ function labNoticeEvent() {
       });
       $.ajax({
           type: 'POST',
-          url: '/experiment/uploacAttendence',
+          url: '/experiment/uploadAttendence',
           data: params,
           dataType: 'json',
           success: function(data){
@@ -208,7 +208,7 @@ function labNoticeEvent() {
             }
           },
           error: function(){
-              console.log('/experiment/uploacAttendence, fail');
+              console.log('/experiment/uploadAttendence, fail');
               alert('后台错误');
           }
       });

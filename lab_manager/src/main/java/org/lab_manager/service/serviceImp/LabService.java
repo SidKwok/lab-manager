@@ -1,5 +1,6 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.LabCommentDao;
 import org.lab_manager.dao.LabInfoDao;
 import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
@@ -20,6 +21,9 @@ public class LabService implements ILabService {
     @Autowired
     private LabInfoDao  mLabInfoDao;
 
+    @Autowired
+    private LabCommentDao labCommentDao;
+
     @Override
     public List<LabInfo> getAllLabRoom(){
         return mLabInfoDao.getAllLabInfo();
@@ -36,13 +40,14 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public boolean addComment(LabComment comment) {
+    public boolean addComment(Integer id, String comment) {
+        labCommentDao.addComment(id,comment);
         return false;
     }
 
     @Override
     public List<LabComment> getLabComment(String roomId) {
-        return null;
+        return labCommentDao.getAllComment(Integer.parseInt(roomId));
     }
 
     @Override

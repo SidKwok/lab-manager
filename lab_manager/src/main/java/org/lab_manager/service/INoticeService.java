@@ -1,12 +1,14 @@
 package org.lab_manager.service;
 
 import org.lab_manager.entity.Notice;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by xiaofeige on 2016/5/25.
  */
+@Repository
 public interface INoticeService {
 
     /**

@@ -30,7 +30,7 @@ public interface ILabService {
     /**
      * 为实验室增加评论
      */
-    public boolean addComment(LabComment comment);
+    public boolean addComment(Integer id,String comment);
 
     /**
      * 获取指定实验室评论

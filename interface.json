@@ -391,7 +391,7 @@ params: username(用户名) role(角色)
 ]
 
 // 获取实验课程的学生信息
-_course_duty (post) ok			(/equipment/courseStuInfo)
+_course_duty (post) ok			(/experiment/courseStuInfo)
 params: username(用户名), role(角色), courseId(实验课程id)
 [
   {
@@ -412,7 +412,7 @@ params: username(用户名), role(角色), courseId(实验课程id)
   }
 ]
 
-// 发送学生考勤状况		(/equipment/uploacAttendence)
+// 发送学生考勤状况		(/experiment/uploacAttendence)
 _tea_post_duty (post) ok
 params:
 {

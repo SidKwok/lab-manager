@@ -4,6 +4,8 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.service.ITeachService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +23,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
+
+    @Autowired
+    private ITeachService teachService;
+
     /**
      * 获取老师所有实验
      _tea_lab (post) ok
@@ -59,10 +66,29 @@ public class TeacherController {
 
     /**
      * 获取相应实验的学生信息
-     _tea_labStuInfo (post) ok
+     _tea_labStuInfo (post) ok		(/teacher/getExpStuInfo)
      params: labName(实验名称) labId(实验id) username(用户名) role(角色)
      [
-     "sid","mingen","natalie","Airdy", "Bob"
+     {
+     "stuId": "0001",
+     "stuName": "sid"
+     },
+     {
+     "stuId": "0002",
+     "stuName": "mingen"
+     },
+     {
+     "stuId": "0003",
+     "stuName": "natalie"
+     },
+     {
+     "stuId": "0004",
+     "stuName": "Airdy"
+     },
+     {
+     "stuId": "0005",
+     "stuName": "Bob"
+     }
      ]
      */
     @ResponseBody
@@ -71,8 +97,10 @@ public class TeacherController {
         System.out.println("收到学生实验信息相关请求");
         List<Object> result=new ArrayList<Object>();
         for(int i=0;i<2;i++){
-            String name="王汝鹏";
-            result.add(name);
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("stuId","20131003838");
+            item.put("stuName","王大傻");
+            result.add(item);
         }
         return JSON.toJSONString(result);
     }

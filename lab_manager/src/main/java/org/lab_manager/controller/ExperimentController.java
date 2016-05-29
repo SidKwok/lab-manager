@@ -122,10 +122,25 @@ public class ExperimentController {
 
     /**
      * 获取实验课程的学生信息
-     _course_duty (post) ok
+     _course_duty (post) ok			(/experiment/courseStuInfo)
      params: username(用户名), role(角色), courseId(实验课程id)
      [
-     "sid","mingen","natalie","Airdy"
+     {
+     "stuId": "0001",
+     "stuName": "sid"
+     },
+     {
+     "stuId": "0002",
+     "stuName": "mingen"
+     },
+     {
+     "stuId": "0003",
+     "stuName": "natalie"
+     },
+     {
+     "stuId": "0004",
+     "stuName": "Airdy"
+     }
      ]
      */
     @ResponseBody
@@ -133,9 +148,12 @@ public class ExperimentController {
     public String gcourseStuInfo(@RequestParam("role")String role,@RequestParam("username")String username,@RequestParam("courseId")String courseId){
         List<Object> result=new ArrayList<Object>();
 
-        result.add("王大傻");
-        result.add("王大傻1");
-        result.add("王大傻2");
+        for(int i=0;i<2;i++){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("stuId","0003");
+            item.put("stuName","王大傻");
+            result.add(item);
+        }
         return JSON.toJSONString(result);
     }
 

@@ -39,13 +39,18 @@ public class EquipController {
     @RequestMapping(value="/queryAllEquipment",method = RequestMethod.GET)
     public String getEquimentList(){
         //返回所有设备的名称列表，放到json中
-        List<Map<String,Object>> result= new ArrayList<Map<String, Object>>();
+        List<Object> result=new ArrayList<Object>();
 
 
-        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
-        for(EquipInfo singleEquip:allEquipInfo){
+//        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
+//        for(EquipInfo singleEquip:allEquipInfo){
+//            Map<String,Object> item=new HashMap<String, Object>();
+//            item.put("assetName",singleEquip.getAsset_name());
+//            result.add(item);
+//        }
+        for(int i=0;i<2;i++){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("assetName",singleEquip.getAsset_name());
+            item.put("assetName","杀猪刀");
             result.add(item);
         }
 

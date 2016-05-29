@@ -69,8 +69,32 @@ public class ExperimentController {
     @RequestMapping(value="/teacherOrderStatus",method = RequestMethod.POST)
     public String getOrdersOfTeacher(@RequestParam("role")String role,@RequestParam("username")String username){
         Map<String,Object> result=new HashMap<String, Object>();
+        List<Object> labList=new ArrayList<Object>();
+        for(int i=0;i<2;i++){
+            Map<String,Object> labItem=new HashMap<String, Object>();
+            labItem.put("labName","LOL");
+            labItem.put("labWeek","第1,2周");
+            labItem.put("labWeekday","周5");
+            labItem.put("labCourse","第9,10节");
+            labItem.put("labOrderId","001");
+            labItem.put("labOrderDate","1");
+            labItem.put("state","回绝");
+            labList.add(labItem);
+        }
 
-
+        List<Object> equipList=new ArrayList<Object>();
+        for(int i=0;i<2;i++){
+            Map<String,Object> equipItem=new HashMap<String, Object>();
+            equipItem.put("equipName","杀猪刀");
+            equipItem.put("equipDate","2016-5-29");
+            equipItem.put("equipOrderId","001");
+            equipItem.put("equipDays","1");
+            equipItem.put("equipNumber","1");
+            equipItem.put("state","拒绝");
+            equipList.add(equipItem);
+        }
+        result.put("lab",labList);
+        result.put("equip",equipList);
         return JSON.toJSONString(result);
     }
 

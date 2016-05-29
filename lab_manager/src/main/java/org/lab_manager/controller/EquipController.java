@@ -5,6 +5,7 @@ package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.lab_manager.entity.EquipInfo;
+import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.service.IEquipService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -177,15 +178,15 @@ public class EquipController {
     public String getEquimentOrders(){
         //返回所有设备的预约信息，放到json中
         List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
-        List<EquipInfo> allEquipInfo = equipService.getAllEquipInfo();
-        for(EquipInfo item:allEquipInfo){
-            Map<String,Object> equipSingle=new HashMap<String, Object>();
-            equipSingle.put("",item.getID());
-            equipSingle.put("",item.getID());
-            equipSingle.put("",item.getID());
-            equipSingle.put("",item.getID());
-            equipSingle.put("",item.getID());
-            result.add(equipSingle);
+        List<EquipOrder> allEquipOrder  = equipService.getAllEquipOrder();
+        for(EquipOrder orderSingle:allEquipOrder){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("equitOrderId","001");
+            item.put("equitOrderName",orderSingle.getDevice_name());
+            item.put("equitOrderNumber",orderSingle.getEquip_number());
+            item.put("equitOrderDay",orderSingle.getDays());
+            item.put("equitOrderApplicant",orderSingle.getApplicant());
+            result.add(item);
         }
         return JSON.toJSONString(result);//
     }

@@ -1,6 +1,7 @@
 package org.lab_manager.service;
 
 import org.lab_manager.entity.EquipInfo;
+import org.lab_manager.entity.EquipOrder;
 
 import java.util.List;
 
@@ -33,4 +34,10 @@ public interface IEquipService {
      * 删除设备
      */
     public boolean deleteEquipById(String id);
+
+    /**
+     * 获取所有设备预约状态
+     */
+    public List<EquipOrder> getAllEquipOrder();
+
 }

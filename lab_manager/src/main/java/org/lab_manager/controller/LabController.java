@@ -35,6 +35,8 @@ public class LabController {
     public String addLabOrder(@RequestParam("assetName")String assetName,@RequestParam("number")int number,@RequestParam("days")int days,@RequestParam("applicant")String applyer) {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
+
+//        labService.orderRoom()
         result.put("status","0");
         return JSON.toJSONString(result);
     }
@@ -294,10 +296,21 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/getRoomCurrInfo",method = RequestMethod.POST)
-    public String getTeacherRoom(String jsonFile){
+    public String getTeacherRoom(@RequestParam("item")String item,@RequestParam("type")String type){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+        result.put("status","1");
+
+        List<Object> teacherInfo=new ArrayList<Object>();
+
+        for(int i=0;i<2;i++){
+            Map<String,Object> teaItem=new HashMap<String, Object>();
+            teaItem.put("teacher","sid大傻");
+            teaItem.put("labName","薛定谔的喵实验");
+            teaItem.put("roomId","004");
+            teacherInfo.add(teaItem);
+        }
+        result.put("result",teacherInfo);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }

@@ -261,7 +261,7 @@ params: none
 ]
 
 // 批准设备预约
-_confirm_equipOrder (post) ok	(/equipment/confirmEquitOrder)
+_confirm_equipOrder (post) ok	(/equipment/confirmEquipOrder)
 params: equipOrderId(设备id)
 {
   "status": "0"
@@ -412,7 +412,7 @@ params: username(用户名), role(角色), courseId(实验课程id)
   }
 ]
 
-// 发送学生考勤状况		(/experiment/uploacAttendence)
+// 发送学生考勤状况		(/experiment/uploadAttendence)
 _tea_post_duty (post) ok
 params:
 {

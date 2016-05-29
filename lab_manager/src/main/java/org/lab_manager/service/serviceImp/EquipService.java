@@ -1,10 +1,13 @@
 package org.lab_manager.service.serviceImp;
 
 import com.sun.xml.internal.ws.developer.Serialization;
+import org.lab_manager.dao.EquipOrderDao;
 import org.lab_manager.entity.EquipInfo;
+import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.service.IEquipService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -12,6 +15,9 @@ import java.util.List;
  */
 @Service
 public class EquipService implements IEquipService{
+    @Resource
+    private EquipOrderDao equipOrderDao;
+
     @Override
     public List<EquipInfo> getAllEquipInfo() {
         return null;
@@ -35,6 +41,11 @@ public class EquipService implements IEquipService{
     @Override
     public boolean deleteEquipById(String id) {
         return false;
+    }
+
+    @Override
+    public List<EquipOrder> getAllEquipOrder() {
+        return equipOrderDao.getAllEquipOrderStatus();
     }
 
 

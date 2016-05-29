@@ -38,7 +38,7 @@ public class LoginController {
         Map<String,Object> result=new HashMap<String, Object>();
         if(1==1){
             result.put("status","success");
-            result.put("role","teacher");
+            result.put("role","manager");
         }else{
             result.put("status","密码错误");
             result.put("role","none");

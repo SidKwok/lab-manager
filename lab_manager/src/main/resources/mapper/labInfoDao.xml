@@ -12,7 +12,7 @@
     </select>
 
     <delete id="deleteLab" parameterType="LabInfo">
-        DELETE FROM manage_lab WHERE Room_name=#{labName};
+        DELETE FROM manage_lab WHERE Room_id=#{id};
     </delete>
 
     <update id="updateLab" parameterType="LabInfo">

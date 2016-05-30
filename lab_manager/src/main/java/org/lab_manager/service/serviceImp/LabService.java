@@ -84,4 +84,14 @@ public class LabService implements ILabService {
     public boolean orderRoom(LabUse labUse) {
         return false;
     }
+
+    @Override
+    public boolean deleteLabRoom(Integer roomId){
+        try {
+            mLabInfoDao.deleteLab(roomId);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
 }

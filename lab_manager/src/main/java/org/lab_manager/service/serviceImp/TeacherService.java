@@ -2,6 +2,7 @@ package org.lab_manager.service.serviceImp;
 
 import org.lab_manager.dao.TeacherDao;
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.Student;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,10 @@ public class TeacherService implements ITeachService {
     @Override
     public List<Experiment> getAllExperiment(String id){
         return teacherDao.getALLExperiment(id);
+    }
+
+    @Override
+    public List<Student> getAllStudent(String id){
+        return teacherDao.getAllStudent(id);
     }
 }

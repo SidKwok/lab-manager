@@ -9,4 +9,7 @@
     <select id="getALLExperiment" resultType="Experiment">
         SELECT * FROM course_table JOIN teacher_table ON teacher_table.name=course_table.Teacher WHERE teacher_table.ID=#{id};
     </select>
+    <select id="getAllStudent" resultType="Student">
+        call getStudents(#{id});
+    </select>
 </mapper>

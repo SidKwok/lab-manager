@@ -1,6 +1,7 @@
 package org.lab_manager.dao;
 
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface TeacherDao {
      * 根据老师ID获取该老师的所有实验
      */
     public List<Experiment> getALLExperiment(String id);
+    /**
+     * 获取某一个老师某一门课所有学生
+     */
+    public List<Student> getAllStudent(String id);
 }

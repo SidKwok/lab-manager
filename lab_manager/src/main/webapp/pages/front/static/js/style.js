@@ -14,4 +14,4 @@ $('#menuLeft').on('click', 'li' ,function(event) {
 /**
 * 初始化弹出框
 */
-$('[data-toggle="popover"]').popover()
+$('[data-toggle="popover"]').popover();

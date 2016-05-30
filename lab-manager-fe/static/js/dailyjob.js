@@ -1,7 +1,7 @@
 // 全局变量
 var userInfo = window.location.href.split('?')[1];
 var role = userInfo.split('&')[1].split('=')[1]; // role
-var username = userInfo.split('&')[0].split('=')[1];; // username
+var username = userInfo.split('&')[0].split('=')[1]; // username
 
 /**
 * 页面初始化事件

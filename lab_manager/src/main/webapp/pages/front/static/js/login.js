@@ -21,7 +21,7 @@ function basicEvent () {
                 if (retData.status === 'success') {
                     window.location.href = './info/index.html?username=' + username + '&role=' + retData.role;
                 } else {
-                    alert('登录失败，原因：' + retData.status)
+                    alert('登录失败，原因：' + retData.status);
                 }
             },
             error: function() {

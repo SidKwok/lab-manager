@@ -81,7 +81,7 @@
 #all-orderState .order {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;
@@ -193,7 +193,7 @@
 #daily-notice .notice {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;
@@ -316,7 +316,7 @@
 #pro-order .order {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;
@@ -370,7 +370,7 @@
 #stu-duty .dutyState {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;
@@ -396,7 +396,7 @@
 #stu-checkGrade .checkGrade {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;
@@ -428,7 +428,7 @@
 #tea-course .course {
     width: 80%;
     height: 150px;
-    margin: 10px auto;
+    margin: 50px auto;
     display: block;
     background: #e1e1e1;
     color: #666;

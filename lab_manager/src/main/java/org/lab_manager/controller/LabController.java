@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
+import org.lab_manager.entity.LabUse;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -239,7 +240,7 @@ public class LabController {
     }
 
     /**
-    *获取所有房间使用情况
+    *获取特定房间使用情况
      * params: roomId
      [
      {
@@ -260,10 +261,20 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/getRoomOrderInfo",method = RequestMethod.POST)
-    public String getRoomStatus(@RequestParam("roomId")String id){
+    public String getRoomStatus(@RequestParam("roomId")String roomId){
         List<Object> result=new ArrayList<Object>();
 
+        List<LabUse> labUses = labService.getLabUseByRoomId(roomId);
 
+        for(LabUse labuseSingle:labUses){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("labName",labuseSingle.getLab_name());
+            item.put("applicant",labuseSingle.getApplicant());
+            item.put("week",labuseSingle.getWeek());
+            item.put("weekday",labuseSingle.getWeekday());
+            item.put("course",labuseSingle.getCourse());
+            result.add(item);
+        }
 
         return JSON.toJSONString(result);
     }
@@ -280,7 +291,9 @@ public class LabController {
     public String orderRoom(String jsonFile){
         //从json文件中解析数据，预定房间
         Map<String,Object> result= new HashMap<String, Object>();
-        result.put("status","0");
+        int flag=0;
+//        if(labService.)
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }
@@ -309,7 +322,8 @@ public class LabController {
     public String getTeacherRoom(@RequestParam("item")String item,@RequestParam("type")String type){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","1");
+        int flag=0;
+//        labService.
 
         List<Object> teacherInfo=new ArrayList<Object>();
 
@@ -320,6 +334,8 @@ public class LabController {
             teaItem.put("roomId","004");
             teacherInfo.add(teaItem);
         }
+
+        result.put("status",flag);
         result.put("result",teacherInfo);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功

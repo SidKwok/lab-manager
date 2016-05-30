@@ -25,7 +25,7 @@ import java.util.Map;
 public class TeacherController {
 
     @Autowired
-    private ITeachService teachService;
+    private ITeachService teacherService;
 
     /**
      * 获取老师所有实验

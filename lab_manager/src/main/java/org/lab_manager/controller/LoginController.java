@@ -33,15 +33,15 @@ public class LoginController {
 //        loginService.login()
         System.out.println("收到用户登录请求");
         Map<String,Object> result=new HashMap<String, Object>();
-        if(username.equals("20131001001")){
+        if(username.equals("20131001000")){
             result.put("status","success");
             result.put("role","manager");
         }else if(username.equals("20131001001")){
             result.put("status","success");
-            result.put("role","manager");
-        }else if(username.equals("20131001001")){
+            result.put("role","teacher");
+        }else if(username.equals("20131001002")){
             result.put("status","success");
-            result.put("role","manager");
+            result.put("role","student");
         }else{
             result.put("status","密码错误");
             result.put("role","none");

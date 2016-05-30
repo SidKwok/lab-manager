@@ -58,7 +58,7 @@ public class EquipController {
 
     /**
     *获取单个设备信息
-     * params: assetName
+     * params: assetId,assetName
      {
      "classNo": "001",
      "className": "刀具",
@@ -68,10 +68,11 @@ public class EquipController {
     */
     @ResponseBody
     @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.POST)
-    public String getEquimentInfo(@RequestParam("assetName") String assetName){
+    public String getEquimentInfo(@RequestParam("assetId") String assetId,@RequestParam("assetName") String assetName){
         //返回所有设备的名称列表，放到json中
+        System.out.println(assetId);
         Map<String,Object> result=new HashMap<String, Object>();
-        EquipInfo equipInfo = equipService.queryEquipById(assetName);
+        EquipInfo equipInfo = equipService.queryEquipById(assetId);
         result.put("classNo",equipInfo.getClass_no());
         result.put("className",equipInfo.getClass_name());
         result.put("valueType",equipInfo.getValue_type());

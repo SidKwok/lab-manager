@@ -30,6 +30,7 @@ public class NoticeService implements INoticeService{
         notice.setContent(content);
 //        String curDate=DateTimeUtil.formatTime(DateTimeUtil.currentTimestamp(),DateTimeUtil.DATETIME_FORMATTER);
         String curDate=DateTimeUtil.dateTimeFrom(DateTimeUtil.currentTimestamp());
+        System.out.println(curDate);
         notice.setDate(curDate);
         try{
             noticeDao.addNotice(notice.getDate(),notice.getContent(),notice.getAuthor());

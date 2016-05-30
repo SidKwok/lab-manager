@@ -3,6 +3,7 @@ package org.lab_manager.controller;
  * Created by xiaofeige on 2016/5/19.
  */
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
 import org.lab_manager.service.ILabService;
@@ -206,10 +207,14 @@ public class LabController {
     public String getRoomComment(@RequestParam("roomId")String id){
         //从数据库中获取对应ID的实验室的评论信息
         Map<String,Object> result=new HashMap<String, Object>();
-        List<String> comments=new ArrayList<String>();
         //调用service获取数据然后加进去
-        comments.add("任飞真是帅呆了 ");
+        List<LabComment> labComments = labService.getLabComment(id);
+        List<String> comments=new ArrayList<String>();
+        for(LabComment item:labComments){
+            comments.add(item.getComment());
+        }
         result.put("comment",comments);
+
         return JSON.toJSONString(result);
     }
 
@@ -224,8 +229,12 @@ public class LabController {
     @RequestMapping(value="/addRoomComment",method = RequestMethod.POST)
     public String addRoomComment(@RequestParam("roomId")String id,@RequestParam("comment")String comment){
         //将获得的数据保存到数据库中
+        System.out.println(id+"::"+comment);
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+        int flag=0;
+        if(labService.addComment(Integer.parseInt(id),comment))
+            flag=1;
+        result.put("status",flag);
         return JSON.toJSONString(result);
     }
 

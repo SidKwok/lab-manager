@@ -130,16 +130,18 @@ _equip_ajax (get) ok  (/equipment/queryAllEquipment)
 params: none
 [
   {
+    "assetId": "0001",
     "assetName": "西瓜刀"
   },
   {
+    "assetId": "0002",
     "assetName": "狼牙棒"
   }
 ]
 
 // 设备信息
 _equip_info (post) ok   (/equipment/queryEquipmentInfo)
-params: assetName(设备名)
+params: assetName(设备名) assetId(设备id)
 {
   "classNo": "001",
   "className": "刀具",
@@ -149,7 +151,7 @@ params: assetName(设备名)
 
 // 设备预约
 _lab_post_order (post) ok			(/equipment/orderEquip)
-params: assetName(设备名), number(数量), days(申请天数), applicant(申请人)
+params: assetName(设备名), number(数量), days(申请天数), applicant(申请人), assetId(设备id)
 {
   "status": "0"
 }
@@ -181,14 +183,14 @@ params: noticeAuthor(发表人), noticeContent(内容)
 
 // 删除设备仪器
 _del_equip (post) ok		(/equipment/delEquipment)
-params: assetName(设备名)
+params: assetName(设备名)，assetId(设备id)
 {
   "status": "0"
 }
 
 // 更新设备仪器
 _update_equip (post) ok		(/equipment/updateEquipment)
-params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
+params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)， assetId(设备id)
 {
   "status": "0"
 }

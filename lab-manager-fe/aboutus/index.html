@@ -11,6 +11,18 @@
           body {
               background: #2C3E50;
           }
+          .logo {
+              margin: 50px auto;
+              width: 99%;
+              text-align: center;
+          }
+          .logo img {
+              color: #fcfcfc;
+          }
+          .logo p {
+              font-size: 24px;
+              color: #fcfcfc;
+          }
           .intro-box {
               display: flex;
               display: -webkit-flex;
@@ -26,7 +38,38 @@
               font-family: '微软雅黑';
           }
           .intro h2{
-              
+              border-left-style: solid;
+              border-left-width: 5px;
+              border-left-color: #cddc39;
+              padding-left: 24px;
+              color: #cddc39;
+          }
+          .head-icon {
+              width: 100px;
+              height: 100px;
+              border-radius: 50px;
+              border-style: solid;
+              border-color: #fcfcfc;
+              margin: 30px auto;
+          }
+          #sid .head-icon {
+              background-image: url(../static/img/sid.jpeg);
+              background-size: 200px;
+              background-position: -90px -41px;
+          }
+          #fei .head-icon {
+              background-image: url(../static/img/fei.jpg);
+              background-size: 93px;
+              background-position: 1px -4px;
+          }
+          #wang .head-icon {
+              background-image: url(../static/img/wang.png);
+              background-size: 100px;
+              background-position: -100px -2px;
+          }
+          .intro-box ul {
+              font-size: 22px;
+              font-style: oblique;
           }
       </style>
     </head>
@@ -56,15 +99,37 @@
               </div>
             </div>
         </nav>
+        <div class="logo">
+            <img src="../static/img/about-logo.png" />
+            <p>v1.0</p>
+        </div>
         <div class="intro-box">
             <div id="sid" class="intro">
                 <h2>郭祥林</h2>
+                <div class="head-icon"></div>
+                <ul>
+                    <li>前端负责人</li>
+                    <li>学号：20131000483</li>
+                    <li>邮箱：oceankwok@hotmail.com</li>
+                </ul>
             </div>
             <div id="fei" class="intro">
                 <h2>任飞</h2>
+                <div class="head-icon"></div>
+                <ul>
+                    <li>后台负责人</li>
+                    <li>学号：20131003261</li>
+                    <li>邮箱：xiaofei_robot@163.com</li>
+                </ul>
             </div>
             <div id="wang" class="intro">
                 <h2>王汝鹏</h2>
+                <div class="head-icon"></div>
+                <ul>
+                    <li>数据库负责人</li>
+                    <li>学号：20131004222</li>
+                    <li>邮箱：wangrupeng@live.cn</li>
+                </ul>
             </div>
         </div>
 

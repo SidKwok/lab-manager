@@ -222,7 +222,7 @@ function equipCardEvent() {
   $('#post-equipUpdate').on('click', function(){
       var params = {
           assetName: $('#pro-equipUpdate-modal-label').text(),
-          assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId');
+          assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId'),
           classNo: $('#pro-input-classNo').val(),
           className: $('#pro-input-className').val(),
           valueType: $('#pro-input-valueType').val(),

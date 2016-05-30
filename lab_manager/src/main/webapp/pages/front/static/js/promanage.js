@@ -338,7 +338,7 @@ function loadLabRoomCard () {
           );
           $.each(retData, function(i, e) {
               domArr.push(
-                  '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '">',
+                  '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '" data-labRoomId="' + e.labRoomId + '">',
                       '<div class="pro-labRoomName">' + e.labRoomName + '</div>',
                       '<div class="pro-buttonGroup">',
                           '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
@@ -403,14 +403,16 @@ function labRoomCardEvent(){
   // 删除实验室
   $('.pro-labRoomDelete-btn').on('click', function(){
       $('#pro-labRoomDelete-modal-label').text($(this).parents('.card').attr('data-labRoomName'));
+      $('#pro-labRoomDelete-modal-label').attr('data-labRoomId', $(this).parents('.card').attr('data-labRoomId'));
   });
 
   $('#pro-labRoomDelete').on('click', function(){
       var labRoomName = $('#pro-labRoomDelete-modal-label').text();
+      var labRoomId = $('#pro-labRoomDelete-modal-label').attr('data-labRoomId');
       $.ajax({
           type: 'POST',
           url: '/lab/delLabRoom',
-          data: {labRoomName: labRoomName},
+          data: {labRoomName: labRoomName, labRoomId: labRoomId},
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
@@ -450,11 +452,13 @@ function labRoomCardEvent(){
   // 修改实验室
   $('.pro-labRoomUpdate-btn').on('click', function(){
       var labRoomName = $(this).parents('.card').attr('data-labRoomName');
+      var labRoomId = $(this).parents('.card').attr('data-labRoomId');
       $('#pro-labRoomUpdate-modal-label').text(labRoomName);
+      $('#pro-labRoomUpdate-modal-label').attr('data-labRoomId', labRoomId);
       $.ajax({
           type: 'POST',
           url: '/lab/roomConcreateInfo',
-          data: {labRoomName: labRoomName},
+          data: {labRoomName: labRoomName, labRoomId: labRoomId},
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
@@ -490,6 +494,7 @@ function labRoomCardEvent(){
 
   $('#post-labRoomUpdate').on('click', function(){
       var params = {
+          labRoomId: $('#pro-labRoomUpdate-modal-label').attr('data-labRoomId'),
           labRoomName: $('#pro-input-labRoomName').val(),
           labRoomType: $('#pro-input-labRoomType').val(),
           labRoomIntro: $('#pro-input-labRoomIntro').val()

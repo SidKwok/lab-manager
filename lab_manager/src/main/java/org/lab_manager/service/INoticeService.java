@@ -19,7 +19,7 @@ public interface INoticeService {
     /**
      * 增加公告
      */
-    public boolean addNotice(Notice notice);
+    public boolean addNotice(String author,String content);
 
     /**
      * 删除公告

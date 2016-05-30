@@ -7,10 +7,7 @@ import com.alibaba.fastjson.JSON;
 import org.lab_manager.service.ILoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -32,11 +29,17 @@ public class LoginController {
      */
     @ResponseBody
     @RequestMapping(value="/in",method = RequestMethod.POST)
-    public String login(@RequestBody String user) {
+    public String login(@RequestParam("username")String username,@RequestParam("password")String pwd) {
 //        loginService.login()
         System.out.println("收到用户登录请求");
         Map<String,Object> result=new HashMap<String, Object>();
-        if(1==1){
+        if(username.equals("20131001001")){
+            result.put("status","success");
+            result.put("role","manager");
+        }else if(username.equals("20131001001")){
+            result.put("status","success");
+            result.put("role","manager");
+        }else if(username.equals("20131001001")){
             result.put("status","success");
             result.put("role","manager");
         }else{

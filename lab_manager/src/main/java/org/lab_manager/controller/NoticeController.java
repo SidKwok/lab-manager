@@ -9,10 +9,7 @@ import org.lab_manager.service.INoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.PrintWriter;
@@ -38,10 +35,15 @@ public class NoticeController {
     * */
     @ResponseBody
     @RequestMapping(value="/addNotice",method = RequestMethod.POST)
-    public String addNotice(@RequestBody String notice) {
+    public String addNotice(@RequestParam("noticeAuthor")String author,@RequestParam("noticeContent")String content) {
         //首先解析接收到的notice
-        Map<String,String> result=new HashMap<String, String>();
-        result.put("status","0");
+        Map<String,Object> result=new HashMap<String, Object>();
+        int flag=0;
+
+        if(noticeService.addNotice(author,content))
+            flag=1;
+
+        result.put("status",flag);
 
         //这里肯定会需要用到时间等函数，在util中使用已经完成的工具类
         return JSON.toJSONString(result);

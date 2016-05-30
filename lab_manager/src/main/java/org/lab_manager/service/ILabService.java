@@ -12,6 +12,10 @@ import java.util.List;
  */
 public interface ILabService {
     /**
+     * 根据房间号获取实验室的所有信息
+     */
+    public LabInfo getLabRoomInfo(Integer roomId);
+    /**
      * 获取所有实验室信息
      */
     public List<LabInfo> getAllLabRoom();
@@ -40,7 +44,7 @@ public interface ILabService {
     /**
      * 通过房间号获取房间预约情况
      */
-    public List<LabUse> getLabUseByRoomId(String roomId);
+    public List<LabUse> getLabUseByRoomId(Integer roomId);
 
     /**
      * 通过用户id获取房间预约情况

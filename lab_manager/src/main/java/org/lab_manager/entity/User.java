@@ -1,7 +1,16 @@
 package org.lab_manager.entity;
 
 /**
- * Created by xiaofeige on 2016/5/26.
+ * Created by Silence on 2016/5/28.
  */
 public class User {
+    private String priviledge;
+
+    public String getPriviledge() {
+        return priviledge;
+    }
+
+    public void setPriviledge(String priviledge) {
+        this.priviledge = priviledge;
+    }
 }

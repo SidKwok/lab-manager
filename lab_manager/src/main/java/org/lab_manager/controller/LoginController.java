@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Role;
 import org.lab_manager.service.ILoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,18 +34,14 @@ public class LoginController {
 //        loginService.login()
         System.out.println("收到用户登录请求");
         Map<String,Object> result=new HashMap<String, Object>();
-        if(username.equals("20131001000")){
-            result.put("status","success");
-            result.put("role","manager");
-        }else if(username.equals("20131001001")){
-            result.put("status","success");
-            result.put("role","teacher");
-        }else if(username.equals("20131001002")){
-            result.put("status","success");
-            result.put("role","student");
-        }else{
+
+        Role role=loginService.login(username,pwd);
+        if(role==null){
             result.put("status","密码错误");
-            result.put("role","none");
+            result.put("role","xxx");
+        }else{
+            result.put("status","success");
+            result.put("role","");
         }
         return JSON.toJSONString(result);
     }

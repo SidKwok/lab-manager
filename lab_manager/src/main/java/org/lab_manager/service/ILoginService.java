@@ -12,7 +12,7 @@ public interface ILoginService {
     /**
      * 用户登陆，返回用户的角色
      */
-    public Role login(User user);
+    public Role login(String username,String password);
 
 
     /**

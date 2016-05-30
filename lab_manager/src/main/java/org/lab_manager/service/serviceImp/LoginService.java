@@ -12,17 +12,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LoginService implements ILoginService {
-    public boolean studentLogin(Student student){
-        return true;
-    }
-
-
-    public boolean teacherLogin(Teacher teacher){
-        return true;
-    }
 
     @Override
-    public Role login(User user) {
+    public Role login(String username,String password) {
+
         return null;
     }
 

@@ -6,10 +6,7 @@ import org.lab_manager.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -86,12 +83,48 @@ public class StudentController {
      */
     @ResponseBody
     @RequestMapping(value="/getAttendence", method = RequestMethod.POST)
-    public String getAttendence(@RequestBody Student student) {
+    public String getAttendence(@RequestParam("username")String username,@RequestParam("role")String role) {
+//        mStudentService.
+        List<Object> result=new ArrayList<Object>();
 
-        return "hello";
+        for(int i=0;i<10;i++){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("stuDutyLab","");
+            item.put("stuDutyPos","");
+            item.put("stuDutyWeek","");
+            item.put("stuDutyWeekday","");
+            item.put("stuDutyCourse","");
+            item.put("status","");
+            result.add(item);
+        }
+        return JSON.toJSONString(result);
     }
 
     /**
-     *
+     *_stu_grade (post) ok
+     params: username(用户名), role(角色)	（/student/getGrade）
+     [
+     {
+     "stuGradeLab": "足球实验",
+     "stuGrade": "成绩未出"
+     },
+     {
+     "stuGradeLab": "机器人实验",
+     "stuGrade": "98"
+     }
+     ]
      */
+    @ResponseBody
+    @RequestMapping(value="/getGrade", method = RequestMethod.POST)
+    public String getGrade(@RequestParam("username")String username,@RequestParam("role")String role) {
+        List<Object> result=new ArrayList<Object>();
+        for(int i=0;i<1;i++){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("stuGradeLab","");
+            item.put("stuGrade","");
+            result.add(item);
+        }
+
+        return JSON.toJSONString(result);
+    }
 }

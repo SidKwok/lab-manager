@@ -1,6 +1,9 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.Experiment;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by xiaofeige on 2016/5/27.
@@ -18,6 +21,7 @@ public interface ITeachService {
     public boolean updateStuAttendence();
 
     /**
-     * 
+     * 获取老师所有实验项目
      */
+    public List<Experiment> getAllExperiment(String id);
 }

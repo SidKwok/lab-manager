@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Experiment;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,10 +56,12 @@ public class TeacherController {
     public String teaAllLab(@RequestParam("username")String username,@RequestParam("role")String role) {
         List<Object> result=new ArrayList<Object>();
 
-        for(int i=0;i<3;i++){
+        List<Experiment> allExperiments = teacherService.getAllExperiment(username);
+        for(Experiment expSingle:allExperiments){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("labName","LOL塔下补兵技巧");
-            item.put("labId","004");
+            item.put("labName",expSingle.getCourse_name());
+            item.put("labId",expSingle.getCourse_id());
+
             result.add(item);
         }
         return JSON.toJSONString(result);
@@ -136,6 +139,11 @@ public class TeacherController {
     @RequestMapping(value="/uploadStuGrade",method = RequestMethod.POST)
     public String uploadStuGrade(String json) {
 
-        return "hello";
+//        Map<String,Object>
+        int flag=0;
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status",flag);
+
+        return JSON.toJSONString(result);
     }
 }

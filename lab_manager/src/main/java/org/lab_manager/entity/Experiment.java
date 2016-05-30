@@ -5,7 +5,7 @@ package org.lab_manager.entity;
  * Created by xiaofeige on 2016/5/23.
  */
 public class Experiment {
-    private String Course_id;
+    private String ID;
     private String Course_name;
     private String Class_name;
     private Integer Term;
@@ -58,15 +58,15 @@ public class Experiment {
     }
 
     public String getCourse_id() {
-        return Course_id;
+        return ID;
     }
 
     public String getCourse_name() {
         return Course_name;
     }
 
-    public void setCourse_id(String SID) {
-        this.Course_id = Course_id;
+    public void setCourse_id(String ID) {
+        this.ID = ID;
     }
 
     public void setCourse_name(String SName) {

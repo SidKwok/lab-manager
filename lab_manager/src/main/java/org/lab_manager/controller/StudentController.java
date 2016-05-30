@@ -118,6 +118,8 @@ public class StudentController {
     @RequestMapping(value="/getGrade", method = RequestMethod.POST)
     public String getGrade(@RequestParam("username")String username,@RequestParam("role")String role) {
         List<Object> result=new ArrayList<Object>();
+        List<Student> allStudent = mStudentService.getAllStudent();
+
         for(int i=0;i<1;i++){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("stuGradeLab","");

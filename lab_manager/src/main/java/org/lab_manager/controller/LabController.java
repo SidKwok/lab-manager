@@ -358,7 +358,7 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/delLabRoom",method = RequestMethod.POST)
-    public String delLabRoom(@RequestParam("labRoomName")String labRoomName){
+    public String delLabRoom(@RequestParam("labRoomId")String labRoomId,@RequestParam("labRoomName")String labRoomName){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
@@ -385,10 +385,10 @@ public class LabController {
 //        labService.g
         Map<String,Object> result=new HashMap<String, Object>();
 
-        
-        result.put("labRoomName",1);
-        result.put("labRoomType",1);
-        result.put("labRoomIntro",1);
+        LabInfo labRoomInfo = labService.getLabRoomInfo(Integer.parseInt(labRoomId));
+        result.put("labRoomName",labRoomInfo.getRoom_name());
+        result.put("labRoomType",labRoomInfo.getManage_teacher());
+        result.put("labRoomIntro",labRoomInfo.getIntro());
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }
@@ -403,11 +403,12 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/updateRoomInfo",method = RequestMethod.POST)
-    public String updateLabRoomInfo(@RequestParam("labRoomId")String labRoomId,@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomType")String labRoomtype,@RequestParam("labRoomIntro")String labRoomIntro){
+    public String updateLabRoomInfo(@RequestParam("labRoomId")String labRoomId,@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomType")String labRoomType,@RequestParam("labRoomIntro")String labRoomIntro){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
-//        if(labService.updateLabRoom())
+        if(labService.updateLabRoom(Integer.parseInt(labRoomId),labRoomType,labRoomName,labRoomIntro))
+            flag=1;
         result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
@@ -427,8 +428,10 @@ public class LabController {
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
-//        labService.addLabRoom()
-        result.put("status","0");
+        if(labService.addLabRoom(3,labRoomName,labRoomtype,labRoomIntro))
+            flag=1;
+
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }

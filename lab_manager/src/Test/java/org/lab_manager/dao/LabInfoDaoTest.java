@@ -35,8 +35,8 @@ public class LabInfoDaoTest {
 
     @Test
     public void updateLab() throws  Exception{
-        boolean status=labInfoDao.updateLab("软工实验室","张","软件工程实验室还不错哦");
-        System.out.println(status);
+//        boolean status=labInfoDao.updateLab("软工实验室","张","软件工程实验室还不错哦");
+//        System.out.println(status);
     }
 
     @Test

@@ -283,7 +283,7 @@ params: username(用户名) password(密码)
 }
 
 // 学生出勤状态
-_stu_dutyState (post) ok
+_stu_dutyState (post) ok					（/student/getAttendence）
 params: username(用户名) role(角色)
 [
   {
@@ -306,7 +306,7 @@ params: username(用户名) role(角色)
 
 // 学生成绩
 _stu_grade (post) ok
-params: username(用户名), role(角色)	（/student/getAttendence）
+params: username(用户名), role(角色)	（/student/getGrade）
 [
   {
     "stuGradeLab": "足球实验",

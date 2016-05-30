@@ -50,6 +50,9 @@ public class EquipController {
             result.add(item);
         }
 
+        Map<String,Object> item=new HashMap<String, Object>();
+        item.put("assetName","无尽之刃");
+        result.add(item);
         return JSON.toJSONString(result);//
     }
 

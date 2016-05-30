@@ -33,19 +33,33 @@ public class EquipService implements IEquipService{
     }
 
     @Override
-    public boolean updateEquipInfo(EquipInfo equipInfo) {
-        return false;
+    public boolean updateEquipInfo(Integer id,String asset_name,Integer class_no,String class_name,String value_type,Integer number) {
+        try {
+            equipInfoDao.updateAsset(id,asset_name,class_no,class_name,value_type,number);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public boolean addEquip(EquipInfo equipInfo) {
-        return false;
+    public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number) {
+        try {
+            equipInfoDao.addAsset(asset_name,class_no,class_name,value_type,number);
+        }catch (Exception e){
+            return  false;
+        }
+        return true;
     }
 
     @Override
     public boolean deleteEquipById(String id) {
-
-        return false;
+        try {
+            equipInfoDao.deleteAsset(id);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override

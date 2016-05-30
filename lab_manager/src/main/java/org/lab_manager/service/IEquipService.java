@@ -23,12 +23,12 @@ public interface IEquipService {
     /**
      * 更新设备信息
      */
-    public boolean updateEquipInfo(EquipInfo equipInfo);
+    public boolean updateEquipInfo(Integer id,String asset_name,Integer class_no,String class_name,String value_type,Integer number);
 
     /**
      * 添加设备入库
      */
-    public boolean addEquip(EquipInfo equipInfo);
+    public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number);
 
     /**
      * 删除设备

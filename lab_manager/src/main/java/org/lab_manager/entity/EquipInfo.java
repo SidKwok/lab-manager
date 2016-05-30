@@ -12,7 +12,7 @@ public class EquipInfo {
     private String Purchase_unit;
     private String Value_type;
     private Float Unit_price;
-    private Integer Number;
+    private Integer Device_number;
     private String Invoice_num;
     private String Measurement_unit;
     private String Purchase_date;
@@ -105,11 +105,11 @@ public class EquipInfo {
     }
 
     public Integer getNumber() {
-        return Number;
+        return Device_number;
     }
 
     public void setNumber(Integer number) {
-        Number = number;
+        Device_number = number;
     }
 
     public String getInvoice_num() {

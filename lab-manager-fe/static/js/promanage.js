@@ -132,7 +132,7 @@ function equipCardEvent() {
 
   $('#pro-equipDelete').on('click', function(){
       var assetName = $('#pro-equipDelete-modal-label').text();
-      var assetID = $('#pro-equipDelete-modal-label').attr('data-assetId');
+      var assetId = $('#pro-equipDelete-modal-label').attr('data-assetId');
       $.ajax({
           type: 'POST',
           url: '/equipment/delEquipment',

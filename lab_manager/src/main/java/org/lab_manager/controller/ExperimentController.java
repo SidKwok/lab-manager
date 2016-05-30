@@ -4,13 +4,13 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Experiment;
+import org.lab_manager.service.ITeachService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +20,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/experiment")
 public class ExperimentController {
+    @Resource
+    private ITeachService  teachService;
+
     /**
      * // 某人的预约状态
      _lab_orderState (post) ok
@@ -130,14 +133,14 @@ public class ExperimentController {
     @RequestMapping(value="/teaAllCourse",method = RequestMethod.POST)
     public String getTeaAllCourse(@RequestParam("role")String role,@RequestParam("username")String username){
         List<Object> result=new ArrayList<Object>();
-
-        for(int i=0;i<2;i++){
+        List<Experiment> exps=teachService.getAllExperiment(username);
+        for(Experiment expSingle:exps){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("courseId","0003");
-            item.put("labName","LOL");
-            item.put("labWeek","第一周");
-            item.put("labWeekday","周四");
-            item.put("labCourse","第5,6节");
+            item.put("courseId",expSingle.getCourse_id());
+            item.put("labName",expSingle.getCourse_name());
+            item.put("labWeek",expSingle.getStart_time());
+            item.put("labWeekday",expSingle.getWeek());
+            item.put("labCourse",expSingle.getDay_time());
             result.add(item);
         }
 
@@ -214,7 +217,9 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadAttendence",method = RequestMethod.POST)
-    public String uploadAttendence(String json){
+    public String uploadAttendence(@RequestParam Map<String,Object> json){
+        System.out.println(json.get("username")+"-----------------");
+
         List<Object> result=new ArrayList<Object>();
 
         return JSON.toJSONString(result);
@@ -233,7 +238,7 @@ public class ExperimentController {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
 
-//        labService.orderRoom()
+
         result.put("status","0");
         return JSON.toJSONString(result);
     }

@@ -385,6 +385,7 @@ public class LabController {
 //        labService.g
         Map<String,Object> result=new HashMap<String, Object>();
 
+        
         result.put("labRoomName",1);
         result.put("labRoomType",1);
         result.put("labRoomIntro",1);

@@ -262,6 +262,8 @@ public class LabController {
     @ResponseBody
     @RequestMapping(value="/getRoomOrderInfo",method = RequestMethod.POST)
     public String getRoomStatus(@RequestParam("roomId")String roomId){
+
+        System.out.println(roomId+"+++++++++++++++");
         List<Object> result=new ArrayList<Object>();
 
         List<LabUse> labUses = labService.getLabUseByRoomId(roomId);
@@ -351,10 +353,12 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/delLabRoom",method = RequestMethod.POST)
-    public String delLabRoom(String jsonFile){
+    public String delLabRoom(@RequestParam("labRoomName")String labRoomName){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+        int flag=0;
+
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }
@@ -371,10 +375,14 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/roomConcreateInfo",method = RequestMethod.POST)
-    public String getConcreatInfo(String jsonFile){
+    public String getConcreatInfo(@RequestParam("labRoomId")String labRoomId){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
+//        labService.g
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+
+        result.put("labRoomName",1);
+        result.put("labRoomType",1);
+        result.put("labRoomIntro",1);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }

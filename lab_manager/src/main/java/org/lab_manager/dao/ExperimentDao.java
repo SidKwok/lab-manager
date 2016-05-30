@@ -11,11 +11,30 @@ import java.util.List;
  */
 @Repository
 public interface ExperimentDao {
+    /*
+    获取指定实验信息
+     */
     public Experiment queryById(String id);
-    public Experiment queryByIdAndName(@Param("id") String id, @Param("name") String name);
-    public boolean addExperiment(@Param("CourseId") String courseId, @Param("courseName") String courseName, @Param("class_name") String class_name, @Param("term") Integer term, @Param("roomNum") String roomNum, String teacher, @Param("startTime") String startTime, @Param("endTime") String endTime);
+    public Experiment queryByIdAndName(@Param("id") String id,@Param("name") String name);
+    /*
+    添加实验课程
+     */
+    public boolean addExperiment(@Param("CourseId") String courseId,@Param("courseName")String courseName,@Param("class_name")String class_name,@Param("term")Integer term,@Param("roomNum")String roomNum,String teacher,@Param("startTime")String startTime,@Param("endTime")String endTime);
+
+    /*
+    获取所有实验预定状态
+     */
     public List<Experiment> queryAllExperimentOrderState();
-    public boolean applyExperiment(@Param("courseName") String courseName, @Param("roomId") Integer roomId, @Param("applicant") String applicant, @Param("startTime") String week, @Param("endTime") String endTIme, @Param("weekDay") String weekDay, @Param("dayTime") String dayTime);
+    /*
+    预定实验
+     */
+    public boolean applyExperiment(@Param("courseName") String courseName,@Param("roomId")Integer roomId,@Param("applicant") String applicant,@Param("startTime")String week,@Param("endTime")String endTIme,@Param("weekDay")String weekDay,@Param("dayTime")String  dayTime);
+    /*
+    批准实验预定
+     */
     public boolean approveApply(Integer id);
+    /*
+    拒绝实验预约
+     */
     public boolean refuseApply(Integer id);
 }

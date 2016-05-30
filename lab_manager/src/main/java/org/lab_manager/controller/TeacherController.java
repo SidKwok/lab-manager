@@ -5,6 +5,7 @@ package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.Student;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,10 +100,12 @@ public class TeacherController {
     public String getExpStuInfo(@RequestParam("username")String username,@RequestParam("role")String role,@RequestParam("labName")String labName,@RequestParam("labId")String labId) {
         System.out.println("收到学生实验信息相关请求");
         List<Object> result=new ArrayList<Object>();
-        for(int i=0;i<2;i++){
+        List<Student> allStudents = teacherService.getAllStudent(username);
+        for(Student stuSingle:allStudents){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("stuId","20131003838");
-            item.put("stuName","王大傻");
+
+            item.put("stuId",stuSingle.getSID());
+            item.put("stuName",stuSingle.getSName());
             result.add(item);
         }
         return JSON.toJSONString(result);

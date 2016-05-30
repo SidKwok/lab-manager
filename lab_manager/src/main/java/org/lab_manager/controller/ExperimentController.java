@@ -5,6 +5,7 @@ package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.Student;
 import org.lab_manager.service.ITeachService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -172,13 +173,14 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/courseStuInfo",method = RequestMethod.POST)
-    public String gcourseStuInfo(@RequestParam("role")String role,@RequestParam("username")String username,@RequestParam("courseId")String courseId){
+    public String getcourseStuInfo(@RequestParam("role")String role,@RequestParam("username")String username,@RequestParam("courseId")String courseId){
         List<Object> result=new ArrayList<Object>();
-
-        for(int i=0;i<2;i++){
+        List<Student> allStudents = teachService.getAllStudent(username);
+        for(Student stuSingle:allStudents){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("stuId","0003");
-            item.put("stuName","王大傻");
+
+            item.put("stuId", stuSingle.getSID());
+            item.put("stuName",stuSingle.getSName());
             result.add(item);
         }
         return JSON.toJSONString(result);
@@ -220,7 +222,8 @@ public class ExperimentController {
     public String uploadAttendence(@RequestParam Map<String,Object> json){
         System.out.println(json.get("username")+"-----------------");
 
-        List<Object> result=new ArrayList<Object>();
+        Map<String,Object> result=new HashMap<String, Object>();
+        result.put("status","0");
 
         return JSON.toJSONString(result);
     }

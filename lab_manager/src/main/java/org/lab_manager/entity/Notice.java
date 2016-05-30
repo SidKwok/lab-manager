@@ -3,13 +3,11 @@ package org.lab_manager.entity;
 /**
  * Created by Silence on 2016/5/24.
  */
-import java.sql.Timestamp;
 public class Notice {
     private Integer Notice_id;
     private String Date;
     private String Content;
     private String Author;
-    //private Timestamp Date;
 
     public Integer getNotice_id() {
         return Notice_id;

@@ -402,10 +402,12 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/updateRoomInfo",method = RequestMethod.POST)
-    public String updateLabRoomInfo(String jsonFile){
+    public String updateLabRoomInfo(@RequestParam("labRoomId")String labRoomId,@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomType")String labRoomtype,@RequestParam("labRoomIntro")String labRoomIntro){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+        int flag=0;
+//        if(labService.updateLabRoom())
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }
@@ -420,9 +422,11 @@ public class LabController {
      */
     @ResponseBody
     @RequestMapping(value="/addLabRoom",method = RequestMethod.POST)
-    public String addLabRoom(String jsonFile){
+    public String addLabRoom(@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomType")String labRoomtype,@RequestParam("labRoomIntro")String labRoomIntro){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
+        int flag=0;
+//        labService.addLabRoom()
         result.put("status","0");
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功

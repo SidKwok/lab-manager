@@ -15,7 +15,7 @@
         SELECT *FROM device_type_in WHERE asset_name=#{asset_name};
     </select>
     <delete id="deleteAsset" parameterType="EquipInfo">
-        DELETE *FROM device_type_in WHERE asset_name=#{asset_name};
+        DELETE FROM device_type_in WHERE ID=#{id};
     </delete>
 
     <update id="updateAsset" parameterType="EquipInfo">

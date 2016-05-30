@@ -40,6 +40,6 @@ public class EquipInfoDaoTest {
 
     @Test
     public void updateAsset() throws Exception{
-        boolean status = equipInfoDao.updateAsset("西瓜刀",2,"刀","大资产",30);
+//        boolean status = equipInfoDao.updateAsset("西瓜刀",2,"刀","大资产",30);
     }
 }

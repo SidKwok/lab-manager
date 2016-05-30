@@ -131,29 +131,32 @@ public class EquipController {
     */
     @ResponseBody
     @RequestMapping(value="/addEquipment",method = RequestMethod.POST)
-    public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")int number){
+    public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")String number){
         Map<String,Object> result=new HashMap<String, Object>();
 
         int flag=0;
-//        if(equipService.)
-        result.put("status",1);
+        if(equipService.addEquip(assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+            flag=1;
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//
     }
 
     /**
      *删除仪器设备
-     * params: assetName(设备名)
+     * params: assetName(设备名)，assetId(设备id)
      {
      "status": "0"
      }
      */
     @ResponseBody
     @RequestMapping(value="/delEquipment",method = RequestMethod.POST)
-    public String delEquiment(@RequestParam("assetName")String assetName){
+    public String delEquiment(@RequestParam("assetName")String assetName,@RequestParam("assetId")String assetId){
         Map<String,Object> result=new HashMap<String, Object>();
-
-        result.put("status",1);
+        int flag=0;
+        if(equipService.deleteEquipById(assetId))
+            flag=1;
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//
     }

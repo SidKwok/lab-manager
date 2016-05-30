@@ -230,7 +230,6 @@ public class LabController {
     @RequestMapping(value="/addRoomComment",method = RequestMethod.POST)
     public String addRoomComment(@RequestParam("roomId")String id,@RequestParam("comment")String comment){
         //将获得的数据保存到数据库中
-        System.out.println(id+"::"+comment);
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
         if(labService.addComment(Integer.parseInt(id),comment))
@@ -266,7 +265,7 @@ public class LabController {
         System.out.println(roomId+"+++++++++++++++");
         List<Object> result=new ArrayList<Object>();
 
-        List<LabUse> labUses = labService.getLabUseByRoomId(roomId);
+        List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
 
         for(LabUse labuseSingle:labUses){
             Map<String,Object> item=new HashMap<String, Object>();
@@ -290,7 +289,7 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/orderRoom",method = RequestMethod.POST)
-    public String orderRoom(String jsonFile){
+    public String orderRoom(@RequestParam("roomId")String roomId,@RequestParam("labName")String labName,@RequestParam("applicant")String applicant,@RequestParam("week")String week,@RequestParam("course")String course){
         //从json文件中解析数据，预定房间
         Map<String,Object> result= new HashMap<String, Object>();
         int flag=0;

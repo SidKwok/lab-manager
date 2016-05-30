@@ -26,12 +26,15 @@ public class EquipController {
 
     /**
     *获取所有设备的名称列表
-     * params: none
+     * _equip_ajax (get) ok  (/equipment/queryAllEquipment)
+     params: none
      [
      {
+     "assetId": "0001",
      "assetName": "西瓜刀"
      },
      {
+     "assetId": "0002",
      "assetName": "狼牙棒"
      }
      ]
@@ -47,18 +50,16 @@ public class EquipController {
         for(EquipInfo singleEquip:allEquipInfo){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("assetName",singleEquip.getAsset_name());
+            item.put("assetId",singleEquip.getID());
             result.add(item);
         }
-
-        Map<String,Object> item=new HashMap<String, Object>();
-        item.put("assetName","无尽之刃");
-        result.add(item);
         return JSON.toJSONString(result);//
     }
 
     /**
     *获取单个设备信息
-     * params: assetId,assetName
+     * _equip_info (post) ok   (/equipment/queryEquipmentInfo)
+     params: assetName(设备名) assetId(设备id)
      {
      "classNo": "001",
      "className": "刀具",
@@ -68,8 +69,9 @@ public class EquipController {
     */
     @ResponseBody
     @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.POST)
-    public String getEquimentInfo(@RequestParam("assetId") String assetId,@RequestParam("assetName") String assetName){
+    public String getEquimentInfo(@RequestParam("assetName") String assetName,@RequestParam("assetId") String assetId){
         //返回所有设备的名称列表，放到json中
+        System.out.println(assetId+","+assetName+"3412341234124");
         System.out.println(assetId);
         Map<String,Object> result=new HashMap<String, Object>();
         EquipInfo equipInfo = equipService.queryEquipById(assetId);

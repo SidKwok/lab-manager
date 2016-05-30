@@ -30,7 +30,7 @@ public class LabService implements ILabService {
 
     @Override
     public LabInfo getLabRoomInfo(Integer roomId){
-        return mLabInfoDao.getLabInfo(roomId.toString());
+        return mLabInfoDao.getLabInfo(roomId);
     }
 
     @Override

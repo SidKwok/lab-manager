@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface LabInfoDao {
     //根据实验室名称查询对应实验室具体信息
-    public LabInfo getLabInfo(String labName);
+    public LabInfo getLabInfo(Integer id);
     //获取多有实验室的信息
     public List<LabInfo> getAllLabInfo();
     //根据实验室名称删除对应的实验室所有信息

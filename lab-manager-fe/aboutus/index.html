@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>关于我们</title>
+      <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../static/css/hover-min.css">
+      <link rel="stylesheet" href="../static/css/style.css">
+
+      <style>
+          body {
+              background: #2C3E50;
+          }
+          .intro-box {
+              display: flex;
+              display: -webkit-flex;
+              width: 100%;
+              height: 100%;
+              justify-content: space-around;
+          }
+          .intro {
+              height: 100%;
+              width: 400px;
+              color: #fcfcfc;
+              font-weight: lighter;
+              font-family: '微软雅黑';
+          }
+          .intro h2{
+              
+          }
+      </style>
+    </head>
+    <body>
+        <!--导航栏-->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="javascript:void(0);"><img src="../static/img/header.png"/></a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                      <li><a class="nav-location" href="../info/index.html">门户网站</a></li>
+                      <li><a class="nav-location" href="../allmanage/index.html">综合管理</a></li>
+                      <li><a class="nav-location" href="../stumanage/index.html">学生专区</a></li>
+                      <li><a class="nav-location" href="../teamanage/index.html">教师专区</a></li>
+                      <li><a class="nav-location" href="../promanage/index.html">管理员专区</a></li>
+                      <li><a class="nav-location" href="../dailyjob/index.html">日常办公</a></li>
+                      <li class="active"><a href="#">关于我们</a></li>
+                  </ul>
+              </div>
+            </div>
+        </nav>
+        <div class="intro-box">
+            <div id="sid" class="intro">
+                <h2>郭祥林</h2>
+            </div>
+            <div id="fei" class="intro">
+                <h2>任飞</h2>
+            </div>
+            <div id="wang" class="intro">
+                <h2>王汝鹏</h2>
+            </div>
+        </div>
+
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+        <script src="../static/js/style.js"></script>
+        <script>
+            // 全局变量
+            var userInfo = window.location.href.split('?')[1];
+            var role = userInfo.split('&')[1].split('=')[1]; // role
+            var username = userInfo.split('&')[0].split('=')[1];; // username
+
+            $($('.nav-location')[0]).attr('href', '../info/index.html?' + userInfo + '?');
+            $($('.nav-location')[1]).attr('href', '../allmanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[2]).attr('href', '../stumanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[3]).attr('href', '../teamanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[4]).attr('href', '../promanage/index.html?' + userInfo + '?');
+            $($('.nav-location')[5]).attr('href', '../dailyjob/index.html?' + userInfo + '?');
+        </script>
+    </body>

@@ -48,23 +48,27 @@
     border-radius: 4px;
     margin: 20px;
     flex-shrink: 0;
-    background: #3eaca8;
+    background: #00bcd4;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
 }
 
 #all-room .all-roomId {
-    font-size: 36px;
+    font-size: 28px;
     padding-left: 10px;
+    color: #eee;
 }
 
 #all-room .all-teacher {
-    font-size: 24px;
-    padding: 30px 0 30px 85px;
+    font-size: 18px;
+    padding: 30px 0 30px 50px;
+    color: #eee;
 }
 
 .all-buttonGroup {
     display: block;
+    text-align: center;
+    margin-top: 16px;
 }
 
 .all-buttonGroup button {
@@ -86,7 +90,7 @@
     color: white;
 }
 #all-lab-orderState .hvr-sweep-to-right:before{
-    background: #3eaca8;
+    background: #00bcd4;
 }
 #all-equip-orderState .hvr-sweep-to-right:before{
     background: #ef4566;
@@ -158,18 +162,20 @@
     border-radius: 4px;
     margin: 20px;
     flex-shrink: 0;
-    background: #3eaca8;
+    background: #03a9f4;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
 }
 
 #lab-equip .lab-equipName {
-    font-size: 24px;
+    font-size: 18px;
     padding: 60px 0 30px 50px;
+    color: #eee;
 }
 
 .lab-buttonGroup {
     margin-top: 10px;
+    text-align: center;
 }
 
 .lab-buttonGroup button {
@@ -234,13 +240,14 @@
     border-radius: 4px;
     margin: 20px;
     flex-shrink: 0;
-    background: #3eaca8;
+    background: #00bcd4;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
 }
 #pro-equip .pro-equipName {
-    font-size: 24px;
+    font-size: 18px;
     padding: 60px 0 30px 50px;
+    color: #eee;
 }
 #pro-equip .pro-buttonGroup {
     margin-top: 10px;
@@ -276,13 +283,14 @@
     border-radius: 4px;
     margin: 20px;
     flex-shrink: 0;
-    background: #3eaca8;
+    background: #00bcd4;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
 }
 #pro-labRoom .pro-labRoomName {
-    font-size: 24px;
+    font-size: 18px;
     padding: 60px 0 30px 50px;
+    color: #eee;
 }
 #pro-labRoom .pro-buttonGroup {
     margin-top: 10px;
@@ -317,7 +325,7 @@
     color: white;
 }
 #pro-lab-order .hvr-sweep-to-right:before{
-    background: #3eaca8;
+    background: #00bcd4;
 }
 #pro-equip-order .hvr-sweep-to-right:before{
     background: #ef4566;
@@ -459,14 +467,20 @@
     border-radius: 4px;
     margin: 20px;
     flex-shrink: 0;
-    background: #3eaca8;
+    background: #00bcd4;
     -webkit-box-shadow: 2px 2px 12px;
             box-shadow: 2px 2px 12px;
+}
+
+#tea-correctGrade .tea-correct-btn {
+    display: block;
+    margin: 0 auto;
 }
 
 #tea-correctGrade .tea-correctGrade-labName {
     font-size: 24px;
     padding: 60px 0 30px 50px;
+    color: #eee;
 }
 
 #tea-correctGrade .tea-labId {
@@ -474,4 +488,5 @@
     top: 7%;
     left: 2%;
     font-size: 18px;
+    color: #eee;
 }

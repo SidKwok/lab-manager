@@ -35,7 +35,7 @@ function loadDutyState () {
     var params = {username: username, role:role};
     $.ajax({
         type: 'POST',
-        url: '_stu_dutyState',
+        url: '/student/getAttendence',
         data: params,
         dataType: 'json',
         success: function(data){
@@ -53,7 +53,7 @@ function loadDutyState () {
             $('#stu-dutyState').append(domArr.join(''));
         },
         error: function(){
-            console.log('stu_dutyState fail');
+            console.log('/student/getAttendence fail');
             alert('后台错误');
 
             // /***************************************
@@ -103,7 +103,7 @@ function loadGrade () {
     var params = {username: username, role: role};
     $.ajax({
         type: 'POST',
-        url: '/student/getAttendence',
+        url: '/student/getGrade',
         data: params,
         dataType: 'json',
         success: function(data){
@@ -121,7 +121,7 @@ function loadGrade () {
             $('#stu-checkGrade').append(domArr.join(''));
         },
         error: function(){
-            console.log('/student/getAttendence fail');
+            console.log('/student/getGrade fail');
             alert('后台错误');
 
             // /***************************************

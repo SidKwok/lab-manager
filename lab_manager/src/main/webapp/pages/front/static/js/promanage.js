@@ -56,7 +56,7 @@ function loadEquipCard () {
           );
           $.each(retData, function(i, e) {
               domArr.push(
-                  '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
+                  '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '" data-assetId="' + e.assetId + '">',
                       '<div class="pro-equipName">' + e.assetName + '</div>',
                       '<div class="pro-buttonGroup">',
                           '<button class="btn btn-danger pro-equipDelete-btn" data-toggle="modal" data-target="#pro-equipDelete-modal">删除</button>',
@@ -127,14 +127,16 @@ function equipCardEvent() {
   // 删除仪器
   $('.pro-equipDelete-btn').on('click', function(){
       $('#pro-equipDelete-modal-label').text($(this).parents('.card').attr('data-assetName'));
+      $('#pro-equipDelete-modal-label').attr('data-assetId', $(this).parents('.card').attr('data-assetId'));
   });
 
   $('#pro-equipDelete').on('click', function(){
       var assetName = $('#pro-equipDelete-modal-label').text();
+      var assetID = $('#pro-equipDelete-modal-label').attr('data-assetId');
       $.ajax({
           type: 'POST',
           url: '/equipment/delEquipment',
-          data: {assetName: assetName},
+          data: {assetName: assetName, assetId: assetId},
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
@@ -174,11 +176,13 @@ function equipCardEvent() {
   // 修改仪器
   $('.pro-equipUpdate-btn').on('click', function(){
       var assetName = $(this).parents('.card').attr('data-assetName')
+      var assetId = $(this).parents('.card').attr('data-assetId')
       $('#pro-equipUpdate-modal-label').text(assetName);
+      $('#pro-equipUpdate-modal-label').attr('data-assetId', assetId);
       $.ajax({
           type: 'POST',
           url: '/equipment/queryEquipmentInfo',
-          data: {assetName: assetName},
+          data: {assetName: assetName, assetId: assetId},
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
@@ -218,6 +222,7 @@ function equipCardEvent() {
   $('#post-equipUpdate').on('click', function(){
       var params = {
           assetName: $('#pro-equipUpdate-modal-label').text(),
+          assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId');
           classNo: $('#pro-input-classNo').val(),
           className: $('#pro-input-className').val(),
           valueType: $('#pro-input-valueType').val(),

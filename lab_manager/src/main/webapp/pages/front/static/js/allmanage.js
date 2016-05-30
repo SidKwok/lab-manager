@@ -447,7 +447,7 @@ function init () {
             var domArr = [];
             $.each(retData, function(i, e) {
                 domArr.push(
-                    '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
+                    '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '" data-assetId="' + e.assetId + '">',
                         '<div class="lab-equipName">' + e.assetName + '</div>',
                         '<div class="lab-buttonGroup">',
                             '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
@@ -461,11 +461,12 @@ function init () {
             // 设备简介
             $('.lab-equipInfo-btn').on('click', function(){
                 var assetName = $(this).parents('.card').attr('data-assetName');
+                var assetId = $(this).parents('.card').attr('data-assetId');
                 $('#lab-equipInfo-modal-label').text(assetName);
                 $.ajax({
                     type: 'POST',
                     url: '/equipment/queryEquipmentInfo',
-                    data: {assetName: assetName},
+                    data: {assetName: assetName, assetId: assetId},
                     dataType: 'json',
                     success: function(data){
                         var retData = eval('(' + data + ')');
@@ -505,12 +506,15 @@ function init () {
             // 预约设备
             $('.lab-order-btn').on('click', function(){
               var assetName = $(this).parents('.card').attr('data-assetName');
+              var assetId = $(this).parents('.card').attr('data-assetId');
               $('#lab-equipOrder-modal-label').text(assetName);
+              $('#lab-equipOrder-modal-label').attr('data-assetId', assetId);
             });
 
             $('#post-equipOrder').on('click', function(){
                 var params = {
                     assetName: $('#lab-equipOrder-modal-label').text(),
+                    assetId: $('#lab-equipOrder-modal-label').attr('data-assetId'),
                     number: $('#input-equipNumber').val(),
                     days: $('#input-equipDays').val(),
                     applicant: $('#input-equipApplicant').val()

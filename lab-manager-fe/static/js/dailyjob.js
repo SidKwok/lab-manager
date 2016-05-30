@@ -18,12 +18,10 @@ function init () {
     $($('.nav-location')[5]).attr('href', '../aboutus/index.html?' + userInfo + '?');
 
     if (role === 'student'){
-        $('#daily-notice').children().detach();
-        $('#daily-notice').append('<h2>本区域只对管理员或教师开放</h2>');
-    } else {
-        loadNotice();
-        basicEvent();
+        $('#noticeAdd-btn').detach();
     }
+    loadNotice();
+    basicEvent();
 }
 
 /**

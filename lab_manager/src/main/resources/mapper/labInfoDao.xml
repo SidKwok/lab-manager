@@ -16,7 +16,7 @@
     </delete>
 
     <update id="updateLab" parameterType="LabInfo">
-        UPDATE manage_lab SET Manage_teacher=#{teacher},Intro=#{intro} where Room_name=#{labName};
+        UPDATE manage_lab SET Room_name=#{labName},Manage_teacher=#{teacher},Intro=#{intro} where Room_id=#{labId};
     </update>
 
     <insert id="addLab" parameterType="LabInfo">

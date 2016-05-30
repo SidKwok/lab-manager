@@ -39,13 +39,23 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public boolean addLabRoom(LabRoom labRoom) {
-        return false;
+    public boolean addLabRoom(Integer labId,String labName,String teacher,String intro) {
+        try {
+            mLabInfoDao.addLab(labId,labName,teacher,intro);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public boolean updateLabRoom(LabRoom labRoom) {
-        return false;
+    public boolean updateLabRoom(Integer labId,String labName,String teacher,String intro) {
+        try {
+            mLabInfoDao.updateLab(labId,labName,teacher,intro);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override

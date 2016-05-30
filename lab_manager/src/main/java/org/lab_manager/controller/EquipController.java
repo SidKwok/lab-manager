@@ -71,15 +71,13 @@ public class EquipController {
     @RequestMapping(value="/queryEquipmentInfo",method = RequestMethod.POST)
     public String getEquimentInfo(@RequestParam("assetName") String assetName,@RequestParam("assetId") String assetId){
         //返回所有设备的名称列表，放到json中
-        System.out.println(assetId+","+assetName+"3412341234124");
-        System.out.println(assetId);
         Map<String,Object> result=new HashMap<String, Object>();
         EquipInfo equipInfo = equipService.queryEquipById(assetId);
         result.put("classNo",equipInfo.getClass_no());
         result.put("className",equipInfo.getClass_name());
         result.put("valueType",equipInfo.getValue_type());
         result.put("number",equipInfo.getNumber());
-
+        System.out.println(equipInfo.getNumber());
         return JSON.toJSONString(result);//
     }
 
@@ -136,6 +134,8 @@ public class EquipController {
     public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")int number){
         Map<String,Object> result=new HashMap<String, Object>();
 
+        int flag=0;
+//        if(equipService.)
         result.put("status",1);
 
         return JSON.toJSONString(result);//

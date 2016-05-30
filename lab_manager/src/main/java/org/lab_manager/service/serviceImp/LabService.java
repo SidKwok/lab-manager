@@ -2,6 +2,7 @@ package org.lab_manager.service.serviceImp;
 
 import org.lab_manager.dao.LabCommentDao;
 import org.lab_manager.dao.LabInfoDao;
+import org.lab_manager.dao.LabUseDao;
 import org.lab_manager.entity.LabComment;
 import org.lab_manager.entity.LabInfo;
 import org.lab_manager.entity.LabRoom;
@@ -23,6 +24,14 @@ public class LabService implements ILabService {
 
     @Autowired
     private LabCommentDao labCommentDao;
+
+    @Autowired
+    private LabUseDao labUseDao;
+
+    @Override
+    public LabInfo getLabRoomInfo(Integer roomId){
+        return mLabInfoDao.getLabInfo(roomId);
+    }
 
     @Override
     public List<LabInfo> getAllLabRoom(){
@@ -51,15 +60,15 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public List<LabUse> getLabUseByRoomId(String roomId) {
-        return null;
+    public List<LabUse> getLabUseByRoomId(Integer roomId) {
+        //return null;
+        return labUseDao.getLabUseInfo(roomId);
     }
 
     @Override
     public List<LabUse> getLabUseByUserId(String userId) {
         return null;
     }
-
 
     @Override
     public boolean orderRoom(LabUse labUse) {

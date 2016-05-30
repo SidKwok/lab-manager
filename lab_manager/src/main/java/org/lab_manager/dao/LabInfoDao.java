@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface LabInfoDao {
     //根据实验室名称查询对应实验室具体信息
-    public LabInfo getLabInfo(String labName);
+    public LabInfo getLabInfo(Integer id);
     //获取多有实验室的信息
     public List<LabInfo> getAllLabInfo();
     //根据实验室名称删除对应的实验室所有信息
-    public boolean deleteLab(String labName);
+    public boolean deleteLab(Integer id);
     //更新实验室信息
     public boolean updateLab(@Param("labId")Integer labId,@Param("labName") String labName,@Param("teacher") String teacher,@Param("intro") String intro);
     //添加新的实验室

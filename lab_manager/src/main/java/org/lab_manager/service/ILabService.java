@@ -56,5 +56,9 @@ public interface ILabService {
      */
     public boolean orderRoom(LabUse labUse);
 
+    /**
+     * 删除实验室
+     */
+    public boolean deleteLabRoom(Integer roomId);
 
 }

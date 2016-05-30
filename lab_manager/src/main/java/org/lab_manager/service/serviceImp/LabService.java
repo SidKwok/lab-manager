@@ -30,7 +30,7 @@ public class LabService implements ILabService {
 
     @Override
     public LabInfo getLabRoomInfo(Integer roomId){
-        return mLabInfoDao.getLabInfo(roomId.toString());
+        return mLabInfoDao.getLabInfo(roomId);
     }
 
     @Override
@@ -83,5 +83,15 @@ public class LabService implements ILabService {
     @Override
     public boolean orderRoom(LabUse labUse) {
         return false;
+    }
+
+    @Override
+    public boolean deleteLabRoom(Integer roomId){
+        try {
+            mLabInfoDao.deleteLab(roomId);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 }

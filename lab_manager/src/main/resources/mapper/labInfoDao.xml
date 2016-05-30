@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.LabInfoDao">
     <select id="getLabInfo" resultType="LabInfo">
-        SELECT * FROM manage_lab WHERE Room_name=#{labName};
+        SELECT * FROM manage_lab WHERE Room_id=#{id};
     </select>
 
     <select id="getAllLabInfo" resultType="LabInfo">
@@ -12,7 +12,7 @@
     </select>
 
     <delete id="deleteLab" parameterType="LabInfo">
-        DELETE FROM manage_lab WHERE Room_name=#{labName};
+        DELETE FROM manage_lab WHERE Room_id=#{id};
     </delete>
 
     <update id="updateLab" parameterType="LabInfo">

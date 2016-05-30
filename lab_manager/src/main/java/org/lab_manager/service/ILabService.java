@@ -23,13 +23,13 @@ public interface ILabService {
     /**
      * 新增实验室
      */
-    public boolean addLabRoom(LabRoom labRoom);
+    public boolean addLabRoom(Integer labId,String labName,String teacher,String intro);
 
 
     /**
      * 修改实验室
      */
-    public boolean updateLabRoom(LabRoom labRoom);
+    public boolean updateLabRoom(Integer labId,String labName,String teacher,String intro);
 
     /**
      * 为实验室增加评论

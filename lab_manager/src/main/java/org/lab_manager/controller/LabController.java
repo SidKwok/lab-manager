@@ -328,6 +328,12 @@ public class LabController {
 
         List<Object> teacherInfo=new ArrayList<Object>();
 
+        if(type.equals("room")){
+//            labService.getLabUseByRoomId()
+        }else{
+
+        }
+
         for(int i=0;i<2;i++){
             Map<String,Object> teaItem=new HashMap<String, Object>();
             teaItem.put("teacher","sid大傻");

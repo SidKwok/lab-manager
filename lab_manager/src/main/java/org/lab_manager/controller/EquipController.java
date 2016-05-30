@@ -155,6 +155,7 @@ public class EquipController {
     @ResponseBody
     @RequestMapping(value="/delEquipment",method = RequestMethod.POST)
     public String delEquiment(@RequestParam("assetName")String assetName,@RequestParam("assetId")String assetId){
+        System.out.println(assetId+"zheshishi");
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
         if(equipService.deleteEquipById(assetId))

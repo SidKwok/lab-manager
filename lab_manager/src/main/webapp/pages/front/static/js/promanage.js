@@ -1,7 +1,7 @@
 // 全局变量
 var userInfo = window.location.href.split('?')[1];
 var role = userInfo.split('&')[1].split('=')[1]; // role
-var username = userInfo.split('&')[0].split('=')[1];; // username
+var username = userInfo.split('&')[0].split('=')[1]; // username
 
 /**
 * 页面初始化事件
@@ -175,8 +175,8 @@ function equipCardEvent() {
 
   // 修改仪器
   $('.pro-equipUpdate-btn').on('click', function(){
-      var assetName = $(this).parents('.card').attr('data-assetName')
-      var assetId = $(this).parents('.card').attr('data-assetId')
+      var assetName = $(this).parents('.card').attr('data-assetName');
+      var assetId = $(this).parents('.card').attr('data-assetId');
       $('#pro-equipUpdate-modal-label').text(assetName);
       $('#pro-equipUpdate-modal-label').attr('data-assetId', assetId);
       $.ajax({
@@ -449,7 +449,7 @@ function labRoomCardEvent(){
 
   // 修改实验室
   $('.pro-labRoomUpdate-btn').on('click', function(){
-      var labRoomName = $(this).parents('.card').attr('data-labRoomName')
+      var labRoomName = $(this).parents('.card').attr('data-labRoomName');
       $('#pro-labRoomUpdate-modal-label').text(labRoomName);
       $.ajax({
           type: 'POST',

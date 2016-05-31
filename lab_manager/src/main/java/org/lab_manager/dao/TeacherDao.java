@@ -17,9 +17,9 @@ public interface TeacherDao {
     /**
      * 根据老师ID获取该老师的所有实验
      */
-    public List<Experiment> getALLExperiment(String id);
+    public List<Experiment> getALLExperiment(String teacherId);
     /**
      * 获取某一个老师某一门课所有学生
      */
-    public List<Student> getAllStudent(String id);
+    public List<Student> getAllStudent(String courseId);
 }

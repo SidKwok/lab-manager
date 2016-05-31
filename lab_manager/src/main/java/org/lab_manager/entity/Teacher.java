@@ -7,7 +7,6 @@ package org.lab_manager.entity;
 public class Teacher {
     private String ID;
     private String name;
-    private String password;
     private String role_id;
     private String major_name;
 
@@ -27,14 +26,6 @@ public class Teacher {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRole_id() {
         return role_id;
     }
@@ -50,5 +41,4 @@ public class Teacher {
     public void setMajor_name(String major_name) {
         this.major_name = major_name;
     }
-
 }

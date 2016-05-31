@@ -21,12 +21,11 @@ public class LoginService implements ILoginService {
     public Role login(String username,String password) {
         try{
             String userRoleId=userDao.getRoleId(username,password);
-            System.out.println(username+"用户登录"+password);
-            if(username!=null){
+            if(userRoleId!=null){
                 return userDao.getRole(userRoleId);
             }
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return null;
     }

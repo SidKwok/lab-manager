@@ -267,17 +267,17 @@ public class LabController {
         System.out.println(roomId+"+++++++++++++++");
         List<Object> result=new ArrayList<Object>();
 
-        List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
-
-        for(LabUse labuseSingle:labUses){
-            Map<String,Object> item=new HashMap<String, Object>();
-            item.put("labName",labuseSingle.getLab_name());
-            item.put("applicant",labuseSingle.getApplicant());
-            item.put("week",labuseSingle.getWeek());
-            item.put("weekday",labuseSingle.getWeekday());
-            item.put("course",labuseSingle.getCourse());
-            result.add(item);
-        }
+//        List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
+//
+//        for(LabUse labuseSingle:labUses){
+//            Map<String,Object> item=new HashMap<String, Object>();
+//            item.put("labName",labuseSingle.getLab_name());
+//            item.put("applicant",labuseSingle.getApplicant());
+//            item.put("week",labuseSingle.getWeek());
+//            item.put("weekday",labuseSingle.getWeekday());
+//            item.put("course",labuseSingle.getCourse());
+//            result.add(item);
+//        }
 
         return JSON.toJSONString(result);
     }

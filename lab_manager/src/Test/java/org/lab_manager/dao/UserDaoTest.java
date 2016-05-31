@@ -2,6 +2,7 @@ package org.lab_manager.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.lab_manager.entity.Role;
 import org.lab_manager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,7 +22,8 @@ public class UserDaoTest {
 
     @Test
     public void getRoleId() throws Exception {
-        System.out.println(userDao.getRole("2"));
+        Role r=userDao.getRole("2");
+        System.out.println(r.getRole_name());
     }
 
     @Autowired

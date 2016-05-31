@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.EquipOrderDao">
     <insert id="orderEquip" parameterType="EquipOrder">
-        INSERT INTO device_order(Device_name,Equip_number,Days,Applicant) VALUES (#{assetName},#{number},#{days},#{applicant});
+        INSERT INTO device_order(Device_name,Equip_number,Start_time,End_time,Applicant,Order_date,Device_state) VALUES (#{assetName},#{number},#{startTime},#{endTime},#{applicant},#{orderDate},#{deviceState});
     </insert>
     <select id="getAllEquipOrderStatus" resultType="EquipOrder">
         SELECT *FROM device_order;

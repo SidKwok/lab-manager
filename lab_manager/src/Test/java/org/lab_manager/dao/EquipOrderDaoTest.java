@@ -23,8 +23,7 @@ public class EquipOrderDaoTest {
     EquipOrderDao equipOrderDao;
     @Test
     public void orderEquip() throws Exception {
-        boolean status = equipOrderDao.orderEquip("键盘",2,3,"王");
-        System.out.println(status);
+
     }
     @Test
     public void getAllEquipOrderStatus()throws Exception{

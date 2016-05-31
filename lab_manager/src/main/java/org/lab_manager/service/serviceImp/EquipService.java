@@ -70,7 +70,7 @@ public class EquipService implements IEquipService{
     @Override
     public boolean addEquipOrder(String assetName, Integer number, Integer days, String applicant) {
 
-        return equipOrderDao.orderEquip(assetName,number,days,applicant);
+        return false;
     }
 
     @Override

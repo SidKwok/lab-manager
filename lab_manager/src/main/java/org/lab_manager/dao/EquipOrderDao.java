@@ -2,19 +2,17 @@ package org.lab_manager.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.EquipOrder;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/28.
  */
-@Repository
 public interface EquipOrderDao {
     /*
     预定设备
      */
-    public boolean orderEquip(@Param("assetName") String assetName,@Param("number") Integer number,@Param("days") Integer days,@Param("applicant") String applicant);
+    public boolean orderEquip(@Param("deviceName") String deviceName, @Param("number") Integer number, @Param("startTime") String startTime, @Param("endTime") String endTime, @Param("applicant") String applicant, @Param("orderDate") String orderDate, @Param("deviceState") String deviceState);
     /*
     获取所有设备的预定状态
      */

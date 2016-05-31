@@ -1,5 +1,6 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.ExperimentDao;
 import org.lab_manager.dao.LabCommentDao;
 import org.lab_manager.dao.LabInfoDao;
 import org.lab_manager.dao.LabUseDao;
@@ -27,6 +28,9 @@ public class LabService implements ILabService {
 
     @Autowired
     private LabUseDao labUseDao;
+
+    @Autowired
+    private ExperimentDao experimentDao;
 
     @Override
     public LabInfo getLabRoomInfo(Integer roomId){
@@ -81,8 +85,13 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public boolean orderRoom(LabUse labUse) {
-        return false;
+    public boolean orderRoom(String roomId,String labName,String applicant,String week,String course) {
+        try{
+            experimentDao.applyExperiment(labName,Integer.parseInt(roomId),applicant,week,course,course,course);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override

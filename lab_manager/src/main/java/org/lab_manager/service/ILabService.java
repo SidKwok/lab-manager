@@ -54,7 +54,7 @@ public interface ILabService {
     /**
      * 预约实验室
      */
-    public boolean orderRoom(LabUse labUse);
+    public boolean orderRoom(String roomId,String labName,String applicant,String week,String course);
 
     /**
      * 删除实验室

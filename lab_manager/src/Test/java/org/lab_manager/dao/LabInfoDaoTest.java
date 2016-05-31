@@ -21,8 +21,8 @@ public class LabInfoDaoTest {
     LabInfoDao labInfoDao;
     @Test
     public void getLabInfo() throws Exception {
-        LabInfo labInfo=labInfoDao.getLabInfo("软工实验室");
-        System.out.println(labInfo.getIntro());
+//        LabInfo labInfo=labInfoDao.getLabInfo("软工实验室");
+//        System.out.println(labInfo.getIntro());
     }
 
     @Test
@@ -41,8 +41,8 @@ public class LabInfoDaoTest {
 
     @Test
     public void deleteLab() throws Exception{
-        boolean status=labInfoDao.deleteLab("软工实验室");
-        System.out.println(status);
+//        boolean status=labInfoDao.deleteLab("软工实验室");
+//        System.out.println(status);
     }
     @Test
     public void addLab() throws Exception{

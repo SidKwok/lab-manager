@@ -120,10 +120,10 @@ public class StudentController {
         List<Object> result=new ArrayList<Object>();
         List<Student> allStudent = mStudentService.getAllStudent();
 
-        for(int i=0;i<1;i++){
+        for(Student stuSingle:allStudent){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("stuGradeLab","");
-            item.put("stuGrade","");
+            item.put("stuGradeLab",stuSingle.getSClassNO());
+            item.put("stuGrade",stuSingle.getScore());
             result.add(item);
         }
 

@@ -196,7 +196,7 @@ public class EquipController {
             item.put("equitOrderId","001");
             item.put("equitOrderName",orderSingle.getDevice_name());
             item.put("equitOrderNumber",orderSingle.getEquip_number());
-            item.put("equitOrderDay",orderSingle.getDays());
+
             item.put("equitOrderApplicant",orderSingle.getApplicant());
             result.add(item);
         }

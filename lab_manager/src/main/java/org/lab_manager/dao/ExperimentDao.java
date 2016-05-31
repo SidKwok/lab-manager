@@ -31,6 +31,11 @@ public interface ExperimentDao {
      */
     public List<Experiment> getExperimentsByRoomID(String roomID);
 
+    /**
+     *根据老师名字获取该老师的所有实验
+     */
+    public List<Experiment> getExperimentsByTeacherName(String name);
+
     /*
     预定实验
      */

@@ -200,14 +200,19 @@ function init () {
             });
             // 预约实验室
             $('#post-labOrder').on('click', function(){
+                var course = [];
+                $.each($('#input-course input[type="checkbox"]:checked'), function(i, e){
+                    course.push($(e).attr('value'));
+                });
                 var params = {
                     roomId: $('#all-order-modal-label').text(),
                     labName: $('#input-labName').val(),
-                    applicant: $('#input-applicant').val(),
-                    class: $('#input-class').val(),
-                    week: $('#input-week  option:selected').text(),
-                    weekday: $('#input-weekday  option:selected').text(),
-                    course: $('#input-course  option:selected').text()
+                    applicant: username,
+                    start_week: $('#input-startWeek  option:selected').text(),
+                    end_week: $('#input-endWeek  option:selected').text(),
+                    start_weekday: $('#input-startWeekday  option:selected').text(),
+                    end_weekday: $('#input-endWeekday  option:selected').text(),
+                    course: course
                 };
 
                 $.ajax({

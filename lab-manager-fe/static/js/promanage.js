@@ -605,7 +605,7 @@ function loadLabOrder() {
                     '<div class="lab-order order hvr-sweep-to-right">',
                         '<div class="labOrderId">' + e.labOrderId + '</div>',
                         '<div class="labOrderDate">' + e.labOrderDate + '</div>',
-                        '<div class="labOrderContent">' + e.labOrderName + ' ' + e.labOrderWeek + ' ' + e.labOrderWeekday + ' ' + e.labOrderCourse + '</div>',
+                        '<div class="labOrderContent">' + e.labOrderName + ' ' + e.labOrderStartWeek + '-' + e.labOrderendtWeek + ' ' + e.labOrderStartWeekday + '-' + e.labOrderEndWeekday + ' ' + e.labOrderCourse + '</div>',
                         '<div class="labOrderApplicant">' + e.labOrderApplicant + '</div>',
                         '<div class="pro-order-btnGroup">',
                             '<button class="btn btn-success labOrder-confirm-btn">批准</button>',

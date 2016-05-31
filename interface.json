@@ -210,18 +210,22 @@ params: none
     "labOrderId": "0001",
     "labOrderName": "机器人实验",
     "labOrderDate": "2016-5-21",
-    "labOrderWeek": "第一周",
-    "labOrderWeekday": "周五",
-    "labOrderCourse": "第1、2节",
+    "labOrderStartWeek": "第一周",
+    "labOrderEndWeek": "第三周",
+    "labOrderStartWeekday": "周五",
+    "labOrderEndWeekday": "周日",
+    "labOrderCourse": ["第1、2节", "第5、6节"],
     "labOrderApplicant": "sid"
   },
   {
     "labOrderId": "0002",
     "labOrderName": "足球实验",
     "labOrderDate": "2016-5-21",
-    "labOrderWeek": "第二周",
-    "labOrderWeekday": "周四",
-    "labOrderCourse": "第5、6节",
+    "labOrderStartWeek": "第一周",
+    "labOrderEndWeek": "第四周",
+    "labOrderStartWeekday": "周一",
+    "labOrderEndWeekday": "周日",
+    "labOrderCourse": ["第3、4节", "第5、6节"],
     "labOrderApplicant": "mingen"
   }
 ]

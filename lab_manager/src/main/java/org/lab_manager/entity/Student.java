@@ -7,8 +7,7 @@ public class Student {
     private String SID;
     private String SName;
     private String SClassNO;
-    private Float score;
-    private String password;
+    private String Major;
 
     public String getSID() {
         return SID;
@@ -22,22 +21,6 @@ public class Student {
         this.SClassNO = SClassNO;
     }
 
-    public Float getScore() {
-        return score;
-    }
-
-    public void setScore(Float score) {
-        this.score = score;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getSName() {
         return SName;
     }
@@ -48,5 +31,13 @@ public class Student {
 
     public void setSName(String SName) {
         this.SName = SName;
+    }
+
+    public String getMajor() {
+        return Major;
+    }
+
+    public void setMajor(String major) {
+        Major = major;
     }
 }

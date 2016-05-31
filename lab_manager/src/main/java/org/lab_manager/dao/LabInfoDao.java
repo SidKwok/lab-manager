@@ -3,12 +3,14 @@ package org.lab_manager.dao;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.plugin.Interceptor;
 import org.lab_manager.entity.LabInfo;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/23.
  */
+@Repository
 public interface LabInfoDao {
     //根据实验室名称查询对应实验室具体信息
     public LabInfo getLabInfo(Integer id);

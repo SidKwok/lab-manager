@@ -3,12 +3,14 @@ package org.lab_manager.dao;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/24.
  */
+@Repository
 public interface TeacherDao {
     /**
      * 根据老师ID获取老师该老师所有信息

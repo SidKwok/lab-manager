@@ -2,12 +2,14 @@ package org.lab_manager.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.EquipOrder;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/28.
  */
+@Repository
 public interface EquipOrderDao {
     /*
     预定设备

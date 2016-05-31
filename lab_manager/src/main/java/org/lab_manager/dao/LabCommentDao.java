@@ -2,12 +2,14 @@ package org.lab_manager.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.LabComment;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/24.
  */
+@Repository
 public interface LabCommentDao {
     /*
     根据指定id获取实验评论

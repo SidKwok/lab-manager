@@ -2,12 +2,14 @@ package org.lab_manager.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.EquipInfo;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Silence on 2016/5/23.
  */
+@Repository
 public interface EquipInfoDao {
     /*
     获取指定设备ID的信息

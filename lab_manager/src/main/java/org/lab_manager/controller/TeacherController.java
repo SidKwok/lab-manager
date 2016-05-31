@@ -4,16 +4,14 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -140,9 +138,11 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadStuGrade",method = RequestMethod.POST)
-    public String uploadStuGrade(String json) {
+    public String uploadStuGrade(@RequestBody JSONObject jsonObject) {
 
 //        Map<String,Object>
+        System.out.println(jsonObject.get("stu").getClass());
+        ;
         int flag=0;
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status",flag);

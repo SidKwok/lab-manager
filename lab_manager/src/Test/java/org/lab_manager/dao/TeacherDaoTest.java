@@ -28,7 +28,7 @@ public class TeacherDaoTest {
     }
     @Test
     public void getAllStudent() throws Exception{
-        List<Student> list=teacherDao.getAllStudent("001");
+        List<Student> list=teacherDao.getAllStudent("T001");
         for (Student student:list){
             System.out.println(student.getSName());
         }

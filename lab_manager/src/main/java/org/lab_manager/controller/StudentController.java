@@ -123,7 +123,7 @@ public class StudentController {
         for(Student stuSingle:allStudent){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("stuGradeLab",stuSingle.getSClassNO());
-            item.put("stuGrade",stuSingle.getScore());
+            
             result.add(item);
         }
 

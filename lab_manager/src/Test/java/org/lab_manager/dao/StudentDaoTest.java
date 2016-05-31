@@ -21,6 +21,6 @@ public class StudentDaoTest {
     @Test
     public void queryById() throws Exception {
         Student student = studentDao.queryById("20131003261");
-        System.out.println(student.getScore());
+        System.out.println(student.getSName());
     }
 }

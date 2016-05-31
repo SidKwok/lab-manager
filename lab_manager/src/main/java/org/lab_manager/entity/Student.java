@@ -7,23 +7,11 @@ public class Student {
     private String SID;
     private String SName;
     private String SClassNO;
-    private Float score;
     private String Major;
+    //public String getScore(){return null;}
 
     public String getSID() {
         return SID;
-    }
-
-    public void setSID(String SID) {
-        this.SID = SID;
-    }
-
-    public String getSName() {
-        return SName;
-    }
-
-    public void setSName(String SName) {
-        this.SName = SName;
     }
 
     public String getSClassNO() {
@@ -34,19 +22,23 @@ public class Student {
         this.SClassNO = SClassNO;
     }
 
+    public String getSName() {
+        return SName;
+    }
+
+    public void setSID(String SID) {
+        this.SID = SID;
+    }
+
+    public void setSName(String SName) {
+        this.SName = SName;
+    }
+
     public String getMajor() {
         return Major;
     }
 
     public void setMajor(String major) {
         Major = major;
-    }
-
-    public Float getScore() {
-        return score;
-    }
-
-    public void setScore(Float score) {
-        this.score = score;
     }
 }

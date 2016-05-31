@@ -271,17 +271,18 @@ public class LabController {
         System.out.println(roomId+"+++++++++++++++");
         List<Object> result=new ArrayList<Object>();
 
-//        List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
-//
-//        for(LabUse labuseSingle:labUses){
-//            Map<String,Object> item=new HashMap<String, Object>();
-//            item.put("labName",labuseSingle.getLab_name());
-//            item.put("applicant",labuseSingle.getApplicant());
-//            item.put("week",labuseSingle.getWeek());
-//            item.put("weekday",labuseSingle.getWeekday());
-//            item.put("course",labuseSingle.getCourse());
-//            result.add(item);
-//        }
+        //List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
+
+        List<Experiment> exps=new ArrayList<Experiment>();
+        for(Experiment labuseSingle:exps){
+            Map<String,Object> item=new HashMap<String, Object>();
+            item.put("labName",labuseSingle.getCourse_name());
+            item.put("applicant",labuseSingle.getTeacher());
+            item.put("week",labuseSingle.getWeek());
+            item.put("weekday",labuseSingle.getWeek());
+            item.put("course",labuseSingle.getDay_time());
+            result.add(item);
+        }
 
         return JSON.toJSONString(result);
     }
@@ -331,14 +332,16 @@ public class LabController {
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         int flag=0;
-//        labService.
 
         List<Object> teacherInfo=new ArrayList<Object>();
 
         if(type.equals("room")){
 //            labService.getLabUseByRoomId()
+            experimentService.getExperimentById(item);
+            flag=1;
         }else{
-
+            
+            flag=1;
         }
 
         for(int i=0;i<2;i++){

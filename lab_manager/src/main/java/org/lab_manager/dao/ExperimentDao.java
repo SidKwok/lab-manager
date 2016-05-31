@@ -25,6 +25,12 @@ public interface ExperimentDao {
     获取所有实验预定状态
      */
     public List<Experiment> queryAllExperimentOrderState();
+
+    /**
+     *根据房间号获取此房间的所有实验
+     */
+    public List<Experiment> getExperimentsByRoomID(String roomID);
+
     /*
     预定实验
      */

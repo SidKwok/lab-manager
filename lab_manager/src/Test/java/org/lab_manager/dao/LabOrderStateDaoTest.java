@@ -30,7 +30,7 @@ public class LabOrderStateDaoTest {
     public void getEquipOrderState() throws  Exception{
         List<LabOrderState> list = labOrderStateDao.getEquipOrderState("张");
         for (LabOrderState labOrderState:list){
-            System.out.println(labOrderState.getDevice_state());
+            //System.out.println(labOrderState.getDevice_state());
         }
     }
 }

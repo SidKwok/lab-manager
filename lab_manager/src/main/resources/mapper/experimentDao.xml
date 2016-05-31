@@ -16,6 +16,9 @@
     <select id="getExperimentsByRoomID" resultType="Experiment">
         SELECT *FROM course_table WHERE Room_id=#{roomID};
     </select>
+    <select id="getExperimentsByTeacherName"  resultType="Experiment">
+        SELECT *FROM course_table JOIN teacher_table ON teacher_table.ID=course_table.Teacher WHERE teacher_table.name=#{name};
+    </select>
     <insert id="addExperiment" parameterType="Experiment">
         insert into course_table (Course_id, Course_name, Class_name,Term, Room_num, Teacher,Start_time, End_time)
         values (#{courseId}, #{courseName}, #{class_name},#{term}, #{roomNum}, #{teacher},#{startTime}, #{endTime});

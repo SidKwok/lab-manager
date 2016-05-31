@@ -51,6 +51,14 @@ public class ExperimentDaoTest {
             System.out.println(experiment.getCourse_name());
         }
     }
+
+    @Test
+    public void getExperimentsByTeacherName() throws Exception{
+        List<Experiment> list=ed.getExperimentsByTeacherName("张");
+        for (Experiment experiment:list){
+            System.out.println(experiment.getCourse_name());
+        }
+    }
     @Test
     public void approveApply() throws Exception{
         boolean status=ed.approveApply(1);

@@ -186,12 +186,39 @@ function equipCardEvent() {
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
-              $('#pro-equipUpdate-modal .pro-equipInfo').children().detach();
-              var equipInfo = '<div class="pro-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                              '<div class="pro-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                              '<div class="pro-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                              '<div class="pro-equipInfo-number">数量： ' + retData.number + '</div>';
-              $('#pro-equipUpdate-modal .pro-equipInfo').append(equipInfo);
+              $('#pro-input-classNo').attr('placeholder', retData.classNo);
+              $('#pro-input-className').attr('placeholder', retData.className);
+              $('#pro-input-originName').attr('placeholder', retData.originName);
+              $('#pro-input-purchaseUnit').attr('placeholder', retData.purchaseUnit);
+              $('#pro-input-valueType').attr('placeholder', retData.valueType);
+              $('#pro-input-unitPrice').attr('placeholder', retData.unitPrice);
+              $('#pro-input-invoiceNum').attr('placeholder', retData.invoiceNum);
+              $('#pro-input-measurementUnit').attr('placeholder', retData.measurementUnit);
+              $('#pro-input-purchaseDate').attr('placeholder', retData.purchaseDate);
+              $('#pro-input-financialRes').attr('placeholder', retData.financialRes);
+              $('#pro-input-assetRes').attr('placeholder', retData.assetRes);
+              $('#pro-input-handlePerson').attr('placeholder', retData.handlePerson);
+              $('#pro-input-chargeType').attr('placeholder', retData.chargeType);
+              $('#pro-input-checkDate').attr('placeholder', retData.checkDate);
+              $('#pro-input-receptDate').attr('placeholder', retData.receptDate);
+              $('#pro-input-purchaseForm').attr('placeholder', retData.purchaseForm);
+              $('#pro-input-managePart').attr('placeholder', retData.managePart);
+              $('#pro-input-subjectType').attr('placeholder', retData.subjectType);
+              $('#pro-input-subject').attr('placeholder', retData.subject);
+              $('#pro-input-remark').attr('placeholder', retData.remark);
+              $('#pro-input-finantialOpinion').attr('placeholder', retData.finantialOpinion);
+              $('#pro-input-purchasingAgent').attr('placeholder', retData.purchasingAgent);
+              $('#pro-input-modal').attr('placeholder', retData.modal);
+              $('#pro-input-standard').attr('placeholder', retData.standard);
+              $('#pro-input-productionDate').attr('placeholder', retData.productionDate);
+              $('#pro-input-country').attr('placeholder', retData.country);
+              $('#pro-input-manufacture').attr('placeholder', retData.manufacture);
+              $('#pro-input-brand').attr('placeholder', retData.brand);
+              $('#pro-input-power').attr('placeholder', retData.power);
+              $('#pro-input-estimatedExpirationDate').attr('placeholder', retData.estimatedExpirationDate);
+              $('#pro-input-durableYears').attr('placeholder', retData.durableYears);
+              $('#pro-input-retailer').attr('placeholder', retData.retailer);
+              $('#pro-input-number').attr('placeholder', retData.number);
           },
           error: function(){
               console.log('/equipment/queryEquipmentInfo fail');
@@ -225,7 +252,36 @@ function equipCardEvent() {
           assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId'),
           classNo: $('#pro-input-classNo').val(),
           className: $('#pro-input-className').val(),
+          originName: $('#pro-input-originName').val(),
+          purchaseUnit: $('#pro-input-purchaseUnit').val(),
           valueType: $('#pro-input-valueType').val(),
+          unitPrice: $('#pro-input-unitPrice').val(),
+          invoiceNum: $('#pro-input-invoiceNum').val(),
+          measurementUnit: $('#pro-input-measurementUnit').val(),
+          purchaseDate: $('#pro-input-purchaseDate').val(),
+          financialRes: $('#pro-input-financialRes').val(),
+          assetRes: $('#pro-input-assetRes').val(),
+          handlePerson: $('#pro-input-handlePerson').val(),
+          chargeType: $('#pro-input-chargeType').val(),
+          checkDate: $('#pro-input-checkDate').val(),
+          receptDate: $('#pro-input-receptDate').val(),
+          purchaseForm: $('#pro-input-purchaseForm').val(),
+          managePart: $('#pro-input-managePart').val(),
+          subjectType: $('#pro-input-subjectType').val(),
+          subject: $('#pro-input-subject').val(),
+          remark: $('#pro-input-remark').val(),
+          finantialOpinion: $('#pro-input-finantialOpinion').val(),
+          purchasingAgent: $('#pro-input-purchasingAgent').val(),
+          modal: $('#pro-input-modal').val(),
+          standard: $('#pro-input-standard').val(),
+          productionDate: $('#pro-input-productionDate').val(),
+          country: $('#pro-input-country').val(),
+          manufacture: $('#pro-input-manufacture').val(),
+          brand: $('#pro-input-brand').val(),
+          power: $('#pro-input-power').val(),
+          estimatedExpirationDate: $('#pro-input-estimatedExpirationDate').val(),
+          durableYears: $('#pro-input-durableYears').val(),
+          retailer: $('#pro-input-retailer').val(),
           number: $('#pro-input-number').val()
       };
 
@@ -273,8 +329,37 @@ function equipCardEvent() {
           assetName: $('#pro-input-add-assetName').val(),
           classNo: $('#pro-input-add-classNo').val(),
           className: $('#pro-input-add-className').val(),
+          originName: $('#pro-input-add-originName').val(),
+          purchaseUnit: $('#pro-input-add-purchaseUnit').val(),
           valueType: $('#pro-input-add-valueType').val(),
-          number: $('#pro-input-add-number').val(),
+          unitPrice: $('#pro-input-add-unitPrice').val(),
+          invoiceNum: $('#pro-input-add-invoiceNum').val(),
+          measurementUnit: $('#pro-input-add-measurementUnit').val(),
+          purchaseDate: $('#pro-input-add-purchaseDate').val(),
+          financialRes: $('#pro-input-add-financialRes').val(),
+          assetRes: $('#pro-input-add-assetRes').val(),
+          handlePerson: $('#pro-input-add-handlePerson').val(),
+          chargeType: $('#pro-input-add-chargeType').val(),
+          checkDate: $('#pro-input-add-checkDate').val(),
+          receptDate: $('#pro-input-add-receptDate').val(),
+          purchaseForm: $('#pro-input-add-purchaseForm').val(),
+          managePart: $('#pro-input-add-managePart').val(),
+          subjectType: $('#pro-input-add-subjectType').val(),
+          subject: $('#pro-input-add-subject').val(),
+          remark: $('#pro-input-add-remark').val(),
+          finantialOpinion: $('#pro-input-add-finantialOpinion').val(),
+          purchasingAgent: $('#pro-input-add-purchasingAgent').val(),
+          modal: $('#pro-input-add-modal').val(),
+          standard: $('#pro-input-add-standard').val(),
+          productionDate: $('#pro-input-add-productionDate').val(),
+          country: $('#pro-input-add-country').val(),
+          manufacture: $('#pro-input-add-manufacture').val(),
+          brand: $('#pro-input-add-brand').val(),
+          power: $('#pro-input-add-power').val(),
+          estimatedExpirationDate: $('#pro-input-add-estimatedExpirationDate').val(),
+          durableYears: $('#pro-input-add-durableYears').val(),
+          retailer: $('#pro-input-add-retailer').val(),
+          number: $('#pro-input-add-number').val()
       };
 
       $.ajax({

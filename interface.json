@@ -146,7 +146,37 @@ params: assetName(设备名) assetId(设备id)
   "classNo": "001",
   "className": "刀具",
   "valueType": "昂贵",
-  "number": "10"
+  "originName": "",
+  "purchaseUnit": "",
+  "valueType": "",
+  "unitPrice": "",
+  "invoiceNum": "",
+  "measurementUnit": "",
+  "purchaseDate": "",
+  "financialRes": "",
+  "assetRes": "",
+  "handlePerson": "",
+  "chargeType": "",
+  "checkDate": "",
+  "receptDate": "",
+  "purchaseForm": "",
+  "managePart": "",
+  "subjectType": "",
+  "subject": "",
+  "remark": "",
+  "finantialOpinion": "",
+  "purchasingAgent": "",
+  "modal": "",
+  "standard": "",
+  "productionDate": "",
+  "country": "",
+  "manufacture": "",
+  "brand": "",
+  "power": "",
+  "estimatedExpirationDate": "",
+  "durableYears": "",
+  "retailer": "",
+  "number": ""
 }
 
 // 设备预约
@@ -190,14 +220,14 @@ params: assetName(设备名)，assetId(设备id)
 
 // 更新设备仪器
 _update_equip (post) ok		(/equipment/updateEquipment)
-params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)， assetId(设备id)
+params: 参考那堆长长的
 {
   "status": "0"
 }
 
 // 添加设备仪器
 _add_equip (post) ok		(/equipment/addEquipment)
-params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
+params: 参考那堆长长的
 {
   "status": "0"
 }

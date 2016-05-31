@@ -477,7 +477,36 @@ function init () {
                         $('#lab-equipInfo-modal .modal-body').children().detach();
                         var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
                                         '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
+                                        '<div class="lab-equipInfo-originName">外文名称： ' + retData.originName + '</div>' +
+                                        '<div class="lab-equipInfo-purchaseUnit">申购单位： ' + retData.purchaseUnit + '</div>' +
                                         '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
+                                        '<div class="lab-equipInfo-unitPrice">单价： ' + retData.unitPrice + '</div>' +
+                                        '<div class="lab-equipInfo-invoiceNum">发票号： ' + retData.invoiceNum + '</div>'+
+                                        '<div class="lab-equipInfo-measurementUnit">计量单位： ' + retData.measurementUnit + '</div>' +
+                                        '<div class="lab-equipInfo-purchaseDate">购置日期： ' + retData.purchaseDate + '</div>' +
+                                        '<div class="lab-equipInfo-financialRes">经费来源： ' + retData.financialRes + '</div>' +
+                                        '<div class="lab-equipInfo-assetRes">资产来源： ' + retData.assetRes + '</div>' +
+                                        '<div class="lab-equipInfo-handlePerson">经手人： ' + retData.handlePerson + '</div>' +
+                                        '<div class="lab-equipInfo-chargeType">记账类型： ' + retData.chargeType + '</div>' +
+                                        '<div class="lab-equipInfo-checkDate">验收日期： ' + retData.checkDate + '</div>' +
+                                        '<div class="lab-equipInfo-receptDate">货到日期： ' + retData.receptDate + '</div>' +
+                                        '<div class="lab-equipInfo-purchaseForm">采购形式： ' + retData.purchaseForm + '</div>' +
+                                        '<div class="lab-equipInfo-managePart">管理部门： ' + retData.managePart + '</div>' +
+                                        '<div class="lab-equipInfo-subjectType">学科类别： ' + retData.subjectType + '</div>' +
+                                        '<div class="lab-equipInfo-subject">学科： ' + retData.subject + '</div>' +
+                                        '<div class="lab-equipInfo-remark">备注： ' + retData.remark + '</div>' +
+                                        '<div class="lab-equipInfo-finantialOpinion">财务意见： ' + retData.finantialOpinion + '</div>' +
+                                        '<div class="lab-equipInfo-purchasingAgent">采购人： ' + retData.purchasingAgent + '</div>' +
+                                        '<div class="lab-equipInfo-modal">型号： ' + retData.modal + '</div>' +
+                                        '<div class="lab-equipInfo-standard">规格： ' + retData.standard + '</div>' +
+                                        '<div class="lab-equipInfo-productionDate">出厂日期： ' + retData.productionDate + '</div>' +
+                                        '<div class="lab-equipInfo-country">国别： ' + retData.country + '</div>' +
+                                        '<div class="lab-equipInfo-manufacture">生产厂家： ' + retData.manufacture + '</div>' +
+                                        '<div class="lab-equipInfo-brand">品牌： ' + retData.brand + '</div>' +
+                                        '<div class="lab-equipInfo-power">功率： ' + retData.power + '</div>' +
+                                        '<div class="lab-equipInfo-estimatedExpirationDate">保修截止日期： ' + retData.estimatedExpirationDate + '</div>' +
+                                        '<div class="lab-equipInfo-durableYears">使用年限： ' + retData.durableYears + '</div>' +
+                                        '<div class="lab-equipInfo-retailer">销售商： ' + retData.retailer + '</div>' +
                                         '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
                         $('#lab-equipInfo-modal .modal-body').append(equipInfo);
                     },
@@ -521,7 +550,7 @@ function init () {
                     assetId: $('#lab-equipOrder-modal-label').attr('data-assetId'),
                     number: $('#input-equipNumber').val(),
                     days: $('#input-equipDays').val(),
-                    applicant: $('#input-equipApplicant').val()
+                    applicant: username
                 };
 
                 $.ajax({

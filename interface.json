@@ -56,7 +56,7 @@ params: roomId(实验室id)
 
 // 发送到服务器的实验室order,接受status 0代表预约失败 1代表预约成功
 _room_post_order (post) ok  (/lab/orderRoom)
-params: roomId(实验室id), class(什么班级), labName(实验名), applicant(申请人), week(第几周), weekday(周几), course(第几节课)
+params: roomId(实验室id), labName(实验名), applicant(申请人), start_week(起始周), end_week(结束周), start_weekday(起始天), end_weekday(结束天), course(第几节课)(数组)
 {
   "status": "0"
 }

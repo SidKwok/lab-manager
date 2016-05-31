@@ -209,44 +209,88 @@
               </div>
               <div class="modal-body">
                   <input type="text" class="form-control" id="input-labName" placeholder="实验名称">
-                  <input type="text" class="form-control" id="input-applicant" placeholder="申请人">
-                  <input type="text" class="form-control" id="input-class" placeholder="申请班级">
-                  <select class="form-control" id="input-week">
-                    <option>第一周</option>
-                    <option>第二周</option>
-                    <option>第三周</option>
-                    <option>第四周</option>
-                    <option>第五周</option>
-                    <option>第六周</option>
-                    <option>第七周</option>
-                    <option>第八周</option>
-                    <option>第九周</option>
-                    <option>第十周</option>
-                    <option>第十一周</option>
-                    <option>第十二周</option>
-                    <option>第十三周</option>
-                    <option>第十四周</option>
-                    <option>第十五周</option>
-                    <option>第十六周</option>
-                    <option>第十七周</option>
-                    <option>第十八周</option>
+                  <select class="form-control" id="input-startWeek">
+                      <option>起始周</option>
+                      <option>第一周</option>
+                      <option>第二周</option>
+                      <option>第三周</option>
+                      <option>第四周</option>
+                      <option>第五周</option>
+                      <option>第六周</option>
+                      <option>第七周</option>
+                      <option>第八周</option>
+                      <option>第九周</option>
+                      <option>第十周</option>
+                      <option>第十一周</option>
+                      <option>第十二周</option>
+                      <option>第十三周</option>
+                      <option>第十四周</option>
+                      <option>第十五周</option>
+                      <option>第十六周</option>
+                      <option>第十七周</option>
+                      <option>第十八周</option>
                   </select>
-                  <select class="form-control" id="input-weekday">
-                    <option>周一</option>
-                    <option>周二</option>
-                    <option>周三</option>
-                    <option>周四</option>
-                    <option>周五</option>
-                    <option>周六</option>
-                    <option>周日</option>
+                  <select class="form-control" id="input-endWeek">
+                      <option>结束周</option>
+                      <option>第一周</option>
+                      <option>第二周</option>
+                      <option>第三周</option>
+                      <option>第四周</option>
+                      <option>第五周</option>
+                      <option>第六周</option>
+                      <option>第七周</option>
+                      <option>第八周</option>
+                      <option>第九周</option>
+                      <option>第十周</option>
+                      <option>第十一周</option>
+                      <option>第十二周</option>
+                      <option>第十三周</option>
+                      <option>第十四周</option>
+                      <option>第十五周</option>
+                      <option>第十六周</option>
+                      <option>第十七周</option>
+                      <option>第十八周</option>
                   </select>
-                  <select class="form-control" id="input-course">
-                    <option>1、2节</option>
-                    <option>3、4节</option>
-                    <option>5、6节</option>
-                    <option>7、8节</option>
-                    <option>9、10节</option>
+                  <select class="form-control" id="input-startWeekday">
+                      <option>起始天</option>
+                      <option>周一</option>
+                      <option>周二</option>
+                      <option>周三</option>
+                      <option>周四</option>
+                      <option>周五</option>
+                      <option>周六</option>
+                      <option>周日</option>
                   </select>
+                  <select class="form-control" id="input-endWeekday">
+                      <option>结束天</option>
+                      <option>周一</option>
+                      <option>周二</option>
+                      <option>周三</option>
+                      <option>周四</option>
+                      <option>周五</option>
+                      <option>周六</option>
+                      <option>周日</option>
+                  </select>
+                  <div id="input-course">
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="1、2节"> 1、2节
+                      </label>
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="3、4节"> 3、4节
+                      </label>
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="5、6节"> 5、6节
+                      </label>
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="7、8节"> 7、8节
+                      </label>
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="9、10节"> 9、10节
+                      </label>
+                      <label class="checkbox-inline">
+                          <input type="checkbox" value="11、12节"> 11、12节
+                      </label>
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -332,6 +376,14 @@
                         alert('POST 请求失败');
                     }
                 });
+            });
+
+            $('#post-labOrder').on('click', function(){
+                var course = [];
+                $.each($('#input-course input[type="checkbox"]:checked'), function(i, e){
+                    course.push($(e).attr('value'));
+                });
+                console.log(course);
             });
         </script>
     </body>

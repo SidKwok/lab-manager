@@ -1,6 +1,7 @@
 package org.lab_manager.service.serviceImp;
 
 import org.lab_manager.dao.ExperimentDao;
+import org.lab_manager.dao.LabOrderStateDao;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.service.IExperimentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,10 @@ import java.util.List;
 @Service
 public class ExperimentService implements IExperimentService {
     @Autowired
-    ExperimentDao mExpDao;
+    private ExperimentDao mExpDao;
+
+    @Autowired
+    private LabOrderStateDao labOrderStateDao;
 
 
     @Override
@@ -34,12 +38,27 @@ public class ExperimentService implements IExperimentService {
 
     @Override
     public boolean approveExp(Integer id) {
-        return false;
+        try{
+            mExpDao.approveApply(id);
+
+//            labOrderStateDao
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean refuseExp(Integer id) {
-        return false;
+        try{
+            mExpDao.refuseApply(id);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override

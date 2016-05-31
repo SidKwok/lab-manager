@@ -1,7 +1,7 @@
 
 2016-5-31
 /**
-    *预定实验室房间
+    *预定实验室房间（以及预约实验都是这个接口）
      * params: roomId, labName, applicant, week, weekday, course
      {
      "status": "0"
@@ -9,7 +9,29 @@
     */接口不变
 	
 	
-
+获取实验室预约情况
+    params: none			+参数 applicant 也就是当前用户本身
+    [
+    {
+        "labOrderId": "0001",
+            "labOrderName": "机器人实验",
+            "labOrderDate": "2016-5-21",
+            "labOrderWeek": "第一周",
+            "labOrderWeekday": "周五",
+            "labOrderCourse": "第1、2节",
+            "labOrderApplicant": "sid"
+    },
+    {
+        "labOrderId": "0002",
+            "labOrderName": "足球实验",
+            "labOrderDate": "2016-5-21",
+            "labOrderWeek": "第二周",
+            "labOrderWeekday": "周四",
+            "labOrderCourse": "第5、6节",
+            "labOrderApplicant": "mingen"
+    }
+    ]
+    **/
 
 
 ===============================================================================================

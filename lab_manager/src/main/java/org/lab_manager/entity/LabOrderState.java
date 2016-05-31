@@ -4,87 +4,27 @@ package org.lab_manager.entity;
  * Created by Silence on 2016/5/27.
  */
 public class LabOrderState {
+    private Integer ID;
     private String Course_name;
+    private String Teacher;
     private String Start_time;
+    private String End_time;
+    private String Room_id;
+
     private String Week_day;
     private String Day_time;
+
     private String State;
 
-    //Equip数据
-    private String Device_name;
-    private Integer Equip_number;
     private String Order_date;
-    private Integer Days;
-    private Integer Order_id;
 
-    public Integer getEquip_number() {
-        return Equip_number;
+    public Integer getID() {
+        return ID;
     }
 
-    public void setEquip_number(Integer equip_number) {
-        Equip_number = equip_number;
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
-
-    public String getOrder_date() {
-        return Order_date;
-    }
-
-    public void setOrder_date(String order_date) {
-        Order_date = order_date;
-    }
-
-    public Integer getOrder_id() {
-        return Order_id;
-    }
-
-    public void setOrder_id(Integer order_id) {
-        Order_id = order_id;
-    }
-
-
-
-    public String getDevice_name() {
-        return Device_name;
-    }
-
-    public void setDevice_name(String device_name) {
-        Device_name = device_name;
-    }
-
-    public Integer getNumber() {
-        return Equip_number;
-    }
-
-    public void setNumber(Integer number) {
-        Equip_number = number;
-    }
-
-    public Integer getDays() {
-        return Days;
-    }
-
-    public void setDays(Integer days) {
-        Days = days;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    public String getDevice_state() {
-        return Device_state;
-    }
-
-    public void setDevice_state(String device_state) {
-        Device_state = device_state;
-    }
-
-    private String Date;
-    private String Device_state;
 
     public String getCourse_name() {
         return Course_name;
@@ -94,12 +34,36 @@ public class LabOrderState {
         Course_name = course_name;
     }
 
+    public String getTeacher() {
+        return Teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        Teacher = teacher;
+    }
+
     public String getStart_time() {
         return Start_time;
     }
 
     public void setStart_time(String start_time) {
         Start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return End_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        End_time = end_time;
+    }
+
+    public String getRoom_id() {
+        return Room_id;
+    }
+
+    public void setRoom_id(String room_id) {
+        Room_id = room_id;
     }
 
     public String getWeek_day() {
@@ -124,5 +88,13 @@ public class LabOrderState {
 
     public void setState(String state) {
         State = state;
+    }
+
+    public String getOrder_date() {
+        return Order_date;
+    }
+
+    public void setOrder_date(String order_date) {
+        Order_date = order_date;
     }
 }

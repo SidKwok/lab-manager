@@ -3,10 +3,7 @@ package org.lab_manager.controller;
  * Created by xiaofeige on 2016/5/19.
  */
 import com.alibaba.fastjson.JSON;
-import org.lab_manager.entity.LabComment;
-import org.lab_manager.entity.LabInfo;
-import org.lab_manager.entity.LabRoom;
-import org.lab_manager.entity.LabUse;
+import org.lab_manager.entity.*;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,15 +105,16 @@ public class LabController {
         //根据上面的json格式要求返回数据，需查询数据库
         List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
 //        labService.getLabUseByRoomId()
-        for(int i=0;i<10;i++){
+        List<LabOrderState> allLabOrders=new ArrayList<LabOrderState>();
+        for(LabOrderState singleOrder:allLabOrders){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("labOrderId","001");
-            item.put("labOrderName","LOL守塔与补兵");
-            item.put("labOrderDate","2016-5-21");
-            item.put("labOrderWeek","第4周");
-            item.put("labOrderWeekday","周四");
-            item.put("labOrderCourse","第5,6节");
-            item.put("labOrderApplicant","五杀小王子");
+            item.put("labOrderId",singleOrder.getID());
+            item.put("labOrderName",singleOrder.getCourse_name());
+            item.put("labOrderDate",singleOrder.getOrder_date());
+            item.put("labOrderWeek",singleOrder.getStart_time());
+            item.put("labOrderWeekday",singleOrder.getWeek_day());
+            item.put("labOrderCourse",singleOrder.getCourse_name());
+            item.put("labOrderApplicant",singleOrder.getTeacher());
             result.add(item);
         }
 

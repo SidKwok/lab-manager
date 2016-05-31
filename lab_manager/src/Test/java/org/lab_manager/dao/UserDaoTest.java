@@ -13,12 +13,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
 public class UserDaoTest {
+    @Test
+    public void getRole() throws Exception {
+
+        System.out.println(userDao.getRoleId("T001","123"));
+    }
+
+    @Test
+    public void getRoleId() throws Exception {
+        System.out.println(userDao.getRole("2"));
+    }
+
     @Autowired
     UserDao userDao;
     @Test
     public void login() throws Exception {
-        User user = userDao.login("王","wang12345");
-        System.out.println(user.getPriviledge());
+
     }
 
 }

@@ -107,7 +107,7 @@ public class LabController {
     public String getLabUseInfo() {
         //根据上面的json格式要求返回数据，需查询数据库
         List<Map<String,Object>> result=new ArrayList<Map<String, Object>>();
-//        labService.g
+//        labService.getLabUseByRoomId()
         for(int i=0;i<10;i++){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("labOrderId","001");

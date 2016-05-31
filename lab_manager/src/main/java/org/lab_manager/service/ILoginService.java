@@ -11,12 +11,14 @@ import org.lab_manager.entity.User;
 public interface ILoginService {
     /**
      * 用户登陆，返回用户的角色
+     * 这里的参数其实是user的id
      */
     public Role login(String username,String password);
 
 
     /**
      * 用户登录退出
+     * 这里的参数其实是user的id
      */
-    public boolean logout(User user);
+    public boolean logout(String username);
 }

@@ -1,10 +1,12 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.UserDao;
 import org.lab_manager.entity.Role;
 import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
 import org.lab_manager.entity.User;
 import org.lab_manager.service.ILoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,15 +14,26 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LoginService implements ILoginService {
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public Role login(String username,String password) {
+        try{
+            String userRoleId=userDao.getRoleId(username,password);
+            System.out.println(username+"用户登录"+password);
+            if(username!=null){
+                return userDao.getRole(userRoleId);
+            }
+        }catch (Exception e){
 
+        }
         return null;
     }
 
     @Override
-    public boolean logout(User user) {
+    public boolean logout(String username) {
+        //移除当前session
         return false;
     }
 }

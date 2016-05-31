@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 import com.alibaba.fastjson.JSON;
 import org.lab_manager.entity.*;
+import org.lab_manager.service.IExperimentService;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class LabController {
     @Resource
     private ILabService labService;
 
+    @Autowired
+    private IExperimentService experimentService;
     /**
     * 预约实验
      * params: assetName, number, days, applicant
@@ -33,10 +36,13 @@ public class LabController {
     @RequestMapping(value="/orderLab",method = RequestMethod.POST)
     public String addLabOrder(@RequestParam("assetName")String assetName,@RequestParam("number")int number,@RequestParam("days")int days,@RequestParam("applicant")String applyer) {
         //根据上面的json格式要求返回数据，需查询数据库
-        Map<String,String> result=new HashMap<String, String>();
+        Map<String,Object> result=new HashMap<String, Object>();
 
-//        labService.orderRoom(assetName,);
-        result.put("status","0");
+        int flag=0;
+//        if(experimentService.applyExp())
+            flag=1;
+
+        result.put("status",flag);
         return JSON.toJSONString(result);
     }
 

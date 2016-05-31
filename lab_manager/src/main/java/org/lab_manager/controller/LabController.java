@@ -273,7 +273,7 @@ public class LabController {
 
         //List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
 
-        List<Experiment> exps=new ArrayList<Experiment>();
+        List<Experiment> exps=labService.getLabUseByRoomId(roomId);
         for(Experiment labuseSingle:exps){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("labName",labuseSingle.getCourse_name());
@@ -340,7 +340,7 @@ public class LabController {
             experimentService.getExperimentById(item);
             flag=1;
         }else{
-            
+
             flag=1;
         }
 

@@ -196,11 +196,9 @@ public class EquipController {
             item.put("equitOrderId","001");
             item.put("equitOrderName",orderSingle.getDevice_name());
             item.put("equitOrderNumber",orderSingle.getEquip_number());
-<<<<<<< HEAD
-            item.put("equitOrderDay",orderSingle.getStart_time());
-=======
 
->>>>>>> 7f0baef8fc536865c03c46526d8d13ff68994e5f
+            item.put("equitOrderDay",orderSingle.getStart_time());
+
             item.put("equitOrderApplicant",orderSingle.getApplicant());
             result.add(item);
         }

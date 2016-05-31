@@ -1,9 +1,6 @@
 package org.lab_manager.service;
 
-import org.lab_manager.entity.LabComment;
-import org.lab_manager.entity.LabInfo;
-import org.lab_manager.entity.LabRoom;
-import org.lab_manager.entity.LabUse;
+import org.lab_manager.entity.*;
 
 import java.util.List;
 
@@ -44,7 +41,7 @@ public interface ILabService {
     /**
      * 通过房间号获取房间预约情况
      */
-    public List<LabUse> getLabUseByRoomId(Integer roomId);
+    public List<Experiment> getLabUseByRoomId(String roomId);
 
     /**
      * 通过用户id获取房间预约情况

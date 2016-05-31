@@ -4,10 +4,7 @@ import org.lab_manager.dao.ExperimentDao;
 import org.lab_manager.dao.LabCommentDao;
 import org.lab_manager.dao.LabInfoDao;
 import org.lab_manager.dao.LabUseDao;
-import org.lab_manager.entity.LabComment;
-import org.lab_manager.entity.LabInfo;
-import org.lab_manager.entity.LabRoom;
-import org.lab_manager.entity.LabUse;
+import org.lab_manager.entity.*;
 import org.lab_manager.service.ILabService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,9 +71,14 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public List<LabUse> getLabUseByRoomId(Integer roomId) {
+    public List<Experiment> getLabUseByRoomId(String roomId) {
         //return null;
-        return labUseDao.getLabUseInfo(roomId);
+        try{
+            return experimentDao.getExperimentsByRoomID(roomId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

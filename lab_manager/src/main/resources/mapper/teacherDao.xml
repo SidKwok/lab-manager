@@ -10,7 +10,7 @@
         SELECT * FROM course_table WHERE Teacher=#{id};
     </select>
     <select id="getAllStudent" resultType="Student">
-        call getStudents(#{id});
+        select *from student join course_table on student.SClassNo=course_table.Class_name where course_table.Teacher=#{id};
     </select>
 
     <select id="getAllLabOrder" resultType="LabOrderState">

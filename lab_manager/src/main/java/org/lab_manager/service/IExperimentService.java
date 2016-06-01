@@ -18,6 +18,12 @@ public interface IExperimentService {
      * 按实验名称搜索实验
      */
     public List<Experiment> getExperimentByName(String name);
+
+    /**
+     * 通过老师名字搜索实验
+     */
+    public List<Experiment> getExperimentByTeaName(String teacherName);
+
     /**
      * 查询所有实验的状态
      */

@@ -53,6 +53,8 @@ public class ExperimentController {
      {
      "labName": "足球实验",
      "labWeek": "第二周",
+     "labStartWeek":,
+     "labEndWeek":,
      "labWeekday": "周四",
      "labCourse": "第3、4节",
      "labOrderRoom": "0002",
@@ -90,7 +92,8 @@ public class ExperimentController {
         for(LabOrderState singleOrder:allLabOrder){
             Map<String,Object> labItem=new HashMap<String, Object>();
             labItem.put("labName",singleOrder.getCourse_name());
-            labItem.put("labWeek",singleOrder.getStart_time());
+            labItem.put("labStartWeek",singleOrder.getStart_time());
+            labItem.put("labEndWeek",singleOrder.getEnd_time());
             labItem.put("labWeekday",singleOrder.getWeek_day());
             labItem.put("labCourse",singleOrder.getDay_time());
             labItem.put("labOrderRoom",singleOrder.getRoom_id());
@@ -109,7 +112,7 @@ public class ExperimentController {
             equipItem.put("equipStartTime",singleEquipOrder.getStart_time());
             equipItem.put("equipEndTime",singleEquipOrder.getEnd_time());
             equipItem.put("equipNumber",singleEquipOrder.getEquip_number());
-            equipItem.put("state","拒绝");
+            equipItem.put("state",singleEquipOrder.getDevice_state());
             equipList.add(equipItem);
         }
         result.put("lab",labList);

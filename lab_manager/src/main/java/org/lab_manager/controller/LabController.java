@@ -318,7 +318,12 @@ public class LabController {
      {
      "teacher": "sid",
      "labName": "fuck",
-     "roomId": "001"
+     "roomId": "001",
+     "labClass",
+     "labStartTime",
+     "labEndTime",
+     "labWeekDay",
+     "labCourse"
      },
      {
      "teacher": "mingen",
@@ -337,7 +342,7 @@ public class LabController {
 
         List<Object> teacherInfo=new ArrayList<Object>();
 
-        if(type.equals("lab")){
+        if(!type.equals("lab")){
 //            labService.getLabUseByRoomId()
 
             flag="1";
@@ -348,6 +353,11 @@ public class LabController {
                 teaItem.put("teacher",singleExp.getTeacher());
                 teaItem.put("labName",singleExp.getCourse_name());
                 teaItem.put("roomId",singleExp.getRoom_id());
+                teaItem.put("labClass",singleExp.getClass_name());
+                teaItem.put("labStartTime",singleExp.getStart_time());
+                teaItem.put("labEndTime",singleExp.getEnd_time());
+                teaItem.put("labWeekDay",singleExp.getWeek());
+                teaItem.put("labCourse",singleExp.getDay_time());
                 teacherInfo.add(teaItem);
             }
             flag="1";

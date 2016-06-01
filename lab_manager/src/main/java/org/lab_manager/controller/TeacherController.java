@@ -140,29 +140,15 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadStuGrade",method = RequestMethod.POST)
-    public String uploadStuGrade(@RequestParam("stu")String list,@RequestParam("username")String username,@RequestParam("role")String role) {
+    public String uploadStuGrade(@RequestParam("stu")String list,@RequestParam("username")String username,@RequestParam("role")String role,@RequestParam("labId")String labId) {
+        String flag="1";
+        List<Map<String, Object>> studentsInfo = JSON.parseObject(list, new TypeReference<List<Map<String, Object>>>() {
+        });
 
-//        @RequestParam("stu")String list,@RequestParam("username")String username,@RequestParam("role")String role
-//        JSONObject list=jsonObject.getObject("stu",JSONObject.class);
-//        System.out.println("收到上传的学生信息====="+jsonObject==null);
-//        System.out.println(list==null);
-////        Map<String,Object>
-//        System.out.println(jsonObject.get("stu").getClass());
-//        JSONObject jsonObject = JSON.parseObject(data);
-//        JSONObject students = jsonObject.getObject("stu", JSONObject.class);
-//        String role=jsonObject.getObject("role",String.class);
-//        System.out.println(stu+"=========");
-//
-//        System.out.println(list.toString());
-//        List<Map<String, Object>> mapList = JSON.parseObject(list, new TypeReference<List<Map<String, Object>>>() {
-//        });
-
-
-//        String role = jsonObject.getObject("role", String.class);
-//        System.out.println(role+"=====");
-
-
-        String flag="0";
+        for(Map<String,Object> m:studentsInfo){
+            if(teacherService.uploadStuGrade(m.get("stuId").toString(),m.get("stuGrade").toString(),labId))
+                flag="0";
+        }
 
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status",flag);

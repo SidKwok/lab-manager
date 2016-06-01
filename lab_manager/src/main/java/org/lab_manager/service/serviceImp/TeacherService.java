@@ -1,5 +1,6 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.ScoreDao;
 import org.lab_manager.dao.TeacherDao;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.LabOrderState;
@@ -17,9 +18,18 @@ import java.util.List;
 public class TeacherService implements ITeachService {
     @Autowired
     TeacherDao teacherDao;
+    @Autowired
+    ScoreDao  scoreDao;
+
     @Override
-    public boolean uploadStuGrade() {
-        return false;
+    public boolean uploadStuGrade(String stuId,String score,String courseName) {
+        try{
+            scoreDao.updateScore(stuId,courseName,score);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -15,7 +15,7 @@ public interface ITeachService {
     /**
      * 上传学生成绩
      */
-    public boolean uploadStuGrade();
+    public boolean uploadStuGrade(String stuId,String score,String courseName);
 
     /**
      * 上传学生考勤

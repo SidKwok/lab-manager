@@ -6,4 +6,7 @@
     <select id="getScoreBySNO" resultType="Score">
         SELECT * FROM Score WHERE SID=#{sno};
     </select>
+    <update id="updateScore" parameterType="Score">
+        UPDATE Score SET Score=#{score} where SID=#{sno} AND Course_name=#{courseName};
+    </update>
 </mapper>

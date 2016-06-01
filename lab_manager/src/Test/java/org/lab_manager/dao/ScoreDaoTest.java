@@ -26,5 +26,9 @@ public class ScoreDaoTest {
             System.out.println(score.getCourse_name());
         }
     }
-
+    @Test
+    public void updateScore() throws Exception{
+        boolean status=scoreDao.updateScore("20131004222","软件测试","89");
+        System.out.println(status);
+    }
 }

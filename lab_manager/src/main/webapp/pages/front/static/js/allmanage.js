@@ -120,6 +120,7 @@ function init () {
                         if(retData.status === '1') {
                            alert('发表评论成功');
                         }
+                        $('#all-comment-modal').modal('hide');
                     },
                     error: function() {
                         console.log('/lab/addRoomComment fail');
@@ -200,19 +201,14 @@ function init () {
             });
             // 预约实验室
             $('#post-labOrder').on('click', function(){
-                var course = [];
-                $.each($('#input-course input[type="checkbox"]:checked'), function(i, e){
-                    course.push($(e).attr('value'));
-                });
                 var params = {
                     roomId: $('#all-order-modal-label').text(),
                     labName: $('#input-labName').val(),
                     applicant: username,
-                    start_week: $('#input-startWeek  option:selected').text(),
-                    end_week: $('#input-endWeek  option:selected').text(),
-                    start_weekday: $('#input-startWeekday  option:selected').text(),
-                    end_weekday: $('#input-endWeekday  option:selected').text(),
-                    course: course
+                    startTime: $('#input-startWeek  option:selected').text(),
+                    endTime: $('#input-endWeek  option:selected').text(),
+                    weekday: $('#input-weekday  option:selected').text(),
+                    dayTime: $('#input-course  option:selected').text(),
                 };
 
                 $.ajax({
@@ -228,6 +224,7 @@ function init () {
                       if(retData.status === '1') {
                          alert('预约成功');
                       }
+                      $('#all-order-modal').modal('hide');
                     },
                     error: function(){
                         console.log('/lab/orderRoom fail');
@@ -252,7 +249,7 @@ function init () {
                     }
                 });
             });
-          },
+            },
           error: function(){
             console.log('/lab/queryAllRoom', 'fail');
             alert('后台错误！');
@@ -549,7 +546,8 @@ function init () {
                     assetName: $('#lab-equipOrder-modal-label').text(),
                     assetId: $('#lab-equipOrder-modal-label').attr('data-assetId'),
                     number: $('#input-equipNumber').val(),
-                    days: $('#input-equipDays').val(),
+                    startTime: $('#input-startTime').val(),
+                    endTime: $('#input-endTime').val(),
                     applicant: username
                 };
 
@@ -566,6 +564,7 @@ function init () {
                         if(retData.status === "1") {
                             alert('预约成功');
                         }
+                        $('#lab-equipOrder-modal').modal('hide');
                     },
                     error: function(){
                         console.log('/equipment/orderEquip fail');
@@ -635,6 +634,17 @@ function init () {
 
       basicEvent();
     }
+}
+
+/**
+* 时间选择器
+*/
+function DatePicker (target) {
+    target.datetimepicker({
+        timepicker: false,
+        format: 'Y-m-d',
+        minDate: new Date()
+    });
 }
 
 /**
@@ -743,6 +753,15 @@ function basicEvent() {
         });
     });
 
+    // 日期选择
+    var stime = new Date();
+    var etime = new Date(stime.getTime() + 24*60*60*1000*7);
+    etime = etime.getFullYear() + '-' + (etime.getMonth()+1) +'-' + etime.getDate();
+    stime = stime.getFullYear() + '-' + (stime.getMonth()+1) +'-' + stime.getDate();
+    $('#input-startTime').val(stime);
+    $('#input-endTime').val(etime);
+    DatePicker($('#input-startTime'));
+    DatePicker($('#input-endTime'));
 }
 
 init();

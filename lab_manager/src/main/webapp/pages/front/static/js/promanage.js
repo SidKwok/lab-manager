@@ -147,6 +147,7 @@ function equipCardEvent() {
                   alert('删除成功');
                   loadEquipCard();
               }
+              $('#pro-equipDelete-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');
@@ -186,25 +187,16 @@ function equipCardEvent() {
           dataType: 'json',
           success: function(data){
               var retData = eval('(' + data + ')');
-              $('#pro-input-classNo').attr('placeholder', retData.classNo);
-              $('#pro-input-className').attr('placeholder', retData.className);
               $('#pro-input-originName').attr('placeholder', retData.originName);
-              $('#pro-input-purchaseUnit').attr('placeholder', retData.purchaseUnit);
               $('#pro-input-valueType').attr('placeholder', retData.valueType);
               $('#pro-input-unitPrice').attr('placeholder', retData.unitPrice);
               $('#pro-input-invoiceNum').attr('placeholder', retData.invoiceNum);
               $('#pro-input-measurementUnit').attr('placeholder', retData.measurementUnit);
               $('#pro-input-purchaseDate').attr('placeholder', retData.purchaseDate);
-              $('#pro-input-financialRes').attr('placeholder', retData.financialRes);
-              $('#pro-input-assetRes').attr('placeholder', retData.assetRes);
               $('#pro-input-handlePerson').attr('placeholder', retData.handlePerson);
               $('#pro-input-chargeType').attr('placeholder', retData.chargeType);
               $('#pro-input-checkDate').attr('placeholder', retData.checkDate);
               $('#pro-input-receptDate').attr('placeholder', retData.receptDate);
-              $('#pro-input-purchaseForm').attr('placeholder', retData.purchaseForm);
-              $('#pro-input-managePart').attr('placeholder', retData.managePart);
-              $('#pro-input-subjectType').attr('placeholder', retData.subjectType);
-              $('#pro-input-subject').attr('placeholder', retData.subject);
               $('#pro-input-remark').attr('placeholder', retData.remark);
               $('#pro-input-finantialOpinion').attr('placeholder', retData.finantialOpinion);
               $('#pro-input-purchasingAgent').attr('placeholder', retData.purchasingAgent);
@@ -250,25 +242,25 @@ function equipCardEvent() {
       var params = {
           assetName: $('#pro-equipUpdate-modal-label').text(),
           assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId'),
-          classNo: $('#pro-input-classNo').val(),
-          className: $('#pro-input-className').val(),
+          classNo: $('#pro-input-classNo option:selected').text(),
+          className: $('#pro-input-className option:selected').text(),
           originName: $('#pro-input-originName').val(),
-          purchaseUnit: $('#pro-input-purchaseUnit').val(),
+          purchaseUnit: $('#pro-input-purchaseUnit option:selected').text(),
           valueType: $('#pro-input-valueType').val(),
           unitPrice: $('#pro-input-unitPrice').val(),
           invoiceNum: $('#pro-input-invoiceNum').val(),
           measurementUnit: $('#pro-input-measurementUnit').val(),
           purchaseDate: $('#pro-input-purchaseDate').val(),
-          financialRes: $('#pro-input-financialRes').val(),
-          assetRes: $('#pro-input-assetRes').val(),
+          financialRes: $('#pro-input-financialRes option:selected').text(),
+          assetRes: $('#pro-input-assetRes option:selected').text(),
           handlePerson: $('#pro-input-handlePerson').val(),
           chargeType: $('#pro-input-chargeType').val(),
           checkDate: $('#pro-input-checkDate').val(),
           receptDate: $('#pro-input-receptDate').val(),
-          purchaseForm: $('#pro-input-purchaseForm').val(),
-          managePart: $('#pro-input-managePart').val(),
-          subjectType: $('#pro-input-subjectType').val(),
-          subject: $('#pro-input-subject').val(),
+          purchaseForm: $('#pro-input-purchaseForm option:selected').text(),
+          managePart: $('#pro-input-managePart option:selected').text(),
+          subjectType: $('#pro-input-subjectType option:selected').text(),
+          subject: $('#pro-input-subject option:selected').text(),
           remark: $('#pro-input-remark').val(),
           finantialOpinion: $('#pro-input-finantialOpinion').val(),
           purchasingAgent: $('#pro-input-purchasingAgent').val(),
@@ -299,6 +291,7 @@ function equipCardEvent() {
                 alert('修改成功');
                 loadEquipCard();
             }
+            $('#pro-equipUpdate-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');
@@ -327,25 +320,25 @@ function equipCardEvent() {
   $('#post-equipAdd').on('click', function(){
       var params = {
           assetName: $('#pro-input-add-assetName').val(),
-          classNo: $('#pro-input-add-classNo').val(),
-          className: $('#pro-input-add-className').val(),
+          classNo: $('#pro-input-add-classNo option:selected').text(),
+          className: $('#pro-input-add-className option:selected').text(),
           originName: $('#pro-input-add-originName').val(),
-          purchaseUnit: $('#pro-input-add-purchaseUnit').val(),
+          purchaseUnit: $('#pro-input-add-purchaseUnit option:selected').text(),
           valueType: $('#pro-input-add-valueType').val(),
           unitPrice: $('#pro-input-add-unitPrice').val(),
           invoiceNum: $('#pro-input-add-invoiceNum').val(),
           measurementUnit: $('#pro-input-add-measurementUnit').val(),
           purchaseDate: $('#pro-input-add-purchaseDate').val(),
-          financialRes: $('#pro-input-add-financialRes').val(),
-          assetRes: $('#pro-input-add-assetRes').val(),
+          financialRes: $('#pro-input-add-financialRes option:selected').text(),
+          assetRes: $('#pro-input-add-assetRes option:selected').text(),
           handlePerson: $('#pro-input-add-handlePerson').val(),
           chargeType: $('#pro-input-add-chargeType').val(),
           checkDate: $('#pro-input-add-checkDate').val(),
           receptDate: $('#pro-input-add-receptDate').val(),
-          purchaseForm: $('#pro-input-add-purchaseForm').val(),
-          managePart: $('#pro-input-add-managePart').val(),
-          subjectType: $('#pro-input-add-subjectType').val(),
-          subject: $('#pro-input-add-subject').val(),
+          purchaseForm: $('#pro-input-add-purchaseForm option:selected').text(),
+          managePart: $('#pro-input-add-managePart option:selected').text(),
+          subjectType: $('#pro-input-add-subjectType option:selected').text(),
+          subject: $('#pro-input-add-subject option:selected').text(),
           remark: $('#pro-input-add-remark').val(),
           finantialOpinion: $('#pro-input-add-finantialOpinion').val(),
           purchasingAgent: $('#pro-input-add-purchasingAgent').val(),
@@ -376,6 +369,7 @@ function equipCardEvent() {
                 alert('添加成功');
                 loadEquipCard();
             }
+            $('#pro-equipAdd-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');
@@ -508,6 +502,7 @@ function labRoomCardEvent(){
                   alert('删除成功');
                   loadEquipCard();
               }
+              $('#pro-labRoomDelete-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');
@@ -599,6 +594,7 @@ function labRoomCardEvent(){
                 alert('修改成功');
                 loadEquipCard();
             }
+            $('#pro-labRoomUpdate-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');
@@ -630,7 +626,6 @@ function labRoomCardEvent(){
           labRoomType: $('#pro-input-add-labRoomType').val(),
           labRoomIntro: $('#pro-input-add-labRoomIntro').val(),
       };
-      console.log(params);
 
       $.ajax({
           type: 'POST',
@@ -646,6 +641,7 @@ function labRoomCardEvent(){
                 alert('添加成功');
                 loadEquipCard();
             }
+            $('#pro-labRoomAdd-modal').modal('hide');
           },
           error: function(){
               alert('后台错误');

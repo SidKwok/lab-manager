@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <title>综合管理</title>
       <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../static/js/jquery.datetimepicker/jquery.datetimepicker.css">
       <link rel="stylesheet" href="../static/css/hover-min.css">
       <link rel="stylesheet" href="../static/css/style.css">
       <link rel="stylesheet" href="../static/css/content.css">
@@ -251,7 +252,7 @@
                       <option>第十七周</option>
                       <option>第十八周</option>
                   </select>
-                  <select class="form-control" id="input-startWeekday">
+                  <select class="form-control" id="input-weekday">
                       <option>起始天</option>
                       <option>周一</option>
                       <option>周二</option>
@@ -261,40 +262,19 @@
                       <option>周六</option>
                       <option>周日</option>
                   </select>
-                  <select class="form-control" id="input-endWeekday">
-                      <option>结束天</option>
-                      <option>周一</option>
-                      <option>周二</option>
-                      <option>周三</option>
-                      <option>周四</option>
-                      <option>周五</option>
-                      <option>周六</option>
-                      <option>周日</option>
+                  <select class="form-control" id="input-weekday">
+                      <option>第几节课</option>
+                      <option>1、2节</option>
+                      <option>3、4节</option>
+                      <option>5、6节</option>
+                      <option>7、8节</option>
+                      <option>9、10节</option>
+                      <option>11、12节</option>
                   </select>
-                  <div id="input-course">
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="1、2节"> 1、2节
-                      </label>
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="3、4节"> 3、4节
-                      </label>
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="5、6节"> 5、6节
-                      </label>
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="7、8节"> 7、8节
-                      </label>
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="9、10节"> 9、10节
-                      </label>
-                      <label class="checkbox-inline">
-                          <input type="checkbox" value="11、12节"> 11、12节
-                      </label>
-                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-labOrder" data-dismiss="modal">预约</button>
+                <button type="button" class="btn btn-primary" id="post-labOrder">预约</button>
               </div>
             </div>
           </div>
@@ -331,11 +311,18 @@
               </div>
               <div class="modal-body">
                   <input type="text" class="form-control" id="input-equipNumber" placeholder="申请数量">
-                  <input type="text" class="form-control" id="input-equipDays" placeholder="申请多少天">
+                   <br>
+
+                   申请天数：
+                  <div>
+                      <input id="input-startTime" type="text">
+                      <span>~</span>
+                      <input id="input-endTime" type="text">
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equipOrder" data-dismiss="modal">预约</button>
+                <button type="button" class="btn btn-primary" id="post-equipOrder">预约</button>
               </div>
             </div>
           </div>
@@ -343,6 +330,7 @@
 
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/bootstrap.min.js"></script>
+        <script src="../static/js/jquery.datetimepicker/jquery.datetimepicker.js"></script>
         <script src="../static/js/style.js"></script>
         <script src="../static/js/allmanage.js"></script>
         <script>
@@ -377,12 +365,16 @@
                 });
             });
 
-            $('#post-labOrder').on('click', function(){
-                var course = [];
-                $.each($('#input-course input[type="checkbox"]:checked'), function(i, e){
-                    course.push($(e).attr('value'));
-                });
-                console.log(course);
+            $('#post-equipOrder').on('click', function(){
+                var params = {
+                    assetName: $('#lab-equipOrder-modal-label').text(),
+                    assetId: $('#lab-equipOrder-modal-label').attr('data-assetId'),
+                    number: $('#input-equipNumber').val(),
+                    startTime: $('#input-startTime').val(),
+                    endTime: $('#input-endTime').val(),
+                    applicant: username
+                };
+                console.log(params);
             });
         </script>
     </body>

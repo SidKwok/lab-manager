@@ -156,7 +156,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-danger" id="pro-equipDelete" data-dismiss="modal">删除</button>
+                <button type="button" class="btn btn-danger" id="pro-equipDelete">删除</button>
               </div>
             </div>
           </div>
@@ -191,25 +191,86 @@
               </div>
               <div class="modal-body">
                   <div class="pro-equipUpdateInput">
-                      分类代码:<input type="text" class="form-control" id="pro-input-classNo" placeholder="分类代码">
-                      分类名称:<input type="text" class="form-control" id="pro-input-className" placeholder="分类名称">
+                      分类代码:<select class="form-control" id="pro-input-classNo">
+                                <option>分类代码</option>
+                                <option>05010100</option>
+                                <option>05041105</option>
+                                <option>13010200</option>
+                                <option>13010300</option>
+                                <option>03040310</option>
+                                <option>05070300</option>
+                                <option>05010902</option>
+                                <option>05030604</option>
+                            </select>
+                      分类名称:<select class="form-control" id="pro-input-className">
+                                 <option>分类名称</option>
+                                 <option>电子设备</option>
+                                 <option>光学仪器</option>
+                                 <option>钢木家具</option>
+                                 <option>机器人</option>
+                                 <option>计算机网络设备</option>
+                            </select>
                       外文名称:<input type="text" class="form-control" id="pro-input-originName" placeholder="外文名称">
-                      申购单位:<input type="text" class="form-control" id="pro-input-purchaseUnit" placeholder="申购单位">
+                      申购单位:<select class="form-control" id="pro-input-purchaseUnit">
+                                 <option>申购单位</option>
+                                 <option>信息工程学院软件工程系</option>
+                                 <option>信息工程学院遥感与科学系</option>
+                                 <option>信息工程学院地理信息系统</option>
+                                 <option>信息工程学院测绘工程</option>
+                                 <option>信息工程学院信息工程</option>
+                             </select>
                       价值类型:<input type="text" class="form-control" id="pro-input-valueType" placeholder="价值类型">
                       单价:<input type="text" class="form-control" id="pro-input-unitPrice" placeholder="单价">
                       发票号:<input type="text" class="form-control" id="pro-input-invoiceNum" placeholder="发票号">
                       计量单位:<input type="text" class="form-control" id="pro-input-measurementUnit" placeholder="计量单位">
                       购置日期:<input type="text" class="form-control" id="pro-input-purchaseDate" placeholder="购置日期">
-                      经费来源:<input type="text" class="form-control" id="pro-input-financialRes" placeholder="经费来源">
-                      资产来源:<input type="text" class="form-control" id="pro-input-assetRes" placeholder="资产来源">
+                      经费来源:<select class="form-control" id="pro-input-financialRes">
+                                 <option>经费来源</option>
+                                 <option>计算机学院</option>
+                                 <option>地学院</option>
+                                 <option>资源学院</option>
+                                 <option>教务处</option>
+                                 <option>珠宝学院</option>
+                             </select>
+                      资产来源:<select class="form-control" id="pro-input-assetRes">
+                                <option>资产来源</option>
+                                <option>计算机学院</option>
+                                <option>地学院</option>
+                                <option>资源学院</option>
+                                <option>教务处</option>
+                                <option>珠宝学院</option>
+                             </select>
                       经手人:<input type="text" class="form-control" id="pro-input-handlePerson" placeholder="经手人">
                       记账类型:<input type="text" class="form-control" id="pro-input-chargeType" placeholder="记账类型">
                       验收日期:<input type="text" class="form-control" id="pro-input-checkDate" placeholder="验收日期">
                       货到日期:<input type="text" class="form-control" id="pro-input-receptDate" placeholder="货到日期">
-                      采购形式:<input type="text" class="form-control" id="pro-input-purchaseForm" placeholder="采购形式">
-                      管理部门:<input type="text" class="form-control" id="pro-input-managePart" placeholder="管理部门">
-                      学科类别:<input type="text" class="form-control" id="pro-input-subjectType" placeholder="学科类别">
-                      学科:<input type="text" class="form-control" id="pro-input-subject" placeholder="学科">
+                      采购形式:<select class="form-control" id="pro-input-purchaseForm">
+                                <option>采购形式</option>
+                                <option>招标采购</option>
+                                <option>非招标采购</option>
+                            </select>
+                      管理部门<select class="form-control" id="pro-input-managePart">
+                                <option>管理部门</option>
+                                <option>信息工程学院</option>
+                                <option>计算机学院</option>
+                                <option>地学院</option>
+                                <option>资源学院</option>
+                                <option>教务处</option>
+                                <option>珠宝学院</option>
+                            </select>
+                      学科类别:<select class="form-control" id="pro-input-subjectType">
+                                <option>学科类别</option>
+                                <option>一级学科</option>
+                                <option>二级学科</option>
+                            </select>
+                      学科:<select class="form-control" id="pro-input-subject">
+                              <option>学科</option>
+                              <option>软件工程</option>
+                              <option>遥感与科学</option>
+                              <option>地理信息系统</option>
+                              <option>测绘工程</option>
+                              <option>信息工程</option>
+                        </select>
                       备注:<input type="text" class="form-control" id="pro-input-remark" placeholder="备注">
                       财务意见:<input type="text" class="form-control" id="pro-input-finantialOpinion" placeholder="财务意见">
                       采购人:<input type="text" class="form-control" id="pro-input-purchasingAgent" placeholder="采购人">
@@ -229,7 +290,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equipUpdate" data-dismiss="modal">修改</button>
+                <button type="button" class="btn btn-primary" id="post-equipUpdate">修改</button>
               </div>
             </div>
           </div>
@@ -257,7 +318,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-labRoomUpdate" data-dismiss="modal">修改</button>
+                <button type="button" class="btn btn-primary" id="post-labRoomUpdate">修改</button>
               </div>
             </div>
           </div>
@@ -273,25 +334,86 @@
               </div>
               <div class="modal-body">
                 <input type="text" class="form-control" id="pro-input-add-assetName" placeholder="设备名称">
-                <input type="text" class="form-control" id="pro-input-add-classNo" placeholder="分类代码">
-                <input type="text" class="form-control" id="pro-input-add-className" placeholder="分类名称">
+                <select class="form-control" id="pro-input-add-classNo">
+                    <option>分类代码</option>
+                    <option>05010100</option>
+                    <option>05041105</option>
+                    <option>13010200</option>
+                    <option>13010300</option>
+                    <option>03040310</option>
+                    <option>05070300</option>
+                    <option>05010902</option>
+                    <option>05030604</option>
+                </select>
+                <select class="form-control" id="pro-input-add-className">
+                    <option>分类名称</option>
+                    <option>电子设备</option>
+                    <option>光学仪器</option>
+                    <option>钢木家具</option>
+                    <option>机器人</option>
+                    <option>计算机网络设备</option>
+                </select>
                 <input type="text" class="form-control" id="pro-input-add-originName" placeholder="外文名称">
-                <input type="text" class="form-control" id="pro-input-add-purchaseUnit" placeholder="申购单位">
+                <select class="form-control" id="pro-input-add-purchaseUnit">
+                    <option>申购单位</option>
+                    <option>信息工程学院软件工程系</option>
+                    <option>信息工程学院遥感与科学系</option>
+                    <option>信息工程学院地理信息系统</option>
+                    <option>信息工程学院测绘工程</option>
+                    <option>信息工程学院信息工程</option>
+                </select>
                 <input type="text" class="form-control" id="pro-input-add-valueType" placeholder="价值类型">
                 <input type="text" class="form-control" id="pro-input-add-unitPrice" placeholder="单价">
                 <input type="text" class="form-control" id="pro-input-add-invoiceNum" placeholder="发票号">
                 <input type="text" class="form-control" id="pro-input-add-measurementUnit" placeholder="计量单位">
                 <input type="text" class="form-control" id="pro-input-add-purchaseDate" placeholder="购置日期">
-                <input type="text" class="form-control" id="pro-input-add-financialRes" placeholder="经费来源">
-                <input type="text" class="form-control" id="pro-input-add-assetRes" placeholder="资产来源">
+                <select class="form-control" id="pro-input-add-financialRes">
+                    <option>经费来源</option>
+                    <option>计算机学院</option>
+                    <option>地学院</option>
+                    <option>资源学院</option>
+                    <option>教务处</option>
+                    <option>珠宝学院</option>
+                </select>
+                <select class="form-control" id="pro-input-add-assetRes">
+                    <option>资产来源</option>
+                    <option>计算机学院</option>
+                    <option>地学院</option>
+                    <option>资源学院</option>
+                    <option>教务处</option>
+                    <option>珠宝学院</option>
+                </select>
                 <input type="text" class="form-control" id="pro-input-add-handlePerson" placeholder="经手人">
                 <input type="text" class="form-control" id="pro-input-add-chargeType" placeholder="记账类型">
                 <input type="text" class="form-control" id="pro-input-add-checkDate" placeholder="验收日期">
                 <input type="text" class="form-control" id="pro-input-add-receptDate" placeholder="货到日期">
-                <input type="text" class="form-control" id="pro-input-add-purchaseForm" placeholder="采购形式">
-                <input type="text" class="form-control" id="pro-input-add-managePart" placeholder="管理部门">
-                <input type="text" class="form-control" id="pro-input-add-subjectType" placeholder="学科类别">
-                <input type="text" class="form-control" id="pro-input-add-subject" placeholder="学科">
+                <select class="form-control" id="pro-input-add-purchaseForm">
+                    <option>采购形式</option>
+                    <option>招标采购</option>
+                    <option>非招标采购</option>
+                </select>
+                <select class="form-control" id="pro-input-add-managePart">
+                    <option>管理部门</option>
+                    <option>信息工程学院</option>
+                    <option>计算机学院</option>
+                    <option>地学院</option>
+                    <option>资源学院</option>
+                    <option>教务处</option>
+                    <option>珠宝学院</option>
+                </select>
+                <select class="form-control" id="pro-input-add-subjectType">
+                    <option>学科类别</option>
+                    <option>一级学科</option>
+                    <option>二级学科</option>
+                </select>
+                <select class="form-control" id="pro-input-add-subject">
+                    <option>学科</option>
+                    <option>软件工程</option>
+                    <option>遥感与科学</option>
+                    <option>地理信息系统</option>
+                    <option>测绘工程</option>
+                    <option>信息工程</option>
+                </select>
                 <input type="text" class="form-control" id="pro-input-add-remark" placeholder="备注">
                 <input type="text" class="form-control" id="pro-input-add-finantialOpinion" placeholder="财务意见">
                 <input type="text" class="form-control" id="pro-input-add-purchasingAgent" placeholder="采购人">
@@ -309,7 +431,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-equipAdd" data-dismiss="modal">添加</button>
+                <button type="button" class="btn btn-primary" id="post-equipAdd">添加</button>
               </div>
             </div>
           </div>
@@ -330,7 +452,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-labRoomAdd" data-dismiss="modal">添加</button>
+                <button type="button" class="btn btn-primary" id="post-labRoomAdd">添加</button>
               </div>
             </div>
           </div>
@@ -340,5 +462,47 @@
         <script src="../static/js/bootstrap.min.js"></script>
         <script src="../static/js/style.js"></script>
         <script src="../static/js/promanage.js"></script>
+        <script>
+            $('#post-equipUpdate').on('click', function(){
+                var params = {
+                    assetName: $('#pro-equipUpdate-modal-label').text(),
+                    assetId: $('#pro-equipUpdate-modal-label').attr('data-assetId'),
+                    classNo: $('#pro-input-classNo option:selected').text(),
+                    className: $('#pro-input-className option:selected').text(),
+                    originName: $('#pro-input-originName').val(),
+                    purchaseUnit: $('#pro-input-purchaseUnit option:selected').text(),
+                    valueType: $('#pro-input-valueType').val(),
+                    unitPrice: $('#pro-input-unitPrice').val(),
+                    invoiceNum: $('#pro-input-invoiceNum').val(),
+                    measurementUnit: $('#pro-input-measurementUnit').val(),
+                    purchaseDate: $('#pro-input-purchaseDate').val(),
+                    financialRes: $('#pro-input-financialRes option:selected').text(),
+                    assetRes: $('#pro-input-assetRes option:selected').text(),
+                    handlePerson: $('#pro-input-handlePerson').val(),
+                    chargeType: $('#pro-input-chargeType').val(),
+                    checkDate: $('#pro-input-checkDate').val(),
+                    receptDate: $('#pro-input-receptDate').val(),
+                    purchaseForm: $('#pro-input-purchaseForm option:selected').text(),
+                    managePart: $('#pro-input-managePart option:selected').text(),
+                    subjectType: $('#pro-input-subjectType option:selected').text(),
+                    subject: $('#pro-input-subject option:selected').text(),
+                    remark: $('#pro-input-remark').val(),
+                    finantialOpinion: $('#pro-input-finantialOpinion').val(),
+                    purchasingAgent: $('#pro-input-purchasingAgent').val(),
+                    modal: $('#pro-input-modal').val(),
+                    standard: $('#pro-input-standard').val(),
+                    productionDate: $('#pro-input-productionDate').val(),
+                    country: $('#pro-input-country').val(),
+                    manufacture: $('#pro-input-manufacture').val(),
+                    brand: $('#pro-input-brand').val(),
+                    power: $('#pro-input-power').val(),
+                    estimatedExpirationDate: $('#pro-input-estimatedExpirationDate').val(),
+                    durableYears: $('#pro-input-durableYears').val(),
+                    retailer: $('#pro-input-retailer').val(),
+                    number: $('#pro-input-number').val()
+                };
+                console.log(params);
+            });
+        </script>
     </body>
 </html>

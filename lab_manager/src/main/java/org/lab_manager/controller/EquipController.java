@@ -64,7 +64,37 @@ public class EquipController {
      "classNo": "001",
      "className": "刀具",
      "valueType": "昂贵",
-     "number": "10"
+     "originName": "",
+     "purchaseUnit": "",
+     "valueType": "",
+     "unitPrice": "",
+     "invoiceNum": "",
+     "measurementUnit": "",
+     "purchaseDate": "",
+     "financialRes": "",
+     "assetRes": "",
+     "handlePerson": "",
+     "chargeType": "",
+     "checkDate": "",
+     "receptDate": "",
+     "purchaseForm": "",
+     "managePart": "",
+     "subjectType": "",
+     "subject": "",
+     "remark": "",
+     "finantialOpinion": "",
+     "purchasingAgent": "",
+     "modal": "",
+     "standard": "",
+     "productionDate": "",
+     "country": "",
+     "manufacture": "",
+     "brand": "",
+     "power": "",
+     "estimatedExpirationDate": "",
+     "durableYears": "",
+     "retailer": "",
+     "number": ""
      }
     */
     @ResponseBody
@@ -77,6 +107,37 @@ public class EquipController {
         result.put("className",equipInfo.getClass_name());
         result.put("valueType",equipInfo.getValue_type());
         result.put("number",equipInfo.getNumber());
+        result.put("originName",equipInfo.getOrigin_name());
+        result.put("purchaseUnit",equipInfo.getPurchase_unit());
+        result.put("unitPrice",equipInfo.getUnit_price());
+        result.put("invoiceNum",equipInfo.getInvoice_num());
+        result.put("measurementUnit",equipInfo.getMeasurement_unit());
+        result.put("purchaseDate",equipInfo.getPurchase_date());
+        result.put("purchaseForm",equipInfo.getPurchase_form());
+        result.put("financialRes",equipInfo.getFinancial_res());
+        result.put("assetRes",equipInfo.getAsset_res());
+        result.put("handlePerson",equipInfo.getHandle_person());
+        result.put("chargeType",equipInfo.getCharge_type());
+        result.put("checkDate",equipInfo.getCheck_date());
+        result.put("receptDate",equipInfo.getRecept_date());
+        result.put("managePart",equipInfo.getManage_part());
+        result.put("subjectType",equipInfo.getSubject_type());
+        result.put("subject",equipInfo.getSubject());
+        result.put("remark",equipInfo.getRemark());
+        result.put("finantialOpinion",equipInfo.getFinantial_opinion());
+        result.put("purchasingAgent",equipInfo.getPurchasing_agent());
+        result.put("modal",equipInfo.getModel());
+        result.put("standard",equipInfo.getStandard());
+        result.put("productionDate",equipInfo.getProduction_date());
+        result.put("country",equipInfo.getCountry());
+        result.put("manufacture",equipInfo.getManufacturer());
+        result.put("brand",equipInfo.getBrand());
+        result.put("power",equipInfo.getPower());
+        result.put("estimatedExpirationDate",equipInfo.getEstimated_expiration_date());
+        result.put("durableYears",equipInfo.getDurable_years());
+        result.put("retailer",equipInfo.getRetailer());
+        result.put("number",equipInfo.getNumber());
+
         System.out.println(equipInfo.getNumber());
         return JSON.toJSONString(result);//
     }
@@ -167,21 +228,24 @@ public class EquipController {
 
     /**
     *获取设备预约情况
-    * params: none
+    * _equipOrder_ajax (get) ok		(/equipment/equitOrderStatus)
+     params: none
      [
      {
-     "equitOrderId": "0003",
-     "equitOrderName": "西瓜刀",
-     "equitOrderNumber": "10",
-     "equitOrderDay": "5",
-     "equitOrderApplicant": "sid"
+     "equipOrderId": "0003",
+     "equipOrderName": "西瓜刀",
+     "equipOrderNumber": "10",
+     "equipOrderDay": "5",
+     "equipOrderApplicant": "sid",
+     "equipOrderDate": "2016-5-7"
      },
      {
-     "equitOrderId": "0004",
-     "equitOrderName": "狼牙棒",
-     "equitOrderNumber": "5",
-     "equitOrderDay": "10",
-     "equitOrderApplicant": "mingen"
+     "equipOrderId": "0004",
+     "equipOrderName": "狼牙棒",
+     "equipOrderNumber": "5",
+     "equipOrderDay": "10",
+     "equipOrderApplicant": "mingen",
+     "equipOrderDate": "2016-5-7"
      }
      ]
     */
@@ -193,13 +257,13 @@ public class EquipController {
         List<EquipOrder> allEquipOrder  = equipService.getAllEquipOrder();
         for(EquipOrder orderSingle:allEquipOrder){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("equitOrderId","001");
-            item.put("equitOrderName",orderSingle.getDevice_name());
-            item.put("equitOrderNumber",orderSingle.getEquip_number());
+            item.put("equipOrderId",orderSingle.getOrder_id());
+            item.put("equipOrderName",orderSingle.getDevice_name());
+            item.put("equipOrderNumber",orderSingle.getEquip_number());
 
-            item.put("equitOrderDay",orderSingle.getStart_time());
+            item.put("equipOrderDay",orderSingle.getStart_time());
 
-            item.put("equitOrderApplicant",orderSingle.getApplicant());
+            item.put("equipOrderApplicant",orderSingle.getApplicant());
             result.add(item);
         }
         return JSON.toJSONString(result);//

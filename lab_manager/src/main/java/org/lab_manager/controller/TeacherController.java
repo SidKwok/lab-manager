@@ -5,6 +5,8 @@ package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.serializer.ObjectArraySerializer;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.ITeachService;
@@ -145,11 +147,23 @@ public class TeacherController {
 //        System.out.println(list==null);
 ////        Map<String,Object>
 //        System.out.println(jsonObject.get("stu").getClass());
-        JSONObject jsonObject = JSON.parseObject(data);
-        JSONObject students = jsonObject.getObject("stu", JSONObject.class);
-        String role=jsonObject.getObject("role",String.class);
-
+//        JSONObject jsonObject = JSON.parseObject(data);
+//        JSONObject students = jsonObject.getObject("stu", JSONObject.class);
+//        String role=jsonObject.getObject("role",String.class);
+//        System.out.println(stu+"=========");
+//
         System.out.println(data);
+        JSON.parseObject(data, new TypeReference<List<Map<String, Object>>>() {
+        });
+
+//        System.out.println(jsonFile.get("stu").getClass());
+//        System.out.println(jsonFile.get("role"));
+
+
+//        String role = jsonObject.getObject("role", String.class);
+//        System.out.println(role+"=====");
+
+
         String flag="0";
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status",flag);

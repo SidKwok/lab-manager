@@ -9,10 +9,4 @@
     <update id="updateScore" parameterType="Score">
         UPDATE Score SET Score=#{score} where SID=#{sno} AND Course_name=#{courseName};
     </update>
-    <insert id="insertScore" parameterType="Score">
-        INSERT INTO Score(SID,Course_name,Score) VALUES (#{sno},#{courseName},#{score});
-    </insert>
-    <delete id="deleteScore" parameterType="Score">
-        DELETE FROM Score WHERE SID=#{sno};
-    </delete>
 </mapper>

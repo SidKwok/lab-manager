@@ -19,12 +19,4 @@ public interface ScoreDao {
      *更新学生成绩
      */
     public boolean updateScore(@Param("sno") String sno,@Param("courseName") String courseName,@Param("score") String score);
-    /**
-     * 插入学生成绩
-     */
-    public boolean insertScore(@Param("sno") String sno,@Param("courseName") String courseName,@Param("score") String score);
-    /**
-     * 删除学生成绩
-     */
-    public boolean deleteScore(@Param("sno") String sno);
 }

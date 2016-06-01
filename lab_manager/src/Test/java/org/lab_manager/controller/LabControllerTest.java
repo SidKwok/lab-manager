@@ -11,7 +11,7 @@ public class LabControllerTest {
     @Test
     public void orderRoom() throws Exception {
         LabController c=new LabController();
-        c.orderRoom("132","假的实验","T001","第四周","2,3节");
+//        c.orderRoom("132","假的实验","T001","第四周","2,3节");
 
     }
 

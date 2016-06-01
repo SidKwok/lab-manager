@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.sun.javafx.collections.MappingChange;
 import com.sun.javafx.collections.ObservableFloatArrayImpl;
 import org.lab_manager.service.serviceImp.ExperimentService;
@@ -34,11 +35,10 @@ public class TestController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
-    public String printWelcome(@RequestParam("test")String str) {
-        System.out.println(str);
-        ExperimentService es=new ExperimentService();
-        System.out.println("测试ajax收到请求");
-//        return JSON.toJSONString(es.getExperimentById("001"));
+    public String printWelcome(@RequestBody String s) {
+        String ssss = JSON.parseObject(s, new TypeReference<String>(){});
+        System.out.println(ssss+"=======");
+
         return JSON.toJSONString("hello");
     }
 }

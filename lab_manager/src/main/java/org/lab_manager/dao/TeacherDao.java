@@ -1,6 +1,8 @@
 package org.lab_manager.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
 import org.springframework.stereotype.Repository;
@@ -24,4 +26,15 @@ public interface TeacherDao {
      * 获取某一个老师某一门课所有学生
      */
     public List<Student> getAllStudent(String courseId);
+
+    /**
+     * 根据老师id获取所有的实验室预定
+     */
+    public List<LabOrderState> getAllLabOrder(String teacherId);
+
+
+    /**
+     * 往考勤表中插入数据
+     */
+    public boolean insertPresentInfo(@Param("date") String date, @Param("stuId") String stuId, @Param("course") String course, @Param("score") float score, @Param("present") String present);
 }

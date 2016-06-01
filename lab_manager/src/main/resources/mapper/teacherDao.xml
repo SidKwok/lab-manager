@@ -12,4 +12,12 @@
     <select id="getAllStudent" resultType="Student">
         call getStudents(#{id});
     </select>
+
+    <select id="getAllLabOrder" resultType="LabOrderState">
+        SELECT * FROM order_experiment WHERE Teacher=#{teacherId};
+    </select>
+
+    <select id="insertPresentInfo" resultType="boolean">
+        INSERT into check_on_table (date,Student_id,Course,Score,Present) VALUES (#{date},#{stuId},#{course},#{score},#{present});
+    </select>
 </mapper>

@@ -1,6 +1,7 @@
 package org.lab_manager.service;
 
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +18,9 @@ public interface ITeachService {
     public boolean uploadStuGrade();
 
     /**
-     * 更新学生考勤
+     * 上传学生考勤
      */
-    public boolean updateStuAttendence();
+    public boolean uploadStuAttendence(String date,String stuId,String course,float score,String present);
 
     /**
      * 获取老师所有实验项目
@@ -29,4 +30,9 @@ public interface ITeachService {
      * 获得该老师所教课程的所有学生
      */
     public List<Student> getAllStudent(String id);
+
+    /**
+     * 获取老师之前所有的实验室预定信息
+     */
+    public List<LabOrderState>  getAllLabOrder(String teacherId);
 }

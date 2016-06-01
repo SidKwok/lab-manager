@@ -74,6 +74,7 @@ public class ExperimentController {
     public String getOrdersOfTeacher(@RequestParam("role")String role,@RequestParam("username")String username){
         Map<String,Object> result=new HashMap<String, Object>();
         List<Object> labList=new ArrayList<Object>();
+//        teachService.getAllExperiment()
         for(int i=0;i<2;i++){
             Map<String,Object> labItem=new HashMap<String, Object>();
             labItem.put("labName","LOL");

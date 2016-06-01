@@ -162,6 +162,7 @@ public class EquipController {
     public String orderEquipment(@RequestParam("assetName")String assetName,@RequestParam("number")String num,@RequestParam("startTime")String startTime,@RequestParam("endTime")String endTime,@RequestParam("applicant")String apllyer){
         //返回所有设备的名称列表，放到json中
         Map<String,Object> result=new HashMap<String, Object>();
+        System.out.println(num+"=====");
 
         String flag="0";
         if(equipService.addEquipOrder(assetName,Integer.parseInt(num),startTime,endTime,apllyer))

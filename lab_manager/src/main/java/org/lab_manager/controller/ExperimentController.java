@@ -65,7 +65,8 @@ public class ExperimentController {
      "equipName": "西瓜刀",
      "equipDate": "2015-9-10",
      "equipOrderId": "001",
-     "equipDays": "10",
+     "equipStartTime": "10",
+     "equipEndTime":,
      "equipNumber": "2",
      "state": "未决定"
      },
@@ -104,9 +105,10 @@ public class ExperimentController {
             Map<String,Object> equipItem=new HashMap<String, Object>();
             equipItem.put("equipName",singleEquipOrder.getDevice_name());
             equipItem.put("equipDate",singleEquipOrder.getOrder_date());
-            equipItem.put("equipOrderId","001");
-            equipItem.put("equipDays","1");
-            equipItem.put("equipNumber","1");
+            equipItem.put("equipOrderId",singleEquipOrder.getOrder_id());
+            equipItem.put("equipStartTime",singleEquipOrder.getStart_time());
+            equipItem.put("equipEndTime",singleEquipOrder.getEnd_time());
+            equipItem.put("equipNumber",singleEquipOrder.getEquip_number());
             equipItem.put("state","拒绝");
             equipList.add(equipItem);
         }

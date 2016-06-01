@@ -10,4 +10,8 @@
     <select id="getRoleId" resultType="java.lang.String">
         SELECT user_table.Role_id FROM user_table WHERE user_table.User_id=#{user_id} and user_table.Password=#{password};
     </select>
+
+    <select id="getUserById" resultType="User">
+        SELECT * FROM user_table WHERE user_table.User_id=#{user_id};
+    </select>
 </mapper>

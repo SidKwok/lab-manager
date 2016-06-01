@@ -13,4 +13,9 @@ public interface UserDao {
     public Role getRole(String roleId);
 
     public String getRoleId(@Param("user_id") String userId, @Param("password") String pwd);
+
+    /**
+     * 通过id查用户
+     */
+    public User getUserById(String userId);
 }

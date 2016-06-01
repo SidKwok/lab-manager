@@ -3,10 +3,8 @@ package org.lab_manager.service.serviceImp;
 import org.lab_manager.dao.ExperimentDao;
 import org.lab_manager.dao.ScoreDao;
 import org.lab_manager.dao.TeacherDao;
-import org.lab_manager.entity.Experiment;
-import org.lab_manager.entity.LabOrderState;
-import org.lab_manager.entity.Student;
-import org.lab_manager.entity.Teacher;
+import org.lab_manager.dao.UserDao;
+import org.lab_manager.entity.*;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,8 @@ public class TeacherService implements ITeachService {
     private TeacherDao teacherDao;
     @Autowired
     private ScoreDao  scoreDao;
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     private ExperimentDao experimentDao;
@@ -77,10 +77,10 @@ public class TeacherService implements ITeachService {
     }
 
     @Override
-    public Teacher getTeacherById(String teacherId) {
+    public User getTeacherById(String teacherId) {
         try{
-            Teacher teacher = teacherDao.queryById(teacherId);
-            return teacher;
+
+            return userDao.getUserById(teacherId);
         }catch (Exception e){
             e.printStackTrace();
         }

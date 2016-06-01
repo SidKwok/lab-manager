@@ -8,6 +8,7 @@ import com.alibaba.fastjson.TypeReference;
 import org.lab_manager.entity.EquipInfo;
 import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.entity.Teacher;
+import org.lab_manager.entity.User;
 import org.lab_manager.service.IEquipService;
 import org.lab_manager.service.ITeachService;
 import org.springframework.stereotype.Controller;
@@ -373,8 +374,8 @@ public class EquipController {
             item.put("equipOrderEndTime",orderSingle.getEnd_time());
             item.put("equipOrderDate",orderSingle.getOrder_date());
 
-            Teacher teacher = teachService.getTeacherById(orderSingle.getApplicant());
-            item.put("equipOrderApplicant",teacher.getName());
+            User teacher = teachService.getTeacherById(orderSingle.getApplicant());
+            item.put("equipOrderApplicant",teacher.getUser_name());
             result.add(item);
         }
         return JSON.toJSONString(result);//

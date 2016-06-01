@@ -1,9 +1,6 @@
 package org.lab_manager.service;
 
-import org.lab_manager.entity.Experiment;
-import org.lab_manager.entity.LabOrderState;
-import org.lab_manager.entity.Student;
-import org.lab_manager.entity.Teacher;
+import org.lab_manager.entity.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +37,5 @@ public interface ITeachService {
     /**
      * 根据ID获取老师名
      */
-    public Teacher getTeacherById(String teacherId);
+    public User getTeacherById(String teacherId);
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.ScoreDao">
+    <select id="getScoreBySNO" resultType="Score">
+        SELECT * FROM Score WHERE SID=#{sno};
+    </select>
+    <update id="updateScore" parameterType="Score">
+        UPDATE Score SET Score=#{score} where SID=#{sno} AND Course_name=#{courseName};
+    </update>
+</mapper>

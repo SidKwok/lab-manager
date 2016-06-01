@@ -6,6 +6,7 @@ import org.lab_manager.dao.EquipOrderDao;
 import org.lab_manager.entity.EquipInfo;
 import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.service.IEquipService;
+import org.lab_manager.utils.DateTimeUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -68,9 +69,15 @@ public class EquipService implements IEquipService{
     }
 
     @Override
-    public boolean addEquipOrder(String assetName, Integer number, Integer days, String applicant) {
-
-        return false;
+    public boolean addEquipOrder(String assetName,Integer number,String startTime,String endTime,String applicant) {
+        try{
+            String now= DateTimeUtil.currentTimestamp().toString();
+            equipOrderDao.orderEquip(assetName,number,startTime,endTime,applicant,now,"待定");
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override

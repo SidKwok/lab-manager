@@ -34,8 +34,8 @@ public class ExperimentDaoTest {
     }
     @Test
     public void applyExperiment() throws Exception{
-        boolean b = ed.applyExperiment("大实习",805,"张","第八周","第十八周","周五","三四节");
-        System.out.println(b);
+//        boolean b = ed.applyExperiment("大实习",805,"张","第八周","第十八周","周五","三四节");
+//        System.out.println(b);
     }
     @Test
     public void queryAllExperimentOrderState() throws Exception{

@@ -145,7 +145,7 @@ public class EquipController {
 
     /**
      *预约设备
-     * params: assetName(设备名), number(数量), days(申请天数), applicant(申请人)
+     * params: assetName(设备名), number(数量), startTime,endTime, applicant(申请人)
      {
      "status": "0"
      }
@@ -157,7 +157,7 @@ public class EquipController {
         Map<String,Object> result=new HashMap<String, Object>();
 
         int flag=0;
-        if(equipService.addEquipOrder(assetName,num,days,apllyer))
+        if(equipService.addEquipOrder(assetName,num,"",":",apllyer))
             flag=1;
 
         result.put("status",flag);

@@ -274,14 +274,12 @@ public class LabController {
         System.out.println(roomId+"+++++++++++++++");
         List<Object> result=new ArrayList<Object>();
 
-        //List<LabUse> labUses = labService.getLabUseByRoomId(Integer.parseInt(roomId));
-
         List<Experiment> exps=labService.getLabUseByRoomId(roomId);
         for(Experiment labuseSingle:exps){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("labName",labuseSingle.getCourse_name());
             item.put("applicant",labuseSingle.getTeacher());
-            item.put("week",labuseSingle.getWeek());
+            item.put("week",labuseSingle.getStart_time());
             item.put("weekday",labuseSingle.getWeek());
             item.put("course",labuseSingle.getDay_time());
             result.add(item);
@@ -292,7 +290,7 @@ public class LabController {
 
     /**
     *预定实验室房间
-     * params: roomId, labName, applicant, week, weekday, course
+     * params: roomId(实验室房间号), labName（申请的实验名称）, applicant（申请人）, startTime（开始周）, endTime（结束周）,weekday（周几）, dayTime（第几节课，比如1,2节课，单选框）
      {
      "status": "0"
      }
@@ -303,7 +301,7 @@ public class LabController {
         //从json文件中解析数据，预定房间
         Map<String,Object> result= new HashMap<String, Object>();
         int flag=0;
-        if(labService.orderRoom(roomId,labName,applicant,week,course))
+        if(experimentService.applyExp(labName,Integer.parseInt(roomId),applicant,"startTime","endtime","weekDay","daytime"))
             flag=1;
         result.put("status",flag);
 

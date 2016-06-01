@@ -4,6 +4,7 @@ import org.lab_manager.dao.ExperimentDao;
 import org.lab_manager.dao.LabOrderStateDao;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.service.IExperimentService;
+import org.lab_manager.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +63,13 @@ public class ExperimentService implements IExperimentService {
     }
 
     @Override
-    public boolean applyExp(String courseName, Integer roomId, String applier, String week, String endtime, String weekday, String dayTime) {
+    public boolean applyExp(String courseName, Integer roomId, String applier, String startTime, String endtime, String weekday, String dayTime) {
+        try{
+            String now= DateTimeUtil.currentTimestamp().toString();
+            mExpDao.applyExperiment(courseName,roomId,applier,startTime,endtime,weekday,dayTime,now);
+        }catch (Exception e){
+
+        }
         return false;
     }
 }

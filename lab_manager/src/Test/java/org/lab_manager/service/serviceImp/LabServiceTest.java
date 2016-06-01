@@ -20,6 +20,8 @@ import static org.junit.Assert.*;
 @ContextConfiguration("classpath:spring-config.xml")
 public class LabServiceTest {
 
+
+
     @Resource
     private ILabService labService;
     @Test
@@ -28,4 +30,8 @@ public class LabServiceTest {
         System.out.println(all);
     }
 
+    @Test
+    public void orderRoom() throws Exception {
+//        labService.orderRoom("805","化学实验","T001","")
+    }
 }

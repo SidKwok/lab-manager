@@ -43,7 +43,7 @@ public interface IEquipService {
     /**
      * 添加设备预约
      */
-    public boolean addEquipOrder(String assetName,Integer number,Integer days,String applicant);
+    public boolean addEquipOrder(String assetName,Integer number,String startTime,String endTime,String applicant);
 
     /**
      * 同意设备预定

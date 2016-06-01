@@ -39,7 +39,7 @@ public interface ExperimentDao {
     /*
     预定实验
      */
-    public boolean applyExperiment(@Param("courseName") String courseName,@Param("roomId")Integer roomId,@Param("applicant") String applicant,@Param("startTime")String week,@Param("endTime")String endTIme,@Param("weekDay")String weekDay,@Param("dayTime")String  dayTime);
+    public boolean applyExperiment(@Param("courseName") String courseName,@Param("roomId")Integer roomId,@Param("applicant") String applicant,@Param("startTime")String startTime,@Param("endTime")String endTIme,@Param("weekDay")String weekDay,@Param("dayTime")String  dayTime,@Param("order_date")String  orderDate);
     /*
     批准实验预定
      */

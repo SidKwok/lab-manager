@@ -87,9 +87,10 @@ public class LabService implements ILabService {
     }
 
     @Override
-    public boolean orderRoom(String roomId,String labName,String applicant,String week,String course) {
+    public boolean orderRoom(String roomId,String labName,String applicant,String startTime,String course) {
         try{
-            experimentDao.applyExperiment(labName,Integer.parseInt(roomId),applicant,week,course,course,course);
+            String now="";
+            experimentDao.applyExperiment(labName,Integer.parseInt(roomId),applicant,startTime,course,course,course,now);
         }catch (Exception e){
             return false;
         }

@@ -303,7 +303,7 @@ public class LabController {
         Map<String,Object> result= new HashMap<String, Object>();
         String flag="0";
         if(experimentService.applyExp(labName,Integer.parseInt(roomId),applicant,startTime,endTime,weekDay,dayTime))
-            flag="0";
+            flag="1";
         result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功

@@ -27,6 +27,10 @@ public interface IEquipService {
     public boolean updateEquipInfo(Integer id,String asset_name,Integer class_no,String class_name,String value_type,Integer number);
 
     /**
+     * 更新设备信息
+     */
+    public boolean updateEquioInfo(EquipInfo equipInfo);
+    /**
      * 添加设备入库
      */
     public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number);

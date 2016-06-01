@@ -45,6 +45,17 @@ public class EquipService implements IEquipService{
     }
 
     @Override
+    public boolean updateEquioInfo(EquipInfo equipInfo) {
+        try{
+
+            return true;
+        }catch (Exception e){
+
+        }
+        return false;
+    }
+
+    @Override
     public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number) {
         try {
 

@@ -61,8 +61,13 @@ public class LabService implements ILabService {
 
     @Override
     public boolean addComment(Integer id, String comment) {
-        labCommentDao.addComment(id,comment);
-        return false;
+        try{
+            labCommentDao.addComment(id,comment);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -92,6 +97,7 @@ public class LabService implements ILabService {
             String now="";
             experimentDao.applyExperiment(labName,Integer.parseInt(roomId),applicant,startTime,course,course,course,now);
         }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
         return true;

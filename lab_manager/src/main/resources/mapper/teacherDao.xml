@@ -18,7 +18,7 @@
     </select>
 
     <select id="getAllTeacherByName" resultType="User">
-        SELECT * FROM user_table WHERE User_name like #{teacherId};
+        SELECT * FROM user_table WHERE User_name like #{teacherName};
     </select>
 
     <insert id="insertPresentInfo">

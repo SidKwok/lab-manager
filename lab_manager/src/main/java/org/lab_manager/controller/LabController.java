@@ -356,7 +356,7 @@ public class LabController {
                 teaItem.put("labClass",singleExp.getClass_name());
                 teaItem.put("labStartTime",singleExp.getStart_time());
                 teaItem.put("labEndTime",singleExp.getEnd_time());
-                teaItem.put("labWeekDay",singleExp.getWeek());
+                teaItem.put("labWeekday",singleExp.getWeek());
                 teaItem.put("labCourse",singleExp.getDay_time());
                 teacherInfo.add(teaItem);
             }

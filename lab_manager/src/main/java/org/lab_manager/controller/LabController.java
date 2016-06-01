@@ -297,11 +297,11 @@ public class LabController {
     */
     @ResponseBody
     @RequestMapping(value="/orderRoom",method = RequestMethod.POST)
-    public String orderRoom(@RequestParam("roomId")String roomId,@RequestParam("labName")String labName,@RequestParam("applicant")String applicant,@RequestParam("week")String week,@RequestParam("course")String course){
+    public String orderRoom(@RequestParam("roomId")String roomId,@RequestParam("labName")String labName,@RequestParam("applicant")String applicant,@RequestParam("startTime")String startTime,@RequestParam("endTime")String endTime,@RequestParam("weekday")String weekDay,@RequestParam("dayTime")String dayTime){
         //从json文件中解析数据，预定房间
         Map<String,Object> result= new HashMap<String, Object>();
         int flag=0;
-        if(experimentService.applyExp(labName,Integer.parseInt(roomId),applicant,"startTime","endtime","weekDay","daytime"))
+        if(experimentService.applyExp(labName,Integer.parseInt(roomId),applicant,startTime,endTime,weekDay,dayTime))
             flag=1;
         result.put("status",flag);
 

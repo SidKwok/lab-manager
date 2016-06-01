@@ -9,4 +9,7 @@
     <update id="updateScore" parameterType="Score">
         UPDATE Score SET Score=#{score} where SID=#{sno} AND Course_name=#{courseName};
     </update>
+    <insert id="insertScore" parameterType="Score">
+        insert into Score (SID,Score,Course_name) values (#{sno},#{score},#{courseName});
+    </insert>
 </mapper>

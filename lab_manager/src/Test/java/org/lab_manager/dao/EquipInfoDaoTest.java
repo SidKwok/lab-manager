@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Silence on 2016/5/26.
  */
@@ -47,5 +45,14 @@ public class EquipInfoDaoTest {
     public void deleteAsset()throws Exception{
         boolean status= equipInfoDao.deleteAsset("101");
         System.out.println(status);
+    }
+    @Test
+    public void addAsset() throws Exception{
+        boolean status=equipInfoDao.addAsset("12",123,"123","12","12","12",12,1,"12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12",12,"12");
+        System.out.println(status);
+    }
+    @Test
+    public void insert() throws Exception{
+        boolean status=equipInfoDao.insert("高级计算机",130021,"计算机","工具",20);
     }
 }

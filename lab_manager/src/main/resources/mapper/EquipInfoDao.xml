@@ -22,6 +22,9 @@
         UPDATE device_type_in SET Class_no=#{class_no},Class_name=#{class_name},Value_type=#{value_type},Device_Number=#{number} where asset_name=#{asset_name};
     </update>
     <insert id="addAsset" parameterType="EquipInfo">
-        INSERT INTO device_type_in VALUES (#{asset_name},#{class_no},#{class_name},#{value_type},#{number});
+        INSERT INTO device_type_in(asset_name,Class_no,Class_name,Origin_name,Purchase_unit,Value_type,Unit_price,Device_number,Invoice_num,Measurement_unit,Purchase_date,Financial_res,Asset_res,Handle_person,Charge_type,Check_date,Recept_date,Purchase_form,Manage_part,Subject_type,Subject,Remark,Finantial_opinion,Purchasing_agent,Model,Standard,Production_date,Country,Manufacturer,Brand,Power,Estimated_expiration_date,Durable_years,Retailer)VALUES (#{asset_name},#{class_no},#{class_name},#{origin_name},#{purchase_unit},#{value_type},#{unit_price},#{number},#{invoice_num},#{measurement_unit},#{purchase_date},#{finacial_res},#{asset_res},#{handle_person},#{charge_type},#{check_date},#{recept_date},#{purchase_form},#{manage_part},#{subject_type},#{subject},#{remark},#{finantial_opinion},#{purchasing_agent},#{model},#{standard},#{production_date},#{country},#{manufacturer},#{brand},#{power},#{estimated_expiration_date},#{durable_yeas},#{retailer});
+    </insert>
+    <insert id="insert" parameterType="EquipInfo">
+        INSERT INTO device_type_in(asset_name,Class_no,Class_name,Value_type,Device_number) VALUES (#{asset_name},#{class_no},#{class_name},#{value_type},#{number});
     </insert>
 </mapper>

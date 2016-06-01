@@ -31,4 +31,10 @@ public class ScoreDaoTest {
         boolean status=scoreDao.updateScore("20131004222","软件测试","89");
         System.out.println(status);
     }
+
+    @Test
+    public void insertScore()throws Exception{
+        boolean status=scoreDao.insertScore("20131002111","软件测试","90");
+        System.out.println(status);
+    }
 }

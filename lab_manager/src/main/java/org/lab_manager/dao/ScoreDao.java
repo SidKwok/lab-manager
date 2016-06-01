@@ -19,4 +19,8 @@ public interface ScoreDao {
      *更新学生成绩
      */
     public boolean updateScore(@Param("sno") String sno,@Param("courseName") String courseName,@Param("score") String score);
+    /**
+     * 添加学生信息
+     */
+    public boolean insertScore(@Param("sno")String sno,@Param("courseName")String courseName,@Param("score")String score);
 }

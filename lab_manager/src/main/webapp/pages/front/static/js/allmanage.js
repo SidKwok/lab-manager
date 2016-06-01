@@ -527,19 +527,19 @@ function basicEvent() {
                 }
                 if(retData.status === '1') {
                     alert('搜查成功');
-                    domArr.push(
-                        '<table class="table table-hover">',
-                            '<thead>',
-                                '<td>教师</td><td>实验</td><td>实验室</td>',
-                            '</thead>',
-                            '<tbody>'
-                    );
                     $.each(retData.result, function(i, e){
                         domArr.push(
-                            '<tr><td>' + e.teacher + '</td>' + '<td>' + e.labName + '</td>' + '<td>' + e.roomId + '</td></tr>'
+                            '<tr><td>' + e.teacher + '</td>' +
+                            '<td>' + e.labName + '</td>' +
+                            '<td>' + e.roomId + '</td>' +
+                            '<td>' + e.labClass + '</td>' +
+                            '<td>' + e.labStartTime + '</td>' +
+                            '<td>' + e.labEndTime + '</td>' +
+                            '<td>' + e.labWeekday + '</td>' +
+                            '<td>' + e.labCourse + '</td>' +
+                            '</tr>'
                         );
                     });
-                    domArr.push('</tboday></table>');
                     $('.db-table').append(domArr.join(''));
                 }
             },

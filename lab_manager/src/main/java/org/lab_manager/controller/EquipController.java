@@ -182,11 +182,61 @@ public class EquipController {
     */
     @ResponseBody
     @RequestMapping(value="/updateEquipment",method = RequestMethod.POST)
-    public String updateEquimentInfo(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")String number,@RequestParam("assetId")String assetId){
+    public String updateEquimentInfo(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,
+                                     @RequestParam("className")String className,@RequestParam("valueType")String valueType,
+                                     @RequestParam("number")String number,@RequestParam("originName")String originName,
+                                     @RequestParam("purchaseUnit")String purchaseUnit,@RequestParam("unitPrice")float unitPrice,
+                                     @RequestParam("invoiceNum")String invoiceNum,@RequestParam("measurementUnit")String measurementUnit,
+                                     @RequestParam("purchaseDate")String purchaseDate,@RequestParam("financialRes")String financialRes,
+                                     @RequestParam("assetRes")String assetRes,@RequestParam("handlePerson")String handlePerson,
+                                     @RequestParam("chargeType")String chargeType,@RequestParam("checkDate")String checkDate,
+                                     @RequestParam("receptDate")String receptDate,@RequestParam("purchaseForm")String purchaseForm,
+                                     @RequestParam("managePart")String managePart,@RequestParam("subjectType")String subjectType,
+                                     @RequestParam("subject")String subject,@RequestParam("remark")String remark,
+                                     @RequestParam("finantialOpinion")String finantialOpinion,@RequestParam("purchasingAgent")String purchasingAgent,
+                                     @RequestParam("modal")String modal,@RequestParam("standard")String standard,
+                                     @RequestParam("productionDate")String productionDate,@RequestParam("country")String country,
+                                     @RequestParam("manufacture")String manufacture,@RequestParam("brand")String brand,
+                                     @RequestParam("durableYears")String durableYears,@RequestParam("estimatedExpirationDate")String estimatedExpirationDate,
+                                     @RequestParam("retailer")String retailer){
         Map<String,Object> result=new HashMap<String, Object>();
 
+        EquipInfo equipInfo=new EquipInfo();
+        equipInfo.setAsset_name(assetName);
+        equipInfo.setAsset_res(assetRes);
+        equipInfo.setBrand(brand);
+        equipInfo.setClass_no(Integer.parseInt(classNo));
+        equipInfo.setClass_name(className);
+        equipInfo.setValue_type(valueType);
+        equipInfo.setNumber(Integer.parseInt(number));
+        equipInfo.setOrigin_name(originName);
+        equipInfo.setPurchase_unit(purchaseUnit);
+        equipInfo.setUnit_price(unitPrice);
+        equipInfo.setInvoice_num(invoiceNum);
+        equipInfo.setManufacturer(manufacture);
+        equipInfo.setPurchase_date(purchaseDate);
+        equipInfo.setFinancial_res(financialRes);
+        equipInfo.setHandle_person(handlePerson);
+        equipInfo.setCharge_type(chargeType);
+        equipInfo.setCheck_date(checkDate);
+        equipInfo.setMeasurement_unit(measurementUnit);
+        equipInfo.setRecept_date(receptDate);
+        equipInfo.setPurchase_form(purchaseForm);
+        equipInfo.setManage_part(managePart);
+        equipInfo.setSubject_type(subjectType);equipInfo.setSubject(subject);
+        equipInfo.setRemark(remark);
+        equipInfo.setFinantial_opinion(finantialOpinion);
+        equipInfo.setPurchasing_agent(purchasingAgent);
+        equipInfo.setModel(modal);
+        equipInfo.setStandard(standard);
+        equipInfo.setProduction_date(productionDate);
+        equipInfo.setCountry(country);
+        equipInfo.setDurable_years(Integer.parseInt(durableYears));
+        equipInfo.setEstimated_expiration_date(estimatedExpirationDate);
+        equipInfo.setRetailer(retailer);
+
         String flag="0";
-        if(equipService.updateEquipInfo(Integer.parseInt(assetId),assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+        if(equipService.updateEquipInfo(Integer.parseInt(classNo),assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
             flag="1";
         result.put("status",flag);
 

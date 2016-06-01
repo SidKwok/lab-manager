@@ -28,9 +28,9 @@ public class ExperimentDaoTest {
 
     @Test
     public void queryById() throws Exception {
-        Experiment e=ed.queryById("001");
+//        Experiment e=ed.queryById("001");
 
-        System.out.println(e.getCourse_name());
+//        System.out.println(e.getCourse_name());
     }
     @Test
     public void applyExperiment() throws Exception{

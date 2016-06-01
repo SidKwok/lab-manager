@@ -24,7 +24,7 @@ public class ExperimentService implements IExperimentService {
 
     @Override
     public Experiment getExperimentById(String eId) {
-        return mExpDao.queryById(eId);
+        return mExpDao.queryById(Integer.parseInt(eId));
     }
 
     @Override

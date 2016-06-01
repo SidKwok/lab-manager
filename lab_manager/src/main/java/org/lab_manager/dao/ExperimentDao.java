@@ -14,7 +14,7 @@ public interface ExperimentDao {
     /*
     获取指定实验信息
      */
-    public Experiment queryById(String id);
+    public Experiment queryById(Integer id);
 
     /**
      *通过实验名模糊搜索实验

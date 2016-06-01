@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.LabOrderState;
@@ -231,13 +232,19 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadAttendence",method = RequestMethod.POST)
-    public String uploadAttendence(@RequestParam("")String username,@RequestParam("role")String role,@RequestParam("courseId")String courseId,@RequestParam("stu")String s){
-
-
-        Map<String,Object> result=new HashMap<String, Object>();
+    public String uploadAttendence(@RequestParam("username")String username,@RequestParam("role")String role,@RequestParam("courseId")String courseId,@RequestParam("stu")String stuList){
 
         String flag="0";
-//        if(teachService.)
+
+        Map<String,Object> result=new HashMap<String, Object>();
+        List<Map<String, Object>> students = JSON.parseObject(stuList, new TypeReference<List<Map<String, Object>>>() {
+        });
+
+        for(Map<String,Object> m:students){
+            if(teachService.uploadStuAttendence("",m.get("stuId").toString(),courseId,Float.parseFloat(m.get("stuGrade").toString()),m.get("stuState").toString()))
+                flag="0";
+        }
+
         result.put("status",flag);
 
         return JSON.toJSONString(result);

@@ -122,7 +122,7 @@ public class TeacherController {
      "stuGrade": "98"
      },
      {
-     "stuName": "airdy",
+     "stuId": "airdy",
      "stuGrade": "98"
      },
      {
@@ -145,7 +145,9 @@ public class TeacherController {
         List<Map<String, Object>> studentsInfo = JSON.parseObject(list, new TypeReference<List<Map<String, Object>>>() {
         });
 
+        System.out.println(labId);
         for(Map<String,Object> m:studentsInfo){
+            System.out.println(m.get("stuId").toString()+"::"+m.get("stuGrade").toString());
             if(teacherService.uploadStuGrade(m.get("stuId").toString(),m.get("stuGrade").toString(),labId))
                 flag="0";
         }

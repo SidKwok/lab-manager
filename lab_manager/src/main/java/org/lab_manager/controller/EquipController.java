@@ -345,7 +345,8 @@ public class EquipController {
      "equipOrderId": "0004",
      "equipOrderName": "狼牙棒",
      "equipOrderNumber": "5",
-     "equipOrderDay": "10",
+     "equipOrderStartTime": "",
+     "equipOrderEndTime": "",
      "equipOrderApplicant": "mingen",
      "equipOrderDate": "2016-5-7"
      }
@@ -363,8 +364,9 @@ public class EquipController {
             item.put("equipOrderName",orderSingle.getDevice_name());
             item.put("equipOrderNumber",orderSingle.getEquip_number());
 
-            item.put("equipOrderDay",orderSingle.getStart_time());
-
+            item.put("equipOrderStartTime",orderSingle.getStart_time());
+            item.put("equipOrderEndTime",orderSingle.getEnd_time());
+            item.put("equipOrderDate",orderSingle.getOrder_date());
             item.put("equipOrderApplicant",orderSingle.getApplicant());
             result.add(item);
         }

@@ -311,7 +311,7 @@ public class LabController {
 
     /**
     *实验室当前使用信息查询
-     * params: item, type (item是内容 type是类型 有教室和实验名)
+     * params: item, type (item是内容 type是类型 可选 lab/teacher)
      {
      "status": "1",
      "result":[
@@ -337,7 +337,7 @@ public class LabController {
 
         List<Object> teacherInfo=new ArrayList<Object>();
 
-        if(type.equals("room")){
+        if(type.equals("lab")){
 //            labService.getLabUseByRoomId()
 
             flag=1;

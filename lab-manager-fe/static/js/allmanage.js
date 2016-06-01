@@ -331,7 +331,7 @@ function init () {
               $.each(lab, function(i, e){
                   domLab.push(
                       '<div class="all-lab-order order hvr-sweep-to-right">',
-                          '<div class="allLabOrderId">' + e.labOrderId + '</div>',
+                          '<div class="allLabOrderId">' + e.labOrderRoom + '</div>',
                           '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
                           '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
                           '<div class="allLabOrderState">状态：' + e.state + '</div>',

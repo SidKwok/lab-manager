@@ -236,7 +236,7 @@ public class ExperimentController {
 
         Map<String,Object> result=new HashMap<String, Object>();
 
-        int flag=0;
+        String flag="0";
 //        if(teachService.)
         result.put("status",flag);
 
@@ -256,7 +256,7 @@ public class ExperimentController {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,Object> result=new HashMap<String, Object>();
 
-        int flag=0;
+        String flag="0";
 //        if(experimentService.applyExp())
         result.put("status",flag);
         return JSON.toJSONString(result);

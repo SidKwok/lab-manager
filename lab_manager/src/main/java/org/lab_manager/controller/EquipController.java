@@ -156,9 +156,9 @@ public class EquipController {
         //返回所有设备的名称列表，放到json中
         Map<String,Object> result=new HashMap<String, Object>();
 
-        int flag=0;
+        String flag="0";
         if(equipService.addEquipOrder(assetName,Integer.parseInt(num),startTime,endTime,apllyer))
-            flag=1;
+            flag="1";
 
         result.put("status",flag);
 
@@ -178,9 +178,9 @@ public class EquipController {
     public String updateEquimentInfo(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")String number,@RequestParam("assetId")String assetId){
         Map<String,Object> result=new HashMap<String, Object>();
 
-        int flag=0;
+        String flag="0";
         if(equipService.updateEquipInfo(Integer.parseInt(assetId),assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
-            flag=1;
+            flag="1";
         result.put("status",flag);
 
         return JSON.toJSONString(result);//
@@ -198,9 +198,9 @@ public class EquipController {
     public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")String number){
         Map<String,Object> result=new HashMap<String, Object>();
 
-        int flag=0;
+        String flag="0";
         if(equipService.addEquip(assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
-            flag=1;
+            flag="1";
         result.put("status",flag);
 
         return JSON.toJSONString(result);//
@@ -218,9 +218,9 @@ public class EquipController {
     public String delEquiment(@RequestParam("assetName")String assetName,@RequestParam("assetId")String assetId){
         System.out.println(assetId+"zheshishi");
         Map<String,Object> result=new HashMap<String, Object>();
-        int flag=0;
+        String flag="0";
         if(equipService.deleteEquipById(assetId))
-            flag=1;
+            flag="1";
         result.put("status",flag);
 
         return JSON.toJSONString(result);//
@@ -283,9 +283,9 @@ public class EquipController {
     @RequestMapping(value="/confirmEquipOrder",method = RequestMethod.POST)
     public String confirmEquiment(@RequestParam("equipOrderId")String id){
         Map<String,Object> result=new HashMap<String, Object>();
-        int flag=0;
+        String flag="0";
         if(equipService.approveOrderEquip(Integer.parseInt(id)));
-            flag=1;
+            flag="1";
         result.put("status",flag);
 
         return JSON.toJSONString(result);//
@@ -304,9 +304,9 @@ public class EquipController {
     @RequestMapping(value="/refuseEquipOrder",method = RequestMethod.POST)
     public String refuseEquiment(@RequestParam("equipOrderId")String id){
         Map<String,Object> result=new HashMap<String, Object>();
-        int flag=0;
+        String flag="0";
         if(equipService.refuseOrderEquip(Integer.parseInt(id)))
-            flag=1;
+            flag="1";
         result.put("status",flag);
         return JSON.toJSONString(result);//
     }

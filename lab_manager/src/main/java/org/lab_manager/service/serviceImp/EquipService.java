@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiaofeige on 2016/5/26.
@@ -49,6 +50,17 @@ public class EquipService implements IEquipService{
             equipInfoDao.addAsset(asset_name,class_no,class_name,value_type,number);
         }catch (Exception e){
             return  false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean addEquip(EquipInfo equipInfo) {
+        try{
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
         return true;
     }

@@ -140,8 +140,9 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadStuGrade",method = RequestMethod.POST)
-    public String uploadStuGrade(@RequestBody String data) {
+    public String uploadStuGrade(@RequestParam("stu")String list,@RequestParam("username")String username,@RequestParam("role")String role) {
 
+//        @RequestParam("stu")String list,@RequestParam("username")String username,@RequestParam("role")String role
 //        JSONObject list=jsonObject.getObject("stu",JSONObject.class);
 //        System.out.println("收到上传的学生信息====="+jsonObject==null);
 //        System.out.println(list==null);
@@ -152,12 +153,9 @@ public class TeacherController {
 //        String role=jsonObject.getObject("role",String.class);
 //        System.out.println(stu+"=========");
 //
-        System.out.println(data);
-        JSON.parseObject(data, new TypeReference<List<Map<String, Object>>>() {
-        });
-
-//        System.out.println(jsonFile.get("stu").getClass());
-//        System.out.println(jsonFile.get("role"));
+//        System.out.println(list.toString());
+//        List<Map<String, Object>> mapList = JSON.parseObject(list, new TypeReference<List<Map<String, Object>>>() {
+//        });
 
 
 //        String role = jsonObject.getObject("role", String.class);
@@ -165,6 +163,7 @@ public class TeacherController {
 
 
         String flag="0";
+
         Map<String,Object> result=new HashMap<String, Object>();
         result.put("status",flag);
 

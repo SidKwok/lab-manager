@@ -4,6 +4,7 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import org.lab_manager.entity.EquipInfo;
 import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.service.IEquipService;
@@ -188,14 +189,63 @@ public class EquipController {
 
     /**
     *增加设备
-     * params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)
+     * params:
      {
-     "status": "0"
+     "classNo": "001",
+     "className": "刀具",
+     "valueType": "昂贵",
+     "originName": "",
+     "purchaseUnit": "",
+     "valueType": "",
+     "unitPrice": "",
+     "invoiceNum": "",
+     "measurementUnit": "",
+     "purchaseDate": "",
+     "financialRes": "",
+     "assetRes": "",
+     "handlePerson": "",
+     "chargeType": "",
+     "checkDate": "",
+     "receptDate": "",
+     "purchaseForm": "",
+     "managePart": "",
+     "subjectType": "",
+     "subject": "",
+     "remark": "",
+     "finantialOpinion": "",
+     "purchasingAgent": "",
+     "modal": "",
+     "standard": "",
+     "productionDate": "",
+     "country": "",
+     "manufacture": "",
+     "brand": "",
+     "power": "",
+     "estimatedExpirationDate": "",
+     "durableYears": "",
+     "retailer": "",
+     "number": ""
      }
-    */
+    */          //没有事先商量命名的痛。。。。
     @ResponseBody
     @RequestMapping(value="/addEquipment",method = RequestMethod.POST)
-    public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,@RequestParam("className")String className,@RequestParam("valueType")String valueType,@RequestParam("number")String number){
+    public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,
+                              @RequestParam("className")String className,@RequestParam("valueType")String valueType,
+                              @RequestParam("number")String number,@RequestParam("originName")String originName,
+                              @RequestParam("purchaseUnit")String purchaseUnit,@RequestParam("unitPrice")String unitPrice,
+                              @RequestParam("invoiceNum")String invoiceNum,@RequestParam("measurementUnit")String measurementUnit,
+                              @RequestParam("purchaseDate")String purchaseDate,@RequestParam("financialRes")String financialRes,
+                              @RequestParam("assetRes")String assetRes,@RequestParam("handlePerson")String handlePerson,
+                              @RequestParam("chargeType")String chargeType,@RequestParam("checkDate")String checkDate,
+                              @RequestParam("receptDate")String receptDate,@RequestParam("purchaseForm")String purchaseForm,
+                              @RequestParam("managePart")String managePart,@RequestParam("subjectType")String subjectType,
+                              @RequestParam("subject")String subject,@RequestParam("remark")String remark,
+                              @RequestParam("finantialOpinion")String finantialOpinion,@RequestParam("purchasingAgent")String purchasingAgent,
+                              @RequestParam("modal")String modal,@RequestParam("standard")String standard,
+                              @RequestParam("productionDate")String productionDate,@RequestParam("country")String country,
+                              @RequestParam("manufacture")String manufacture,@RequestParam("brand")String brand,
+                              @RequestParam("durableYears")String durableYears,@RequestParam("estimatedExpirationDate")String estimatedExpirationDate,
+                              @RequestParam("retailer")String numbretailerer){
         Map<String,Object> result=new HashMap<String, Object>();
 
         String flag="0";
@@ -205,6 +255,22 @@ public class EquipController {
 
         return JSON.toJSONString(result);//
     }
+//    @ResponseBody
+//    @RequestMapping(value="/addEquipment",method = RequestMethod.POST)
+//    public String addEquiment(@RequestBody String data){
+//        Map<String,Object> result=new HashMap<String, Object>();
+//
+//        Map<String, Object> stringStringMap = JSON.parseObject(data, new TypeReference<Map<String, Object>>() {
+//        });
+//        System.out.println(stringStringMap.get("assetName"));
+//
+//        String flag="0";
+////        if(equipService.addEquip(assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+////            flag="1";
+//        result.put("status",flag);
+//
+//        return JSON.toJSONString(result);//
+//    }
 
     /**
      *删除仪器设备

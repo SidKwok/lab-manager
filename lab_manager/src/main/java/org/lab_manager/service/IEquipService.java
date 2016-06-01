@@ -4,6 +4,7 @@ import org.lab_manager.entity.EquipInfo;
 import org.lab_manager.entity.EquipOrder;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiaofeige on 2016/5/25.
@@ -31,6 +32,11 @@ public interface IEquipService {
     public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number);
 
     /**
+     * 添加设备入库
+     */
+    public boolean addEquip(EquipInfo equipInfo);
+
+    /**
      * 删除设备
      */
     public boolean deleteEquipById(String id);
@@ -44,6 +50,7 @@ public interface IEquipService {
      * 添加设备预约
      */
     public boolean addEquipOrder(String assetName,Integer number,String startTime,String endTime,String applicant);
+
 
     /**
      * 同意设备预定

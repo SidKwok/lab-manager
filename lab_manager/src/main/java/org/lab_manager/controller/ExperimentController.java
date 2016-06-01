@@ -231,8 +231,8 @@ public class ExperimentController {
      */
     @ResponseBody
     @RequestMapping(value="/uploadAttendence",method = RequestMethod.POST)
-    public String uploadAttendence(@RequestParam Map<String,Object> json){
-        System.out.println(json.get("username")+"-----------------");
+    public String uploadAttendence(@RequestParam("")String username,@RequestParam("role")String role,@RequestParam("courseId")String courseId,@RequestParam("stu")String s){
+
 
         Map<String,Object> result=new HashMap<String, Object>();
 

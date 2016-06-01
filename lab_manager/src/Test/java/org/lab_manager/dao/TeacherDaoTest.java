@@ -2,6 +2,7 @@ package org.lab_manager.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.Student;
 import org.lab_manager.entity.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,13 @@ public class TeacherDaoTest {
         List<Student> list=teacherDao.getAllStudent("T001");
         for (Student student:list){
             System.out.println(student.getSName());
+        }
+    }
+    @Test
+    public void getAllExpeeiment() throws Exception{
+        List<Experiment> list=teacherDao.getALLExperiment("T001");
+        for (Experiment experiment:list){
+            System.out.println(experiment.getCourse_name());
         }
     }
 }

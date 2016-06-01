@@ -146,7 +146,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-checkDutyConfirm" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-primary" id="post-checkDutyConfirm">确认</button>
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="post-correctGradeConfirm" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-primary" id="post-correctGradeConfirm">确认</button>
               </div>
             </div>
           </div>
@@ -201,5 +201,25 @@
         <script src="../static/js/bootstrap.min.js"></script>
         <script src="../static/js/style.js"></script>
         <script src="../static/js/teamanage.js"></script>
+        <script>
+        // $('#post-checkDutyConfirm').on('click', function(){
+        //     var params = {
+        //       stu:[],
+        //       courseId: $('#tea-checkDuty-modal-label').attr('data-courseId'),
+        //       username: username,
+        //       role: role
+        //     };
+        //     var trs = $('#tea-checkDuty-table').children();
+        //     $.each(trs, function(i, e){
+        //         params.stu.push({
+        //             stuId: $(e).children('td').eq(0).text(),
+        //             stuName: $(e).children('td').eq(1).text(),
+        //             stuGrade: $(e).children('td').eq(2).children('input').val(),
+        //             stuState: $(e).children('td').eq(3).children('select').children('option:selected').text()
+        //         });
+        //     });
+        //     console.log(params);
+        // });
+        </script>
     </body>
 </html>

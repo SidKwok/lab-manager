@@ -672,6 +672,7 @@ function basicEvent() {
                     alert('没有该搜查结果');
                 }
                 if(retData.status === '1') {
+                    alert('搜查成功');
                     domArr.push(
                         '<table class="table table-hover">',
                             '<thead>',

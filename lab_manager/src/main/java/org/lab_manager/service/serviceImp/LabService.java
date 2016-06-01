@@ -61,7 +61,12 @@ public class LabService implements ILabService {
 
     @Override
     public boolean addComment(Integer id, String comment) {
-        labCommentDao.addComment(id,comment);
+        try{
+            labCommentDao.addComment(id,comment);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return false;
     }
 

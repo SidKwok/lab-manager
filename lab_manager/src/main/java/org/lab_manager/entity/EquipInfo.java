@@ -11,7 +11,7 @@ public class EquipInfo {
     private String Origin_name;
     private String Purchase_unit;
     private String Value_type;
-    private Float Unit_price;
+    private float Unit_price;
     private Integer Device_number;
     private String Invoice_num;
     private String Measurement_unit;
@@ -35,7 +35,7 @@ public class EquipInfo {
     private String Country;
     private String Manufacturer;
     private String Brand;
-    private Float Power;
+    private String Power;
     private String Estimated_expiration_date;
     private Integer Durable_years;
     private String Retailer;
@@ -96,11 +96,11 @@ public class EquipInfo {
         Value_type = value_type;
     }
 
-    public Float getUnit_price() {
+    public float getUnit_price() {
         return Unit_price;
     }
 
-    public void setUnit_price(Float unit_price) {
+    public void setUnit_price(float unit_price) {
         Unit_price = unit_price;
     }
 
@@ -288,11 +288,11 @@ public class EquipInfo {
         Brand = brand;
     }
 
-    public Float getPower() {
+    public String getPower() {
         return Power;
     }
 
-    public void setPower(Float power) {
+    public void setPower(String power) {
         Power = power;
     }
 

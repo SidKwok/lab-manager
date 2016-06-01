@@ -47,7 +47,7 @@ public class EquipService implements IEquipService{
     @Override
     public boolean addEquip(String asset_name,Integer class_no,String class_name,String value_type,Integer number) {
         try {
-            equipInfoDao.addAsset(asset_name,class_no,class_name,value_type,number);
+
         }catch (Exception e){
             return  false;
         }

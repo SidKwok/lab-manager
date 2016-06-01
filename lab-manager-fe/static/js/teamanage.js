@@ -178,21 +178,22 @@ function labNoticeEvent() {
 
   // 考勤提交
   $('#post-checkDutyConfirm').on('click', function(){
-      var params = {
-        stu:[],
-        courseId: $('#tea-checkDuty-modal-label').attr('data-courseId'),
-        username: username,
-        role: role
-      };
+      var stuArray = [];
       var trs = $('#tea-checkDuty-table').children();
       $.each(trs, function(i, e){
-          params.stu.push({
+          stuArray.push({
               stuId: $(e).children('td').eq(0).text(),
               stuName: $(e).children('td').eq(1).text(),
               stuGrade: $(e).children('td').eq(2).children('input').val(),
               stuState: $(e).children('td').eq(3).children('select').children('option:selected').text()
           });
       });
+      var params = {
+        stu: JSON.stringify(stuArray),
+        courseId: $('#tea-checkDuty-modal-label').attr('data-courseId'),
+        username: username,
+        role: role
+      };
       $.ajax({
           type: 'POST',
           url: '/experiment/uploadAttendence',

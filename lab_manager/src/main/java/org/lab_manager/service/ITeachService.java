@@ -3,6 +3,7 @@ package org.lab_manager.service;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
+import org.lab_manager.entity.Teacher;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +36,9 @@ public interface ITeachService {
      * 获取老师之前所有的实验室预定信息
      */
     public List<LabOrderState>  getAllLabOrder(String teacherId);
+
+    /**
+     * 根据ID获取老师名
+     */
+    public Teacher getTeacherById(String teacherId);
 }

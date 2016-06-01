@@ -46,7 +46,7 @@ public class ExperimentController {
      "labWeek": "第一周",
      "labWeekday": "周五",
      "labCourse": "第1、2节",
-     "labOrderId": "0001",
+     "labOrderRoom": "0001",
      "labOrderDate": "2016-5-21" ,
      "state": "允许"
      },
@@ -55,7 +55,7 @@ public class ExperimentController {
      "labWeek": "第二周",
      "labWeekday": "周四",
      "labCourse": "第3、4节",
-     "labOrderId": "0002",
+     "labOrderRoom": "0002",
      "labOrderDate": "2016-5-24" ,
      "state": "拒绝"
      }
@@ -92,7 +92,7 @@ public class ExperimentController {
             labItem.put("labWeek",singleOrder.getStart_time());
             labItem.put("labWeekday",singleOrder.getWeek_day());
             labItem.put("labCourse",singleOrder.getDay_time());
-            labItem.put("labOrderId",singleOrder.getCourse_name());
+            labItem.put("labOrderRoom",singleOrder.getRoom_id());
             labItem.put("labOrderDate",singleOrder.getOrder_date());
             labItem.put("state",singleOrder.getState());
             labList.add(labItem);

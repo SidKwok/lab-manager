@@ -7,7 +7,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import org.lab_manager.entity.EquipInfo;
 import org.lab_manager.entity.EquipOrder;
+import org.lab_manager.entity.Teacher;
 import org.lab_manager.service.IEquipService;
+import org.lab_manager.service.ITeachService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ import java.util.Map;
 public class EquipController {
     @Resource
     private IEquipService equipService;
+
+    @Resource
+    private ITeachService teachService;
 
     /**
     *获取所有设备的名称列表
@@ -367,7 +372,9 @@ public class EquipController {
             item.put("equipOrderStartTime",orderSingle.getStart_time());
             item.put("equipOrderEndTime",orderSingle.getEnd_time());
             item.put("equipOrderDate",orderSingle.getOrder_date());
-            item.put("equipOrderApplicant",orderSingle.getApplicant());
+
+            Teacher teacher = teachService.getTeacherById(orderSingle.getApplicant());
+            item.put("equipOrderApplicant",teacher.getName());
             result.add(item);
         }
         return JSON.toJSONString(result);//

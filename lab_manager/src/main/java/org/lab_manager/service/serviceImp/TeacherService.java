@@ -6,6 +6,7 @@ import org.lab_manager.dao.TeacherDao;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
+import org.lab_manager.entity.Teacher;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,6 +73,18 @@ public class TeacherService implements ITeachService {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Teacher getTeacherById(String teacherId) {
+        try{
+            Teacher teacher = teacherDao.queryById(teacherId);
+            return teacher;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

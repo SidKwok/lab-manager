@@ -15,7 +15,7 @@
         SELECT * FROM course_table WHERE Course_id=#{id} AND Course_name=#{name};
     </select>
     <select id="queryAllExperimentOrderState" resultType="Experiment">
-        SELECT ID,Course_name,Order_date,Start_time,Week_day,Day_time,Teacher FROM order_experiment;
+        SELECT * FROM order_experiment ORDER BY ID DESC;
     </select>
     <select id="getExperimentsByRoomID" resultType="Experiment">
         SELECT *FROM course_table WHERE Room_id=#{roomID};

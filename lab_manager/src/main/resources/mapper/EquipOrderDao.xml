@@ -7,7 +7,7 @@
         INSERT INTO device_order(Device_name,Equip_number,Start_time,End_time,Applicant,Order_date,Device_state) VALUES (#{deviceName},#{number},#{startTime},#{endTime},#{applicant},#{orderDate},#{deviceState});
     </insert>
     <select id="getAllEquipOrderStatus" resultType="EquipOrder">
-        SELECT *FROM device_order;
+        SELECT *FROM device_order order by Order_id DESC;
     </select>
     <update id="approveEquipOrder" parameterType="EquipInfo">
         UPDATE device_order SET Device_state='批准' WHERE Order_id=#{id}
@@ -17,6 +17,6 @@
     </update>
 
     <select id="getTeacherEquipOrder" resultType="EquipOrder">
-        SELECT *FROM device_order WHERE Applicant=#{teacherId};
+        SELECT *FROM device_order WHERE Applicant=#{teacherId} order by Order_id desc;
     </select>
 </mapper>

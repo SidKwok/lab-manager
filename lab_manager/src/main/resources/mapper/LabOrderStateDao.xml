@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.lab_manager.dao.LabOrderStateDao">
     <select id="getLabOrderState" resultType="LabOrderState">
-        SELECT Course_name,Start_time,Week_day,Day_time,State FROM order_experiment WHERE Teacher=#{user_name};
+        SELECT * FROM order_experiment WHERE Teacher=#{user_name} order by ID desc;
     </select>
     <select id="getEquipOrderState" resultType="LabOrderState">
-        SELECT Device_name,Order_date,Order_id,Days,Equip_number,Device_state FROM device_order WHERE Applicant=#{user_name};
+        SELECT * FROM device_order WHERE Applicant=#{user_name} order by Order_id desc;
     </select>
 </mapper>

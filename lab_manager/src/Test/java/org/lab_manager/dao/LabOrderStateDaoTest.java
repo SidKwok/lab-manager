@@ -21,16 +21,16 @@ public class LabOrderStateDaoTest {
     LabOrderStateDao labOrderStateDao;
     @Test
     public void getLabOrderState() throws Exception {
-        List<LabOrderState> list = labOrderStateDao.getLabOrderState("张");
+        List<LabOrderState> list = labOrderStateDao.getLabOrderState("admin");
         for (LabOrderState labOrderState:list){
-            System.out.println(labOrderState.getCourse_name());
+            System.out.println(labOrderState.getOrder_date());
         }
     }
     @Test
     public void getEquipOrderState() throws  Exception{
-        List<LabOrderState> list = labOrderStateDao.getEquipOrderState("张");
+        List<LabOrderState> list = labOrderStateDao.getEquipOrderState("admin");
         for (LabOrderState labOrderState:list){
-            //System.out.println(labOrderState.getDevice_state());
+            System.out.println(labOrderState.getOrder_date());
         }
     }
 }

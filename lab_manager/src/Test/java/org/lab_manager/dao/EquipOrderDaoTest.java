@@ -8,6 +8,7 @@ import org.lab_manager.entity.LabInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import sun.reflect.annotation.ExceptionProxy;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class EquipOrderDaoTest {
     public void getAllEquipOrderStatus()throws Exception{
         List<EquipOrder> list = equipOrderDao.getAllEquipOrderStatus();
         for (EquipOrder equipOrder:list){
-            System.out.println(equipOrder.getApplicant());
+            System.out.println(equipOrder.getOrder_date());
         }
     }
     @Test
@@ -42,5 +43,12 @@ public class EquipOrderDaoTest {
     public void refuseOrder() throws Exception{
         boolean status=equipOrderDao.refuseEquipOrder(1);
         System.out.println(status);
+    }
+    @Test
+    public void getTeacherEquiptOrder() throws Exception{
+        List<EquipOrder> list = equipOrderDao.getTeacherEquipOrder("admin");
+        for (EquipOrder equipOrder:list){
+            System.out.println(equipOrder.getOrder_date());
+        }
     }
 }

@@ -14,7 +14,7 @@
     </select>
 
     <select id="getAllLabOrder" resultType="LabOrderState">
-        SELECT * FROM order_experiment WHERE Teacher=#{teacherId};
+        SELECT * FROM order_experiment WHERE Teacher=#{teacherId} order by ID desc;
     </select>
 
     <insert id="insertPresentInfo">

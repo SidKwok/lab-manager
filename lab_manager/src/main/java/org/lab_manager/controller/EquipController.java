@@ -232,7 +232,7 @@ public class EquipController {
     public String addEquiment(@RequestParam("assetName")String assetName,@RequestParam("classNo")String classNo,
                               @RequestParam("className")String className,@RequestParam("valueType")String valueType,
                               @RequestParam("number")String number,@RequestParam("originName")String originName,
-                              @RequestParam("purchaseUnit")String purchaseUnit,@RequestParam("unitPrice")String unitPrice,
+                              @RequestParam("purchaseUnit")String purchaseUnit,@RequestParam("unitPrice")float unitPrice,
                               @RequestParam("invoiceNum")String invoiceNum,@RequestParam("measurementUnit")String measurementUnit,
                               @RequestParam("purchaseDate")String purchaseDate,@RequestParam("financialRes")String financialRes,
                               @RequestParam("assetRes")String assetRes,@RequestParam("handlePerson")String handlePerson,
@@ -245,11 +245,47 @@ public class EquipController {
                               @RequestParam("productionDate")String productionDate,@RequestParam("country")String country,
                               @RequestParam("manufacture")String manufacture,@RequestParam("brand")String brand,
                               @RequestParam("durableYears")String durableYears,@RequestParam("estimatedExpirationDate")String estimatedExpirationDate,
-                              @RequestParam("retailer")String numbretailerer){
+                              @RequestParam("retailer")String retailer){
         Map<String,Object> result=new HashMap<String, Object>();
 
+        EquipInfo equipInfo=new EquipInfo();
+        equipInfo.setAsset_name(assetName);
+        equipInfo.setAsset_res(assetRes);
+        equipInfo.setBrand(brand);
+        equipInfo.setClass_no(Integer.parseInt(classNo));
+        equipInfo.setClass_name(className);
+        equipInfo.setValue_type(valueType);
+        equipInfo.setNumber(Integer.parseInt(number));
+        equipInfo.setOrigin_name(originName);
+        equipInfo.setPurchase_unit(purchaseUnit);
+        equipInfo.setUnit_price(unitPrice);
+        equipInfo.setInvoice_num(invoiceNum);
+        equipInfo.setManufacturer(manufacture);
+        equipInfo.setPurchase_date(purchaseDate);
+        equipInfo.setFinancial_res(financialRes);
+        equipInfo.setHandle_person(handlePerson);
+        equipInfo.setCharge_type(chargeType);
+        equipInfo.setCheck_date(checkDate);
+        equipInfo.setMeasurement_unit(measurementUnit);
+        equipInfo.setRecept_date(receptDate);
+        equipInfo.setPurchase_form(purchaseForm);
+        equipInfo.setManage_part(managePart);
+        equipInfo.setSubject_type(subjectType);equipInfo.setSubject(subject);
+        equipInfo.setRemark(remark);
+        equipInfo.setFinantial_opinion(finantialOpinion);
+        equipInfo.setPurchasing_agent(purchasingAgent);
+        equipInfo.setModel(modal);
+        equipInfo.setStandard(standard);
+        equipInfo.setProduction_date(productionDate);
+        equipInfo.setCountry(country);
+        equipInfo.setDurable_years(Integer.parseInt(durableYears));
+        equipInfo.setEstimated_expiration_date(estimatedExpirationDate);
+        equipInfo.setRetailer(retailer);
+
+
         String flag="0";
-        if(equipService.addEquip(assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+        //if(equipService.addEquip(assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+        if(equipService.addEquip(equipInfo))
             flag="1";
         result.put("status",flag);
 

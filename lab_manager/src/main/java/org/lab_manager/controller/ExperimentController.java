@@ -4,8 +4,12 @@ package org.lab_manager.controller;
  */
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.EquipOrder;
 import org.lab_manager.entity.Experiment;
+import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
+import org.lab_manager.service.IEquipService;
+import org.lab_manager.service.IExperimentService;
 import org.lab_manager.service.ITeachService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,6 +27,12 @@ import java.util.Map;
 public class ExperimentController {
     @Resource
     private ITeachService  teachService;
+
+    @Resource
+    private IExperimentService experimentService;
+
+    @Resource
+    private IEquipService equipService;
 
     /**
      * // 某人的预约状态
@@ -74,24 +84,25 @@ public class ExperimentController {
     public String getOrdersOfTeacher(@RequestParam("role")String role,@RequestParam("username")String username){
         Map<String,Object> result=new HashMap<String, Object>();
         List<Object> labList=new ArrayList<Object>();
-//        teachService.getAllExperiment()
-        for(int i=0;i<2;i++){
+        List<LabOrderState> allLabOrder = teachService.getAllLabOrder(username);
+        for(LabOrderState singleOrder:allLabOrder){
             Map<String,Object> labItem=new HashMap<String, Object>();
-            labItem.put("labName","LOL");
-            labItem.put("labWeek","第1,2周");
-            labItem.put("labWeekday","周5");
-            labItem.put("labCourse","第9,10节");
-            labItem.put("labOrderId","001");
-            labItem.put("labOrderDate","1");
-            labItem.put("state","回绝");
+            labItem.put("labName",singleOrder.getCourse_name());
+            labItem.put("labWeek",singleOrder.getStart_time());
+            labItem.put("labWeekday",singleOrder.getWeek_day());
+            labItem.put("labCourse",singleOrder.getDay_time());
+            labItem.put("labOrderId",singleOrder.getCourse_name());
+            labItem.put("labOrderDate",singleOrder.getOrder_date());
+            labItem.put("state",singleOrder.getState());
             labList.add(labItem);
         }
 
         List<Object> equipList=new ArrayList<Object>();
-        for(int i=0;i<2;i++){
+        List<EquipOrder> equipOrders = equipService.getEquipOrderByTeacherId(username);
+        for(EquipOrder singleEquipOrder:equipOrders){
             Map<String,Object> equipItem=new HashMap<String, Object>();
-            equipItem.put("equipName","杀猪刀");
-            equipItem.put("equipDate","2016-5-29");
+            equipItem.put("equipName",singleEquipOrder.getDevice_name());
+            equipItem.put("equipDate",singleEquipOrder.getOrder_date());
             equipItem.put("equipOrderId","001");
             equipItem.put("equipDays","1");
             equipItem.put("equipNumber","1");
@@ -224,7 +235,10 @@ public class ExperimentController {
         System.out.println(json.get("username")+"-----------------");
 
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put("status","0");
+
+        int flag=0;
+//        if(teachService.)
+        result.put("status",flag);
 
         return JSON.toJSONString(result);
     }
@@ -240,10 +254,11 @@ public class ExperimentController {
     @RequestMapping(value="/orderExp",method = RequestMethod.POST)
     public String addLabOrder(@RequestParam("assetName")String assetName,@RequestParam("number")int number,@RequestParam("days")int days,@RequestParam("applicant")String applyer) {
         //根据上面的json格式要求返回数据，需查询数据库
-        Map<String,String> result=new HashMap<String, String>();
+        Map<String,Object> result=new HashMap<String, Object>();
 
-
-        result.put("status","0");
+        int flag=0;
+//        if(experimentService.applyExp())
+        result.put("status",flag);
         return JSON.toJSONString(result);
     }
 }

@@ -2,7 +2,7 @@
 2016-5-31
 /**
     *预定实验室房间（以及预约实验都是这个接口）
-     * params: roomId, labName, applicant, week, weekday, course
+     * params:  roomId, labName, applicant, week, weekday, course
      {
      "status": "0"
      }

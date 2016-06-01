@@ -15,4 +15,8 @@
     <update id="refuseEquipOrder" parameterType="EquipInfo">
         UPDATE device_order SET Device_state='拒绝' WHERE Order_id=#{id}
     </update>
+
+    <select id="getTeacherEquipOrder" resultType="EquipOrder">
+        SELECT *FROM device_order WHERE Applicant=#{teacherId};
+    </select>
 </mapper>

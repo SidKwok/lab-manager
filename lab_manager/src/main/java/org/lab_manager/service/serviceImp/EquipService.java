@@ -83,5 +83,15 @@ public class EquipService implements IEquipService{
         return equipOrderDao.refuseEquipOrder(id);
     }
 
+    @Override
+    public List<EquipOrder> getEquipOrderByTeacherId(String teacherId) {
+        try{
+            return equipOrderDao.getTeacherEquipOrder(teacherId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

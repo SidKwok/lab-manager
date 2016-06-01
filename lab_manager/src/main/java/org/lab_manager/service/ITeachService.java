@@ -4,13 +4,13 @@ import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.LabOrderState;
 import org.lab_manager.entity.Student;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by xiaofeige on 2016/5/27.
  */
-@Repository
 public interface ITeachService {
     /**
      * 上传学生成绩

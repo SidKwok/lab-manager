@@ -56,4 +56,8 @@ public interface IEquipService {
      */
     public boolean refuseOrderEquip(Integer id);
 
+    /**
+     * 获取某人预约的设备的状态
+     */
+    public List<EquipOrder> getEquipOrderByTeacherId(String teacherId);
 }

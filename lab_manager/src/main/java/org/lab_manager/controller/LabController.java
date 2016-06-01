@@ -142,6 +142,9 @@ public class LabController {
     public String confirmOrder(@RequestParam("labOrderId")String id) {
         //根据上面的json格式要求返回数据，需查询数据库
         Map<String,String> result=new HashMap<String, String>();
+
+        int flag=0;
+//        if(labServi)
         result.put("status","0");
         return JSON.toJSONString(result);
     }

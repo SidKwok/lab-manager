@@ -187,10 +187,10 @@ function labNoticeEvent() {
       var trs = $('#tea-checkDuty-table').children();
       $.each(trs, function(i, e){
           params.stu.push({
-              stuId: $(e).children('td').eq(1).text(),
-              stuName: $(e).children('td').eq(2).text(),
-              stuGrade: $(e).children('td').eq(3).children('input').val(),
-              stuState: $(e).children('td').eq(4).children('select').children('option:selected').text()
+              stuId: $(e).children('td').eq(0).text(),
+              stuName: $(e).children('td').eq(1).text(),
+              stuGrade: $(e).children('td').eq(2).children('input').val(),
+              stuState: $(e).children('td').eq(3).children('select').children('option:selected').text()
           });
       });
       $.ajax({
@@ -206,6 +206,7 @@ function labNoticeEvent() {
             if(retData.status === "1") {
                 alert('考勤成功');
             }
+            $('#tea-checkDuty-modal').modal('hide');
           },
           error: function(){
               console.log('/experiment/uploadAttendence, fail');
@@ -345,20 +346,20 @@ function labCardEvent() {
 
   // 发送成绩
   $('#post-correctGradeConfirm').on('click', function(){
-      var params = {
-          stu: [],
-          username: username,
-          role: role,
-          laId: $('#tea-correctGrade-modal-label').attr('data-labId')
-      };
+      var stuArray = [];
       var trs = $('#tea-correctGrade-table').children();
       $.each(trs, function(i, e){
-          params.stu.push({
-              stuName: $(e).children('td').eq(0).text(),
-              stuGrade: $(e).children('td').eq(1).children('input').val()
+          stuArray.push({
+              stuId: $(e).children('td').eq(0).text(),
+              stuGrade: $(e).children('td').eq(2).children('input').val()
           });
       });
-      console.log(params);
+      var params = {
+          stu: JSON.stringify(stuArray),
+          username: username,
+          role: role,
+          labId: $('#tea-correctGrade-modal-label').attr('data-labId')
+      };
       $.ajax({
           type: 'POST',
           url: '/teacher/uploadStuGrade',
@@ -372,6 +373,7 @@ function labCardEvent() {
             if(retData.status === "1") {
                 alert('给成绩成功');
             }
+            $('#tea-correctGrade-modal').modal('hide');
           },
           error: function(){
               console.log('/teacher/uploadStuGrade');

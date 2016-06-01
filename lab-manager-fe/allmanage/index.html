@@ -253,7 +253,7 @@
                       <option>第十八周</option>
                   </select>
                   <select class="form-control" id="input-weekday">
-                      <option>起始天</option>
+                      <option>周几</option>
                       <option>周一</option>
                       <option>周二</option>
                       <option>周三</option>
@@ -262,7 +262,7 @@
                       <option>周六</option>
                       <option>周日</option>
                   </select>
-                  <select class="form-control" id="input-weekday">
+                  <select class="form-control" id="input-course">
                       <option>第几节课</option>
                       <option>1、2节</option>
                       <option>3、4节</option>
@@ -338,7 +338,7 @@
             $('#get-test').on('click', function(){
                 $.ajax({
                     type: 'GET',
-                    url: '/getTest_ajax',
+                    url: 'getTest_ajax',
                     data: {},
                     dataType: 'json',
                     success: function(retData){
@@ -353,7 +353,7 @@
             $('#post-test').on('click', function(){
                 $.ajax({
                     type: 'POST',
-                    url: '/postTest_ajax',
+                    url: 'postTest_ajax',
                     data: {test: 'test'},
                     dataType: 'json',
                     success: function(retData){
@@ -365,16 +365,15 @@
                 });
             });
 
-            $('#post-equipOrder').on('click', function(){
-                var params = {
-                    assetName: $('#lab-equipOrder-modal-label').text(),
-                    assetId: $('#lab-equipOrder-modal-label').attr('data-assetId'),
-                    number: $('#input-equipNumber').val(),
-                    startTime: $('#input-startTime').val(),
-                    endTime: $('#input-endTime').val(),
-                    applicant: username
-                };
-                console.log(params);
+            $('#post-labOrder').on('click', function(){
+                var data = "[{\"applicant\":\"T001\",\"course\":\"3,4节课\",\"labName\":\"软件测试\",\"week\":\"2015\",\"weekday\":\"\"},{\"applicant\":\"T001\",\"course\":\"全天\\r\",\"labName\":\"人机交互\",\"week\":\"2014-2-15\",\"weekday\":\"第六周\"}]";
+                var retData = eval('(' + data + ')');
+                $('#order-state').children().detach();
+                var domArr = [];
+                $.each(retData, function(i, e){
+                    domArr.push('<p>' + e.labName + ' ' + e.applicant + ' ' + e.week + ' ' + e.weekday + ' ' + e.course + '</p>');
+                });
+                $('#order-state').append(domArr.join(''));
             });
         </script>
     </body>

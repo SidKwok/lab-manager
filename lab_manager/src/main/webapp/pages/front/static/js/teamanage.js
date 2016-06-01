@@ -61,48 +61,6 @@ function loadLabNotice() {
             console.log('/experiment/teaAllCourse');
             alert('后台错误');
 
-            // /***************************************
-            // * 用于前端test 测试状态：
-            // */
-            // /*ajax返回的数据*/
-            // var retData = [
-            //   {
-            //     "courseId": "0001",
-            //     "labName": "机器人实验",
-            //     "labWeek": "第一周",
-            //     "labWeekday": "周一",
-            //     "labCourse": "第1、2节"
-            //   },
-            //   {
-            //     "courseId": "0002",
-            //     "labName": "足球实验",
-            //     "labWeek": "第二周",
-            //     "labWeekday": "周二",
-            //     "labCourse": "第3、4节"
-            //   },
-            //   {
-            //     "courseId": "0003",
-            //     "labName": "sex实验",
-            //     "labWeek": "第三周",
-            //     "labWeekday": "周三",
-            //     "labCourse": "第5、6节"
-            //   }
-            // ];
-            // /**************/
-            // $('#tea-course').children().detach();
-            // var domArr = [];
-            // $.each(retData, function(i, e){
-            //     domArr.push(
-            //         '<div class="course hvr-sweep-to-right">',
-            //             '<div class="tea-courseId">' + e.courseId + '</div>',
-            //             '<div class="tea-courseContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
-            //             '<button class="btn btn-success tea-course-check-btn" data-toggle="modal" data-target="#tea-checkDuty-modal">考勤</button>',
-            //         '</div>'
-            //     );
-            // });
-            // $('#tea-course').append(domArr.join(''));
-            // /***************************************/
-
         }
     });
 }
@@ -145,33 +103,6 @@ function labNoticeEvent() {
           error: function(){
               console.log('/experiment/courseStuInfo fail');
               alert('后台错误!');
-              // /***************************************
-              // * 用于前端test 测试状态：
-              // */
-              // /*ajax返回的数据*/
-              // var retData = [
-              //   "sid","mingen","natalie","Airdy"
-              // ];
-              // /**************/
-              // $('#tea-checkDuty-table').children().detach();
-              // var domArr = [];
-              // $.each(retData, function(i, e){
-              //     domArr.push(
-              //         '<tr>',
-              //             '<td>' + e.stuId + '</td>',
-              //             '<td>' + e.stuName + '</td>',
-              //             '<td><input class="form-control"></input></td>',
-              //             '<td>',
-              //                 '<select class="form-control">',
-              //                 '<option></option>',
-              //                 '<option>已到</option>',
-              //                 '<option>未到</option>',
-              //             '</td>',
-              //         '</tr>'
-              //     );
-              // });
-              // $('#tea-checkDuty-table').append(domArr.join(''));
-              // /***************************************/
           }
       });
   });
@@ -247,43 +178,6 @@ function loadLabCard () {
         error: function(){
             console.log('/teacher/teaAllLab fail');
             alert('后台错误');
-
-            // /***************************************
-            // * 用于前端test 测试状态：
-            // */
-            // /*ajax返回的数据*/
-            // var retData = [
-            //   {
-            //     "labName": "机器人实验",
-            //     "labId": "0001"
-            //   },
-            //   {
-            //     "labName": "足球实验",
-            //     "labId": "0002"
-            //   },
-            //   {
-            //     "labName": "sex实验",
-            //     "labId": "0003"
-            //   },
-            //   {
-            //     "labName": "禁忌实验",
-            //     "labId": "0004"
-            //   }
-            // ];
-            // /**************/
-            // $('#tea-correctGrade .flex-box').children().detach();
-            // var domArr = [];
-            // $.each(retData, function(i, e){
-            //     domArr.push(
-            //         '<div class="card hvr-bounce-in" data-labName="' + e.labName + '">',
-            //             '<div class="tea-labId">' + e.labId + '</div>',
-            //             '<div class="tea-correctGrade-labName">' + e.labName + '</div>',
-            //             '<button class="btn btn-success tea-correct-btn" data-toggle="modal" data-target="#tea-correctGrade-modal">给成绩</button>',
-            //         '</div>'
-            //     );
-            // });
-            // $('#tea-correctGrade .flex-box').append(domArr.join(''));
-            // /***************************************/
         }
     });
 }
@@ -323,24 +217,6 @@ function labCardEvent() {
           error: function(){
               console.log('/teacher/getExpStuInfo fail');
               alert('后台错误');
-              // /***************************************
-              // * 用于前端test 测试状态：
-              // */
-              // /*ajax返回的数据*/
-              // var retData = [
-              //   "sid","mingen","natalie","Airdy", "Bob"
-              // ];
-              // /**************/
-              // $('#tea-correctGrade-modal-label').text(labName);
-              // $('#tea-correctGrade-table').children().detach();
-              // var domArr = [];
-              // $.each(retData, function(i, e){
-              //     domArr.push(
-              //         '<tr><td>' + e + '</td><td><input class="form-control"></input></td></tr>'
-              //     );
-              // });
-              // $('#tea-correctGrade-table').append(domArr.join(''));
-              // /***************************************/
           }
       });
   });

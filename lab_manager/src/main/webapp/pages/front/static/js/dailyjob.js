@@ -136,21 +136,6 @@ function basicEvent(){
             error: function(retData){
                 console.log('/notice/addNotice fail');
                 alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = [];
-                // /**************/
-                // if(retData.status === '0'){
-                //     alert('发表失败');
-                // }
-                // if(retData.status === '1'){
-                //     alert('发表成功');
-                //     loadNotice();
-                // }
-                // /***************************************/
             }
         });
     });

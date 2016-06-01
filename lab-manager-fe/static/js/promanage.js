@@ -873,7 +873,7 @@ function loadEquipOrder(){
                 '<div class="equip-order order hvr-sweep-to-right">',
                     '<div class="equipOrderId">' + e.equipOrderId + '</div>',
                     '<div class="equipOrderDate">' + e.equipOrderDate + '</div>',
-                    '<div class="equipOrderContent">' + e.equipOrderName + ' ' + e.equipOrderNumber + '件 ' + e.equipOrderDay + '天</div>',
+                    '<div class="equipOrderContent">' + e.equipOrderName + ' ' + e.equipOrderNumber + '件 ' + e.equipOrderStartTime + '~' + e.equipOrderEndTime + '</div>',
                     '<div class="equipOrderApplicant">' + e.equipOrderApplicant + '</div>',
                     '<div class="pro-order-btnGroup">',
                         '<button class="btn btn-success equipOrder-confirm-btn">批准</button>',

@@ -333,7 +333,7 @@ function init () {
                       '<div class="all-lab-order order hvr-sweep-to-right">',
                           '<div class="allLabOrderId">' + e.labOrderRoom + '</div>',
                           '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
-                          '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
+                          '<div class="allLabOrderContent">' + e.labName + ' ' + e.labStartWeek + '~' + e.labEndWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
                           '<div class="allLabOrderState">状态：' + e.state + '</div>',
                       '</div>'
                   );
@@ -346,7 +346,7 @@ function init () {
                       '<div class="all-equip-order order hvr-sweep-to-right">',
                           '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
                           '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
-                          '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
+                          '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipStartTime + '~' + e.equipEndTime + '</div>',
                           '<div class="allEquipOrderState">状态：' + e.state + '</div>',
                       '</div>'
                   );
@@ -356,81 +356,6 @@ function init () {
           error: function() {
               console.log('/experiment/teacherOrderStatus fail');
               alert('后台错误');
-              // /***************************************
-              // * 用于前端test 测试状态：
-              // */
-              // /*ajax返回的数据*/
-              // var retData = {
-              //   "lab":[
-              //     {
-              //       "labName": "机器人实验",
-              //       "labWeek": "第一周",
-              //       "labWeekday": "周五",
-              //       "labCourse": "第1、2节",
-              //       "labOrderId": "0001",
-              //       "labOrderDate": "2016-5-21" ,
-              //       "state": "允许"
-              //     },
-              //     {
-              //       "labName": "足球实验",
-              //       "labWeek": "第二周",
-              //       "labWeekday": "周四",
-              //       "labCourse": "第3、4节",
-              //       "labOrderId": "0002",
-              //       "labOrderDate": "2016-5-24" ,
-              //       "state": "拒绝"
-              //     }
-              //   ],
-              //   "equip":[
-              //     {
-              //       "equipName": "西瓜刀",
-              //       "equipDate": "2015-9-10",
-              //       "equipOrderId": "001",
-              //       "equipDays": "10",
-              //       "equipNumber": "2",
-              //       "state": "未决定"
-              //     },
-              //     {
-              //       "equipName": "狼牙棒",
-              //       "equipDate": "2015-11-10",
-              //       "equipOrderId": "002",
-              //       "equipDays": "2",
-              //       "equipNumber": "10",
-              //       "state": "未决定"
-              //     }
-              //   ]
-              // };
-              // /**************/
-              // var lab = retData.lab;
-              // var equip = retData.equip;
-              // var domLab = [];
-              // var domEquip = [];
-              // $('#all-lab-orderState').children().detach();
-              // $.each(lab, function(i, e){
-              //     domLab.push(
-              //         '<div class="all-lab-order order hvr-sweep-to-right">',
-              //             '<div class="allLabOrderId">' + e.labOrderId + '</div>',
-              //             '<div class="allLabOrderDate">' + e.labOrderDate + '</div>',
-              //             '<div class="allLabOrderContent">' + e.labName + ' ' + e.labWeek + ' ' + e.labWeekday + ' ' + e.labCourse + '</div>',
-              //             '<div class="allLabOrderState">状态：' + e.state + '</div>',
-              //         '</div>'
-              //     );
-              // });
-              // $('#all-lab-orderState').append(domLab.join(''));
-              //
-              // $('#all-equip-orderState').children().detach();
-              // $.each(equip, function(i, e){
-              //     domEquip.push(
-              //         '<div class="all-equip-order order hvr-sweep-to-right">',
-              //             '<div class="allEquipOrderId">' + e.equipOrderId + '</div>',
-              //             '<div class="allEquipOrderDate">' + e.equipDate + '</div>',
-              //             '<div class="allEquipOrderContent">' + e.equipName + ' ' + e.equipNumber + '件 ' + e.equipDays + '天 ' + '</div>',
-              //             '<div class="allEquipOrderState">状态：' + e.state + '</div>',
-              //         '</div>'
-              //     );
-              // });
-              // $('#all-equip-orderState').append(domEquip.join(''));
-              // /***************************************/
           }
       });
 
@@ -510,25 +435,6 @@ function init () {
                     error: function(){
                         console.log('/equipment/queryEquipmentInfo fail');
                         alert('后台错误！');
-
-                        // /***************************************
-                        // * 用于前端test 测试状态：ok
-                        // */
-                        // /*ajax返回的数据*/
-                        // var retData = {
-                        //   "classNo": "006",
-                        //   "className": "具",
-                        //   "valueType": "便宜",
-                        //   "number": "112"
-                        // };
-                        // /**************/
-                        // $('#lab-equipInfo-modal .modal-body').children().detach();
-                        // var equipInfo = '<div class="lab-equipInfo-classNo">分类代码： ' + retData.classNo + '</div>' +
-                        //                 '<div class="lab-equipInfo-className">分类名称： ' + retData.className + '</div>' +
-                        //                 '<div class="lab-equipInfo-valueType">价值类型： ' + retData.valueType + '</div>' +
-                        //                 '<div class="lab-equipInfo-number">数量： ' + retData.number + '</div>';
-                        // $('#lab-equipInfo-modal .modal-body').append(equipInfo);
-                        // /***************************************/
                     }
                 });
             });
@@ -569,21 +475,6 @@ function init () {
                     error: function(){
                         console.log('/equipment/orderEquip fail');
                         alert('后台错误！');
-                        // /***************************************
-                        // * 用于前端test 测试状态：ok
-                        // */
-                        // /*ajax返回的数据*/
-                        // var retData = {
-                        //   "status": "1"
-                        // };
-                        // /**************/
-                        // if(retData.status === "0") {
-                        //     alert('预约失败');
-                        // }
-                        // if(retData.status === "1") {
-                        //     alert('预约成功');
-                        // }
-                        // /***************************************/
                     }
                 });
             });
@@ -592,43 +483,6 @@ function init () {
             console.log('/equipment/queryAllEquipment', 'fail');
             alert('后台错误！');
 
-            // /***************************************
-            // * 用于前端test 测试状态：ok
-            // */
-            // /*ajax返回的数据*/
-            // var retData = [
-            //   {
-            //     "assetName": "西瓜刀"
-            //   },
-            //   {
-            //     "assetName": "狼牙棒"
-            //   },
-            //   {
-            //     "assetName": "屠龙刀"
-            //   },
-            //   {
-            //     "assetName": "倚天剑"
-            //   },
-            //   {
-            //     "assetName": "绝世好剑"
-            //   },
-            // ];
-            // /**************/
-            // $('#lab-equip .flex-box').children().detach();
-            // var domArr = [];
-            // $.each(retData, function(i, e) {
-            //     domArr.push(
-            //         '<div class="card hvr-bounce-in" data-assetName="' + e.assetName + '">',
-            //             '<div class="lab-equipName">' + e.assetName + '</div>',
-            //             '<div class="lab-buttonGroup">',
-            //                 '<button class="btn btn-info lab-equipInfo-btn" data-toggle="modal" data-target="#lab-equipInfo-modal">简介</button>',
-            //                 '<button class="btn btn-success lab-order-btn" data-toggle="modal" data-target="#lab-equipOrder-modal">预约</button>',
-            //             '</div>',
-            //         '</div>'
-            //     );
-            // });
-            // $('#lab-equip .flex-box').append(domArr.join(''));
-            // /***************************************/
         }
       });
 
@@ -692,64 +546,6 @@ function basicEvent() {
             error: function(){
                 console.log('/lab/getRoomCurrInfo fail');
                 alert('后台错误！');
-
-                // /***************************************
-                // * 用于前端test 测试状态：ok
-                // */
-                // /*ajax返回的数据*/
-                // var retData = {
-                //   "status": "1",
-                //   "result":[
-                //     {
-                //       "teacher": "sid",
-                //       "labName": "fuck",
-                //       "roomId": "001"
-                //     },
-                //     {
-                //       "teacher": "mingen",
-                //       "labName": "sex",
-                //       "roomId": "002"
-                //     },
-                //     {
-                //       "teacher": "nat",
-                //       "labName": "ohyeah",
-                //       "roomId": "003"
-                //     },
-                //     {
-                //       "teacher": "airdy",
-                //       "labName": "ohno",
-                //       "roomId": "004"
-                //     },
-                //     {
-                //       "teacher": "bob",
-                //       "labName": "ohshit",
-                //       "roomId": "005"
-                //     },
-                //   ]
-                // };
-                // /**************/
-                // $('.db-table').children().detach();
-                // var domArr = [];
-                // if (retData.status === '0') {
-                //     alert('没有该搜查结果')
-                // }
-                // if(retData.status === '1') {
-                //     domArr.push(
-                //         '<table class="table table-hover">',
-                //             '<thead>',
-                //                 '<td>教师</td><td>实验</td><td>实验室</td>',
-                //             '</thead>',
-                //             '<tbody>'
-                //     );
-                //     $.each(retData.result, function(i, e){
-                //         domArr.push(
-                //             '<tr><td>' + e.teacher + '</td>' + '<td>' + e.labName + '</td>' + '<td>' + e.roomId + '</td></tr>'
-                //         );
-                //     });
-                //     domArr.push('</tboday></table>');
-                //     $('.db-table').append(domArr.join(''));
-                // }
-                // /***************************************/
             }
         });
     });
@@ -766,12 +562,3 @@ function basicEvent() {
 }
 
 init();
-
-/***************************************
-* 用于前端test 测试状态：
-*/
-/*ajax返回的数据*/
-//var retData = [];
-/**************/
-
-/***************************************/

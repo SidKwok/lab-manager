@@ -152,12 +152,12 @@ public class EquipController {
      */
     @ResponseBody
     @RequestMapping(value="/orderEquip",method = RequestMethod.POST)
-    public String orderEquipment(@RequestParam("assetName")String assetName,@RequestParam("number")int num,@RequestParam("days")int days,@RequestParam("applicant")String apllyer){
+    public String orderEquipment(@RequestParam("assetName")String assetName,@RequestParam("number")String num,@RequestParam("startTime")String startTime,@RequestParam("endTime")String endTime,@RequestParam("applicant")String apllyer){
         //返回所有设备的名称列表，放到json中
         Map<String,Object> result=new HashMap<String, Object>();
 
         int flag=0;
-        if(equipService.addEquipOrder(assetName,num,"",":",apllyer))
+        if(equipService.addEquipOrder(assetName,Integer.parseInt(num),startTime,endTime,apllyer))
             flag=1;
 
         result.put("status",flag);

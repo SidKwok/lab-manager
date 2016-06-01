@@ -78,8 +78,9 @@ public class ExperimentService implements IExperimentService {
             String now= DateTimeUtil.currentTimestamp().toString();
             mExpDao.applyExperiment(courseName,roomId,applier,startTime,endtime,weekday,dayTime,now);
         }catch (Exception e){
-
+            e.printStackTrace();
+            return false;
         }
-        return false;
+        return true;
     }
 }

@@ -28,6 +28,16 @@ public class ExperimentService implements IExperimentService {
     }
 
     @Override
+    public List<Experiment> getExperimentByName(String name) {
+        try{
+            return mExpDao.getExpByName("%"+name+"%");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public List<Experiment> getAllExp() {
         return mExpDao.queryAllExperimentOrderState();
     }

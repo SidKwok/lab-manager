@@ -15,6 +15,12 @@ public interface ExperimentDao {
     获取指定实验信息
      */
     public Experiment queryById(String id);
+
+    /**
+     *通过实验名模糊搜索实验
+     */
+    public List<Experiment> getExpByName(String courseName);
+
     public Experiment queryByIdAndName(@Param("id") String id,@Param("name") String name);
     /*
     添加实验课程

@@ -15,6 +15,10 @@ public interface IExperimentService {
     public Experiment getExperimentById(String eId);
 
     /**
+     * 按实验名称搜索实验
+     */
+    public List<Experiment> getExperimentByName(String name);
+    /**
      * 查询所有实验的状态
      */
     public List<Experiment> getAllExp();

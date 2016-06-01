@@ -338,23 +338,22 @@ public class LabController {
 
         if(type.equals("room")){
 //            labService.getLabUseByRoomId()
-            experimentService.getExperimentById(item);
+
             flag=1;
         }else{
-
+            List<Experiment> experiments = experimentService.getExperimentByName(item);
+            for(Experiment singleExp:experiments){
+                Map<String,Object> teaItem=new HashMap<String, Object>();
+                teaItem.put("teacher",singleExp.getTeacher());
+                teaItem.put("labName",singleExp.getCourse_name());
+                teaItem.put("roomId",singleExp.getRoom_id());
+                teacherInfo.add(teaItem);
+            }
             flag=1;
         }
 
-        for(int i=0;i<2;i++){
-            Map<String,Object> teaItem=new HashMap<String, Object>();
-            teaItem.put("teacher","sid大傻");
-            teaItem.put("labName","薛定谔的喵实验");
-            teaItem.put("roomId","004");
-            teacherInfo.add(teaItem);
-        }
-
-        result.put("status",flag);
         result.put("result",teacherInfo);
+        result.put("status",flag);
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }

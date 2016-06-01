@@ -7,6 +7,10 @@
         SELECT * FROM course_table WHERE Course_id=#{id};
     </select>
 
+    <select id="getExpByName" resultType="Experiment">
+        SELECT * FROM course_table WHERE Course_name like #{name};
+    </select>
+
     <select id="queryByIdAndName" resultType="Experiment">
         SELECT * FROM course_table WHERE Course_id=#{id} AND Course_name=#{name};
     </select>

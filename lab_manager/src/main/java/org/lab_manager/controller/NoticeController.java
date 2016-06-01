@@ -38,10 +38,10 @@ public class NoticeController {
     public String addNotice(@RequestParam("noticeAuthor")String author,@RequestParam("noticeContent")String content) {
         //首先解析接收到的notice
         Map<String,Object> result=new HashMap<String, Object>();
-        int flag=0;
+        String flag="0";
 
         if(noticeService.addNotice(author,content))
-            flag=1;
+            flag="1";
 
         result.put("status",flag);
 

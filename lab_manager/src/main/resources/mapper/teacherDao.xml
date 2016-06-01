@@ -17,7 +17,7 @@
         SELECT * FROM order_experiment WHERE Teacher=#{teacherId};
     </select>
 
-    <select id="insertPresentInfo" resultType="boolean">
+    <insert id="insertPresentInfo">
         INSERT into check_on_table (date,Student_id,Course,Score,Present) VALUES (#{date},#{stuId},#{course},#{score},#{present});
-    </select>
+    </insert>
 </mapper>

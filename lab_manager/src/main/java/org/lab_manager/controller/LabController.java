@@ -194,7 +194,7 @@ public class LabController {
 
         for(LabInfo roomSingle:allLabRoom){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("room_id",roomSingle.getID());
+            item.put("room_id",roomSingle.getRoom_id());
             item.put("manage_teacher",roomSingle.getManage_teacher());
             item.put("intro",roomSingle.getIntro());
             resultList.add(item);

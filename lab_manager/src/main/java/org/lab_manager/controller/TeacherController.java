@@ -9,6 +9,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.ObjectArraySerializer;
 import org.lab_manager.entity.Experiment;
 import org.lab_manager.entity.Student;
+import org.lab_manager.service.IExperimentService;
 import org.lab_manager.service.ITeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class TeacherController {
 
     @Autowired
     private ITeachService teacherService;
+
+    @Autowired
+    private IExperimentService experimentService;
 
     /**
      * 获取老师所有实验
@@ -132,6 +136,7 @@ public class TeacherController {
      ],
      "username": "sid",
      "role": "teacher"
+     "labId"
      }
      need:
      {
@@ -145,10 +150,11 @@ public class TeacherController {
         List<Map<String, Object>> studentsInfo = JSON.parseObject(list, new TypeReference<List<Map<String, Object>>>() {
         });
 
-        System.out.println(labId);
+
         for(Map<String,Object> m:studentsInfo){
-            System.out.println(m.get("stuId").toString()+"::"+m.get("stuGrade").toString());
-            if(teacherService.uploadStuGrade(m.get("stuId").toString(),m.get("stuGrade").toString(),labId))
+            Experiment experiment = experimentService.getExperimentById(labId);
+
+            if(teacherService.uploadStuGrade(m.get("stuId").toString(),m.get("stuGrade").toString(),experiment.getCourse_name()));
                 flag="0";
         }
 

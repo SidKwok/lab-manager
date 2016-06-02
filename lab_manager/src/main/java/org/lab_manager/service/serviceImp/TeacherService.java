@@ -6,6 +6,7 @@ import org.lab_manager.dao.TeacherDao;
 import org.lab_manager.dao.UserDao;
 import org.lab_manager.entity.*;
 import org.lab_manager.service.ITeachService;
+import org.lab_manager.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,8 @@ public class TeacherService implements ITeachService {
     @Override
     public boolean uploadStuAttendence(String date,String stuId,String course,float score,String present) {
         try{
-            teacherDao.insertPresentInfo(date,stuId,course,score,present);
+            String now= DateTimeUtil.currentTimestamp().toString();
+            teacherDao.insertPresentInfo(now,stuId,course,score,present);
         }catch (Exception e){
             e.printStackTrace();
             return false;

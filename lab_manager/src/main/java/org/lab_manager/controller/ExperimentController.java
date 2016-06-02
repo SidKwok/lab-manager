@@ -246,6 +246,7 @@ public class ExperimentController {
         });
 
         for(Map<String,Object> m:students){
+            Experiment exp = experimentService.getExperimentById(courseId);
             if(teachService.uploadStuAttendence("",m.get("stuId").toString(),courseId,Float.parseFloat(m.get("stuGrade").toString()),m.get("stuState").toString()))
                 flag="0";
         }

@@ -1,6 +1,7 @@
 package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +87,7 @@ public class StudentController {
     public String getAttendence(@RequestParam("username")String username,@RequestParam("role")String role) {
 //        mStudentService.
         List<Object> result=new ArrayList<Object>();
-
+        mStudentService.getAttendenceByStuId(username);
         for(int i=0;i<10;i++){
             Map<String,Object> item=new HashMap<String, Object>();
             item.put("stuDutyLab","");
@@ -118,12 +119,12 @@ public class StudentController {
     @RequestMapping(value="/getGrade", method = RequestMethod.POST)
     public String getGrade(@RequestParam("username")String username,@RequestParam("role")String role) {
         List<Object> result=new ArrayList<Object>();
-        List<Student> allStudent = mStudentService.getAllStudent();
+        List<Score> stuScores =mStudentService.getStuScore(username);
 
-        for(Student stuSingle:allStudent){
+        for(Score stuSingle:stuScores){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("stuGradeLab",stuSingle.getSClassNO());
-            
+            item.put("stuGradeLab",stuSingle.getCourse_name());
+            item.put("stuGrade",stuSingle.getScore());
             result.add(item);
         }
 

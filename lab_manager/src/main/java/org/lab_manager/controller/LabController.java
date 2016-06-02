@@ -394,7 +394,7 @@ public class LabController {
     /**
      * 实验室具体信息
      _labRoom_info (post) ok				()
-     params: labRoomName(实验室名字)
+     params: labRoomId(实验室id) labRoomName
      {
      "labRoomName":"机器人实验室",
      "labRoomType":"机器人",
@@ -407,13 +407,14 @@ public class LabController {
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
 //        labService.g
 
-        System.out.println(labRoomId+"...............");
         Map<String,Object> result=new HashMap<String, Object>();
 
         LabInfo labRoomInfo = labService.getLabRoomInfo(Integer.parseInt(labRoomId));
+
         result.put("labRoomName",labRoomInfo.getRoom_name());
         result.put("labRoomType",labRoomInfo.getManage_teacher());
         result.put("labRoomIntro",labRoomInfo.getIntro());
+        result.put("labRoomId",labRoomInfo.getRoom_id());
 
         return JSON.toJSONString(result);//这里返回 json "status": "0",其中0 表示预约成功
     }

@@ -1,5 +1,6 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 
 import java.util.ArrayList;
@@ -23,4 +24,14 @@ public interface IStudentService {
      * 添加学生
      */
     public boolean addStudent(Student student);
+
+    /**
+     * 获取一个学生的所有可能考勤情况
+     */
+    public List<Student>    getAttendenceByStuId(String stuId);
+
+    /**
+     * 查询学生的所有课程成绩
+     */
+    public List<Score>  getStuScore(String stuId);
 }

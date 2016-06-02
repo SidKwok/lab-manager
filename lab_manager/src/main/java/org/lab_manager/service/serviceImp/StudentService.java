@@ -1,6 +1,8 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.ScoreDao;
 import org.lab_manager.dao.StudentDao;
+import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,16 @@ public class StudentService implements IStudentService{
     @Autowired
     private StudentDao studentDao;
 
+    @Autowired
+    private ScoreDao scoreDao;
+
     @Override
     public List<Student> getAllStudent() {
+        try{
+            return studentDao.queryAllStudent();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -30,5 +40,26 @@ public class StudentService implements IStudentService{
     @Override
     public boolean addStudent(Student student) {
         return false;
+    }
+
+    @Override
+    public List<Student> getAttendenceByStuId(String stuId) {
+        try{
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Score> getStuScore(String stuId) {
+        try{
+            List<Score> score = scoreDao.getScoreBySNO(stuId);
+            return score;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

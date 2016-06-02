@@ -102,7 +102,9 @@ function equipCardEvent() {
               }
               if(retData.status === '1') {
                   alert('删除成功');
-                  loadEquipCard();
+                  setTimeout(function(){
+                      loadEquipCard();
+                  }, 500);
               }
               $('#pro-equipDelete-modal').modal('hide');
           },
@@ -350,7 +352,7 @@ function labRoomCardEvent(){
               }
               if(retData.status === '1') {
                   alert('删除成功');
-                  loadEquipCard();
+                  loadLabRoomCard();
               }
               $('#pro-labRoomDelete-modal').modal('hide');
           },
@@ -407,7 +409,7 @@ function labRoomCardEvent(){
             }
             if(retData.status === '1') {
                 alert('修改成功');
-                loadEquipCard();
+                loadLabRoomCard();
             }
             $('#pro-labRoomUpdate-modal').modal('hide');
           },
@@ -438,7 +440,7 @@ function labRoomCardEvent(){
             }
             if(retData.status === '1') {
                 alert('添加成功');
-                loadEquipCard();
+                loadLabRoomCard();
             }
             $('#pro-labRoomAdd-modal').modal('hide');
           },

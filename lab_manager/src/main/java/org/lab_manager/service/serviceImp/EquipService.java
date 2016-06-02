@@ -47,12 +47,23 @@ public class EquipService implements IEquipService{
     @Override
     public boolean updateEquioInfo(EquipInfo equipInfo) {
         try{
-
-            return true;
+            equipInfoDao.updateAsset(equipInfo.getID().toString(),equipInfo.getAsset_name(),equipInfo.getClass_no(),equipInfo.getClass_name(),
+                    equipInfo.getOrigin_name(),equipInfo.getPurchase_unit(),equipInfo.getValue_type(),
+                    equipInfo.getUnit_price(),equipInfo.getNumber(),equipInfo.getInvoice_num(),
+                    equipInfo.getMeasurement_unit(),equipInfo.getPurchase_date(),equipInfo.getFinancial_res(),
+                    equipInfo.getAsset_res(),equipInfo.getHandle_person(),equipInfo.getCharge_type(),
+                    equipInfo.getCheck_date(),equipInfo.getRecept_date(),equipInfo.getPurchase_form(),
+                    equipInfo.getManage_part(),equipInfo.getSubject_type(),equipInfo.getSubject(),
+                    equipInfo.getRemark(),equipInfo.getFinantial_opinion(),equipInfo.getMeasurement_unit(),
+                    equipInfo.getModel(),equipInfo.getStandard(),equipInfo.getProduction_date(),
+                    equipInfo.getCountry(),equipInfo.getManufacturer(),equipInfo.getBrand(),
+                    equipInfo.getPower(),equipInfo.getEstimated_expiration_date(),equipInfo.getDurable_years(),
+                    equipInfo.getRetailer());
         }catch (Exception e){
-
+            e.printStackTrace();
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override

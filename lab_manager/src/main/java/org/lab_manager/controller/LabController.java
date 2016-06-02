@@ -442,18 +442,18 @@ public class LabController {
     /**
      * 添加实验室
      _add_labRoom (post) ok
-     params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)
+     params: labRoomName(实验室名字) labRoomType(实验室类型) labRoomIntro(实验室简介)，labRoomNo
      {
      "status": "0"
      }
      */
     @ResponseBody
     @RequestMapping(value="/addLabRoom",method = RequestMethod.POST)
-    public String addLabRoom(@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomType")String labRoomtype,@RequestParam("labRoomIntro")String labRoomIntro){
+    public String addLabRoom(@RequestParam("labRoomName")String labRoomName,@RequestParam("labRoomNo")String labRoomNo,@RequestParam("labRoomType")String labRoomtype,@RequestParam("labRoomIntro")String labRoomIntro){
         //从json文件中解析数据，返回要加载的实验室信息，需要根据前端信息确定
         Map<String,Object> result=new HashMap<String, Object>();
         String flag="0";
-        if(labService.addLabRoom(3,labRoomName,labRoomtype,labRoomIntro))
+        if(labService.addLabRoom(Integer.parseInt(labRoomNo),labRoomName,labRoomtype,labRoomIntro))
             flag="1";
 
         result.put("status",flag);

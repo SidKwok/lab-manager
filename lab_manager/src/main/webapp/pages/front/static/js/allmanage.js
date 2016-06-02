@@ -229,23 +229,6 @@ function init () {
                     error: function(){
                         console.log('/lab/orderRoom fail');
                         alert('后台错误！');
-
-                        // /***************************************
-                        // * 用于前端test 测试状态：
-                        // */
-                        // /*ajax返回的数据*/
-                        // var retData = {
-                        //   "status": "0"
-                        // };
-                        // /**************/
-                        // if(retData.status === '0') {
-                        //    alert('预约失败');
-                        // }
-                        // if(retData.status === '1') {
-                        //    alert('预约成功');
-                        // }
-                        //
-                        // /***************************************/
                     }
                 });
             });
@@ -253,63 +236,6 @@ function init () {
           error: function(){
             console.log('/lab/queryAllRoom', 'fail');
             alert('后台错误！');
-
-            // /***************************************
-            // * 用于前端test 测试状态：ok
-            // */
-            // /*ajax返回的数据*/
-            // var retData = [
-            //   {
-            //     "room_id": "0001",
-            //     "manage_teacher": "sid",
-            //     "intro": "good"
-            //   },
-            //   {
-            //     "room_id": "0002",
-            //     "manage_teacher": "mingen",
-            //     "intro": "bad"
-            //   },
-            //   {
-            //     "room_id": "0003",
-            //     "manage_teacher": "natalie",
-            //     "intro": "bad"
-            //   },
-            //   {
-            //     "room_id": "0004",
-            //     "manage_teacher": "airdy",
-            //     "intro": "so good"
-            //   },
-            //   {
-            //     "room_id": "0005",
-            //     "manage_teacher": "bob",
-            //     "intro": "YES!"
-            //   },
-            //   {
-            //     "room_id": "0006",
-            //     "manage_teacher": "taylor",
-            //     "intro": "badbad"
-            //   },
-            // ];
-            // /**************/
-            // $('#all-room .flex-box').children().detach();
-            // var domArr = [];
-            // $.each(retData, function(i, e) {
-            //     domArr.push(
-            //         '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
-            //             '<div class="all-roomId">' + e.room_id + '</div>',
-            //             '<div class="all-teacher">' + e.manage_teacher + '</div>',
-            //             '<div class="all-buttonGroup">',
-            //             '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
-            //             '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',
-            //             '<button class="btn btn-success all-order-btn" data-toggle="modal" data-target="#all-order-modal">预约</button>',
-            //             '</div>',
-            //         '</div>'
-            //     );
-            // });
-            // $('#all-room .flex-box').append(domArr.join(''));
-            // // 初始化弹出框
-            // $('[data-toggle="popover"]').popover();
-            // /***************************************/
         }
       });
 

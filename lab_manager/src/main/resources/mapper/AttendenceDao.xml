@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lab_manager.dao.AttendenceDao">
+    <select id="getAllAttendence" resultType="Attendence">
+        SELECT * FROM check_on_table;
+    </select>
+    <select id="getAttendenceById" resultType="Attendence">
+        SELECT * FROM check_on_table WHERE Student_id=#{SID};
+    </select>
+</mapper>

@@ -43,7 +43,7 @@ function init () {
                 domArr.push(
                     '<div class="card hvr-bounce-in" data-roomId="' + e.room_id + '">',
                         '<div class="all-roomId">' + e.room_id + '</div>',
-                        '<div class="all-teacher">' + e.manage_teacher + '</div>',
+                        '<div class="all-teacher">' + e.roomName + '</div>',
                         '<div class="all-buttonGroup">',
                             '<button class="btn btn-primary all-comment-btn" data-toggle="modal" data-target="#all-comment-modal">评论</button>',
                             '<button class="btn btn-info all-info-btn" data-toggle="popover" data-placement="top" title="' + e.room_id + '" data-content="' + e.intro + '" ">简介</button>',

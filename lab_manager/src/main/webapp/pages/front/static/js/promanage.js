@@ -385,9 +385,10 @@ function labRoomCardEvent(){
           success: function(data){
               var retData = eval('(' + data + ')');
               $('#pro-labRoomUpdate-modal .pro-labRoomInfo').children().detach();
-              var labRoomInfo = '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
-                              '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
-                              '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
+              var labRoomInfo = '<div class="pro-labRoomInfo-labRoomNo">实验室名称： ' + retData.labRoomNo + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomName">实验室名称： ' + retData.labRoomName + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomType">实验室类型： ' + retData.labRoomType + '</div>' +
+                                '<div class="pro-labRoomInfo-labRoomIntro">简介： ' + retData.labRoomIntro + '</div>';
               $('#pro-labRoomUpdate-modal .pro-labRoomInfo').append(labRoomInfo);
           },
           error: function(){

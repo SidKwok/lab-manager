@@ -176,6 +176,8 @@ public class EquipController {
     *更新单个设备信息
      * params: assetName(设备名), classNo(分类编号), className(分类类别), valueType(价值类型), number(数量)， assetId(设备id)
      {
+     "assetId":
+     然后长长的东西
      "status": "0"
      }
      *
@@ -198,10 +200,13 @@ public class EquipController {
                                      @RequestParam("productionDate")String productionDate,@RequestParam("country")String country,
                                      @RequestParam("manufacture")String manufacture,@RequestParam("brand")String brand,
                                      @RequestParam("durableYears")String durableYears,@RequestParam("estimatedExpirationDate")String estimatedExpirationDate,
-                                     @RequestParam("retailer")String retailer){
+                                     @RequestParam("retailer")String retailer,@RequestParam("assetId")String assetId){
         Map<String,Object> result=new HashMap<String, Object>();
 
+
         EquipInfo equipInfo=new EquipInfo();
+
+        equipInfo.setID(Integer.parseInt(assetId));
         equipInfo.setAsset_name(assetName);
         equipInfo.setAsset_res(assetRes);
         equipInfo.setBrand(brand);
@@ -236,7 +241,8 @@ public class EquipController {
         equipInfo.setRetailer(retailer);
 
         String flag="0";
-        if(equipService.updateEquipInfo(Integer.parseInt(classNo),assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+//        if(equipService.updateEquipInfo(Integer.parseInt(classNo),assetName,Integer.parseInt(classNo),className,valueType,Integer.parseInt(number)))
+        if(equipService.updateEquioInfo(equipInfo))
             flag="1";
         result.put("status",flag);
 

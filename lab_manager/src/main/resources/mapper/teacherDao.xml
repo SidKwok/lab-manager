@@ -17,6 +17,10 @@
         SELECT * FROM order_experiment WHERE Teacher=#{teacherId} order by ID desc;
     </select>
 
+    <select id="getAllTeacherByName" resultType="User">
+        SELECT * FROM user_table WHERE User_name like #{teacherName};
+    </select>
+
     <insert id="insertPresentInfo">
         INSERT into check_on_table (date,Student_id,Course,Score,Present) VALUES (#{date},#{stuId},#{course},#{score},#{present});
     </insert>

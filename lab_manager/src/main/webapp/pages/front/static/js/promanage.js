@@ -68,7 +68,9 @@ function loadEquipCard () {
           $('#pro-equip .flex-box').append(domArr.join(''));
 
           // 加载设备卡片事件
-          equipCardEvent();
+          setTimeout(function(){
+              equipCardEvent();
+          }, 500);
         },
         error: function(){
           console.log('/equipment/queryAllEquipment', 'fail');
@@ -102,7 +104,9 @@ function equipCardEvent() {
               }
               if(retData.status === '1') {
                   alert('删除成功');
-                  loadEquipCard();
+                  setTimeout(function(){
+                      loadEquipCard();
+                  }, 500);
               }
               $('#pro-equipDelete-modal').modal('hide');
           },
@@ -209,7 +213,9 @@ function equipCardEvent() {
             }
             if(retData.status === '1') {
                 alert('修改成功');
-                loadEquipCard();
+                setTimeout(function(){
+                    loadEquipCard();
+                }, 500);
             }
             $('#pro-equipUpdate-modal').modal('hide');
           },
@@ -271,7 +277,9 @@ function equipCardEvent() {
             }
             if(retData.status === '1') {
                 alert('添加成功');
-                loadEquipCard();
+                setTimeout(function(){
+                    loadEquipCard();
+                }, 500);
             }
             $('#pro-equipAdd-modal').modal('hide');
           },
@@ -350,7 +358,9 @@ function labRoomCardEvent(){
               }
               if(retData.status === '1') {
                   alert('删除成功');
-                  loadEquipCard();
+                  setTimeout(function(){
+                      loadLabRoomCard();
+                  }, 500);
               }
               $('#pro-labRoomDelete-modal').modal('hide');
           },
@@ -407,7 +417,9 @@ function labRoomCardEvent(){
             }
             if(retData.status === '1') {
                 alert('修改成功');
-                loadEquipCard();
+                setTimeout(function(){
+                    loadLabRoomCard();
+                }, 500);
             }
             $('#pro-labRoomUpdate-modal').modal('hide');
           },
@@ -421,6 +433,7 @@ function labRoomCardEvent(){
   // 添加实验室
   $('#post-labRoomAdd').on('click', function(){
       var params = {
+          labRoomNo: $('#pro-input-add-labRoomNo').val(),
           labRoomName: $('#pro-input-add-labRoomName').val(),
           labRoomType: $('#pro-input-add-labRoomType').val(),
           labRoomIntro: $('#pro-input-add-labRoomIntro').val(),
@@ -438,7 +451,9 @@ function labRoomCardEvent(){
             }
             if(retData.status === '1') {
                 alert('添加成功');
-                loadEquipCard();
+                setTimeout(function(){
+                    loadLabRoomCard();
+                }, 500);
             }
             $('#pro-labRoomAdd-modal').modal('hide');
           },
@@ -507,7 +522,9 @@ function labOrderEvent(){
             }
             if(retData.status === '1') {
                 alert('批准实验室预约成功');
-                loadLabOrder();
+                setTimeout(function(){
+                    loadLabOrder();
+                }, 500);
             }
           },
           error: function(){
@@ -531,7 +548,9 @@ function labOrderEvent(){
             }
             if(retData.status === '1') {
                 alert('拒绝实验室预约成功');
-                loadLabOrder();
+                setTimeout(function(){
+                    loadLabOrder();
+                }, 500);
             }
           },
           error: function(){
@@ -599,7 +618,9 @@ function equipOrderEvent(){
             }
             if(retData.status === '1') {
                 alert('批准设备预约成功');
-                loadEquipOrder();
+                setTimeout(function(){
+                    loadEquipOrder();
+                }, 500);
             }
           },
           error: function(){
@@ -623,7 +644,9 @@ function equipOrderEvent(){
             }
             if(retData === '1') {
                 alert('拒绝设备预约成功');
-                loadEquipOrder();
+                setTimeout(function(){
+                    loadEquipOrder();
+                }, 500);
             }
           },
           error: function(){

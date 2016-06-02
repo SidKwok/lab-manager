@@ -58,4 +58,8 @@ public interface ILabService {
      */
     public boolean deleteLabRoom(Integer roomId);
 
+    /**
+     * 通过
+     */
+
 }

@@ -21,6 +21,11 @@ public interface ExperimentDao {
      */
     public List<Experiment> getExpByName(String courseName);
 
+    /**
+     *通过老师ID查询
+     */
+    public Experiment getExpByTeacherId(String tID);
+
     public Experiment queryByIdAndName(@Param("id") String id,@Param("name") String name);
     /*
     添加实验课程

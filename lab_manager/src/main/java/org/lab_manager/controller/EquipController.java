@@ -162,7 +162,6 @@ public class EquipController {
     public String orderEquipment(@RequestParam("assetName")String assetName,@RequestParam("number")String num,@RequestParam("startTime")String startTime,@RequestParam("endTime")String endTime,@RequestParam("applicant")String apllyer){
         //返回所有设备的名称列表，放到json中
         Map<String,Object> result=new HashMap<String, Object>();
-        System.out.println(num+"=====");
 
         String flag="0";
         if(equipService.addEquipOrder(assetName,Integer.parseInt(num),startTime,endTime,apllyer))
@@ -417,6 +416,8 @@ public class EquipController {
         List<EquipOrder> allEquipOrder  = equipService.getAllEquipOrder();
         for(EquipOrder orderSingle:allEquipOrder){
             Map<String,Object> item=new HashMap<String, Object>();
+            if(!orderSingle.getDevice_state().equals("待定")) //将不是待定的过滤
+                continue;
             item.put("equipOrderId",orderSingle.getOrder_id());
             item.put("equipOrderName",orderSingle.getDevice_name());
             item.put("equipOrderNumber",orderSingle.getEquip_number());

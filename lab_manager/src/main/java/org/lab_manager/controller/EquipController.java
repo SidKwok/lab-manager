@@ -416,6 +416,8 @@ public class EquipController {
         List<EquipOrder> allEquipOrder  = equipService.getAllEquipOrder();
         for(EquipOrder orderSingle:allEquipOrder){
             Map<String,Object> item=new HashMap<String, Object>();
+            if(!orderSingle.getDevice_state().equals("待定")) //将不是待定的过滤
+                continue;
             item.put("equipOrderId",orderSingle.getOrder_id());
             item.put("equipOrderName",orderSingle.getDevice_name());
             item.put("equipOrderNumber",orderSingle.getEquip_number());

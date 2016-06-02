@@ -12,6 +12,10 @@ public class Attendence {
     private String Course;
     private Float Score;
 
+
+
+    private String Present;
+
     public Integer getID() {
         return ID;
     }
@@ -50,5 +54,12 @@ public class Attendence {
 
     public void setScore(Float score) {
         Score = score;
+    }
+    public String getPresent() {
+        return Present;
+    }
+
+    public void setPresent(String present) {
+        Present = present;
     }
 }

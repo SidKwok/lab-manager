@@ -1,7 +1,9 @@
 package org.lab_manager.service.serviceImp;
 
+import org.lab_manager.dao.AttendenceDao;
 import org.lab_manager.dao.ScoreDao;
 import org.lab_manager.dao.StudentDao;
+import org.lab_manager.entity.Attendence;
 import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
@@ -21,6 +23,9 @@ public class StudentService implements IStudentService{
 
     @Autowired
     private ScoreDao scoreDao;
+
+    @Autowired
+    private AttendenceDao attendenceDao;
 
     @Override
     public List<Student> getAllStudent() {
@@ -43,9 +48,9 @@ public class StudentService implements IStudentService{
     }
 
     @Override
-    public List<Student> getAttendenceByStuId(String stuId) {
+    public List<Attendence> getAttendenceByStuId(String stuId) {
         try{
-
+            return attendenceDao.getAttendenceById(stuId);
         }catch (Exception e){
             e.printStackTrace();
         }

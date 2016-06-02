@@ -1,5 +1,6 @@
 package org.lab_manager.service;
 
+import org.lab_manager.entity.Attendence;
 import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 
@@ -26,9 +27,9 @@ public interface IStudentService {
     public boolean addStudent(Student student);
 
     /**
-     * 获取一个学生的所有可能考勤情况
+     * 获取一个学生的所有考勤情况
      */
-    public List<Student>    getAttendenceByStuId(String stuId);
+    public List<Attendence>    getAttendenceByStuId(String stuId);
 
     /**
      * 查询学生的所有课程成绩

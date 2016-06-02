@@ -1,6 +1,7 @@
 package org.lab_manager.controller;
 
 import com.alibaba.fastjson.JSON;
+import org.lab_manager.entity.Attendence;
 import org.lab_manager.entity.Score;
 import org.lab_manager.entity.Student;
 import org.lab_manager.service.IStudentService;
@@ -87,15 +88,14 @@ public class StudentController {
     public String getAttendence(@RequestParam("username")String username,@RequestParam("role")String role) {
 //        mStudentService.
         List<Object> result=new ArrayList<Object>();
-        mStudentService.getAttendenceByStuId(username);
-        for(int i=0;i<10;i++){
+
+        List<Attendence> attendences = mStudentService.getAttendenceByStuId(username);
+        for(Attendence attSingle:attendences){
             Map<String,Object> item=new HashMap<String, Object>();
-            item.put("stuDutyLab","");
-            item.put("stuDutyPos","");
-            item.put("stuDutyWeek","");
-            item.put("stuDutyWeekday","");
-            item.put("stuDutyCourse","");
-            item.put("status","");
+            item.put("stuDutyLab",attSingle.getCourse());
+            item.put("stuDutyPos",attSingle.getDate());
+            item.put("stuDutyCourse",attSingle.getCourse());
+            item.put("status",attSingle.getPresent());
             result.add(item);
         }
         return JSON.toJSONString(result);

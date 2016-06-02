@@ -313,7 +313,7 @@ function loadLabRoomCard () {
           $.each(retData, function(i, e) {
               domArr.push(
                   '<div class="card hvr-bounce-in" data-labRoomName="' + e.labRoomName + '" data-labRoomId="' + e.labRoomId + '">',
-                      '<div class="pro-labRoomName">' + e.labRoomNo + ' ' + e.labRoomName + '</div>',
+                      '<div class="pro-labRoomName">' + e.labRoomId + ' ' + e.labRoomName + '</div>',
                       '<div class="pro-buttonGroup">',
                           '<button class="btn btn-danger pro-labRoomDelete-btn" data-toggle="modal" data-target="#pro-labRoomDelete-modal">删除</button>',
                           '<button class="btn btn-success pro-labRoomUpdate-btn" data-toggle="modal" data-target="#pro-labRoomUpdate-modal">修改</button>',

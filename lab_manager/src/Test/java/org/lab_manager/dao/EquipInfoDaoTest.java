@@ -52,7 +52,8 @@ public class EquipInfoDaoTest {
         System.out.println(status);
     }
     @Test
-    public void insert() throws Exception{
-        boolean status=equipInfoDao.insert("高级计算机",130021,"计算机","工具",20);
+    public void update() throws Exception{
+        boolean status=equipInfoDao.updateAsset("98","12",123,"123","12","12","12",12,1,"12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12","12",12,"12");
+        System.out.println(status);
     }
 }
